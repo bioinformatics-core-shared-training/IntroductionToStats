@@ -8,7 +8,7 @@
 \usepackage{media9}
 \begin{document}
 
-\pgfdeclareimage[height=0.5cm]{university-logo}{images/CRUK_CAMBRIDGE_I_Pos_RGB_300}
+
 \logo{\pgfuseimage{university-logo}}
 
 
@@ -29,6 +29,7 @@
 {
 \usebackgroundtemplate{\includegraphics[width=\paperwidth]{images/criBackdrop.jpg}}
 \begin{frame}
+\includegraphics[width=.6,left]{images/CRUK_CAMBRIDGE_I_Pos_RGB_300}
   \titlepage
 \end{frame}
 }
@@ -316,6 +317,18 @@ $se = \frac{sd}{\sqrt(n)} = \frac{154}{\sqrt{7}} = 58 $
 
 Mean 289, 95$\%$ CI ( $289 - (1.96 \times 58),  289 + (1.96 \times 58)$)\\
 Mean 289, 95$\%$ CI ( 175,  402)
+
+\end{frame}
+
+\begin{frame}[fragile]{Confidence intervals}
+
+<<echo=FALSE,fig.show='asis',fig.height=5,fig.width=12,warning=FALSE,message=FALSE>>=
+x <- rnorm(500, 15,1)
+y <- sample(x,100)
+p1 <- qplot(x, geom="histogram",binwidth=1)
+p2 <- qplot(y, geom="histogram",binwidth=1)
+grid.arrange(p1,p2,ncol=2)
+@
 
 \end{frame}
 
