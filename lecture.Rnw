@@ -5,15 +5,16 @@
   \renewenvironment{knitrout}{\begin{footnotesize}}{\end{footnotesize}}
 \else
 \fi
-\usepackage{media9}
+\usepackage{xcolor,colortbl}
 \begin{document}
 
 
+\pgfdeclareimage[height=0.5cm]{university-logo}{images/CRUK_CAMBRIDGE_I_Pos_RGB_300}
 \logo{\pgfuseimage{university-logo}}
 
 
 \title{Introduction to Statistical analysis}
-\author{Mark Dunning}
+\author{Mark Dunning. Materials by Deepak Parashar and Sarah Dawson}
 \date{12th March 2014}
 \institute[Bioinformatics Core] % (optional, but mostly needed)
 {
@@ -29,7 +30,6 @@
 {
 \usebackgroundtemplate{\includegraphics[width=\paperwidth]{images/criBackdrop.jpg}}
 \begin{frame}
-\includegraphics[width=.6,left]{images/CRUK_CAMBRIDGE_I_Pos_RGB_300}
   \titlepage
 \end{frame}
 }
@@ -157,7 +157,7 @@ normdist
 
 \end{frame}
 
-\begin{frame}[fragile]{Continuous Data - Distribution?}
+\begin{frame}[fragile]{Continuous or not??}
 
 <<echo=FALSE,fig.show='asis',fig.height=5,fig.width=10,warning=FALSE,message=FALSE>>=
 library(reshape2)
@@ -259,7 +259,7 @@ E.g. No. of facebook friends for 7 colleagues\\
 \end{itemize}
 \item{Median and interquartile range}
 \begin{itemize}
-\item{11, {\color{orange}243}, 270, {\color{red}310}, 311, {\color{orange}345},5300}
+\item{11, {\color{orange}243}, 270, {\color{red}310}, 311, {\color{orange}345},530}
 \end{itemize}
 \end{itemize}
 \pause
@@ -322,6 +322,11 @@ Mean 289, 95$\%$ CI ( 175,  402)
 
 \begin{frame}[fragile]{Confidence intervals}
 
+\begin{itemize}
+\item{As number of observations goes up....}
+\item{Standard deviation stays \textbf{the same}...}
+\item{But standard error \textbf{goes down....}}
+\end{itemize}
 <<echo=FALSE,fig.show='asis',fig.height=5,fig.width=12,warning=FALSE,message=FALSE>>=
 x <- rnorm(500, 15,1)
 y <- sample(x,100)
@@ -331,5 +336,379 @@ grid.arrange(p1,p2,ncol=2)
 @
 
 \end{frame}
+
+\section{Hypothesis Testing}
+\begin{frame}[fragile]{Basic set-up}
+\begin{itemize}
+\item{Formulate a \textit{null hypothesis} - H$_0$}
+\item{e.g. \textit{"The difference in treatment before and after treatment = 0"}}
+\item{Calculate a test statistic from the data under the null hypothesis}
+\item{Determine whether the test statistic is more extreme than expected under the null hypothesis}
+\item{Reject or do no reject the null hypothesis}
+\item{Absence of evidence is not evidence of absense (Bland and Altman, 1995)}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+Lady Tasting Tea (Randomised experiment by Fisher)
+\begin{itemize}
+\item{Randomly-ordered 8 cups of tea}
+\begin{itemize}
+\item{4 were prepared by adding milk first}
+\item{4 were prepared by adding tea first}
+\end{itemize}
+\item{Task: Lady had to select the 4 cups of one particular method}
+\item{H$_0$ Lady no such ability}
+\item{Test Statistic: number of sucessses in selecting 4 cups}
+\item{Result: Lady got all 4 cups correct}
+\item{\textbf{Reject the null hypothesis}}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Errors}
+\includegraphics[height=5cm]{images/errorTable.png}
+Significance level, sample size, different of interest, variability of the observations
+
+\textbf{Be aware of issues of multiple testing}
+\end{frame}
+
+\section{Tests for continuous variables: T-tests}
+
+\begin{frame}{Various flavours}
+\begin{itemize}
+\item{One-sample t-test: e.g. H$_0$: mean= 5}
+\item{Independent two-sample t-test: e.g. H$_0$: mean of sample 1 = mean of sample 2}
+\item{Paired two-sample t-test: e.g. H$_0$: mean difference between pairs = 0 }
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{T-distributions}
+
+<<echo=FALSE,fig.show='asis',fig.height=5,fig.width=12,warning=FALSE,message=FALSE>>=
+
+vals <- data.frame(x = rnorm(100000), Distribution = "normal")
+
+vals <- rbind(vals,do.call("rbind",lapply(c(1,3,8,30), function(df) data.frame(x=rt(100000,df=df),Distribution=paste0("df=",df)))))
+
+ggplot(vals, aes(x=x, col=Distribution)) +geom_density()+xlim(-4,4)
+@
+
+
+
+\end{frame}
+\subsection{One-sample t-test}
+\begin{frame}{Does mean = X?}
+
+\begin{itemize}
+\item{\textbf{Research question:} Published data suggests that the microarray failure rate for a particular supplier is 2.1\%}
+\item{Genomics want to know if this holds true in their own lab}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Formulating the question}
+\begin{itemize}
+\item{Null hypothesis, $H_0$}
+Mean monthly failure rate $= 2.1\%$
+\item{Alternative hypothesis, $H_1$}
+Mean monthly failure rate $\ne 2.1\%$
+\item{Tails: two-tailed}
+\item{Either \textit{reject} or \textit{do not reject} the null hypothesis - \textbf{never accept the alternative hypothesis} }
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{The Data}
+
+<<results='asis',echo=FALSE>>=
+library(xtable)
+
+failure <- data.frame(Month = month.name, "Monthly failure rate" = c(2.9,2.99,2.48,1.48,2.71,4.17,3.74,3.04,1.23,2.72,3.23,3.4))
+
+xtable(failure)
+me <- round(mean(failure$Monthly.failure.rate),3)
+sd <- round(sd(failure$Monthly.failure.rate),3)
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Summary Statistics}
+
+Mean = $(2.9 + \dots + 3.40) / 12 = \Sexpr{me}$
+
+Standard deviation = \Sexpr{sd}
+\begin{itemize}
+\item{Observations must be independent}
+\item{Observations must be normally distributed}
+\end{itemize}
+
+<<echo=FALSE,fig.show='asis',fig.height=5,fig.width=12,warning=FALSE,message=FALSE>>=
+hist(failure$Monthly.failure.rate,col="steelblue",xlab="Monthly Failure Rate",main="")
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Results}
+
+<<echo=FALSE,results='hide'>>=
+test <- t.test(failure$Monthly.failure.rate,mu=2.1)
+stat <- round(test$statistic,3)
+pval <- round(test$p.value,3)
+@
+
+Test statistic
+$t_{n-1} = t_{11} = \frac{\bar{x} - \mu_0} {s.d. / \sqrt{n}} = \frac{2.84 - 2.10}{s.e.(\bar{x})} = \Sexpr{stat}$
+\pause
+<<echo=FALSE,fig.show='asis',fig.height=5,fig.width=12,warning=FALSE,message=FALSE>>=
+library(Rcmdr)
+df <- nrow(failure) - 1
+.x <- seq(-4.437, 4.437, length.out=1000)
+color <- rgb(190, 190, 190, alpha=80, maxColorValue=255)
+plotDistr(.x, dt(.x, df=df), cdf=FALSE, xlab="x", ylab="Density", 
+main=paste("t Distribution:  Degrees of freedom=11"))
+
+rect(xleft = qt(0.975,df), xright = 5,ytop = 1,ybottom = 0,col=color)
+rect(xright = -qt(0.975,df), xleft = -5,ytop = 1,ybottom = 0,col=color)
+abline(v = stat,col="red")
+@
+\pause
+\textit{p:value = \Sexpr{pval}}
+Reject H$_0$ and conclude that mean monthly failure rate in Genomics is not 2.1\%
+
+\end{frame}
+
+\subsection{Two-sample t-test}
+
+\begin{frame}{Two-sample t-test}
+\begin{itemize}
+\item{Independent:}
+e.g. the weight of two different breeds of mice
+\item{Paired:}
+e.g. a measurement of disease at two different parts of the body in the same patient
+\end{itemize}
+\end{frame}
+
+
+\subsubsection{Independent two-sample t-test}
+
+\begin{frame}{Independent two-sample t-test}
+Does mean of group A = mean of group B?
+
+
+e.g. \textbf{Research question}: 40 male mice (20 of breed A and 20 of breed B) were weighed at 4 weeks old.
+
+\textit{Does the weight of 4 week old male mice depend on breed?}
+
+\end{frame}
+
+
+\begin{frame}{Independent two-sample t-test}
+
+\begin{itemize}
+\item{Null hypothesis, H$_0$}
+Mean weight of breed A = Mean weight of breed B
+\item{Alternative hypothesis, H$_1$}
+Mean weight of breed A $\ne$ Mean weight of breed B
+\item{Tails: two-tailed}
+\item{Either \textit{reject} or \textit{do not reject} the null hypothesis - \textbf{never accept the alternative hypothesis} }
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{The data}
+
+<<results='asis',echo=FALSE>>=
+library(xtable)
+
+mice <- data.frame(BreedAMouse = 1:20, WeightA=c(22.77,9.08,9.8,8.13,16.54,11.36,11.47,22.25,14.04,17.12,6.32,17.51,9.87,12.41,7.39,9.23,4.06,8.26,10.24,14.64), BreedBMouse=21:40, WeightB=c(15.51,12.93,11.50,16.07,15.51,15.16,11.25,13.65,14.28,13.21,10.28,12.41,9.63,14.75,12.56,13.02,12.33,11.90,12.57,11.29))
+
+xtable(mice)
+@
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Data summary}
+
+Mean of breed A: \Sexpr{round(mean(mice$WeightA),2)}
+Mean of breed B: \Sexpr{round(mean(mice$WeightB),2)}
+
+Standard Deviation of breed A: \Sexpr{round(sd(mice$WeightA),2)}
+Standard Deviation of breed B: \Sexpr{round(sd(mice$WeightB),2)}
+
+<<echo=FALSE,fig.show='asis',fig.height=5,fig.width=12,warning=FALSE,message=FALSE>>=
+df <- data.frame(Breed = c(rep("A", 20), rep("B",20)), Weight = c(mice$WeightA,mice$WeightB))
+ggplot(df, aes(x = Weight,fill=Breed)) + geom_histogram() + facet_wrap(~Breed)
+
+
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Checking assumptions}
+
+\begin{itemize}
+\item{Observations are independent}
+\item{Observations are normally distributed}
+
+<<echo=FALSE,fig.show='asis',fig.height=5,fig.width=12,warning=FALSE,message=FALSE>>=
+df <- data.frame(Breed = c(rep("A", 20), rep("B",20)), Weight = c(mice$WeightA,mice$WeightB))
+ggplot(df, aes(x = Weight,fill=Breed)) + geom_histogram() + facet_wrap(~Breed)
+test <- t.test(Weight~Breed,data=df,var.equal = FALSE)
+
+tsat <-test$statistic
+
+@
+\pause
+\item{Use Welch's correction if variances are different ( alters the t-statistic and degrees of freedom)}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Test results}
+
+$t_{df} = \frac{\bar{X_A} - \bar{X_B}}{s.e.(\bar{X_A} - \bar{X_B})} = \Sexpr{tsat}$
+
+df = 23 (with Welch's correction)
+
+<<echo=FALSE,fig.show='asis',fig.height=5,fig.width=12,warning=FALSE,message=FALSE>>=
+
+
+
+.x <- seq(-3.768, 3.768, length.out=1000)
+ plotDistr(.x, dt(.x, df=23), cdf=FALSE, xlab="x", ylab="Density", 
+           main=paste("t Distribution:  Degrees of freedom=23"))
+color <- rgb(190, 190, 190, alpha=80, maxColorValue=255)
+rect(xleft = qt(0.975,23), xright = 5,ytop = 1,ybottom = 0,col=color)
+rect(xright = -qt(0.975,23), xleft = -5,ytop = 1,ybottom = 0,col=color)
+abline(v = tsat,col="red")
+
+@
+\pause
+\textit{p-value: \Sexpr{test$p.value}}
+\pause
+\textbf{Do not reject H$_0$. There is no evidence for a difference in weight between breeds}
+
+\end{frame}
+
+\subsubsection{Paired two-sample t-test}
+
+\begin{frame}{Paired two-sample t-test}
+\textit{Does the mean difference = 0?}
+
+\textbf{Research question:} 20 patients with ovarian cancer were studied using MRI imaging. Cellularity was measured for each patient at two sites of disease.
+
+\textit{Does the cellularity differ between the two different sites of disease}
+
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item{Null hypothesis, H$_0$}
+Cellularity at site A = Cellularity at site B
+\item{Alternative hypothesis, H$_1$}
+Cellularity at site A $\ne$ Cellularity at site B
+\item{Tails: two-tailed}
+\item{Either \textit{reject} or \textit{do not reject} the null hypothesis - \textbf{never accept the alternative hypothesis} }
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Null hypothesis}
+
+\begin{itemize}
+\item{H$_0$ Cellularity at site A = Cellularity at site B}
+
+\textbf{OR}
+
+\item{H$_0$ Cellularity at site A - Cellularity at site B = 0}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{The data}
+
+<<results='asis',echo=FALSE>>=
+cellularity <- read.csv("data/Paired two-sample t-test.csv")
+cellularity$Difference = cellularity$Ovarian - cellularity$Peritoneal
+xtable(cellularity)
+
+@
+
+\end{frame}
+
+\begin{frame}
+Mean difference: \Sexpr{round(mean(cellularity$Difference),3)}
+\begin{itemize}
+\item{Observations are independent}
+\item{The paired differences are normally distributed}
+\end{itemize}
+
+<<echo=FALSE,fig.show='asis',fig.height=5,fig.width=12,warning=FALSE,message=FALSE>>=
+hist(cellularity$Difference,col="steelblue")
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Test results}
+
+<<echo=FALSE,results='hide'>>=
+test <- t.test(cellularity$Difference)
+
+tsat <- round(as.numeric(test$statistic),4)
+@
+
+$t_{n-1} = t_{19} = \frac{\bar{X_{A-B}}}{s.e.(\bar{X_{A-B}})} = \Sexpr{tsat}$
+
+df = \Sexpr{nrow(cellularity)-1}
+
+<<echo=FALSE,fig.show='asis',fig.height=5,fig.width=12,warning=FALSE,message=FALSE>>=
+
+df = nrow(cellularity) - 1
+
+  .x <- seq(-3.768, 3.768, length.out=1000)
+ plotDistr(.x, dt(.x, df=df), cdf=FALSE, xlab="x", ylab="Density", 
+           main=paste("t Distribution:  Degrees of freedom=23"))
+color <- rgb(190, 190, 190, alpha=80, maxColorValue=255)
+rect(xleft = qt(0.975,df), xright = 5,ytop = 1,ybottom = 0,col=color)
+rect(xright = -qt(0.975,df), xleft = -5,ytop = 1,ybottom = 0,col=color)
+abline(v = tsat,col="red")
+
+@
+\pause
+\textit{p-value: \Sexpr{test$p.value}}
+\pause
+\textbf{Reject H$_0$}. There is evidence that cellularity at site A $\ne$ cellularity at site B
+
+
+\end{frame}
+
+\begin{frame}{What if normality is not reasonable?}
+\begin{itemize}
+\item{Transform your data. e.g. log transformation}
+\item{Non parametric tests:}
+\begin{itemize}
+\item{One-sample test $\rightarrow$ One-sample Wilcoxon signed rank test}
+\item{Independent two-sample t-test $\rightarrow$ Mann-Whitney U test / Wilcoxon rank sum test}
+\item{Paired two-sample t-test $\rightarrow$ Matched-pairs Wilcoxon signed rank test}
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Summary - Continuous variables}
+\begin{itemize}
+\item{One-sample t-test}
+Use when we have \textit{one group}
+\item{Independent two-sample t-test}
+Use when we have two independent groups. A Welch correction may be needed if the two groups have different spread.
+\item{Paired two-sample t-test}
+Use when we have \textit{two non-independent groups}
+\item{Non-parametric tests or transformations}
+Use when we \textit{cannot assume normality}
+\end{itemize}
+
+\end{frame}
+
 
 \end{document}
