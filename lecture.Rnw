@@ -8,6 +8,7 @@
 \usepackage{xcolor,colortbl}
 \begin{document}
 
+%%http://www.charlesapple.com/2014/04/two-recent-infographic-fails-you-ought-to-know-about/
 
 \pgfdeclareimage[height=0.5cm]{university-logo}{images/CRUK_CAMBRIDGE_I_Pos_RGB_300}
 \logo{\pgfuseimage{university-logo}}
@@ -15,7 +16,7 @@
 
 \title{Introduction to Statistical analysis}
 \author{Mark Dunning. Materials by Deepak Parashar and Sarah Dawson}
-\date{12th March 2014}
+\date{2nd September 2014}
 \institute[Bioinformatics Core] % (optional, but mostly needed)
 {
 
