@@ -435,9 +435,9 @@ sd <- round(sd(failure$Monthly.failure.rate),3)
 
 \begin{frame}[fragile]{Summary Statistics}
 
-Mean = $(2.9 + \dots + 3.40) / 12 = \Sexpr{me}$
+\textbf{mean} = $(2.9 + \dots + 3.40) / 12 = \Sexpr{me}$
 
-Standard deviation = \Sexpr{sd}
+\textbf{Standard deviation} = \Sexpr{sd}
 \begin{itemize}
 \item{Observations must be independent}
 \item{Observations must be normally distributed}
@@ -531,11 +531,12 @@ xtable(mice)
 
 \begin{frame}[fragile]{Data summary}
 
-Mean of breed A: \Sexpr{round(mean(mice$WeightA),2)}
-Mean of breed B: \Sexpr{round(mean(mice$WeightB),2)}
+\textbf{Mean} of breed A: \Sexpr{round(mean(mice$WeightA),2)}
+\textbf{Mean} of breed B: \Sexpr{round(mean(mice$WeightB),2)}
 
-Standard Deviation of breed A: \Sexpr{round(sd(mice$WeightA),2)}
-Standard Deviation of breed B: \Sexpr{round(sd(mice$WeightB),2)}
+\textbf{Standard Deviation} of breed A: \Sexpr{round(sd(mice$WeightA),2)}
+
+\textbf{Standard Deviation} of breed B: \Sexpr{round(sd(mice$WeightB),2)}
 
 <<echo=FALSE,fig.show='asis',fig.height=5,fig.width=12,warning=FALSE,message=FALSE>>=
 df <- data.frame(Breed = c(rep("A", 20), rep("B",20)), Weight = c(mice$WeightA,mice$WeightB))
