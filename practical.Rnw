@@ -38,7 +38,7 @@ To answer the questions in this practical we will be using the {\tt R commander}
 
 \section{Loading R commander}
 The first step is to load {\tt RStudio}. There should be an icon for this on your Desktop.\\
-\includegraphics[width=2cm,height=2cm]{RStudio.png}
+\includegraphics[width=2cm,height=2cm]{images/RStudio.png}
 
 Once loaded, type the following in the 'Console' in the bottom-left where the 'blinking' cursor is; 
 
@@ -78,7 +78,7 @@ The screen that follows allows you to specify various properties of the file tha
 <<eval=TRUE, results='asis'>>=
 library(Rcmdr)
 Disease <- 
-  read.table("GraphPad Course Data/diseaseX.csv",
+  read.table("Course Data/diseaseX.csv",
    header=TRUE, sep=",", na.strings="NA", dec=".", strip.white=TRUE)
 
 @
@@ -158,7 +158,7 @@ and select the {\tt Plot by: Group} option.
 
 Do the data look normally distributed for each cell-type? Is the independent t-test appropriate.
 <<>>=
-Durations <- read.table("GraphPad Course Data/wt_ko_times.csv", 
+Durations <- read.table("Course Data/wt_ko_times.csv", 
 header=TRUE, sep=",", na.strings="NA", dec=".", strip.white=TRUE)
 with(Durations, Hist(Time, groups=Group, scale="frequency", breaks="Sturges"
                      , col="darkgray"))
@@ -268,7 +268,7 @@ Import the data and create a column of differences (after-before).
 b) Plot a histogram of the differences. Do the data look normally distributed? Is the paired t –test appropriate?
 
 <<>>=
-Blood <- read.table("GraphPad Course Data/bloodplasmacancer.csv", 
+Blood <- read.table("Course Data/bloodplasmacancer.csv", 
   header=TRUE, sep=",", na.strings="NA", dec=".", strip.white=TRUE)
 Blood$Diff <- with(Blood, After - Before)
 with(Blood, Hist(Diff, scale="frequency", breaks="Sturges", col="darkgray"))
