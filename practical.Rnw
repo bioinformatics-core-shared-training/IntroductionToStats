@@ -12,7 +12,7 @@
 library("knitr")
 opts_chunk$set(tidy=FALSE,dev="png",fig.show="as.is",
                fig.width=10,fig.height=6,
-               message=FALSE,eval=TRUE,warning=FALSE,echo=TRUE)
+               message=FALSE,eval=FALSE,warning=FALSE,echo=FALSE)
 @ 
 
 <<style, eval=TRUE, echo=F, results="asis">>=
@@ -20,7 +20,7 @@ BiocStyle::latex()
 @
 \usepackage{ifthen} 
 \newboolean{includethis} 
-\setboolean{includethis}{true} 
+\setboolean{includethis}{false} 
 \newcommand{\ifinclude}[1]{\ifthenelse{\boolean{includethis}}{#1}{}} 
 
 
@@ -318,6 +318,7 @@ b) Choose the {\tt Generate HTML report} from the {\tt R markdown} tab. Can you 
 
 {\tt File} $\rightarrow$ {\tt Save R markdown file as} $\rightarrow$
 
+
 \section{Tests for categorical variables}
 
 \subsection{Nucleotide frequency}
@@ -379,6 +380,7 @@ $\chi^{2} = 0.96, df=3, p = 0.81$
 \textit{Under the null hypothesis, the probability of observing a Chi-squared statistic as extreme as 0.96, is 0.81. There is \textbf{no evidence to reject the null hypothesis}. Therefore, there is no evidence of an association between sequence number and nucleotide.}}
 
 }
+
 
 
 \subsection{Disease association}
