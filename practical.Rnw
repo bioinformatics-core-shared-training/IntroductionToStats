@@ -26,7 +26,7 @@ BiocStyle::latex()
 
 
 \title{Introduction to Statistical Analysis using R commander}
-\author{Deepak Parashar and Mark Dunning}
+\author{Deepak Parashar, Sarah Vowler and Mark Dunning \thanks{Acknowledgements: Sarah Dawson}}
 \begin{document}
 \maketitle
 \tableofcontents
