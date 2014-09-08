@@ -149,7 +149,6 @@ Import the data using the same menu sequence as before\\
 {\tt Data} $\rightarrow$ {\tt Import data} $\rightarrow$ {\tt from text file, clipboard, or URL..}\\
 
 
-
 b) Create histograms to compare the two groups; {\tt WT} and {\tt KO}. You will need to use the Histogram option as before\\
 
 {\tt Graphs} $\rightarrow$ {\tt Histogram} \\
@@ -164,7 +163,7 @@ with(Durations, Hist(Time, groups=Group, scale="frequency", breaks="Sturges"
                      , col="darkgray"))
 @
 
-\
+\textbf{{\color{red}Please note that the histogram by group option is not available in Rcmdr version 2.1.0. You could try and use the Boxplot instead to compare distributions}}
 \ifinclude{
 
 
