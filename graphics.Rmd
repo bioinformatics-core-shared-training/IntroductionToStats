@@ -1,0 +1,219 @@
+---
+title: "Data visualisation: Best / worst Practices"
+author: "Mark Dunning"
+date: "2 September 2014"
+
+output: beamer_presentation
+---
+
+
+## For more information
+Creating Scientific Figures - Babraham Institute Bioinformatics Core
+
+- Materials online
+
+www.bioinformatics.babraham.ac.uk/training.html
+
+- Coming soon to Genetics....
+
+## When making a graph
+
+* Make the message clear
+* What do you want to show? Distributions? Comparison? Relationships?
+* Don't hide anything or mislead
+* Keep it simple and focussed!
+* Careful use of colour
+* Label correctly
+* High data:ink ratio
+
+See also http://robjhyndman.com/hyndsight/graphics/
+
+## Spot the mistake
+
+![Pie Chart](images/Fox-News-pie-chart-625x468.png)
+
+
+## The Pie Chart
+
+```{r echo=FALSE,fig.height=3.5,fig.width=3.5}
+pie(VADeaths[,1],main="Road Deaths of Rural Males in Virginia",cex.main=0.7,cex=0.7)
+```
+
+>**Cleveland (1985), The Elements of Graphing Data**. Data that can be shown by pie charts always can be shown by a dot chart. This means that judgements of position along a common scale can be made instead of the less accurate angle judgements.
+
+
+## The Bar Chart
+
+```{r echo=FALSE}
+par(mfrow=c(1,2))
+pie(VADeaths[,1])
+barplot(VADeaths[,1],col=c("white", "lightblue", "mistyrose", "lightcyan", "lavender", "cornsilk"))
+grid()
+```
+
+
+
+## Consider the following data
+
+
+```{r echo=FALSE}
+data(VADeaths)
+VADeaths
+```
+
+
+## The Pie Chart
+
+```{r echo=FALSE}
+par(mfrow=c(2,2))
+pie(VADeaths[,1],main=colnames(VADeaths)[1])
+pie(VADeaths[,2],main=colnames(VADeaths)[2])
+pie(VADeaths[,3],main=colnames(VADeaths)[3])
+pie(VADeaths[,4],main=colnames(VADeaths)[4])
+```
+
+
+## The Bar Chart
+
+```{r echo=FALSE}
+barplot(VADeaths, legend= rownames(VADeaths), beside= TRUE,col=c("white", "lightblue", "mistyrose", "lightcyan", "lavender"))
+grid()
+```
+
+## Another alternative
+```{r echo=FALSE}
+matplot(VADeaths,type="l",axes=F,main="Numder of Road Deaths",ylab="Mean number of deaths")
+matpoints(VADeaths,axes=F,pch=16)
+
+box()
+axis(1, at = 1:5, labels=rownames(VADeaths),las=2)
+legend("topleft",fill=c("black","red","green","blue"),legend=colnames(VADeaths))
+```
+
+
+## Now in 3-D!
+
+![3D Pie](images/3d-pie-chart.png)
+
+## How to make a simple plot complicated
+
+![More-3D](images/cotter_fig2.jpg)
+
+https://www.biostat.wisc.edu/~kbroman/topten_worstgraphs/
+
+## More gratuitous 3-D
+
+![More-3D](images/roeder_fig4.jpg)
+
+https://www.biostat.wisc.edu/~kbroman/topten_worstgraphs/
+
+
+
+
+## Another favourite of statisticians..... 
+![coyote](images/Detonator_6550.jpg)
+
+## The Dynamite-plunger plot
+
+```{r echo=FALSE}
+library(RColorBrewer)
+#http://damirah.cz/r-barplot-with-error-bars/
+dpPlot <- function(x,do.points=FALSE){
+  means <- unlist(lapply(x,mean))
+  
+  # Create the plot (without axes, we will add those later)
+  # Range of y-axis is set to interval (0, 60) to give space 
+  # to the error bars
+  # Midpoints of the bars will be saved in variable mp
+  stDevs <- unlist(lapply(x,sd))
+  
+  
+  ymax <- max(means + 2*stDevs)   
+  mp <- barplot(means, axes=FALSE, axisnames=FALSE, ylim=c(0, ymax),
+                col=brewer.pal(n=length(x),"Set1"), main="", xlab="Count", ylab="Age")
+  
+  # The x-axis with labels for each group
+  # The labels are drawn at the bar midpoints
+  axis(1, labels=LETTERS[1:length(x)], at = mp)
+  # The y-axis with the age going from 0 to 60 
+  axis(2, at=seq(0 , ymax, by=20))
+  # Put the plot in a box
+  box()
+  
+  # Get standard deviation of each group
+  # The standard deviations are saved in a matrix of same size 
+  # as the matrix with midpoints, this is useful for plotting 
+  # the error bars
+  stDevs <- unlist(lapply(x,sd))
+  # Plot the vertical lines of the error bars
+  # The vertical bars are plotted at the midpoints
+  segments(mp, means, mp, means + stDevs, lwd=2)
+  # Now plot the horizontal bounds for the error bars
+  # 2. The upper bar
+  segments(mp - 0.1, means + stDevs, mp + 0.1, means + stDevs, lwd=2)
+  
+  if(do.points){
+    
+    pts <- data.frame(x = rep(mp, unlist(lapply(x,length))),y=unlist(x))
+    points(jitter(pts$x,0.1), pts$y, pch=16)
+  }
+  
+}
+ a <- rnorm(10,mean = 300,50)
+ b <- c(mean(a) + sd(a), mean(a)-sd(a))
+ c <- c(rnorm(19,mean=200,2),300)
+ d <- c(rnorm(10,mean=150), rnorm(10,mean=250))
+
+ dpPlot(list(a,b,c,d),do.points=FALSE)
+
+```
+
+
+## Revealing the data
+```{r echo=FALSE}
+ dpPlot(list(a,b,c,d),do.points=TRUE)
+
+```
+
+## Better option
+```{r echo=FALSE}
+ boxplot(list(a,b,c,d),col=brewer.pal(4,"Set1"))
+
+```
+
+## Better still? - Violin plot
+```{r echo=FALSE, message=FALSE}
+  library(vioplot)
+ vioplot(a,b,c,d,col=brewer.pal(4,"Set1"))
+
+```
+
+Combines boxplot and density plot
+
+## Discussion
+- http://emdbolker.wikidot.com/blog:dynamite
+- http://biostat.mc.vanderbilt.edu/wiki/pub/Main/TatsukiKoyama/Poster3.pdf
+- Drummond, G. B., & Vowler, S. L. (2011). Show the data, don't conceal them. The Journal of physiology, 589(8), 1861-1863.
+
+
+## Colour Blindness
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+library(breastCancerNKI)
+library(genefilter)
+library(Biobase)
+data(nki)
+ts <- rowttests(exprs(nki),fac=as.factor(pData(nki)$er))
+rgPal <-colorRampPalette(c("red", "green"))
+heatmap(exprs(nki)[order(abs(ts),decreasing = TRUE)[1:25],],col=rgPal(10))
+
+```
+
+## Another consideration - Colour Blindness
+
+```{r echo=FALSE}
+ybPal <-colorRampPalette(c("yellow", "blue"))
+heatmap(exprs(nki)[order(abs(ts),decreasing = TRUE)[1:25],],col=ybPal(10))
+
+```
+See also http://colorbrewer2.org/ or **RColorBrewer**
+
