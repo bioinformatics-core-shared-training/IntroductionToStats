@@ -102,14 +102,15 @@
 \end{itemize}
 \item{If no reason - independent observations}
 \end{itemize}
+\textbf{Independence is a common assumption for statistical tests}
 \end{frame}
 
-\begin{frame}{Mesurements: Dependent / Independent?}
-\begin{itemize}
-\item{18 measurements; from repeating an experiment 6 times, each time in triplicate}
-\end{itemize}
-\includegraphics[height=5cm]{images/18measures.png}
-\end{frame}
+%%\begin{frame}{Mesurements: Dependent / Independent?}
+%%\begin{itemize}
+%%\item{18 measurements; from repeating an experiment 6 times, each time in triplicate}
+%\end{itemize}
+%%\includegraphics[height=5cm]{images/18measures.png}
+%%\end{frame}
 
 \begin{frame}{Mesurements: Dependent / Independent?}
 \begin{itemize}
@@ -118,12 +119,12 @@
 \includegraphics[height=5cm]{images/bloodPressure.png}
 \end{frame}
 
-\begin{frame}{Mesurements: Dependent / Independent?}
-\begin{itemize}
-\item{Measuring gene expression in each cell sample, which may be one of five cell-types from cancer patients of normal individuals}
-\end{itemize}
-\includegraphics[height=5cm]{images/complexData.png}
-\end{frame}
+%\begin{frame}{Mesurements: Dependent / Independent?}
+%\begin{itemize}
+%\item{Measuring gene expression in each cell sample, which may be one of five cell-types from cancer patients of normal individuals}
+%\end{itemize}
+%\includegraphics[height=5cm]{images/complexData.png}
+%\end{frame}
 
 \begin{frame}[fragile]{Continuous Data - Distribution}
 
@@ -141,7 +142,7 @@ grid.arrange(p1,p2,p3,ncol=3)
 
 \begin{frame}[fragile]{Continuous Data - Distribution}
 
-<<echo=FALSE,fig.show='asis',fig.height=5,fig.width=10,warning=FALSE,message=FALSE>>=
+<<echo=FALSE,fig.show='asis',fig.height=4,fig.width=8,warning=FALSE,message=FALSE>>=
 library(RColorBrewer)
 x     = rnorm(10000, 0, 1)
 sd <- sd(x)
@@ -156,9 +157,12 @@ geom_segment(aes(x = me-3*sd, y = 959, xend = me +3*sd, yend=959),arrow=arrow(le
 normdist
 @
 
+66\% are within one standard deviation,
+95\% are within two standard deviations,
+99\% are within three standard deviations
 \end{frame}
 
-\begin{frame}[fragile]{Continuous or not??}
+\begin{frame}[fragile]{Normal, or not??}
 
 <<echo=FALSE,fig.show='asis',fig.height=5,fig.width=10,warning=FALSE,message=FALSE>>=
 library(reshape2)
@@ -270,17 +274,17 @@ boxplot(friends,horizontal=T)
 @
 \end{frame}
 
-\begin{frame}{Categorical Data}
+%\begin{frame}{Categorical Data}
 
-\begin{itemize}
-\item{Summarised by counts and percentages}
-\item{Examples}
-\begin{itemize}
-\item{19 / 82 (23$\%$) subjects had Grade IV tumour}
-\item{48 / 82 (58$\%$) subjects had Diarrheoa as a Adverse Event}
-\end{itemize}
-\end{itemize}
-\end{frame}
+%\begin{itemize}
+%\item{Summarised by counts and percentages}
+%\item{Examples}
+%\begin{itemize}
+%\item{19 / 82 (23$\%$) subjects had Grade IV tumour}
+%\item{48 / 82 (58$\%$) subjects had Diarrheoa as a Adverse Event}
+%\end{itemize}
+%\end{itemize}
+%\end{frame}
 
 
 \begin{frame}{Standard Deviation and Standard Error}
@@ -311,7 +315,7 @@ boxplot(friends,horizontal=T)
 \item{95$\%$ of time cover the mean}
 \end{itemize}
 \item{Looser interpretation 95$\%$ of time}
-95$\%$ CI: $(\bar{X} - 1.96 \times se, \bar{X} -+ 1.96 \times se)$\\
+95$\%$ CI: $(\bar{X} - 1.96 \times se, \bar{X} + 1.96 \times se)$\\
 \end{itemize}
 For facebook friends data:\\
 $se = \frac{sd}{\sqrt(n)} = \frac{154}{\sqrt{7}} = 58 $
@@ -369,6 +373,7 @@ Lady Tasting Tea (Randomised experiment by Fisher)
 
 \begin{frame}[fragile]{Errors}
 \includegraphics[height=5cm]{images/errorTable.png}
+
 Significance level, sample size, different of interest, variability of the observations
 
 \textbf{Be aware of issues of multiple testing}
@@ -435,9 +440,9 @@ sd <- round(sd(failure$Monthly.failure.rate),3)
 
 \begin{frame}[fragile]{Summary Statistics}
 
-Mean = $(2.9 + \dots + 3.40) / 12 = \Sexpr{me}$
+\textbf{mean} = $(2.9 + \dots + 3.40) / 12 = \Sexpr{me}$
 
-Standard deviation = \Sexpr{sd}
+\textbf{Standard deviation} = \Sexpr{sd}
 \begin{itemize}
 \item{Observations must be independent}
 \item{Observations must be normally distributed}
@@ -531,11 +536,12 @@ xtable(mice)
 
 \begin{frame}[fragile]{Data summary}
 
-Mean of breed A: \Sexpr{round(mean(mice$WeightA),2)}
-Mean of breed B: \Sexpr{round(mean(mice$WeightB),2)}
+\textbf{Mean} of breed A: \Sexpr{round(mean(mice$WeightA),2)}
+\textbf{Mean} of breed B: \Sexpr{round(mean(mice$WeightB),2)}
 
-Standard Deviation of breed A: \Sexpr{round(sd(mice$WeightA),2)}
-Standard Deviation of breed B: \Sexpr{round(sd(mice$WeightB),2)}
+\textbf{Standard Deviation} of breed A: \Sexpr{round(sd(mice$WeightA),2)}
+
+\textbf{Standard Deviation} of breed B: \Sexpr{round(sd(mice$WeightB),2)}
 
 <<echo=FALSE,fig.show='asis',fig.height=5,fig.width=12,warning=FALSE,message=FALSE>>=
 df <- data.frame(Breed = c(rep("A", 20), rep("B",20)), Weight = c(mice$WeightA,mice$WeightB))
@@ -669,7 +675,7 @@ df = nrow(cellularity) - 1
 
   .x <- seq(-3.768, 3.768, length.out=1000)
  plotDistr(.x, dt(.x, df=df), cdf=FALSE, xlab="x", ylab="Density", 
-           main=paste("t Distribution:  Degrees of freedom=23"))
+           main=paste("t Distribution:  Degrees of freedom=",df))
 color <- rgb(190, 190, 190, alpha=80, maxColorValue=255)
 rect(xleft = qt(0.975,df), xright = 5,ytop = 1,ybottom = 0,col=color)
 rect(xright = -qt(0.975,df), xleft = -5,ytop = 1,ybottom = 0,col=color)

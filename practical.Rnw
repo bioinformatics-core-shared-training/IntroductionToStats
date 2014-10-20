@@ -12,7 +12,7 @@
 library("knitr")
 opts_chunk$set(tidy=FALSE,dev="png",fig.show="as.is",
                fig.width=10,fig.height=6,
-               message=FALSE,eval=TRUE,warning=FALSE,echo=TRUE)
+               message=FALSE,eval=FALSE,warning=FALSE,echo=FALSE)
 @ 
 
 <<style, eval=TRUE, echo=F, results="asis">>=
@@ -20,13 +20,13 @@ BiocStyle::latex()
 @
 \usepackage{ifthen} 
 \newboolean{includethis} 
-\setboolean{includethis}{true} 
+\setboolean{includethis}{false} 
 \newcommand{\ifinclude}[1]{\ifthenelse{\boolean{includethis}}{#1}{}} 
 
 
 
 \title{Introduction to Statistical Analysis using R commander}
-\author{Deepak Parashar and Mark Dunning}
+\author{Deepak Parashar, Sarah Vowler and Mark Dunning \thanks{Acknowledgements: Sarah Dawson}}
 \begin{document}
 \maketitle
 \tableofcontents
@@ -38,7 +38,7 @@ To answer the questions in this practical we will be using the {\tt R commander}
 
 \section{Loading R commander}
 The first step is to load {\tt RStudio}. There should be an icon for this on your Desktop.\\
-\includegraphics[width=2cm,height=2cm]{RStudio.png}
+\includegraphics[width=2cm,height=2cm]{images/RStudio.png}
 
 Once loaded, type the following in the 'Console' in the bottom-left where the 'blinking' cursor is; 
 
@@ -78,7 +78,7 @@ The screen that follows allows you to specify various properties of the file tha
 <<eval=TRUE, results='asis'>>=
 library(Rcmdr)
 Disease <- 
-  read.table("GraphPad Course Data/diseaseX.csv",
+  read.table("Course Data/diseaseX.csv",
    header=TRUE, sep=",", na.strings="NA", dec=".", strip.white=TRUE)
 
 @
@@ -149,7 +149,6 @@ Import the data using the same menu sequence as before\\
 {\tt Data} $\rightarrow$ {\tt Import data} $\rightarrow$ {\tt from text file, clipboard, or URL..}\\
 
 
-
 b) Create histograms to compare the two groups; {\tt WT} and {\tt KO}. You will need to use the Histogram option as before\\
 
 {\tt Graphs} $\rightarrow$ {\tt Histogram} \\
@@ -158,13 +157,13 @@ and select the {\tt Plot by: Group} option.
 
 Do the data look normally distributed for each cell-type? Is the independent t-test appropriate.
 <<>>=
-Durations <- read.table("GraphPad Course Data/wt_ko_times.csv", 
+Durations <- read.table("Course Data/wt_ko_times.csv", 
 header=TRUE, sep=",", na.strings="NA", dec=".", strip.white=TRUE)
 with(Durations, Hist(Time, groups=Group, scale="frequency", breaks="Sturges"
                      , col="darkgray"))
 @
 
-\
+\textbf{{\color{red}Please note that the histogram by group option is not available in Rcmdr version 2.1.0. You could try and use the Boxplot instead to compare distributions}}
 \ifinclude{
 
 
@@ -268,7 +267,7 @@ Import the data and create a column of differences (after-before).
 b) Plot a histogram of the differences. Do the data look normally distributed? Is the paired t –test appropriate?
 
 <<>>=
-Blood <- read.table("GraphPad Course Data/bloodplasmacancer.csv", 
+Blood <- read.table("Course Data/bloodplasmacancer.csv", 
   header=TRUE, sep=",", na.strings="NA", dec=".", strip.white=TRUE)
 Blood$Diff <- with(Blood, After - Before)
 with(Blood, Hist(Diff, scale="frequency", breaks="Sturges", col="darkgray"))
@@ -317,6 +316,7 @@ a) Save your R commands to a file
 b) Choose the {\tt Generate HTML report} from the {\tt R markdown} tab. Can you see how you might add your own details to the report? The report template can also be saved to disk
 
 {\tt File} $\rightarrow$ {\tt Save R markdown file as} $\rightarrow$
+
 
 \section{Tests for categorical variables}
 
@@ -379,6 +379,7 @@ $\chi^{2} = 0.96, df=3, p = 0.81$
 \textit{Under the null hypothesis, the probability of observing a Chi-squared statistic as extreme as 0.96, is 0.81. There is \textbf{no evidence to reject the null hypothesis}. Therefore, there is no evidence of an association between sequence number and nucleotide.}}
 
 }
+
 
 
 \subsection{Disease association}

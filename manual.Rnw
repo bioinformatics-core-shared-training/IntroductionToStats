@@ -27,7 +27,7 @@ BiocStyle::latex()
 
 
 \title{Introduction to Statistical Analysis using R commander}
-\author{Deepak Parashar Sarah Dawson and Mark Dunning}
+\author{Deepak Parashar, Sarah Vowler and Mark Dunning \thanks{Acknowledgements: Sarah Dawson and Elizabeth Merrall}}
 \date{\today}
 \begin{document}
 \maketitle
@@ -51,7 +51,7 @@ R Commander is an add-on to R, designed to make statistical analysis in R more a
 
 The Bioinformatics Core at Cambridge Research Institute employs statisticians to help researchers at the institute with the statistical aspects of their studies. Whilst we are always happy to do an analysis for you, we are also happy to support you if you choose to run the analysis yourself. Please get in touch if you have any questions or require our support, or come along to our Wednesday afternoon Statistics Clinic.
 
-E-mail address {\tt Deepak.Parashar@cruk.cam.ac.uk}\\
+E-mail address:
 {\tt cristatsclinic@cruk.cam.ac.uk}
 
 \section{Thinking about your analysis}
@@ -574,7 +574,7 @@ Assuming that the null hypothesis is true, our t-statistic comes from the t dist
 <<echo=FALSE,fig.show='asis',fig.height=5,fig.width=10,warning=FALSE,message=FALSE>>=
 
  .x <- seq(-4.437, 4.437, length.out=1000)
-Rcmdr:::plotDistr(.x, dt(.x, df=11), cdf=FALSE, xlab="x", ylab="Density", main=paste("t Distribution:  Degrees of freedom=11"))
+RcmdrMisc:::plotDistr(.x, dt(.x, df=11), cdf=FALSE, xlab="x", ylab="Density", main=paste("t Distribution:  Degrees of freedom=11"))
 abline(v = 3.04, col="red")
 
 @
@@ -1084,7 +1084,7 @@ In the example dataset;
 <<echo=FALSE,fig.show='asis',fig.height=5,fig.width=10,warning=FALSE,message=FALSE>>=
 
 .x <- seq(0, 12.116, length.out=1000)
-Rcmdr:::plotDistr(.x, dchisq(.x, df=1), cdf=FALSE, xlab="x", ylab="Density", main=paste("ChiSquared Distribution:  Degrees of freedom=1"))
+RcmdrMisc:::plotDistr(.x, dchisq(.x, df=1), cdf=FALSE, xlab="x", ylab="Density", main=paste("ChiSquared Distribution:  Degrees of freedom=1"))
 abline(v=0.63,col="red")
 @
 \caption{$\chi^2$ distribution with 1 degree of freedom. Test statistic of 0.63 is indicated}
