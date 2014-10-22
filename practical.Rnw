@@ -26,7 +26,7 @@ BiocStyle::latex()
 
 
 \title{Introduction to Statistical Analysis using R commander}
-\author{Deepak Parashar, Sarah Vowler and Mark Dunning \thanks{Acknowledgements: Sarah Dawson}}
+\author{Sarah Vowler and Mark Dunning \thanks{Acknowledgements: Sarah Dawson and Deepak Parashar}}
 \begin{document}
 \maketitle
 \tableofcontents
@@ -357,7 +357,7 @@ You will need to set the number of rows and columns appropriately. \textbf{Note 
 What is your value of your Chi-squared statistic and its corresponding p-value? How do you interpret the result?
 
 <<>>=
-.Table <- matrix(c(273,233,258,236,281,246,244,229), 2, 4, byrow=TRUE)
+.Table <- matrix(c(273,233,236,258,281,246,244,229), 2, 4, byrow=TRUE)
 
 rownames(.Table) <- c('1', '2')
 
@@ -374,9 +374,9 @@ colnames(.Table) <- c('1', '2', '3', '4')
 
 \textbf{Solution:}
 {\color{red}
-$\chi^{2} = 0.96, df=3, p = 0.81$
+$\chi^{2} = \Sexpr{.Test$statistic}, df=3, p = \Sexpr{.Test$p.value}$
 
-\textit{Under the null hypothesis, the probability of observing a Chi-squared statistic as extreme as 0.96, is 0.81. There is \textbf{no evidence to reject the null hypothesis}. Therefore, there is no evidence of an association between sequence number and nucleotide.}}
+\textit{Under the null hypothesis, the probability of observing a Chi-squared statistic as extreme as \Sexpr{.Test$statistic}, is \Sexpr{.Test$p.value}. There is \textbf{no evidence to reject the null hypothesis}. Therefore, there is no evidence of an association between sequence number and nucleotide.}}
 
 }
 

@@ -8,6 +8,15 @@
 \documentclass[12pt]{article}
 \newcommand{\usecase}{\textit{\textbf{Use Case: }}}
 
+<<eval=FALSE,echo=FALSE>>=
+
+install.packages(c("ggplot2", "reshape2","gridExtra","RColorBrewer","knitr"))
+source("http://www.bioconductor.org/biocLite.R")
+biocLite("BiocStyle")
+@
+
+
+
 <<knitr, echo=FALSE, results="hide">>=
 library("knitr")
 opts_chunk$set(tidy=FALSE,dev="png",fig.show="as.is",
@@ -27,8 +36,8 @@ BiocStyle::latex()
 
 
 \title{Introduction to Statistical Analysis using R commander}
-\author{Deepak Parashar, Sarah Vowler and Mark Dunning \thanks{Acknowledgements: Sarah Dawson and Elizabeth Merrall}}
-\date{\today}
+\author{Sarah Vowler and Mark Dunning \thanks{Acknowledgements: Sarah Dawson, Elizabeth Merrall and Deepak Parashar}}
+\date{Last Document revision: \today}
 \begin{document}
 \maketitle
 \tableofcontents
