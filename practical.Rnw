@@ -12,7 +12,7 @@
 library("knitr")
 opts_chunk$set(tidy=FALSE,dev="png",fig.show="as.is",
                fig.width=10,fig.height=6,
-               message=FALSE,eval=FALSE,warning=FALSE,echo=FALSE)
+               message=FALSE,eval=TRUE,warning=FALSE,echo=FALSE)
 @ 
 
 <<style, eval=TRUE, echo=F, results="asis">>=
@@ -20,13 +20,14 @@ BiocStyle::latex()
 @
 \usepackage{ifthen} 
 \newboolean{includethis} 
-\setboolean{includethis}{false} 
+\setboolean{includethis}{true} 
 \newcommand{\ifinclude}[1]{\ifthenelse{\boolean{includethis}}{#1}{}} 
 
 
 
 \title{Introduction to Statistical Analysis using R commander}
 \author{Sarah Vowler and Mark Dunning \thanks{Acknowledgements: Sarah Dawson and Deepak Parashar}}
+\date{3rd November 2014}
 \begin{document}
 \maketitle
 \tableofcontents
