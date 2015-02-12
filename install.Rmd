@@ -1,17 +1,21 @@
 ---
-title: "Installing R, RStudio and R commander"
+title: "Installing R, RStudio and R Commander"
 author: "Mark Dunning"
 date: "20/10/2014"
 output: pdf_document
 ---
 
-Please go throught the following steps to ensure that you have the correct software installed on your laptop
+Please go through the following steps to ensure that you have the correct software installed on your laptop. Threee pieces of software are required.
+
+`R` is our recommended language for statistical analysis and `RStudio` is the GUI that we recommend for working with `R`. However, `RStudio` requires the user to work at the command-line, which is beyond the scope of the course and distracts from the statistical concepts we are trying to teach. Therefore, we use another software package, `R commander`, to run within RStudio and provide point and click access to statistical tests.
 
 #Windows PC
 
-1. Download the latest version of 'R' from [here](http://cran.r-project.org/bin/windows/base/R-3.1.1-win.exe). Install onto your laptop, accepting the default options.
+![Windows logo](images/Windows_XP_2001.jpg)
 
-2. Download the latest version of 'RStudio Desktop' from [here](http://download1.rstudio.org/RStudio-0.98.1079.exe) and install onto your laptop, accepting the default options
+1. Download the latest version of 'R' from [>>>here<<<](http://cran.r-project.org/bin/windows/base/R-3.1.1-win.exe). Install onto your laptop, accepting the default options.
+
+2. Download the latest version of 'RStudio Desktop' from [>>>here<<<](http://download1.rstudio.org/RStudio-0.98.1079.exe) and install onto your laptop, accepting the default options
 
 3. Load RStudio ![RStudio logo](images/blue-125.png)
 
@@ -23,40 +27,41 @@ options(repos = "http://mirrors.ebi.ac.uk/CRAN/")
 ```
 
 
-```{r}
+```{r eval=FALSE}
 install.packages("Rcmdr")
 ```
 
-4. You should now be able to load 'R commander'
+4. You should now be able to load 'R commander' by typing the following
 
 ```{r eval=FALSE}
 library(Rcmdr)
 ```
 
-The R commander screen should now load ![Rcommander](images/Rcmdr1.png)
-
-
+A new X11 window should open. This is R commander.
 
 #Mac OSX
 
-1. Download the latest version of 'R' from [here](http://cran.r-project.org/bin/macosx/R-3.1.1-snowleopard.pkg). Install onto your laptop, accepting the default options.
+![mac logo](images/apple.jpg)
 
-2. Download the latest version of 'RStudio Desktop' from [here](http://download1.rstudio.org/RStudio-0.98.1079.dmg) and install onto your laptop, accepting the default options
+1. Download the latest version of 'R' from [>>>here<<<](http://cran.r-project.org/bin/macosx/R-3.1.1-snowleopard.pkg). Install onto your laptop, accepting the default options.
 
-3. Load RStudio ![RStudio logo](images/blue-125.png)
+2. Download the latest version of 'RStudio Desktop' from [>>>here<<<](http://download1.rstudio.org/RStudio-0.98.1079.dmg) and install onto your laptop, accepting the default options
+
+3. Mac OSX users also need to download and install [>>>Xcode<<<](https://developer.apple.com/xcode/downloads/). You may need to sign-up for a **Apple-ID** to do this.
+
+4. Load RStudio ![RStudio logo](images/blue-125.png)
 
 
 Once loaded, type the following in the 'Console' in the bottom-left where the 'blinking' cursor is; 
 
-```{r}
+```{r eval=FALSE}
 install.packages("Rcmdr")
 ```
 
-4. You should now be able to load 'R commander'
+5. You should now be able to load 'R commander' by typing the following
 
 ```{r eval=FALSE}
 library(Rcmdr)
 ```
 
-The R commander screen should now load ![Rcommander](images/Rcmdr1.png)
-
+A new X11 window should open. This is R commander.
