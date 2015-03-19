@@ -1,9 +1,7 @@
-%\VignetteIndexEntry{Analysis of bead-summary data}
-%\VignettePackage{beadarray}
+
 %\VignetteEngine{knitr::knitr}
 
 % To compile this document
-% library('knitr'); rm(list=ls()); knit('beadsummary.Rnw')
 
 \documentclass[12pt]{article}
 \newcommand{\usecase}{\textit{\textbf{Use Case: }}}
@@ -20,6 +18,7 @@ BiocStyle::latex()
 @
 \usepackage{ifthen} 
 \newboolean{includethis} 
+%%%change this to false to hide the solutions
 \setboolean{includethis}{true} 
 \newcommand{\ifinclude}[1]{\ifthenelse{\boolean{includethis}}{#1}{}} 
 
