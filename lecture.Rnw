@@ -8,6 +8,7 @@
 \usepackage{xcolor,colortbl}
 \begin{document}
 
+
 %%http://www.charlesapple.com/2014/04/two-recent-infographic-fails-you-ought-to-know-about/
 
 \pgfdeclareimage[height=0.5cm]{university-logo}{images/CRUK_CAMBRIDGE_I_Pos_RGB_300}
@@ -467,6 +468,8 @@ $t_{n-1} = t_{11} = \frac{\bar{x} - \mu_0} {s.d. / \sqrt{n}} = \frac{2.84 - 2.10
 \pause
 <<echo=FALSE,fig.show='asis',fig.height=5,fig.width=12,warning=FALSE,message=FALSE>>=
 library(Rcmdr)
+library(RcmdrMisc)
+
 df <- nrow(failure) - 1
 .x <- seq(-4.437, 4.437, length.out=1000)
 color <- rgb(190, 190, 190, alpha=80, maxColorValue=255)
@@ -603,7 +606,7 @@ abline(v = tsat,col="red")
 \begin{frame}{Paired two-sample t-test}
 \textit{Does the mean difference = 0?}
 
-\textbf{Research question:} 20 patients with ovarian cancer were studied using MRI imaging. Cellularity was measured for each patient at two sites of disease.
+\textbf{Research question:} 20 patients with cancer were studied using MRI imaging. Cellularity was measured for each patient at two sites of disease.
 
 \textit{Does the cellularity differ between the two different sites of disease}
 
@@ -637,7 +640,7 @@ Cellularity at site A $\ne$ Cellularity at site B
 
 <<results='asis',echo=FALSE>>=
 cellularity <- read.csv("data/Paired two-sample t-test.csv")
-cellularity$Difference = cellularity$Ovarian - cellularity$Peritoneal
+cellularity$Difference = cellularity$A - cellularity$B
 xtable(cellularity)
 
 @
@@ -717,5 +720,46 @@ Use when we \textit{cannot assume normality}
 
 \end{frame}
 
+\section{Tests for Categorical Variables}
 
+\begin{frame}{Associations between categorical variables}
+
+\begin{itemize}
+\item{All about frequencies!}
+\item{Row X Column table (2 x 2 simplest)}
+\item{Categorical data}
+<<results='asis',echo=FALSE>>=
+df <- data.frame(Group = c("Treatmeant", "Placebo"), TumourShrunk = c(44,24), TumourDidntShrink = c(40,16))
+xtable(df)
+@
+\item{Look for association between row variable and column variable}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Chi-square test}
+\begin{itemize}
+\item{Research question: A trial to assess the effectiveness of a new treatment versus a placebo in reducing tumour size in patients with cancer}
+<<results='asis',echo=FALSE>>=
+df <- data.frame(Group = c("Treatmeant", "Placebo"), TumourShrunk = c(44,24), TumourDidntShrink = c(40,16))
+xtable(df)
+@
+\item{Is there an association between treatment group and tumour shrinkage?}
+\item{Null hypothesis: H$_0$ : No association}
+\item{Alternative hypothesis: H$_1$ : Some association}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Chi-square test - calculating expected frequencies}
+<<results='asis',echo=FALSE>>=
+df <- data.frame(Group = c("Treatmeant", "Placebo","Total"), TumourShrunk = c(44,24,68), TumourDidntShrink = c(40,16,56), Total=c(84,40,124))
+xtable(df)
+@
+$E = \frac{row total \times col total}{overall total}$
+
+e.g.
+
+
+$\frac{84}{124} \times \frac{68}{124} = \frac{84 \times 68}{124} = 46.1$
+
+\end{frame}
 \end{document}

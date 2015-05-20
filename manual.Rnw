@@ -805,42 +805,15 @@ This is not a significant result (p$>0.05$), so there is \textbf{no evidence of 
 
 \subsubsection{Paired two-sample t-test}
 
-\begin{table}[h]
-\centering
-\begin{tabular}{| l | l || l |l |}
-  \hline        
-  \multicolumn{4}{|c|}{Cellularity}\\
-  \hline
-  Subject & Site A & Site B & Difference \\
-  \hline
-  1 & 1201.33 & 1155.98 & -45.35 \\
-  2 & 1029.64 & 1020.82 & -8.82 \\
-  3 & 895.57 & 881.21 & -14.37 \\
-  4 & 842.14 & 830.78 & -11.36 \\
-  5 & 903.07 & 897.06 & -6.01 \\
-  6 & 1311.57 & 1262.73 & -48.84 \\
-  7 & 833.52 & 823.06 & -10.46 \\
-  8 & 1007.66 & 951.01 & -56.65 \\
-  9 & 1465.51 & 1450.98 & -14.53 \\
-  10 & 967.82 & 978.15 & 10.33 \\
-  11 & 812.72 & 778.26 & -34.46 \\
-  12 & 884.08 & 823.57 & -60.51 \\
-  13 & 1358.56 & 1335.78 & -22.78 \\
-  14 & 1280.10 & 1293.91 & 13.80 \\
-  15 & 942.38 & 925.75 & -16.63 \\
-  16 & 884.33 & 891.34 & 7.01 \\
-  17 & 930.09 & 892.02 & -38.07 \\
-  18 & 1146.75 & 1132.80 & -13.95 \\
-  19 & 881.50 & 847.78 & -33.72 \\
-  20 & 1315.22 & 1337.80 & 22.58 \\
 
-    \hline
-\end{tabular}
-\caption{Cellularity at two sites of disesase}
-\label{cellularity}
-\end{table}
+<<echo=FALSE,results='asis'>>=
+library(xtable)
+cell <- read.csv("data//Paired two-sample t-test.csv")
+cell$Difference <- cell$B - cell$A
+xtable(cell,caption="Cellularity at two sites of disesase",label="cellularity")
+@
 
-\textbf{Example}: 20 patients with advanced ovarian cancer were studied using MRI imaging. Cellularity was measured for each individual patient by estimating water movement. We want to know whether there is a significant difference in the cellularity between the primary site of disease and a site of metastatic disease within the same patient. The data are shown in Table \ref{cellularity}. We want to test the \textbf{null hypothesis} that the mean cellularity at site A is equal to the mean cellularity at site B. This is like saying:\\
+\textbf{Example}: 20 patients with advanced cancer were studied using MRI imaging. Cellularity was measured for each individual patient by estimating water movement. We want to know whether there is a significant difference in the cellularity between the primary site of disease and a site of metastatic disease within the same patient. The data are shown in Table \ref{cellularity}. We want to test the \textbf{null hypothesis} that the mean cellularity at site A is equal to the mean cellularity at site B. This is like saying:\\
 
 Mean cellularity at site A = mean cellularity at site B\\
 
@@ -885,14 +858,14 @@ Click on the View data set button to check if the Difference column has been add
 \label{datasetWithDifferences}
 \end{figure}
 
-In the calculation of the difference between Ovarian column and Peritoneal column, we need to choose either one as our baseline; this will simply determine whether we calculate Peritnoeal-Ovarian or Ovarian-Peritoneal. The results of the paired t-test will be the same either way, but summary statistics such as the mean and confidence intervals will be either positive or negative depending on which column you choose as your baseline, and similarly the histogram with be either on the positive or negative scale (the overall shape will be identical but will be flipped on the vertical axis). In this example, the Ovarian column was used as the baseline, so the difference column calculated represents the calculation Peritoneal-Ovarian. \newpage
+In the calculation of the difference between Site A and Site B column, we need to choose either one as our baseline; this will simply determine whether we calculate A-B or B-A. The results of the paired t-test will be the same either way, but summary statistics such as the mean and confidence intervals will be either positive or negative depending on which column you choose as your baseline, and similarly the histogram with be either on the positive or negative scale (the overall shape will be identical but will be flipped on the vertical axis). In this example, the A column was used as the baseline, so the difference column calculated represents the calculation B-A. \newpage
 
 
 One can then draw a histogram of the paired differences (see Figure \ref{histOfDifferences}):\\
 \begin{figure}
 <<echo=FALSE,fig.show='asis',fig.height=5,fig.width=10,warning=FALSE,message=FALSE>>=
 cell <- read.csv("data//Paired two-sample t-test.csv")
-cell$Difference <- cell$Peritoneal - cell$Ovarian
+cell$Difference <- cell$B - cell$A
 hist(cell$Difference,col="grey",main="",xlab="Difference",ylab="frequency")
 @
 \caption{Histogram of cellularity data with default settings}
@@ -914,7 +887,7 @@ hist(cell$Difference,col="grey",breaks=5,main="",xlab="Difference",ylab="frequen
 \caption{Histogram with user-defined bins}
 \label{histWithMoreBins}
 \end{figure}
-\textit{Note that the histogram will be flipped on the vertical axis if the difference is calculated as Ovarian - Peritoneal rather than Peritoneal - Ovarian, but this won't impact the end result of the test.}\newpage
+\textit{Note that the histogram will be flipped on the vertical axis if the difference is calculated as B - A rather than A - B, but this won't impact the end result of the test.}\newpage
 
 
 If satisfied with the normality assumption, we can go ahead with the paired two-sample t-test (Figure \ref{doPairedTTest}).
@@ -926,7 +899,7 @@ If satisfied with the normality assumption, we can go ahead with the paired two-
 \end{figure}
 
 <<>>=
-t.test(cell$Peritoneal,cell$Ovarian,paired=TRUE)
+t.test(cell$B,cell$A,paired=TRUE)
 @
 The mean difference in cellularity between the two sites of disease was 19.14 units. The corresponding t-statistic is:
 
@@ -935,7 +908,7 @@ t_{n-1} = t_{19} = \frac{\bar{X}_{A-B}}{s.e(\bar{X}_{A-B})}
 \end{equation}
 
 Under the null hypothesis that there is no difference in the cellularities between the two sites of disease, we can see that the probability of observing such a large t-statistic is very small: the p-value is 0.0017. \\
-This is a significant result (p $<$ 0.05), so there is \textbf{evidence of a difference} in the cellularity between the primary ovarian mass and peritoneal deposits in patients with advanced ovarian cancer.
+This is a significant result (p $<$ 0.05), so there is \textbf{evidence of a difference} in the cellularity between Site A and Site B in patients with advanced cancer.
 \\
 \subsection{What to do if the normality assumption is unreasonable?}
 
