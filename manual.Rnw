@@ -813,7 +813,7 @@ cell$Difference <- cell$B - cell$A
 xtable(cell,caption="Cellularity at two sites of disesase",label="cellularity")
 @
 
-\textbf{Example}: 20 patients with advanced cancer were studied using MRI imaging. Cellularity was measured for each individual patient by estimating water movement. We want to know whether there is a significant difference in the cellularity between the primary site of disease and a site of metastatic disease within the same patient. The data are shown in Table \ref{cellularity}. We want to test the \textbf{null hypothesis} that the mean cellularity at site A is equal to the mean cellularity at site B. This is like saying:\\
+\textbf{Example}: 20 patients with advanced cancer were studied using MRI imaging. Cellularity was measured for each individual patient by estimating water movement. We want to know whether there is a significant difference in the cellularity between two sites in the body; A and B. The data are shown in Table \ref{cellularity}. We want to test the \textbf{null hypothesis} that the mean cellularity at site A is equal to the mean cellularity at site B. This is like saying:\\
 
 Mean cellularity at site A = mean cellularity at site B\\
 
