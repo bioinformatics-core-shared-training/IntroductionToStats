@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 
 %\VignetteEngine{knitr::knitr}
 
 % To compile this document
+=======
+%\VignetteIndexEntry{Analysis of bead-summary data}
+%\VignettePackage{beadarray}
+%\VignetteEngine{knitr::knitr}
+
+% To compile this document
+% library('knitr'); rm(list=ls()); knit('beadsummary.Rnw')
+>>>>>>> gh-pages
 
 \documentclass[12pt]{article}
 \newcommand{\usecase}{\textit{\textbf{Use Case: }}}
@@ -18,7 +27,10 @@ BiocStyle::latex()
 @
 \usepackage{ifthen} 
 \newboolean{includethis} 
+<<<<<<< HEAD
 %%%change this to false to hide the solutions
+=======
+>>>>>>> gh-pages
 \setboolean{includethis}{true} 
 \newcommand{\ifinclude}[1]{\ifthenelse{\boolean{includethis}}{#1}{}} 
 

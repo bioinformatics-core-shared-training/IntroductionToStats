@@ -805,6 +805,7 @@ This is not a significant result (p$>0.05$), so there is \textbf{no evidence of 
 
 \subsubsection{Paired two-sample t-test}
 
+<<<<<<< HEAD
 \begin{table}[h]
 \centering
 \begin{tabular}{| l | l || l |l |}
@@ -841,6 +842,17 @@ This is not a significant result (p$>0.05$), so there is \textbf{no evidence of 
 \end{table}
 
 \textbf{Example}: 20 patients with advanced ovarian cancer were studied using MRI imaging. Cellularity was measured for each individual patient by estimating water movement. We want to know whether there is a significant difference in the cellularity between the primary site of disease and a site of metastatic disease within the same patient. The data are shown in Table \ref{cellularity}. We want to test the \textbf{null hypothesis} that the mean cellularity at site A is equal to the mean cellularity at site B. This is like saying:\\
+=======
+
+<<echo=FALSE,results='asis'>>=
+library(xtable)
+cell <- read.csv("data//Paired two-sample t-test.csv")
+cell$Difference <- cell$B - cell$A
+xtable(cell,caption="Cellularity at two sites of disesase",label="cellularity")
+@
+
+\textbf{Example}: 20 patients with advanced cancer were studied using MRI imaging. Cellularity was measured for each individual patient by estimating water movement. We want to know whether there is a significant difference in the cellularity between two sites in the body; A and B. The data are shown in Table \ref{cellularity}. We want to test the \textbf{null hypothesis} that the mean cellularity at site A is equal to the mean cellularity at site B. This is like saying:\\
+>>>>>>> gh-pages
 
 Mean cellularity at site A = mean cellularity at site B\\
 
@@ -885,14 +897,22 @@ Click on the View data set button to check if the Difference column has been add
 \label{datasetWithDifferences}
 \end{figure}
 
+<<<<<<< HEAD
 In the calculation of the difference between Ovarian column and Peritoneal column, we need to choose either one as our baseline; this will simply determine whether we calculate Peritnoeal-Ovarian or Ovarian-Peritoneal. The results of the paired t-test will be the same either way, but summary statistics such as the mean and confidence intervals will be either positive or negative depending on which column you choose as your baseline, and similarly the histogram with be either on the positive or negative scale (the overall shape will be identical but will be flipped on the vertical axis). In this example, the Ovarian column was used as the baseline, so the difference column calculated represents the calculation Peritoneal-Ovarian. \newpage
+=======
+In the calculation of the difference between Site A and Site B column, we need to choose either one as our baseline; this will simply determine whether we calculate A-B or B-A. The results of the paired t-test will be the same either way, but summary statistics such as the mean and confidence intervals will be either positive or negative depending on which column you choose as your baseline, and similarly the histogram with be either on the positive or negative scale (the overall shape will be identical but will be flipped on the vertical axis). In this example, the A column was used as the baseline, so the difference column calculated represents the calculation B-A. \newpage
+>>>>>>> gh-pages
 
 
 One can then draw a histogram of the paired differences (see Figure \ref{histOfDifferences}):\\
 \begin{figure}
 <<echo=FALSE,fig.show='asis',fig.height=5,fig.width=10,warning=FALSE,message=FALSE>>=
 cell <- read.csv("data//Paired two-sample t-test.csv")
+<<<<<<< HEAD
 cell$Difference <- cell$Peritoneal - cell$Ovarian
+=======
+cell$Difference <- cell$B - cell$A
+>>>>>>> gh-pages
 hist(cell$Difference,col="grey",main="",xlab="Difference",ylab="frequency")
 @
 \caption{Histogram of cellularity data with default settings}
@@ -914,7 +934,11 @@ hist(cell$Difference,col="grey",breaks=5,main="",xlab="Difference",ylab="frequen
 \caption{Histogram with user-defined bins}
 \label{histWithMoreBins}
 \end{figure}
+<<<<<<< HEAD
 \textit{Note that the histogram will be flipped on the vertical axis if the difference is calculated as Ovarian - Peritoneal rather than Peritoneal - Ovarian, but this won't impact the end result of the test.}\newpage
+=======
+\textit{Note that the histogram will be flipped on the vertical axis if the difference is calculated as B - A rather than A - B, but this won't impact the end result of the test.}\newpage
+>>>>>>> gh-pages
 
 
 If satisfied with the normality assumption, we can go ahead with the paired two-sample t-test (Figure \ref{doPairedTTest}).
@@ -926,7 +950,11 @@ If satisfied with the normality assumption, we can go ahead with the paired two-
 \end{figure}
 
 <<>>=
+<<<<<<< HEAD
 t.test(cell$Peritoneal,cell$Ovarian,paired=TRUE)
+=======
+t.test(cell$B,cell$A,paired=TRUE)
+>>>>>>> gh-pages
 @
 The mean difference in cellularity between the two sites of disease was 19.14 units. The corresponding t-statistic is:
 
@@ -935,7 +963,11 @@ t_{n-1} = t_{19} = \frac{\bar{X}_{A-B}}{s.e(\bar{X}_{A-B})}
 \end{equation}
 
 Under the null hypothesis that there is no difference in the cellularities between the two sites of disease, we can see that the probability of observing such a large t-statistic is very small: the p-value is 0.0017. \\
+<<<<<<< HEAD
 This is a significant result (p $<$ 0.05), so there is \textbf{evidence of a difference} in the cellularity between the primary ovarian mass and peritoneal deposits in patients with advanced ovarian cancer.
+=======
+This is a significant result (p $<$ 0.05), so there is \textbf{evidence of a difference} in the cellularity between Site A and Site B in patients with advanced cancer.
+>>>>>>> gh-pages
 \\
 \subsection{What to do if the normality assumption is unreasonable?}
 
