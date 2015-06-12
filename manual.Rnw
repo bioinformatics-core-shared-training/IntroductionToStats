@@ -58,10 +58,7 @@ The goals of statistical methods could be summarised as follows:
 
 R Commander is an add-on to R, designed to make statistical analysis in R more accessible to those unfamiliar with R programming. Some understanding of basic statistical tests is required before being able to use R Commander effectively, as it is easy to make mistakes if you don't know precisely what you're doing.
 
-The Bioinformatics Core at Cambridge Research Institute employs statisticians to help researchers at the institute with the statistical aspects of their studies. Whilst we are always happy to do an analysis for you, we are also happy to support you if you choose to run the analysis yourself. Please get in touch if you have any questions or require our support, or come along to our Wednesday afternoon Statistics Clinic.
 
-E-mail address:
-{\tt cristatsclinic@cruk.cam.ac.uk}
 
 \section{Thinking about your analysis}
 
