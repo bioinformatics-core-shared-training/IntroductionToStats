@@ -58,10 +58,7 @@ The goals of statistical methods could be summarised as follows:
 
 R Commander is an add-on to R, designed to make statistical analysis in R more accessible to those unfamiliar with R programming. Some understanding of basic statistical tests is required before being able to use R Commander effectively, as it is easy to make mistakes if you don't know precisely what you're doing.
 
-The Bioinformatics Core at Cambridge Research Institute employs statisticians to help researchers at the institute with the statistical aspects of their studies. Whilst we are always happy to do an analysis for you, we are also happy to support you if you choose to run the analysis yourself. Please get in touch if you have any questions or require our support, or come along to our Wednesday afternoon Statistics Clinic.
 
-E-mail address:
-{\tt cristatsclinic@cruk.cam.ac.uk}
 
 \section{Thinking about your analysis}
 
@@ -84,7 +81,7 @@ The type of data you will get will determine which analyses will be most suitabl
 
 \textbf{Categorical} observations are allocations of individuals to one of two or more classes or categories. These categories may be \textbf{nominal} or \textbf{ordinal} (some natural ordering of the categories). 
 
-  Examples of \textbf{nominal} data are: Sex - Male/female; Disease status 	– diseased/non-diseased; Treatment status – treated/non-treated.
+  Examples of \textbf{nominal} data are: Sex - Male/female; Disease status   – diseased/non-diseased; Treatment status – treated/non-treated.
 
 	Examples of \textbf{ordinal} data are: Smoking – non-smoker/ex-	smoker/light smoker/heavy smoker; Stage of breast cancer – 	0/1/2/3/4; socioeconomic status – low/middle/high.
 
@@ -806,9 +803,6 @@ This is not a significant result (p$>0.05$), so there is \textbf{no evidence of 
 \subsubsection{Paired two-sample t-test}
 
 
-
-
-
 <<echo=FALSE,results='asis'>>=
 library(xtable)
 cell <- read.csv("data//Paired two-sample t-test.csv")
@@ -817,7 +811,6 @@ xtable(cell,caption="Cellularity at two sites of disesase",label="cellularity")
 @
 
 \textbf{Example}: 20 patients with advanced cancer were studied using MRI imaging. Cellularity was measured for each individual patient by estimating water movement. We want to know whether there is a significant difference in the cellularity between two sites in the body; A and B. The data are shown in Table \ref{cellularity}. We want to test the \textbf{null hypothesis} that the mean cellularity at site A is equal to the mean cellularity at site B. This is like saying:\\
-
 
 Mean cellularity at site A = mean cellularity at site B\\
 
@@ -862,7 +855,6 @@ Click on the View data set button to check if the Difference column has been add
 \label{datasetWithDifferences}
 \end{figure}
 
-
 In the calculation of the difference between Site A and Site B column, we need to choose either one as our baseline; this will simply determine whether we calculate A-B or B-A. The results of the paired t-test will be the same either way, but summary statistics such as the mean and confidence intervals will be either positive or negative depending on which column you choose as your baseline, and similarly the histogram with be either on the positive or negative scale (the overall shape will be identical but will be flipped on the vertical axis). In this example, the A column was used as the baseline, so the difference column calculated represents the calculation B-A. \newpage
 
 
@@ -892,7 +884,6 @@ hist(cell$Difference,col="grey",breaks=5,main="",xlab="Difference",ylab="frequen
 \caption{Histogram with user-defined bins}
 \label{histWithMoreBins}
 \end{figure}
-
 \textit{Note that the histogram will be flipped on the vertical axis if the difference is calculated as B - A rather than A - B, but this won't impact the end result of the test.}\newpage
 
 
@@ -914,7 +905,6 @@ t_{n-1} = t_{19} = \frac{\bar{X}_{A-B}}{s.e(\bar{X}_{A-B})}
 \end{equation}
 
 Under the null hypothesis that there is no difference in the cellularities between the two sites of disease, we can see that the probability of observing such a large t-statistic is very small: the p-value is 0.0017. \\
-
 This is a significant result (p $<$ 0.05), so there is \textbf{evidence of a difference} in the cellularity between Site A and Site B in patients with advanced cancer.
 \\
 \subsection{What to do if the normality assumption is unreasonable?}
@@ -1202,5 +1192,4 @@ In this case, there is no evidence of an association between treatment group and
 
 
 \end{document}
-
 
