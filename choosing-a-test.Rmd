@@ -1,0 +1,115 @@
+---
+title: "Choosing the correct test"
+author: "Mark Dunning"
+date: "4 November 2015"
+output: pdf_document
+---
+
+```{r eval=TRUE, echo=F, results="asis"}
+BiocStyle::markdown()
+library("knitr")
+opts_chunk$set(tidy=FALSE,dev="png",fig.show="as.is",
+               fig.width=10,fig.height=4,
+               message=FALSE,eval=TRUE,warning=FALSE,echo=FALSE)
+```
+
+
+# Dataset 1 `data1.csv`
+
+ Hollander & Wolfe (1973), 29f.
+Hamilton depression scale factor measurements in 9 patients with mixed anxiety and depression, taken at the first (x) and second (y) visit after initiation of a therapy (administration of a tranquilizer)
+
+```{r echo=FALSE}
+###see ?wilcox.test
+x <- c(1.83,  0.50,  1.62,  2.48, 1.68, 1.88, 1.55, 3.06, 1.30)
+y <- c(0.878, 0.647, 0.598, 2.05, 1.06, 1.29, 1.06, 3.14, 1.29)
+
+data <- data.frame(x,y)
+
+write.csv(data, file="mystery-data/data1.csv",quote=FALSE,row.names=FALSE)
+```
+
+## Dataset 2 `data2.csv`
+
+Do respondents to a survey prefer brand A or brand B?
+
+```{r echo=FALSE}
+###http://users.sussex.ac.uk/~grahamh/RM1web/Mann-Whitney%20worked%20example.pdf
+data <- data.frame(Brand = c(rep("X",6), rep("Y",6)), Rating=c(3,4,2,6,2,5,9,7,5,10,6,8))
+write.csv(data,file="mystery-data/data2.csv",quote=FALSE,row.names=FALSE)
+
+```
+
+
+
+## Dataset 3 `data3.csv`
+
+Survival times of patients with Ovarian or Breast Cancer. Is there a difference in survival time between the two diseases?
+
+```{r echo=FALSE}
+library(UsingR)
+par(ask=FALSE)
+data(cancer)
+data <- data.frame(Disease = c(rep("Ovarian",length(cancer$ovary)),rep("Breast",length(cancer$breast))),Time = c(cancer$ovary,cancer$breast))
+write.csv(data, file="mystery-data/data3.csv",quote=FALSE,row.names=FALSE)
+```
+
+## Dataset 4 `data4.csv`
+
+"blood pressure of 15 males taken by machine and expert"
+
+```{r echo=FALSE}
+data(blood)
+library(tidyr)
+library(dplyr)
+data <- gather(blood,Operator,Measure)
+write.csv(data, file="mystery-data/data4.csv",quote=FALSE,row.names=FALSE)
+```
+
+## Dataset 5 `data5.csv`
+
+In the history of data visualization, Florence Nightingale is best remembered for her role as a social activist and her view that statistical data, presented in charts and diagrams, could be used as powerful arguments for medical reform.
+
+After witnessing deplorable sanitary conditions in the Crimea, she wrote several influential texts (Nightingale, 1858, 1859), including polar-area graphs (sometimes called "Coxcombs" or rose diagrams), showing the number of deaths in the Crimean from battle compared to disease or preventable causes that could be reduced by better battlefield nursing care.
+
+Her Diagram of the Causes of Mortality in the Army in the East showed that most of the British soldiers who died during the Crimean War died of sickness rather than of wounds or other causes. It also showed that the death rate was higher in the first year of the war, before a Sanitary Commissioners arrived in March 1855 to improve hygiene in the camps and hospitals.
+
+
+```{r echo=FALSE}
+library(HistData)
+data("Nightingale")
+
+require(reshape)
+Night<- Nightingale[,c(1,8:10)]
+melted <- melt(Night, "Date")
+names(melted) <- c("Date", "Cause", "Deaths")
+melted$Cause <- sub("\\.rate", "", melted$Cause)
+melted$Regime <- ordered( rep(c(rep('Before', 12), rep('After', 12)), 3), 
+                          levels=c('Before', 'After'))
+Night <- melted
+
+# subsets, to facilitate separate plotting
+Night1 <- subset(Night, Date < as.Date("1855-04-01"))
+Night2 <- subset(Night, Date >= as.Date("1855-04-01"))
+
+# sort according to Deaths in decreasing order, so counts are not obscured [thx: Monique Graf]
+Night1 <- Night1[order(Night1$Deaths, decreasing=TRUE),]
+Night2 <- Night2[order(Night2$Deaths, decreasing=TRUE),]
+
+# merge the two sorted files
+Night <- rbind(Night1, Night2)
+library(dplyr)
+filter(Night, Cause=="Disease") %>% select(Regime,Deaths) %>% write.csv(file="mystery-data/data5.csv",quote=FALSE,row.names=FALSE)
+```
+
+## Dataset 6: Gene expression
+
+The expression level of a gene was measured in 10 non-disease, and 10 cancer patients. Is the gene differentially-expressed?
+
+```{r echo=FALSE}
+set.seed("04112015")
+data <- data.frame(Normal = rnorm(10), Cancer =rnorm(10,mean=3))
+data <- gather(data, Group,Value)
+write.csv(data, file="mystery-data/data6.csv",quote=FALSE,row.names=FALSE)
+```
+
