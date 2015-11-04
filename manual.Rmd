@@ -610,6 +610,7 @@ As you can see, the observed and expected frequencies are very similar.The chi-s
 $$\chi^2_{rows-1,columns-1} = \sum\limits_i\sum\limits_j \frac{(O_{ij}-E_{ij})^2}{E_{ij}}$$
 
 where;
+
 ******
 
 + $O_{ij}$ is the observed frequency for a single cell in row $i$ and column $j$
@@ -650,7 +651,7 @@ ctable <- data.frame(Treatment.Group = c("Treatment","Placebo","Total"), TumourS
 print(xtable(ctable,label = "fishersObserved",caption="Expected frequencies for chi-squared test"),comment= FALSE)
 ```
 
-You can enter these data into the Shiny app, by modifying the test in the ***Enter your data as a table*** box. Columns need to be separated by a '-' character, and rows by a '|'. You can check that you have entered the data correctly by looking at ***The data*** tab. You do not need to calculate row or column totals.
+You can enter these data into the Shiny app, by modifying the text in the ***Enter your data as a table*** box. Columns need to be separated by a '-' character, and rows by a '|'. You can check that you have entered the data correctly by looking at ***The data*** tab. You do not need to calculate row or column totals.
 
 The null and alternative hypotheses are identical to those of the Chi-squared test above.
 

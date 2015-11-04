@@ -11,7 +11,7 @@ BiocStyle::markdown()
 library("knitr")
 opts_chunk$set(tidy=FALSE,dev="png",fig.show="as.is",
                fig.width=10,fig.height=4,
-               message=FALSE,eval=FALSE,warning=FALSE,echo=FALSE)
+               message=FALSE,eval=TRUE,warning=FALSE,echo=FALSE)
 ```
 
 # Introduction
@@ -136,21 +136,34 @@ easily draw a bell shape over each of the two histograms. The independent t-test
 ```
 
 
-c) Use the Numerical statistics analysis to compute descriptive statistics for each group. \\
+c) Use the *Numerical statistics* analysis to compute descriptive statistics for each group. 
+
+```{r}
+lapply(split(data$value,data$variable),RcmdrMisc::numSummary)
+with(data, RcmdrMisc::plotMeans(value,variable,error.bars="conf.int",level=0.95))
+```
 
 
-Given the distribution of your data, which statistics might you report to summarise your data? Look at and compare the 95\% confidence intervals of the mean durations of the two cell-types.
+Given the distribution of your data, which statistics might you report to summarise your data? Look at and compare the 95\% confidence intervals of the mean durations of the two cell-types. Do they overlap?
+
+```{r}
+cat("The normality assumption seems reasonable so the mean and standard deviation 
+(or standard error or 95% CI) provide a good summary of the data. 
+If the data were skewed, the median and interquartile range would be more meaningful.  
+The confidence intervals do not overlap.")
+```
 
 
-Do they overlap?
-
-
-
-d) In order to apply the correct statistical test, we need to test to see if the variances of the two groups are comparable. 
-
-
+d) In order to apply the correct statistical test, we need to test to see if the variances of the two groups are comparable. This is tested for us automatically in the Shiny app. Click the ***Histogram*** tab to see the result.
 
 What do you conclude from the p-value of this test. How does it influence what test to use?
+
+```{r}
+cat("The test yields a p-value of 0.03568, which is sufficient evidence 
+    to reject the null hypothesis that the variances of the two groups are the same. 
+    Therefore we should apply Welch's correction.")
+```
+
 
 e) Use the appropriate test to compare the durations of the two groups.
 
@@ -191,7 +204,8 @@ a) What are your null and alternative hypotheses?
 cat("Null hypothesis: the bone marrow micro vessel density after treatment is greater 
 than or equal to the bone marrow micro vessel density before treatment. 
 
-Alternative hypothesis: the bone marrow micro vessel density after treatment is less than the bone marrow micro vessel density before treatment.")
+Alternative hypothesis: the bone marrow micro vessel density after treatment 
+is less than the bone marrow micro vessel density before treatment.")
 
 ```
 
@@ -200,7 +214,7 @@ Import the data and create a column of differences (after-before).
 
 b) Plot a histogram of the differences. Do the data look normally distributed? Is the paired t –test appropriate?
 
-```{r}
+```{r results='hide'}
 myfile <- "Course Data/bloodplasmacancer2.csv"
 sep <- ','
 quote <- '"'
@@ -252,9 +266,33 @@ t.test(value~variable,data=data,alternative=alternative,paired=paired,var.equal=
 ```
 
 ```{r}
-cat("Under the null hypothesis, the probability of observing a t-statistic as extreme as 1.84, is 0.06, slightly greater than 0.05, our nominal significance level. Our result is \textbf{borderline}. There is insufficient evidence to reject the null hypothesis. Therefore, we might conclude that there is an association of a decrease in bone marrow micro vessel density after treatment with bone marrow transplant. It is important to note the small sample size here. Studying just 7 patients means we will only be able to detect large differences.")
+cat("Under the null hypothesis, the probability of observing a t-statistic as extreme as 1.84, is 0.06, 
+slightly greater than 0.05, our nominal significance level. Our result is borderline. 
+There is insufficient evidence to reject the null hypothesis. 
+Therefore, we might conclude that there is an association of a decrease in bone marrow micro vessel 
+density after treatment with bone marrow transplant. It is important to note the small sample size here. 
+Studying just 7 patients means we will only be able to detect large differences.")
 ```
 
+## Birth-weight of twins
+
+Dr D. R. Peterson of the Department of Epidemiology, University of Washington, collected the data found in file `twins.csv`.  It consists of the birth-weights of each of 20 dizygous twins.  The hypothesis to be tested is that the SIDS child of each pair has a lower birth-weight.  
+
+a. Construct the null and alternative hypothesises
+
+
+b. Decide on the level of significance to be used and whether the test should be one-sided or two-sided.
+
+
+c. Carry out both the sign and Wilcoxon signed rank tests on the data.  Do both tests draw the same conclusion about the data?  Which test is the most appropriate?
+
+## Vitamin D levels
+
+The file `vitd.csv` contains data on vitamin D levels for subjects with fibrosis.
+
+a. Use the Mann-Whitney U and median tests to compare vitamin D levels between those with and without fibrosis.  Interpret the results from both tests. Do both tests reach the same conclusion?
+
+b. Which test is the more appropriate?
 
 # Tests for categorical variables
 
@@ -285,7 +323,7 @@ Alternative hypothesis. there is an association between sequence number and nucl
 
 ```
 
-We can analyse these data [online](http://bioinf-rstud001:3838/contingency-table/)
+We can analyse these data online in the [Shiny app](http://bioinf-rstud001:3838/contingency-table/), by modifying the contents of the ***Enter your data as a table*** box. Columns need to be separated by a '-' character, and rows by a '|'. You can check that you have entered the data correctly by looking at ***The data*** tab. You do not need to calculate row or column totals.
 
 
 Note that you do not need to enter the totals.
@@ -299,10 +337,8 @@ rownames(.Table) <- c('1', '2')
 
 colnames(.Table) <- c('1', '2', '3', '4')
 
-
-
 .Test <- chisq.test(.Table, correct=FALSE)
-.Test$expected
+
 .Test
 ```
 
@@ -350,7 +386,7 @@ colnames(.Table) <- c('WT', 'KO')
 ```
 
 
-Enter the data as before;\\
+Enter the data into the [Shiny app](http://bioinf-rstud001:3838/contingency-table/) as before;\\
 
 c) Select the **Fisher's exact test** option to compare the proportion of mice in each group that developed the disease. What is your p-value? How do you interpret the result?
 
@@ -366,6 +402,9 @@ ft
 
 
 ```{r}
-cat("p = 0.02. Under the null hypothesis, there is a small probability (p=0.02<0.05) of observing such an extreme distribution of the mice given the observed row and column totals. There is \textbf{evidence to reject the null hypothesis in favour of the alternative hypothesis}. There is evidence of an association between mouse type and disease X.")
+cat("p = 0.02. Under the null hypothesis, there is a small probability (p=0.02<0.05) 
+of observing such an extreme distribution of the mice given the observed row and column totals. 
+There is evidence to reject the null hypothesis in favour of the alternative hypothesis. 
+There is evidence of an association between mouse type and disease X.")
 ```
 
