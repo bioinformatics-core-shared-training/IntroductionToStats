@@ -25,7 +25,7 @@ The datasets you will need for this practical should be [***downloaded and unzip
 # T-tests practical
 
 ## The effect of disease on height
-A scientist knows that the mean height of females in England is 165cm and wants to know whether her patients with disease X have heights that differ significantly from the population mean - we will use a one-sample t-test to test this. The data are contained in the file ` diseaseX.csv` and can be analysed online at:-
+A scientist knows that the mean height of females in England is 165cm and wants to know whether her patients with disease X have heights that differ significantly from the population mean - we will use a one-sample t-test to test this. The data are contained in the file **`diseaseX.csv`** and can be analysed online at:-
 
 [http://bioinf-rstud001:3838/OneSampleTest/](http://bioinf-rstud001:3838/OneSampleTest/)
 
@@ -100,7 +100,7 @@ population mean height of females of 165cm.")
 
 ## Biological processes duration
 
-In the file `bp_times.csv`, we have the durations of a biological process for two samples of wild-type and knock-out cells (times in seconds). We are interested in seeing whether there is a difference in the durations for the two types of cells – we shall use an **independent t-test** to compare the two cell-types.
+In the file **`bp_times.csv`**, we have the durations of a biological process for two samples of wild-type and knock-out cells (times in seconds). We are interested in seeing whether there is a difference in the durations for the two types of cells – we shall use an **independent t-test** to compare the two cell-types.
 
 These data can be analysed online at [http://bioinf-rstud001:3838/TwoSampleTest/](http://bioinf-rstud001:3838/TwoSampleTest/)
 
@@ -199,7 +199,7 @@ In blood plasma cancer, there is an increase in blood vessel formation in the bo
 
 We are interested in seeing whether there is a decrease in the bone marrow micro vessel density after treatment with a stem cell transplant. We will use a paired two-sample t-test to compare the before and after bone marrow micro vessel densities. 
 
-The data are contained in the file `bloodplasmacancer2.csv`. These data can be analysed online at [http://bioinf-rstud001:3838/TwoSampleTest/](http://bioinf-rstud001:3838/TwoSampleTest/)
+The data are contained in the file **`bloodplasmacancer2.csv`**. These data can be analysed online at [http://bioinf-rstud001:3838/TwoSampleTest/](http://bioinf-rstud001:3838/TwoSampleTest/)
 
 a) What are your null and alternative hypotheses?
 
@@ -279,7 +279,7 @@ Studying just 7 patients means we will only be able to detect large differences.
 
 ## Birth-weight of twins
 
-Dr D. R. Peterson of the Department of Epidemiology, University of Washington, collected the data found in file `twins.csv`.  It consists of the birth-weights of each of 20 dizygous twins.  The hypothesis to be tested is that the SIDS child of each pair has a lower birth-weight.  
+Dr D. R. Peterson of the Department of Epidemiology, University of Washington, collected the data found in file **`twins.csv`**.  It consists of the birth-weights of each of 20 dizygous twins.  The hypothesis to be tested is that the SIDS child of each pair has a lower birth-weight.  
 
 a. Construct the null and alternative hypothesises
 
@@ -291,7 +291,7 @@ c. Carry out both the sign and Wilcoxon signed rank tests on the data.  Do both 
 
 ## Vitamin D levels
 
-The file `vitd.csv` contains data on vitamin D levels for subjects with fibrosis.
+The file **`vitd.csv`** contains data on vitamin D levels for subjects with fibrosis.
 
 a. Use the Mann-Whitney U and median tests to compare vitamin D levels between those with and without fibrosis.  Interpret the results from both tests. Do both tests reach the same conclusion?
 
