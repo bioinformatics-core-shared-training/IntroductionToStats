@@ -14,59 +14,32 @@ opts_chunk$set(tidy=FALSE,dev="png",fig.show="as.is",
 ```
 
 
-# Dataset 1 `data1.csv`
-
- Hollander & Wolfe (1973), 29f.
-Hamilton depression scale factor measurements in 9 patients with mixed anxiety and depression, taken at the first (x) and second (y) visit after initiation of a therapy (administration of a tranquilizer)
-
-```{r echo=FALSE}
-###see ?wilcox.test
-x <- c(1.83,  0.50,  1.62,  2.48, 1.68, 1.88, 1.55, 3.06, 1.30)
-y <- c(0.878, 0.647, 0.598, 2.05, 1.06, 1.29, 1.06, 3.14, 1.29)
-
-data <- data.frame(x,y)
-
-write.csv(data, file="mystery-data/data1.csv",quote=FALSE,row.names=FALSE)
-```
-
-## Dataset 2 `data2.csv`
-
-Do respondents to a survey prefer brand A or brand B?
-
-```{r echo=FALSE}
-###http://users.sussex.ac.uk/~grahamh/RM1web/Mann-Whitney%20worked%20example.pdf
-data <- data.frame(Brand = c(rep("X",6), rep("Y",6)), Rating=c(3,4,2,6,2,5,9,7,5,10,6,8))
-write.csv(data,file="mystery-data/data2.csv",quote=FALSE,row.names=FALSE)
-
+```{r}
+library(UsingR)
+library(HistData)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(breastCancerNKI)
+library(Biobase)
 ```
 
 
-
-## Dataset 3 `data3.csv`
+## Dataset 1 `data1.csv`
 
 Survival times of patients with Ovarian or Breast Cancer. Is there a difference in survival time between the two diseases?
 
-```{r echo=FALSE}
-library(UsingR)
-par(ask=FALSE)
+```{r}
+
 data(cancer)
 data <- data.frame(Disease = c(rep("Ovarian",length(cancer$ovary)),rep("Breast",length(cancer$breast))),Time = c(cancer$ovary,cancer$breast))
-write.csv(data, file="mystery-data/data3.csv",quote=FALSE,row.names=FALSE)
+write.csv(data, file="mystery-data/data1.csv",quote=FALSE,row.names=FALSE)
+boxplot(Time~Disease,data)
+wilcox.test(Time~Disease,data)
 ```
 
-## Dataset 4 `data4.csv`
 
-"blood pressure of 15 males taken by machine and expert"
-
-```{r echo=FALSE}
-data(blood)
-library(tidyr)
-library(dplyr)
-data <- gather(blood,Operator,Measure)
-write.csv(data, file="mystery-data/data4.csv",quote=FALSE,row.names=FALSE)
-```
-
-## Dataset 5 `data5.csv`
+## Dataset 2 `data2.csv`
 
 In the history of data visualization, Florence Nightingale is best remembered for her role as a social activist and her view that statistical data, presented in charts and diagrams, could be used as powerful arguments for medical reform.
 
@@ -75,8 +48,8 @@ After witnessing deplorable sanitary conditions in the Crimea, she wrote several
 Her Diagram of the Causes of Mortality in the Army in the East showed that most of the British soldiers who died during the Crimean War died of sickness rather than of wounds or other causes. It also showed that the death rate was higher in the first year of the war, before a Sanitary Commissioners arrived in March 1855 to improve hygiene in the camps and hospitals.
 
 
-```{r echo=FALSE}
-library(HistData)
+```{r}
+
 data("Nightingale")
 
 require(reshape)
@@ -98,18 +71,100 @@ Night2 <- Night2[order(Night2$Deaths, decreasing=TRUE),]
 
 # merge the two sorted files
 Night <- rbind(Night1, Night2)
-library(dplyr)
-filter(Night, Cause=="Disease") %>% select(Regime,Deaths) %>% write.csv(file="mystery-data/data5.csv",quote=FALSE,row.names=FALSE)
+
+
+filter(Night, Cause=="Disease") %>% select(Regime,Deaths) %>% write.csv(file="mystery-data/data2.csv",quote=FALSE,row.names=FALSE)
+
+filter(Night, Cause=="Disease") %>% select(Regime,Deaths) %>% ggplot(aes(x=Regime,y=Deaths)) + geom_boxplot()
+Night.flt <- Night %>% filter(Cause=="Disease") %>% select(Regime,Deaths)
+
+wilcox.test(Deaths~Regime,Night.flt,alternative="greater")
 ```
 
-## Dataset 6: Gene expression
+## Dataset 3: Gene expression `data3.csv`
 
-The expression level of a gene was measured in 10 non-disease, and 10 cancer patients. Is the gene differentially-expressed?
+The expression level of a gene was measured in a breast cancer cohort of ER negative and positive patients. Is the gene differentially-expressed between ER positive and negative patients?
 
-```{r echo=FALSE}
-set.seed("04112015")
-data <- data.frame(Normal = rnorm(10), Cancer =rnorm(10,mean=3))
-data <- gather(data, Group,Value)
-write.csv(data, file="mystery-data/data6.csv",quote=FALSE,row.names=FALSE)
+```{r}
+data(nki)
+
+ind <- grep("ESR1",fData(nki)[,"HUGO.gene.symbol"])
+
+data <- data.frame(ERStatus = ifelse(pData(nki)[,"er"]==1, "Positive","Negative"),Expression = exprs(nki)[ind,])
+
+write.csv(data, file="mystery-data/data3.csv",quote=FALSE,row.names=FALSE)
+t.test(Expression~ERStatus,data,var.equal=FALSE)
 ```
+
+## Dataset4: Sleep Data `data4.csv`
+
+Data which show the effect of two soporific drugs (increase in hours of sleep compared to control) on 10 patients.
+
+```{r}
+data(sleep)
+sleep <- spread(sleep, group,extra)[,-1]
+colnames(sleep) <- c("Group1","Group2")
+write.csv(sleep, file="mystery-data/data4.csv",quote=FALSE,row.names=FALSE)
+
+t.test(sleep[,1],sleep[,2],paired=TRUE)
+```
+
+## Dataset5: CD4 `data5.csv`
+
+CD4 cells are carried in the blood as part of the human immune system. One of the effects of the HIV virus is that these cells die. The count of CD4 cells is used in determining the onset of full-blown AIDS in a patient. In this study of the effectiveness of a new anti-viral drug on HIV, 20 HIV-positive patients had their CD4 counts recorded and then were put on a course of treatment with this drug. After using the drug for one year, their CD4 counts were again recorded. The aim of the experiment was to show that patients taking the drug had increased CD4 counts which is not generally seen in HIV-positive patients.
+
+```{r}
+data <- read.csv("http://vincentarelbundock.github.io/Rdatasets/csv/boot/cd4.csv")[,-1]
+write.csv(data,file="mystery-data/data5.csv",quote=FALSE,row.names=FALSE)
+
+boxplot(data)
+t.test(data[,1],data[,2],paired=TRUE)
+```
+
+## Dataset6: Birth Weight `data6.csv`
+
+Risk Factors Associated with Low Infant Birth Weight
+
+```{r}
+data <- read.csv("http://vincentarelbundock.github.io/Rdatasets/csv/MASS/birthwt.csv")
+data <- dplyr::select(data, smoke, bwt) %>% arrange(smoke) %>% mutate(smoke=ifelse(smoke==0,"N","Y")) 
+
+write.csv(data,file="mystery-data/data6.csv",quote=FALSE,row.names=FALSE)
+
+wilcox.test(bwt~smoke,data,paired=FALSE)
+
+```
+
+## Dataset7: Weight gain in Rats `data7.csv`
+
+The data arise from an experiment to study the gain in weight of rats fed on four different diets, distinguished by amount of protein (low and high) and by source of protein (beef and cereal).
+
+```{r}
+data <- read.csv("http://vincentarelbundock.github.io/Rdatasets/csv/HSAUR/weightgain.csv")[,c(3,4)] %>% arrange(type)
+write.csv(data, file="mystery-data/data7.csv",quote=FALSE,row.names=FALSE)
+boxplot(weightgain ~ type,data)
+```
+
+## Dataset8: Colon cancer
+
+```{r}
+library (GEOquery)
+url <- "ftp://ftp.ncbi.nih.gov/pub/geo/DATA/SeriesMatrix/GSE33126/"
+filenm <- "GSE33126_series_matrix.txt.gz"
+if (!file.exists("GSE33126_series_matrix.txt.gz")) download.file (paste(url ,
+filenm , sep = "" ) , destfile = filenm )
+colonData <- getGEO (filename = filenm)
+
+data <- data.frame(Tissue =  pData(colonData)$source_name_ch1,Expression = exprs(colonData)["ILMN_2366710",])
+
+write.csv(data, file="mystery-data/data8.csv",quote=FALSE,row.names=FALSE)
+
+```
+
+
+
+```{r}
+zip(zipfile="mystery-data.zip",files=paste("mystery-data/",list.files("mystery-data/"),sep="/"))
+```
+
 
