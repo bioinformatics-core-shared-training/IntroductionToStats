@@ -37,7 +37,13 @@ The aim of this course is to get you to ***think about your data*** and select *
 + [http://bioinf-rstud001:3838/TwoSampleTest/](http://bioinf-rstud001:3838/TwoSampleTest/)
 + [http://bioinf-rstud001:3838/contingency-table/](http://bioinf-rstud001:3838/contingency-table/)
 
-The apps were developed using [Shiny](http://shiny.rstudio.com/gallery/), which is an add-on 'package' for the R statistical language that allows analyses to be performed in R without requiring any specialist knowledge. For those that want to progress and learn R, the R code used behind-the-scenes of these apps can be downloaded, modified, or passed-on to collaborators.
+The apps were developed using [Shiny](http://shiny.rstudio.com/gallery/), which is an add-on 'package' for the R statistical language that allows analyses to be performed in R without requiring any specialist knowledge. For those that want to progress and learn R, the R code used behind-the-scenes of these apps can be downloaded, modified, or passed-on to collaborators. The Shiny apps are not intended to be a replacement for a statistical software package and only have limited functionality.
+
+However, the techniques and theory you learn should be applicable to any tool for statistical analysis.
+
+The datasets for this manual are included in the [course zip](https://rawgit.com/bioinformatics-core-shared-training/IntroductionToStats/master/CourseData.zip) file. Download and unzip this file, and you will find all the data in the `Manual` folder.
+
+A [**Cheat Sheet**](https://rawgit.com/bioinformatics-core-shared-training/intermediate-stats/master/cheatsheet.pdf) is available that describes the tests that should be used under different circumstances.
 
 # Thinking about your analysis
 
@@ -82,7 +88,6 @@ Examples of **continuous** data are:
 + Body Mass Index (BMI); 	
 + Temperature; Blood pressure; Tumour width
 
-# Software for Statistical Analysis
 
 # Statistical Analysis
 
@@ -253,7 +258,7 @@ The Shiny app to perform tests of this kind can be found at:-
 
 ### Example
 
-A microarray supplier claims that their microarray failure rate is 2.1\%. Genomics would like to know whether this reflects the failure rates that they've observed over the last 12-months, so they have collected failure rate data on a monthly basis. The data are given in Table $\ref{microarrayTable}$. The first time we load the [one-sample test Shiny app](http://bioinf-rstud001:3838/OneSampleTest/), these data will be loaded automatically.
+A microarray supplier claims that their microarray failure rate is 2.1\%. A lab would like to know whether this reflects the failure rates that they've observed over the last 12-months, so they have collected failure rate data on a monthly basis. The data are given in Table $\ref{microarrayTable}$. The first time we load the [one-sample test Shiny app](http://bioinf-rstud001:3838/OneSampleTest/), these data will be loaded automatically.
 
 Our \textbf{null hypothesis} is that the mean monthly failure rate of the microarrays is \textbf{equal} to 2.1\%. i.e.
 
@@ -294,7 +299,7 @@ The key assumptions of the one-sample t-test are;
 
 Before conducting the one sample t-test, we need to check the observations are normally distributed. This is done automatically by the Shiny app, and can be viewed by clicking the ***Data Distribution*** tab. You will need to change the value inside the ***True mean*** box to get the red-dotted line to show the true mean that we wish to compare to (i.e. 2.1 in this case).
 
-```{r echo=FALSE,fi}
+```{r echo=FALSE}
 df<-data.frame(Month=month.name,Failure=c(2.9,2.99,2.48,1.48,2.71,4.17,3.74,3.04,1.23,2.72,3.23,3.4))
 colnames(df)[2] <- "X"
 
@@ -309,12 +314,13 @@ colnames(df)[2] <- "X"
                            arg=list(mean=mean(df$X), 
                                     sd=sd(df$X)))
   
+  P<- p + geom_vline(xintercept=2.1,lty=2,col="red")
   p
 ```
 
 We want the histogram to be fairly symmetrical with a rough bell shape like that of the plot on the right hand side above. It is often difficult to assess whether data from a small sample are normally distributed, as a single observation can distort the shape of the histogram. 
 
-Here (Figure \ref{microarrayHist}), the histogram is ***fairly symmetrical with a rough bell shape*** (it doesn't have to be perfect!) so the normality assumption seems reasonable. Slight deviations from normality are rarely a problem as the t-test is fairly robust. 
+This histogram is ***fairly symmetrical with a rough bell shape*** (it doesn't have to be perfect!) so the normality assumption seems reasonable. Slight deviations from normality are rarely a problem as the t-test is fairly robust. 
 
 
 
@@ -356,7 +362,7 @@ $$P(T \le 3.07 | T \ge 3.07) = 0.01 $$
 
 As the p-value of 0.01 is less than 0.05 (5%), there is **evidence to reject the null hypothesis** and conclude that there is evidence to suggest that the failure rate of the microarrays from this supplier is not 2.1. 
 
-Clicking the 't-test' tab in [Shiny](http://bioinf-rstud001:3838/OneSampleTest/), will reveal the results of the one-sample test, as performed in R. Make sure that you have set the value in the ***True mean*** box to be the correct value.
+Clicking the ***Test Result*** tab in [Shiny](http://bioinf-rstud001:3838/OneSampleTest/), will reveal the results of the one-sample test, as performed in R. Make sure that you have set the value in the ***True mean*** box to be the correct value. You should see the same test statistic and p-value being reported.
 
 ```{r echo=FALSE}
 df<-data.frame(Month=month.name,Failure=c(2.9,2.99,2.48,1.48,2.71,4.17,3.74,3.04,1.23,2.72,3.23,3.4))
@@ -381,7 +387,7 @@ The Shiny app to perform tests of this kind can be found at:-
 
 ```{r results="asis",echo=FALSE,message=FALSE}
 
-df <- read.csv("data/Independent two-sample t-test.csv")
+df <- read.csv("Manual/Independent two-sample t-test.csv")
 print(xtable(head(df),label = "MiceWeights",caption="Weights of 2 breeds (A and B) of 4 week-old male mice"),comment= FALSE)
 ```
 
@@ -434,24 +440,44 @@ data <- data.frame(variable=c(rep('Breed.A',20),rep('Breed.B',20)),value=c(20.77
                                                                                                7.39,9.23,4.06,8.26,10.24,14.64,15.51,12.93,11.5,16.07,15.51,17.66,11.25,13.65,
                                                                                                14.28,13.21,10.28,12.41,9.63,14.75,9.81,13.02,12.33,11.9,8.98,11.29))
 
+ dl <- split(data,data$variable)
+  df1 <- dl[[1]]
+  df2 <- dl[[2]]
 library(ggplot2)
-p <- ggplot(data, aes(x=value)) + geom_histogram(aes(y=..density..),colour='black',fill='white') + facet_wrap(~variable) + stat_function(fun=dnorm,color='red',arg=list(mean=mean(data$value), sd=sd(data$value)))
-p
+  p1<- ggplot(df1, aes(x=value)) + 
+    geom_histogram(aes(y=..density..),      # Histogram with density instead of count on y-axis
+
+                   colour="black",fill="white") + xlim(min(data$value),max(data$value)) + ggtitle(names(dl)[1])
+  
+  p1 <- p1 + stat_function(fun=dnorm,
+                         color="red",
+                         arg=list(mean=mean(na.omit(df1$value)), 
+                                  sd=sd(na.omit(df1$value))))
+  p2<- ggplot(df2, aes(x=value)) + 
+    geom_histogram(aes(y=..density..),      # Histogram with density instead of count on y-axis
+                   
+                   colour="black",fill="white") + xlim(min(data$value),max(data$value)) + ggtitle(names(dl)[2])
+  
+  p2 <- p2 + stat_function(fun=dnorm,
+                           color="red",
+                           arg=list(mean=mean(df2$value), 
+                                    sd=sd(df2$value)))
+  p <- grid.arrange(p1,p2,ncol=2)
 ```
 
-Here, the histogram for each breed is fairly symmetrical with a rough bell shape (Figure $\ref{histOfMiceWeight}$). The normality assumption seems reasonable and so we can carry out the independent two-sample t-test. The third assumption of the independent two-sample t-test is that the **data in each of the two groups should have approximately equal variance**. This can be assessed visually by inspecting the boxplots of the data. 
+Here, the histogram for each breed is fairly symmetrical with a rough bell shape. The normality assumption seems reasonable and so we can carry out the independent two-sample t-test. The third assumption of the independent two-sample t-test is that the **data in each of the two groups should have approximately equal variance**. This can be assessed visually by inspecting the boxplots of the data. 
 
 ```{r echo=FALSE}
-p <- ggplot(data, aes(x = variable,y=value,fill=variable)) + geom_boxplot() + coord_flip()
+p <- ggplot(data, aes(x = variable,y=value,fill=variable)) + geom_boxplot() + geom_jitter(position = position_jitter(width = .05)) + coord_flip()
 p
 ```
 
 In this example, the variances of the two groups appear to be different. This means that we **cannot assume equal variance** between the two different breeds of mice and so, a slightly different formulation of the two-sample t-test is needed. When selecting the two-sample t-test, a **Welch's correction needs to be applied**. You can do this by un-ticking the ***Equal variances*** tab in the Shiny app.  You may be tempted to apply the Welch's correction routinely, even in cases where the variance is similar in your two groups. However, this is not recommended because the use of the Welch's correction has a large impact on the degrees of freedom of the test. When the variances are similar, an unpaired t-test ***with*** a Welch's correction is much less powerful than a standard unpaired t-test ***without*** the Welch's correction. 
 
-The results of the test, as calculated in R are given in the ***t-test*** tab of the Shiny app.
+The results of the test, as calculated in R are given in the ***Test Resul*** tab of the Shiny app.
 
 ```{r echo=FALSE}
-MiceWeight <- read.csv("data/Independent two-sample t-test.csv")
+MiceWeight <- read.csv("Manual/Independent two-sample t-test.csv")
 res <- t.test(Weight~Breed,data=MiceWeight)
 res
 ```
@@ -474,13 +500,13 @@ This is not a significant result (p$>0.05$), so there is ***no evidence of a dif
 
 ```{r results="asis",echo=FALSE,message=FALSE}
 
-df <- read.csv("data/Paired two-sample t-test.csv")
+df <- read.csv("Manual/Paired two-sample t-test.csv")
 df$Difference <- df$B - df$A
 print(xtable(df,label = "cellularity",caption="Cellularity at two sites of disesase"),comment= FALSE)
 ```
 
 
-**Example** : 20 patients with advanced cancer were studied using MRI imaging. Cellularity was measured for each individual patient by estimating water movement. We want to know whether there is a significant difference in the cellularity between two sites in the body; A and B. The data are shown in Table $\ref{cellularity}$. We want to test the **null hypothesis** that the mean cellularity at site A is equal to the mean cellularity at site B. This is like saying:
+**Example**: 20 patients with advanced cancer were studied using MRI imaging. Cellularity was measured for each individual patient by estimating water movement. We want to know whether there is a significant difference in the cellularity between two sites in the body; A and B. The data are shown in Table $\ref{cellularity}$. We want to test the **null hypothesis** that the mean cellularity at site A is equal to the mean cellularity at site B. This is like saying:
 
 + Mean cellularity at site A = mean cellularity at site B
 
@@ -516,10 +542,10 @@ The assumptions of the paired t-test coincide with those of the one-sample t-tes
 
 ### Loading the example data into the Shiny app
 
-The data for this example are included in the course zip file. Click the ***Choose File*** button in Shiny and navigate to where you unzipped this zip file to. Select the file 'Paired two-sample t-test.csv'. The data from this file should be imported. Tick the ***'Paired Test'*** option. 
+The data for this example are included in the [course zip](https://rawgit.com/bioinformatics-core-shared-training/IntroductionToStats/master/CourseData.zip) file. Click the ***Choose File*** button in Shiny and navigate to where you unzipped this zip file to. Select the file `Paired two-sample t-test.csv` in the folder `Manual`. The data from this file should be imported. Tick the ***'Paired Test'*** option. 
 
 ```{r echo=FALSE,message=FALSE,results='hide'}
-myfile <- "data/Paired two-sample t-test.csv"
+myfile <- "Manual/Paired two-sample t-test.csv"
 sep <- ','
 quote <- '"'
 header <-  TRUE 
@@ -537,10 +563,10 @@ p
 ```
 
 
-If satisfied with the normality assumption, we can go ahead with the paired two-sample t-test. The following should be displayed in the ***t test*** tab.
+If satisfied with the normality assumption, we can go ahead with the paired two-sample t-test. The following should be displayed in the ***Test Result*** tab.
 
 ```{r echo=FALSE}
-paired <- read.csv("data/Paired two-sample t-test.csv")
+paired <- read.csv("Manual/Paired two-sample t-test.csv")
 res <- t.test(paired$A,paired$B,paired=TRUE)
 res
 ```
@@ -562,6 +588,323 @@ In other instances, normality may be an unreasonable assumption to make and a t-
 
 + Transformations
 + Non-parametric tests
+
+Several transformations are possible in Shiny by changing the ***Transformation*** option. The tests we have described all have a *non-parametric* alternative. We now describe these tests in more detail. 
+
+A [**Cheat Sheet**](https://rawgit.com/bioinformatics-core-shared-training/intermediate-stats/master/cheatsheet.pdf) is available that describes the tests that should be used under different circumstances.
+
+# Non-parametric tests
+
+## Mann-Whitney U Rank Sum Test
+
+This test has many different names including the *Wilcoxon*, *Wilcoxon two sample test*, *Wilcoxon-Mann-Whitney*, *Wilcoxon rank sum* and the *Mann-Whitney-U test*.  However, this test should **not** be confused with the Wilcoxon signed rank test.  To avoid confusion this test is usually referred to as the **Mann-Whitney U test**, which is used when the **dependent variable to be examined is continuous** but the assumptions for parametric tests are violated.  
+
+
+The assumptions of the Mann-Whitney U are as follows:
+
+1. The dependent variable is ordinal or continuous.
+2. The data consist of a randomly selected sample of independent observations from two independent groups.
+3. The dependent variables for the two independent groups share a similar shape.
+
+If the third assumption holds then the hypotheses are:
+
++ $H_0$: The medians in the two groups are equal.
++ $H_A$: There is a difference in medians between the two groups.
+
+If the third assumption does not hold:
+
++ $H_0$: The two groups have the same shape and location.
++ $H_A$: The two groups have a different shape and location.
+
+The alternative hypothesis can be directional, or non-directional.
+
+If the assumptions are met then the Mann-Whitney U test can be carried out as follows:
+
+1. Construct the null and alternative hypotheses and determine the level of significance.
+2. Rank the combined sample of observations from smallest to largest.
+3. Assign the average of the tied ranks to tied observations.
+4. Calculate the sum of the ranks for the two groups separately.
+5. Calculate $U_1$ and $U_2$, which are defined as:
+
+$$ U_1 = n_1n_2 + \frac{n_1(n_1+1)}{2} - R_1 $$
+
+$$ U_2 = n_1n_2 + \frac{n_2(n_2+1)}{2} - R_2 $$
+
+where
+
++ $n_1$ = the number of observations in group 1
++ $n_2$ = the number of observations in group 2
++ $R_1$ = the sum of the ranks assigned to group 1
++ $R_2$ = the sum of the ranks assigned to group 2
+
+6. Calculate $U = min (U_1, U_2)$.
+7. Compare $U$ with the critical value of $U$ at the predetermined level of significance.
+8. The null hypothesis is rejected if $U$ is smaller than the critical value in the table.
+
+When the sample size is large, the distribution of U quickly tends to a normal distribution, with mean
+
+$$ u = \frac{n_1n_2}{2} $$
+
+and standard deviation
+
+$$ \sigma_u = \sqrt{\frac{n_1n_2(n_1+n_2+1)}{12}} $$
+
+In this case, a $z$ statistic is calculated rather than the $U$ statistic. The $z$ statistic is
+
+$$ z = \frac{U - \mu_u}{\sigma_u} = \frac{U - \frac{n_1n_2}{2]}}{\sqrt{\frac{n_1n_2(n_1+n_2+1)}{12}}} $$ 
+
+### Example
+
+The data are a small subset of the data from Coronary Artery Surgery Study (Data from Fisher’s book) and consist of time on a treadmill (seconds) for a control group and a group with three vessels disease.  
+
+```{r eval=FALSE,echo=FALSE}
+
+Control <- c(1014,684,810,990,840,978,1002,1110)
+ThreeVessels <- c(864,636,638,708,786,600,1320,750,594,750)
+data <- data.frame(Group = c(rep("Control",length(Control)),rep("ThreeVessels",length(ThreeVessels))), Time = c(Control,ThreeVessels))
+write.csv(data,"Manual/treadmill-times.csv",row.names=FALSE,quote=FALSE)
+```
+
+```{r echo=FALSE}
+library(knitr)
+data <- read.csv("Manual/treadmill-times.csv")
+kable(data)
+```
+
++ $H_0$: There is no difference in exercise times for the two groups.
++ $H_A$: There is a difference in the exercise time for the two groups.
+
+The first step is to calculate ranks for the complete set of observations:-
+
+```{r echo=FALSE}
+data$Rank <- rank(data$Time)
+kable(data)
+```
+
+The sum of the ranks for the control group is 101, and the sum of the ranks for the three vessels disease group is 70.
+
+$$ U_1 = 8 \times 10 + \frac{8 (8+1)}{2} - 101 = 15 $$
+
+$$ U_2 = 8 \times 10 + \frac{10 (10+1)}{2} - 70 = 65 $$
+
+As 15 < 17, [the value from the tables], there is sufficient evidence to reject the null hypothesis at the 5% level of significance.  Therefore, the control group would exercise longer than those with three vessels disease would, $p=0.025$.
+
+### Analysis using Shiny
+
+These data can be found in the file `treadmill-times.csv` in the `Manual` folder. We can upload the file using the ***Browse*** button. Make sure that ***1st column is a factor?*** is selected; The data should be visible in the tab ***The data***. You can view the data distributions using the ***Data Distribution*** and ***Histogram*** tabs. 
+
+To perform the test itself, make sure that ***Use Parametric Test*** and ***Paired Test*** are not ticked. The following should appear in the tab ***Test Result***;
+
+```{r echo=FALSE}
+wilcox.test(Time~Group,data,correct=FALSE)
+```
+
+***You should notice that R seems to report a different statistic to the manual calculations we used. Specifically it is reporting $max(U_1,U_2)$. However, the same p-value is arrived at in both cases***.
+
+## Wilcoxon Signed-Rank Test
+
+### When to use
+
+The Wilcoxon Signed Rank Test tests the assumption that the sum of the positive ranks equals the sum of the negative ranks.  The test statistic is the smaller of the sum of the positive and the sum of the negative ranks.  The data should be continuous or ordinal in nature.  The paired differences should be independent and symmetrical about the true median difference. 
+
+### Method
+
++ Find the difference in values for each pair (variable 1 – variable 2).  
++ Rank the magnitude of the differences, smallest to largest, assigning the average rank to ties in the differences and no rank to zero differences.
++ Find the sum of the ranks for the positive differences, $W^+$ and the sum of the ranks for the negative differences, $W^-$.  
++ Find N, the total number of differences not including ties.  
++ Find the critical value from the tables and compare $W=min (W^+, W^-)$ reject the null hypothesis if $W$ is less than or equal to the critical value.  
++ If $W^+>W^-$, then variable one tends to be greater than variable two and vice versa.
+
+### Example
+
+As part of a study Mcm2 and Ki67 values were compared to see if there was a difference between the values in patients with cancer.  Data are shown in the table below.  A plot of the differences shows that they are plausibly symmetric so the assumption of symmetry holds.
+
+```{r eval=FALSE,echo=FALSE}
+
+data <- data.frame(Mcm2 = c(14.78,7.96,10.89,12.10,18.23,16.40,18.02,23.35,26.70),Ki67 = c(14.78,8.68,1.57,1.85,5.84,3.04,3.96,8.16,8.40))
+write.csv(data,"Manual/wilcox-srt.csv",quote=FALSE,row.names=FALSE)
+```
+
+```{r results='asis',echo=FALSE}
+data <- read.csv("Manual/wilcox-srt.csv")
+data$Difference <- data$Mcm2 - data$Ki67
+nz <- data$Difference != 0
+data$Rank.Of.Difference[nz] <- rank(data$Difference[nz])
+print(xtable(data),comment=FALSE)
+```
+
+$W^+=35$, $W^-=1$.  $W=min(W^+, W^-)=1$, $N=8$.  From the tables $(N=8, \alpha=0.05)$ the critical value is 3.  As 1<3, there is sufficient evidence to reject the null hypothesis.  Therefore there is a difference between Mcm2 and Ki67 values.  Mcm2 values tend to be higher than Ki67 values.
+
+### Analysis in Shiny
+
+These data can be found in the file `wilcox-srt.csv` and can be imported into the Shiny app using the ***Browse*** button. Make sure that the ***1st column is a factor*** button is **not** ticked, and the data should appear in the ***The data*** tab. Are these data are paired, you will need to tick the ***Paired Test*** tickbox. The ***Test Result*** tab should then display the following result:-
+
+
+```{r echo=FALSE,warning=FALSE}
+data <- read.csv("Manual/wilcox-srt.csv")
+wilcox.test(data$Mcm2,data$Ki67,paired=TRUE)
+```
+
+## Sign Test
+
+This is one of the oldest non-parametric tests.  It is so named because it uses the sign of the differences between two measurements rather than quantitative measurements.  Therefore, it is usually used when quantitative measurement is not possible but it is possible to say which of the pair of observations is greater in some sense.  It is used in the case of two related samples when it is required to establish that two conditions are different.  It can also be used in the one sample case to decide if the median value is different to the proposed median value.
+
+The hypotheses for the one-sample case are:
+
+There is no difference between the median of a group and a proposed median, m.  
+
+$H_0$: median = m.
+
+The alternative hypothesis can be directional or non-directional.  
+
+$H_A$: median $\ne$ m.
+
+The hypotheses for the two-sample case are:
+There is no difference in medians between the two groups. 
+
+$$H_0:  P[X_i > Y_i]= P[X_i < Y_i] = 0.5 $$
+
+The alternative hypothesis can be directional or non-directional.  
+
+$$H_A:  P[X_i > Y_i] \ne P[X_i < Y_i] \ne 0.5 $$
+
+
+
+The test can be used provided the following assumptions are met:
+
+1. The data must be dichotomous or continuous and order must be implied by the coding system. 
+2. Data are randomly selected and are paired observations from a single sample.  The data may be matched pairs or using the subject as their own control.
+
+Once the assumptions have been met the test can be carried out in the following way:
+
+
+1. Decide on the null and alternative hypothesis and $\alpha$
+2. *One sample*: Determine the sign of the difference between the value and the proposed median. 
+*Two sample*: Determine the sign of the difference between the two members of each pair.
+3. One sample: Calculate $N$, the number that are different from the median value (ignore ties).
+Two sample: Calculate $N$, the number of pairs whose differences show a sign (ignore ties).
+4. Let $x$ = the number of fewer signs.  
+5. Decide if $x$ is in the critical region of binomial N,0.5.  The null hypothesis is rejected if the probability of obtaining such an extreme occurrence is less than the pre-specified $\alpha$.
+
+When the sample size is large, the normal approximation to the binomial distribution can be used for the sign test.  This distribution has mean $\mu_x$ which equals $np$ and variance $\sigma^2_x$, which equals $npq$.  The value of the $z$ statistic with a continuity correction for categorical data and $p = q = 0.5$ is 
+
+$$ z = \frac{x - \mu}{\sigma_x} = \frac{(x \pm 0.5)-np}{\sqrt{npq}} = \frac{(x \pm 0.5)-0.5n}{0.5\sqrt{n}} $$
+
+where
+
++ $x=$ the number of +'s or -'s
++ $n=$ the number of paired observations that have been assigned a “+” or “–” value.
+
+When calculating the z statistic, $(x + 0.5)$ is used when $x<0.5n$ and $(x-0.5)$ is used when $x> 0.5n$. The value of $z$ is then compared to the critical value of the standard normal distribution at the pre-stated alpha level ($1.96$ for $\alpha=0.05$).
+
+### Example: One sample case
+
+As part of a study the general health section of the SF-36 was collected.  The subject’s values (shown in the table below) are to be compared to the expected value of 72 within the population using the sign test.
+
+```{r eval=FALSE,echo=FALSE}
+data <- data.frame(GH =c(60,55,75,100,55,60,50,60,72,40,90,75,70,75,55))
+write.csv(data,"Manual/general-health.csv",quote=FALSE,row.names = FALSE)
+```
+
+```{r,echo=FALSE}
+library(knitr)
+data <- read.csv("Manual/general-health.csv")
+kable(data.frame(ID=1:nrow(data),data))
+```
+
+
+1. $H_0$: The General Health values are not different to 72; $H_A$: The General Health values are different to 72.
+
+2.
+
+```{r echo=FALSE,results='asis'}
+data <- read.csv("Manual/general-health.csv")
+data$Sign <- "="
+data$Sign[data$GH > 72] <- "+"
+data$Sign[data$GH < 72] <- "-"
+kable(data)
+```
+
+3. There is one tie so there are 14 values different from the median and N = 14.
+4. There are 9 –’s and 5 +’s, therefore x = 5.
+5. Looking up N=14, p=0.5, x =5 in binomial tables gives a one-sided p-value (Pr) of 0.212 so the two-sided p-value is 0.42 so there is not sufficient evidence to reject null hypothesis.  Therefore, the General Health values in this population cannot be shown to be different to those in the general population.
+
+The data for this example are in the file `general-health.csv`. Make sure that ***Column containing data to test*** is set to 1 and ***True mean*** is set to 72. De-selecting the ***Use Parametric Test?*** option performs the test.
+
+```{r echo=FALSE}
+data <- read.csv("Manual/general-health.csv")
+X <- data[,1]
+mu <- 72
+df <- data.frame(X)
+df$Sign <- "="
+df$Sign[X > mu] <- "+"
+df$Sign[X < mu] <- "-"
+
+npos <- sum(X>mu)
+nneg <- sum(X<mu)
+x <- min(npos,nneg)
+n <- sum(X != mu)
+cat(paste("Number of +'s", npos,"\n"))
+cat(paste("Number of -'s", nneg,"\n"))
+cat(paste("Test statistic:", x,"\n"))
+pv <- round(pbinom(q = x, size = n,prob = 0.5)*2,3)
+cat(paste("P-value using binomial distribution with",n, "trials and p=0.5:",pv,"\n"))
+```
+
+
+### Example: Two sample case
+
+```{r eval=FALSE,echo=FALSE}
+
+data <- data.frame(Time1 = c(60,55,75,100,55,60,50,60,72,40,90,75,70,75,55),Time2 = c(70,65,100,50,70,95,95,65,85,55,95,45,75,65,60))
+write.csv(data,file="Manual/general-health2.csv",quote=FALSE,row.names=FALSE)
+```
+
+General health scores were collected on this group of subjects at a second time point; the scores at this time point are shown in the table below.
+
+
+```{r echo=FALSE,results='asis'}
+
+data <- read.csv("Manual/general-health2.csv")
+kable(data)
+```
+
+1. $H_0$: The General Health values are the same at both time points
+$H_A$: The General Health values are not the same at both time points
+
+2. 
+
+```{r echo=FALSE,results='asis'}
+data$Sign <- "="
+data$Sign[data$Time1 > data$Time2] <- "+"
+data$Sign[data$Time1 < data$Time2] <- "-"
+kable(data)
+```
+
+3. There are no ties; therefore, there are 15 values that are different to each other, N=15.
+4. There are 12 –’s and 3 +’s therefore there are fewer +’s and x = 3.
+5. Looking up N=15, p=0.5, x =3 in binomial tables gives a one-sided p-value (Pr) of 0.0176 so the two-sided p-value is 0.035 so there is sufficient evidence to reject null hypothesis.  Therefore, the General Health values are significantly higher at the second time point compared to the first.
+
+The data for this example are in the file `general-health2.csv`. Make sure that ***1st column is a factor*** and ***Use Parametric Test?*** are not ticked. 
+
+When the ***Paired Test*** option is checked, the display in ***The data*** should change to display the differences between the paired observations and the sign (+ or -). You can use this to judge whether the differences are *symmetrical* or not. In this case, we would want to un-check the ***Symmetrical Differences*** option under ***Relationships between groups***. The sign-test that we have just described will then be performed. 
+
+```{r, echo=FALSE}
+
+npos <- sum(data$Sign == "+")
+nneg <- sum(data$Sign == "-")
+x <- min(npos,nneg)
+n <- npos + nneg
+cat(paste("Number of +'s", npos,"\n"))
+cat(paste("Number of -'s", nneg,"\n"))
+cat(paste("Test statistic:", x,"\n"))
+pv <- round(pbinom(q = x, size = n,prob = 0.5)*2,3)
+cat(paste("P-value using binomial distribution with",n, "trials and p=0.5:",pv,"\n"))
+```
+
+
+The main advantage of the sign test is the lack of assumptions, it is versatile, simple and very easy to use.  It can also be used to test for trend in a series of ordinal measurements or as a quick assessment of direction in an exploratory study.  It does not take into account the magnitude of the differences therefore can be less powerful than the Wilcoxon signed ranks test.
 
 # Tests for categorical variables
 
@@ -622,14 +965,6 @@ where;
 In the example dataset;
 
 $$\chi^2_1 = \frac{(44-46.06)^2}{46.06} + \frac{(40-37.94)^2}{37.94} + \frac{(24-21.94)^2}{21.94} + \frac{(16-18.06)^2}{18.06} = 0.63$$
-
-
-```{r echo=FALSE}
-.Table <- matrix(c(44,40,24,16), 2, 2, byrow=TRUE)
-.Test <- chisq.test(.Table, correct=FALSE)
-.Test
-.Test$expected
-```
 Looking at the relevant chi-squared distribution, with one degree of freedom we can see that the chi-squared statistic that we observe is **consistent with the null hypothesis** that there is no association between tumour shrinkage and treatment group.
 
 Under the null hypothesis, the probability of observing a chi-squared statistic of 0.63 is 
@@ -637,6 +972,14 @@ $$P(\chi^2_1 \ge 0.63) = 0.43 > 0.05$$
 
 
 This is not significant at the 5\% level ($p>0.05$). Hence, there is no evidence of an association between treatment group and tumour shrinkage. These values are automatically-calculated for a contingency table by selecting ***Test Result*** in the [contingency-table Shiny app](http://bioinf-rstud001:3838/contingency-table/).
+
+```{r echo=FALSE}
+.Table <- matrix(c(44,40,24,16), 2, 2, byrow=TRUE)
+.Test <- chisq.test(.Table, correct=FALSE)
+.Test$expected
+.Test
+```
+
 
 The **chi-squared** test is most suited to large datasets. As a general rule, the chi-squared test is appropriate if **at least 80\% of the cells have an expected frequency of 5 or greater**. In addition, none of the cells should have an expected frequency less than 1. If the expected values are very small, categories may be combined (if it makes sense to do so) to create fewer larger categories. Alternatively, Fisher’s exact test can be used.
 
@@ -686,4 +1029,52 @@ fisher.test(.Table)
 The output **Fisher's exact test** tells us that the probability of observing such an extreme combination of frequencies is high, our p-value is 1.000 which is clearly greater than 0.05. 
 
 In this case, there is ***no evidence of an association*** between treatment group and tumour shrinkage.
+
+# Using the Shiny apps
+
+The three apps; 
+
++ [http://bioinf-rstud001:3838/OneSampleTest/](http://bioinf-rstud001:3838/OneSampleTest/)
++ [http://bioinf-rstud001:3838/TwoSampleTest/](http://bioinf-rstud001:3838/TwoSampleTest/)
++ [http://bioinf-rstud001:3838/contingency-table/](http://bioinf-rstud001:3838/contingency-table/)
+
+have been designed to answer to most-common statistical tests and produce diagnostic plots and summaries of data. The statistical test to be performed can be tailored (e.g. parameteric vs non-parametric) using the options under ***Analysis Parameters***.
+
+You should be able to analyse your own data using these apps; provided the data are in a compatible format. 
+
+## Importing data
+
+The apps come pre-loaded with datasets from this manual, so that you can start playing with the data immediately. It is also possible to analyse your own datasets, provided they are presented in a fairly simple format. Each of the datasets used in this manual, and in the practical, can be found inside the [***CourseData zip file***](https://rawgit.com/bioinformatics-core-shared-training/IntroductionToStats/master/CourseData.zip). Each dataset can be loaded into a spreadsheet or text editor so that you check the format of the data, and try to make your own data match the same format.
+
+Ideally, the file should be in *comma-separated* format. *tab-delimited* files can also be imported by changing the ***Separator*** checkbox to ***Tab***. 
+
+There are also options to include the columns headings from the file (***Header***) or to skip rows in the file (***Number of rows to skip in data file before reading the data***). 
+
+### One-Sample test
+
+Data should be in tabular format, with the data you want to test found in one of the columns of the file. The ***Column containing data to test*** text box can be used to indicate the number of the column containing data. If the wrong column number is selected, error messages will occur.
+
+e.g. for the example "Microarray Failure" dataset the failure rates are found in column 2. It is these values that are used in the histograms, boxplots and statistical tests. 
+
+
+### Two-Sample test
+
+Two formats are acceptable
+
+1. A file with two columns; each column with the same number of rows. These are the two groups that you want to compare. 
+  
+    + e.g. `Paired two-sample t-test.csv` in the `Manual` folder
+    + e.g. `bloodplasmacancer2.csv` in the `Practical` folder
+    
+    
+2. A file with two columns; the first column indicating the group that each observation belongs to, and the second column being the observation itself. If choosing this format, the ***1st column is a factor?*** box needs to be ticked.
+
+    + e.g. `Independent two-sample t-tes.csv` in the `Manual` folder
+    + e.g. `bp_times.csv` in the `Practical` folder
+    
+
+## Saving your work
+
+
+
 
