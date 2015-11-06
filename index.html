@@ -3,121 +3,96 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>Introductory Statistics course by bioinformatics-core-shared-training</title>
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Introductiontostats by bioinformatics-core-shared-training</title>
   </head>
 
   <body>
-    <div id="container">
+    <a id="forkme_banner" href="https://github.com/bioinformatics-core-shared-training/IntroductionToStats">View on GitHub</a>
+    <div class="shell">
 
-      <div class="banner">
-        <a href="http://www.cruk.cam.ac.uk/" title="CRUK Cambridge Institute"><img height="40" width="200" align="right" src="img/cruk-cambridge-institute.jpg"/></a>
-      </div>
-              <div class="span10 offset1">
-        <header>
-          <h1>Introduction to Statistical Analysis</h1>
-          <h2></h2>
-        </header>
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Introductiontostats</h1>
+            <h2></h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/bioinformatics-core-shared-training/IntroductionToStats/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/bioinformatics-core-shared-training/IntroductionToStats/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/bioinformatics-core-shared-training/IntroductionToStats" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/bioinformatics-core-shared-training/IntroductionToStats/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/bioinformatics-core-shared-training/IntroductionToStats/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
 
-        <hr>
 
-        <section id="main_content">
-          <h3>
-<a id="description" class="anchor" href="#description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Description.</h3>
+      <span class="banner-fix"></span>
 
-<p>This course provides a refresher on the foundations of statistical analysis. Practicals are conducted using the 'Shiny' package; which provides an accessible interface to the R statistical language.</p>
-<p>Note that this is not a course for learning about the R statistical language itself. If you wish to learn more about R, please see other courses at the University of Cambridge
-<li><a href="http://training.csx.cam.ac.uk/event/1503322">An Introduction to Solving Biological Problems with R</a></li>
-<li><a href="http://training.csx.cam.ac.uk/gsls/event/1431693">An Introduction to R: Software For Statistical Analysis</a></li>
-<li></li>
-</p>
+
+      <section id="main_content">
+        <h3>
+<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+
+<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+
+<pre><code>$ cd your_repo_root/repo_name
+$ git fetch origin
+$ git checkout gh-pages
+</code></pre>
+
+<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
 
 <h3>
-<a id="authors" class="anchor" href="#authors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors.</h3>
-<p>
-<li><a href="https://github.com/markdunning">Mark Dunning</a></li>
-<li>*Sarah Vowler</li>
-<li>Deepak Parashar</li>
-<li>Sarah Dawson</li>
-<li>Elizabeth Merrell</li>
+<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
 
-(* course maintainers)
-</p>
-          <h3>
-<a id="aims" class="anchor" href="#aims" aria-hidden="true"><span class="octicon octicon-link"></span></a>Aims.</h3>
+<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
 
-<p> During this course you will learn about: 
-  <li>Different types of data, distributions and structure within data </li>
-  <li>Summary statistics for continuous and discrete data </li>
-  <li>Formulating a null hypothesis </li>
-  <li>Assumptions of one-sample and two-sample t-tests </li>
-  <li>Interpreting the result of a statistical test </li>
-  <li>Statistical tests of categorical variables </li>
-  <li>The R Commander interface to R </li>
-</p>
-            <h3>
-<a id="objectives" class="anchor" href="#objectives" aria-hidden="true"><span class="octicon octicon-link"></span></a>Learning Objectives.</h3>
-  
-  <p>After this course you should be able to: 
-    <li>State the assumptions required for a one-sample and two-sample t-test and be able to interpret the results of such a test </li>
-    <li>Know when to apply a paired or independent two-sample t-test </li>
-    <li>To perform simple statistical calculations and create graphs in R Commander </li>
-    <li>Understand the limitations of the tests taught within the course</li>
-    <li>Know when more complex statistical methods are required </li>
-  </p>
-            <h3>
+<h3>
+<a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
 
-            <h3>
-  <a id="software" class="anchor" href="#software" aria-hidden="true"><span class="octicon octicon-link"></span></a>Software Requirements.</h3>
-  
-  <p>
-    <li><a href="http://bioinf-rstud001:3838/OneSampleTest/"> One-Sample Test app</a></li>
-    <li><a href="http://bioinf-rstud001:3838/TwoSampleTest/"> Two-Sample Test app</a></li>
-    <li><a href="http://bioinf-rstud001:3838/contingency-table/"> Contingency Test app</a></li>
+<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
 
-  </p>
-  <h3>
-  <a id="materials" class="anchor" href="#materials" aria-hidden="true"><span class="octicon octicon-link"></span></a>Course Materials.</h3>
-  <p>
-  <li>Course <a href="StatsIntroRcmdr_Jun2015.pdf"> Slides</a></li>
-  <li>A <a href="https://rawgit.com/bioinformatics-core-shared-training/IntroductionToStats/master/practical.pdf">Practical</a> </li>
-  <li>A <a href="https://rawgit.com/bioinformatics-core-shared-training/IntroductionToStats/master/manual.pdf">Course Manual</li>
-  <li><a href="https://rawgit.com/bioinformatics-core-shared-training/IntroductionToStats/master/Course Data.zip">Data for the Practical</a></li>
-  <li><a href="https://rawgit.com/bioinformatics-core-shared-training/IntroductionToStats/master/data-for-manual.zip">Data used in the manual</a></li>
-</p>
-  
-  
-  
-  
-  <h3>
-    <a id="further" class="anchor" href="#further" aria-hidden="true"><span class="octicon octicon-link"></span></a>Further Reading.</h3>
-  
-  <p>
-      <li>Using R for Introductory Statists <a href="http://cran.r-project.org/doc/contrib/Verzani-SimpleR.pdf"> free eBook pdf </a></li>
-      <li>Learning Statistics with R <a href="http://health.adelaide.edu.au/psychology/ccs/teaching/lsr/">Free textbook pdf</a></li>
-  </p>
-  
-</section>
+<h3>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
-        <footer>
-          Introductiontostats is maintained by <a href="https://github.com/bioinformatics-core-shared-training">bioinformatics-core-shared-training</a><br>
-          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
+<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
 
-        
-      </div>
+<h3>
+<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+<p>Having trouble with Pages? Check out the documentation at <a href="https://help.github.com/pages">https://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/bioinformatics-core-shared-training">bioinformatics-core-shared-training</a> can be found on <a href="https://github.com/bioinformatics-core-shared-training/IntroductionToStats">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
     </div>
+
+    
   </body>
 </html>
