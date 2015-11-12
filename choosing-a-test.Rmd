@@ -10,7 +10,7 @@ BiocStyle::markdown()
 library("knitr")
 opts_chunk$set(tidy=FALSE,dev="png",fig.show="as.is",
                fig.width=10,fig.height=4,
-               message=FALSE,eval=TRUE,warning=FALSE,echo=FALSE)
+               message=FALSE,eval=FALSE,warning=FALSE,echo=FALSE)
 ```
 
 
@@ -27,7 +27,9 @@ library(Biobase)
 
 ## Dataset 1 `data1.csv`
 
-Survival times of patients with Ovarian or Breast Cancer. Is there a difference in survival time between the two diseases?
+Survival times of patients with Ovarian or Breast Cancer. 
+
+*Is there a difference in survival time between the two diseases?*
 
 ```{r}
 
@@ -47,6 +49,7 @@ After witnessing deplorable sanitary conditions in the Crimea, she wrote several
 
 Her Diagram of the Causes of Mortality in the Army in the East showed that most of the British soldiers who died during the Crimean War died of sickness rather than of wounds or other causes. It also showed that the death rate was higher in the first year of the war, before a Sanitary Commissioners arrived in March 1855 to improve hygiene in the camps and hospitals.
 
+*Do the data support the claim that deaths due to avoidable causes decreased after a change in regime?*
 
 ```{r}
 
@@ -83,7 +86,9 @@ wilcox.test(Deaths~Regime,Night.flt,alternative="greater")
 
 ## Dataset 3: Gene expression `data3.csv`
 
-The expression level of a gene was measured in a breast cancer cohort of ER negative and positive patients. Is the gene differentially-expressed between ER positive and negative patients?
+The expression level of a gene was measured in a breast cancer cohort of ER negative and positive patients. 
+
+*Is the gene differentially-expressed between ER positive and negative patients?*
 
 ```{r}
 data(nki)
@@ -99,6 +104,8 @@ t.test(Expression~ERStatus,data,var.equal=FALSE)
 ## Dataset4: Sleep Data `data4.csv`
 
 Data which show the effect of two soporific drugs (increase in hours of sleep compared to control) on 10 patients.
+
+*Does the drug have an effect on the amount of sleep?*
 
 ```{r}
 data(sleep)
@@ -145,7 +152,13 @@ write.csv(data, file="mystery-data/data7.csv",quote=FALSE,row.names=FALSE)
 boxplot(weightgain ~ type,data)
 ```
 
-## Dataset8: Colon cancer
+## Dataset8: Colon cancer `data8.csv`
+
+The tumor and the normal counter-part samples were prospectively collected from 9 patients who underwent surgical resection at the INT-MI. Neoplastic samples were obtained from the central area of the neoplasia, avoiding to select necrotic material or transition zones with healthy mucosa. Samples of colonic healthy mucosa were resected at least 20 centimeters far from the neoplasia and distant from the surgical resection margins. Tissue samples were stored in liquid nitrogen until RNA extraction. Total RNA was extracted from 10–20 mg of tumor samples and from 30–40 mg of normal samples.
+
+The gene expression measurements for a paticular gene were extracted from the data. 
+
+*Is this gene differentially-expressed between tumours and normals?*
 
 ```{r}
 library (GEOquery)
