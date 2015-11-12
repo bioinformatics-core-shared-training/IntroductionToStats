@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Statistical Analysis"
-author: "Mark Dunning and Sarah Vowler"
+author: "Mark Dunning, Rosemary Tate and Sarah Vowler"
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:  BiocStyle::pdf_document
 toc: TRUE
@@ -432,13 +432,34 @@ Survival times of patients with Ovarian or Breast Cancer.
 
 *Is there a difference in survival time between the two diseases?*
 
-```{r}
+```{r eval=FALSE,echo=FALSE}
 
 data(cancer)
 data <- data.frame(Disease = c(rep("Ovarian",length(cancer$ovary)),rep("Breast",length(cancer$breast))),Time = c(cancer$ovary,cancer$breast))
 write.csv(data, file="mystery-data/data1.csv",quote=FALSE,row.names=FALSE)
-boxplot(Time~Disease,data)
-wilcox.test(Time~Disease,data)
+```
+
+```{r}
+myfile <- "data1.csv"
+sep <- ','
+quote <- '"'
+header <-  TRUE 
+skip <-  0 
+data <- read.csv(myfile, header=header, sep=sep, quote=quote,skip=skip)
+colnames(data) <- c('variable','value')
+head(data)
+library(ggplot2)
+p <- ggplot(data, aes(x = variable,y=value,fill=variable)) + geom_boxplot() + coord_flip()
+p
+lapply(split(data$value,data$variable),summary)
+p <- ggplot(data, aes(x=value)) + geom_histogram(aes(y=..density..),colour='black',fill='white') + facet_wrap(~variable) + stat_function(fun=dnorm,color='red',arg=list(mean=mean(data$value), sd=sd(data$value)))
+var.test(value~variable,data=data)
+p
+alternative <- 'two.sided'
+paired <- FALSE
+var.equal <-FALSE
+wilcox.test(value~variable,data=data,alternative=alternative,paired=paired,var.equal=var.equal)
+
 ```
 
 
@@ -453,6 +474,12 @@ Her Diagram of the Causes of Mortality in the Army in the East showed that most 
 *Do the data support the claim that deaths due to avoidable causes decreased after a change in regime?*
 
 ```{r}
+setwd("mystery-data/")
+```
+
+
+
+```{r eval=FALSE,echo=FALSE}
 
 data("Nightingale")
 
@@ -482,8 +509,33 @@ filter(Night, Cause=="Disease") %>% select(Regime,Deaths) %>% write.csv(file="my
 filter(Night, Cause=="Disease") %>% select(Regime,Deaths) %>% ggplot(aes(x=Regime,y=Deaths)) + geom_boxplot()
 Night.flt <- Night %>% filter(Cause=="Disease") %>% select(Regime,Deaths)
 
-wilcox.test(Deaths~Regime,Night.flt,alternative="greater")
+
 ```
+
+
+```{r}
+myfile <- "data2.csv"
+sep <- ','
+quote <- '"'
+header <-  TRUE 
+skip <-  0 
+data <- read.csv(myfile, header=header, sep=sep, quote=quote,skip=skip)
+colnames(data) <- c('variable','value')
+head(data)
+library(ggplot2)
+p <- ggplot(data, aes(x = variable,y=value,fill=variable)) + geom_boxplot() + coord_flip()
+p
+lapply(split(data$value,data$variable),summary)
+p <- ggplot(data, aes(x=value)) + geom_histogram(aes(y=..density..),colour='black',fill='white') + facet_wrap(~variable) + stat_function(fun=dnorm,color='red',arg=list(mean=mean(data$value), sd=sd(data$value)))
+var.test(value~variable,data=data)
+p
+alternative <- 'two.sided'
+paired <- FALSE
+var.equal <-FALSE
+wilcox.test(value~variable,data=data,alternative=alternative,paired=paired,var.equal=var.equal)
+
+```
+
 
 ## Dataset 3: Gene expression `data3.csv`
 
@@ -491,7 +543,7 @@ The expression level of a gene was measured in a breast cancer cohort of ER nega
 
 *Is the gene differentially-expressed between ER positive and negative patients?*
 
-```{r}
+```{r echo=FALSE,eval=FALSE}
 data(nki)
 
 ind <- grep("ESR1",fData(nki)[,"HUGO.gene.symbol"])
@@ -502,13 +554,37 @@ write.csv(data, file="mystery-data/data3.csv",quote=FALSE,row.names=FALSE)
 t.test(Expression~ERStatus,data,var.equal=FALSE)
 ```
 
+
+```{r}
+myfile <- "data3.csv"
+sep <- ','
+quote <- '"'
+header <-  TRUE 
+skip <-  0 
+data <- read.csv(myfile, header=header, sep=sep, quote=quote,skip=skip)
+colnames(data) <- c('variable','value')
+head(data)
+library(ggplot2)
+p <- ggplot(data, aes(x = variable,y=value,fill=variable)) + geom_boxplot() + coord_flip()
+p
+lapply(split(data$value,data$variable),summary)
+p <- ggplot(data, aes(x=value)) + geom_histogram(aes(y=..density..),colour='black',fill='white') + facet_wrap(~variable) + stat_function(fun=dnorm,color='red',arg=list(mean=mean(data$value), sd=sd(data$value)))
+var.test(value~variable,data=data)
+p
+alternative <- 'two.sided'
+paired <- FALSE
+var.equal <-FALSE
+t.test(value~variable,data=data,alternative=alternative,paired=paired,var.equal=var.equal)
+```
+
+
 ## Dataset4: Sleep Data `data4.csv`
 
 Data which show the effect of two soporific drugs (increase in hours of sleep compared to control) on 10 patients.
 
 *Does the drug have an effect on the amount of sleep?*
 
-```{r}
+```{r echo=FALSE,eval=FALSE}
 data(sleep)
 sleep <- spread(sleep, group,extra)[,-1]
 colnames(sleep) <- c("Group1","Group2")
@@ -517,11 +593,36 @@ write.csv(sleep, file="mystery-data/data4.csv",quote=FALSE,row.names=FALSE)
 t.test(sleep[,1],sleep[,2],paired=TRUE)
 ```
 
+```{r}
+myfile <- "data4.csv"
+sep <- ','
+quote <- '"'
+header <-  TRUE 
+skip <-  0 
+data <- read.csv(myfile, header=header, sep=sep, quote=quote,skip=skip)
+data <- reshape2::melt(data)
+colnames(data) <- c('variable','value')
+head(data)
+library(ggplot2)
+p <- ggplot(data, aes(x = variable,y=value,fill=variable)) + geom_boxplot() + coord_flip()
+p
+lapply(split(data$value,data$variable),summary)
+p <- ggplot(data, aes(x=value)) + geom_histogram(aes(y=..density..),colour='black',fill='white') + facet_wrap(~variable) + stat_function(fun=dnorm,color='red',arg=list(mean=mean(data$value), sd=sd(data$value)))
+var.test(value~variable,data=data)
+p
+alternative <- 'two.sided'
+paired <- FALSE
+var.equal <-TRUE
+t.test(value~variable,data=data,alternative=alternative,paired=paired,var.equal=var.equal)
+
+```
+
+
 ## Dataset5: CD4 `data5.csv`
 
 CD4 cells are carried in the blood as part of the human immune system. One of the effects of the HIV virus is that these cells die. The count of CD4 cells is used in determining the onset of full-blown AIDS in a patient. In this study of the effectiveness of a new anti-viral drug on HIV, 20 HIV-positive patients had their CD4 counts recorded and then were put on a course of treatment with this drug. After using the drug for one year, their CD4 counts were again recorded. The aim of the experiment was to show that patients taking the drug had increased CD4 counts which is not generally seen in HIV-positive patients.
 
-```{r}
+```{r eval=FALSE,echo=FALSE}
 data <- read.csv("http://vincentarelbundock.github.io/Rdatasets/csv/boot/cd4.csv")[,-1]
 write.csv(data,file="mystery-data/data5.csv",quote=FALSE,row.names=FALSE)
 
@@ -529,11 +630,43 @@ boxplot(data)
 t.test(data[,1],data[,2],paired=TRUE)
 ```
 
+```{r}
+myfile <- "data5.csv"
+sep <- ','
+quote <- '"'
+header <-  TRUE 
+skip <-  0 
+data <- read.csv(myfile, header=header, sep=sep, quote=quote,skip=skip)
+data <- reshape2::melt(data)
+colnames(data) <- c('variable','value')
+head(data)
+library(ggplot2)
+p <- ggplot(data, aes(x = variable,y=value,fill=variable)) + geom_boxplot() + coord_flip()
+df <- data.frame(data, Observation = rep(1:(nrow(data)/2),2))
+p2 <- ggplot(df, aes(x = variable,y=value,col=as.factor(Observation),label=Observation,group=as.factor(Observation))) + geom_line() + geom_text() + coord_flip()
+gridExtra::grid.arrange(p,p2)
+p
+lapply(split(data$value,data$variable),summary)
+p <- ggplot(data, aes(x=value)) + geom_histogram(aes(y=..density..),colour='black',fill='white') + facet_wrap(~variable) + stat_function(fun=dnorm,color='red',arg=list(mean=mean(data$value), sd=sd(data$value)))
+var.test(value~variable,data=data)
+newDf <- do.call(cbind,split(data$value,data$variable))
+Diff <- data.frame(Difference=newDf[,1] - newDf[,2])
+p2 <- ggplot(Diff,aes(x=Difference)) + geom_histogram(aes(y=..density..),colour='black',fill='white') + stat_function(fun=dnorm, color='red', arg=list(mean=mean(Diff$Difference), sd=sd(Diff$Difference)))
+#p <- gridExtra::grid.arrange(p,p2)
+#p
+alternative <- 'two.sided'
+paired <- TRUE
+var.equal <-TRUE
+t.test(value~variable,data=data,alternative=alternative,paired=paired,var.equal=var.equal)
+
+```
+
+
 ## Dataset6: Birth Weight `data6.csv`
 
 Risk Factors Associated with Low Infant Birth Weight
 
-```{r}
+```{r echo=FALSE,eval=FALSE}
 data <- read.csv("http://vincentarelbundock.github.io/Rdatasets/csv/MASS/birthwt.csv")
 data <- dplyr::select(data, smoke, bwt) %>% arrange(smoke) %>% mutate(smoke=ifelse(smoke==0,"N","Y")) 
 
@@ -543,15 +676,62 @@ wilcox.test(bwt~smoke,data,paired=FALSE)
 
 ```
 
+```{r}
+myfile <- "data6.csv"
+sep <- ','
+quote <- '"'
+header <-  TRUE 
+skip <-  0 
+data <- read.csv(myfile, header=header, sep=sep, quote=quote,skip=skip)
+colnames(data) <- c('variable','value')
+head(data)
+library(ggplot2)
+p <- ggplot(data, aes(x = variable,y=value,fill=variable)) + geom_boxplot() + coord_flip()
+p
+lapply(split(data$value,data$variable),summary)
+p <- ggplot(data, aes(x=value)) + geom_histogram(aes(y=..density..),colour='black',fill='white') + facet_wrap(~variable) + stat_function(fun=dnorm,color='red',arg=list(mean=mean(data$value), sd=sd(data$value)))
+var.test(value~variable,data=data)
+p
+alternative <- 'two.sided'
+paired <- FALSE
+var.equal <-TRUE
+t.test(value~variable,data=data,alternative=alternative,paired=paired,var.equal=var.equal)
+
+```
+
 ## Dataset7: Weight gain in Rats `data7.csv`
 
 The data arise from an experiment to study the gain in weight of rats fed on four different diets, distinguished by amount of protein (low and high) and by source of protein (beef and cereal).
 
-```{r}
+```{r eval=FALSE,echo=FALSE}
 data <- read.csv("http://vincentarelbundock.github.io/Rdatasets/csv/HSAUR/weightgain.csv")[,c(3,4)] %>% arrange(type)
 write.csv(data, file="mystery-data/data7.csv",quote=FALSE,row.names=FALSE)
 boxplot(weightgain ~ type,data)
 ```
+
+```{r}
+myfile <- "data7.csv"
+sep <- ','
+quote <- '"'
+header <-  TRUE 
+skip <-  0 
+data <- read.csv(myfile, header=header, sep=sep, quote=quote,skip=skip)
+colnames(data) <- c('variable','value')
+head(data)
+library(ggplot2)
+p <- ggplot(data, aes(x = variable,y=value,fill=variable)) + geom_boxplot() + coord_flip()
+p
+lapply(split(data$value,data$variable),summary)
+p <- ggplot(data, aes(x=value)) + geom_histogram(aes(y=..density..),colour='black',fill='white') + facet_wrap(~variable) + stat_function(fun=dnorm,color='red',arg=list(mean=mean(data$value), sd=sd(data$value)))
+var.test(value~variable,data=data)
+p
+alternative <- 'two.sided'
+paired <- FALSE
+var.equal <-TRUE
+t.test(value~variable,data=data,alternative=alternative,paired=paired,var.equal=var.equal)
+
+```
+
 
 ## Dataset8: Colon cancer `data8.csv`
 
@@ -561,7 +741,7 @@ The gene expression measurements for a paticular gene were extracted from the da
 
 *Is this gene differentially-expressed between tumours and normals?*
 
-```{r}
+```{r eval=FALSE,echo=FALSE}
 library (GEOquery)
 url <- "ftp://ftp.ncbi.nih.gov/pub/geo/DATA/SeriesMatrix/GSE33126/"
 filenm <- "GSE33126_series_matrix.txt.gz"
@@ -576,8 +756,37 @@ write.csv(data, file="mystery-data/data8.csv",quote=FALSE,row.names=FALSE)
 ```
 
 
-
 ```{r}
+myfile <- "data8.csv"
+sep <- ','
+quote <- '"'
+header <-  TRUE 
+skip <-  0 
+data <- read.csv(myfile, header=header, sep=sep, quote=quote,skip=skip)
+colnames(data) <- c('variable','value')
+head(data)
+library(ggplot2)
+p <- ggplot(data, aes(x = variable,y=value,fill=variable)) + geom_boxplot() + coord_flip()
+df <- data.frame(data, Observation = rep(1:(nrow(data)/2),2))
+p2 <- ggplot(df, aes(x = variable,y=value,col=as.factor(Observation),label=Observation,group=as.factor(Observation))) + geom_line() + geom_text() + coord_flip()
+gridExtra::grid.arrange(p,p2)
+p
+lapply(split(data$value,data$variable),summary)
+p <- ggplot(data, aes(x=value)) + geom_histogram(aes(y=..density..),colour='black',fill='white') + facet_wrap(~variable) + stat_function(fun=dnorm,color='red',arg=list(mean=mean(data$value), sd=sd(data$value)))
+var.test(value~variable,data=data)
+newDf <- do.call(cbind,split(data$value,data$variable))
+Diff <- data.frame(Difference=newDf[,1] - newDf[,2])
+p2 <- ggplot(Diff,aes(x=Difference)) + geom_histogram(aes(y=..density..),colour='black',fill='white') + stat_function(fun=dnorm, color='red', arg=list(mean=mean(Diff$Difference), sd=sd(Diff$Difference)))
+p <- gridExtra::grid.arrange(p,p2)
+p
+alternative <- 'two.sided'
+paired <- TRUE
+var.equal <-TRUE
+t.test(value~variable,data=data,alternative=alternative,paired=paired,var.equal=var.equal)
+
+```
+
+```{r eval=FALSE,echo=FALSE}
 zip(zipfile="mystery-data.zip",files=paste("mystery-data/",list.files("mystery-data/"),sep="/"))
 ```
 
