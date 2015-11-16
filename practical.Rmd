@@ -11,7 +11,7 @@ BiocStyle::markdown()
 library("knitr")
 opts_chunk$set(tidy=FALSE,dev="png",fig.show="as.is",
                fig.width=10,fig.height=4,
-               message=FALSE,eval=TRUE,warning=FALSE,echo=FALSE)
+               message=FALSE,eval=FALSE,warning=FALSE,echo=FALSE)
 ```
 
 # Introduction
@@ -212,7 +212,7 @@ is less than the bone marrow micro vessel density before treatment.")
 
 ```
 
-Import the data and create a column of differences (after-before). 
+Import the data, making sure that ***`1st column is a factor`*** is *not* ticked. Now choose whether you will be performing a paired test or not. 
 
 
 b) Plot a histogram of the differences. Do the data look normally distributed? Is the paired t –test appropriate?
@@ -293,7 +293,7 @@ c. Carry out both the sign and Wilcoxon signed rank tests on the data.  Do both 
 
 The file **`vitd.csv`** contains data on vitamin D levels for subjects with fibrosis.
 
-a. Use the Mann-Whitney U and median tests to compare vitamin D levels between those with and without fibrosis.  Interpret the results from both tests. Do both tests reach the same conclusion?
+a. Use the Mann-Whitney U and t-tests to compare vitamin D levels between those with and without fibrosis.  Interpret the results from both tests. Do both tests reach the same conclusion?
 
 b. Which test is the more appropriate?
 
