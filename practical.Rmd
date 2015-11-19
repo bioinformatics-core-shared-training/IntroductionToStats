@@ -304,7 +304,7 @@ b. Which test is the more appropriate?
  In **Table 1**, we have the frequencies of the four nucleotides in two sequences. We are interested in comparing the nucleotide proportions of the two sequences.
 
 
-```{r results='asis'}
+```{r results='asis' ,eval=TRUE}
 library(xtable)
 df <-  matrix(c(273,233,236,258,281,246,244,229), 2, 4, byrow=TRUE)
 colnames(df) <- c("A","C","G","T")
@@ -356,7 +356,7 @@ Therefore, there is no evidence of an association between sequence number and nu
 ## Disease association
 **Table 2** gives the frequencies of wild-type and knock-out mice developing a disease thought to be associated to the absence of the knock-out gene. 
 
-```{r results='asis'}
+```{r results='asis' ,eval=TRUE}
 library(xtable)
 df <-  matrix(c(1,7,9,3), 2, 2, byrow=TRUE)
 colnames(df) <- c("WT","KO")
@@ -364,7 +364,7 @@ df <- data.frame(df)
 df$Total <- rowSums(df)
 
 df <- rbind(df, colSums(df))
-rownames(df) <- c("Sequence 1", "Sequence 2","Total")
+rownames(df) <- c("Disease", "No Disease","Total")
 print(xtable(df,label="Table 2",caption="Frequencies of wild-type and knock-out mice developing disease"),comment=FALSE)
 ```
 
@@ -389,7 +389,7 @@ colnames(.Table) <- c('WT', 'KO')
 ```
 
 
-Enter the data into the [Shiny app](http://bioinf-rstud001:3838/contingency-table/) as before;\\
+Enter the data into the [Shiny app](http://bioinf-rstud001:3838/contingency-table/) as before
 
 c) Select the **Fisher's exact test** option to compare the proportion of mice in each group that developed the disease. What is your p-value? How do you interpret the result?
 
