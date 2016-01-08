@@ -2,7 +2,7 @@
 title: "Introduction to Statistical Analysis"
 author: "Mark Dunning, Rosemary Tate and Sarah Vowler"
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
-output:  BiocStyle::pdf_document
+output:  pdf_document
 toc: TRUE
 ---
 
@@ -27,7 +27,7 @@ The datasets you will need for this practical should be [***downloaded and unzip
 ## The effect of disease on height
 A scientist knows that the mean height of females in England is 165cm and wants to know whether her patients with disease X have heights that differ significantly from the population mean - we will use a one-sample t-test to test this. The data are contained in the file **`diseaseX.csv`** and can be analysed online at:-
 
-[http://bioinf-rstud001:3838/OneSampleTest/](http://bioinf-rstud001:3838/OneSampleTest/)
+[http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/](http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/)
 
 a) What are your null and alternative hypotheses?
 
@@ -102,7 +102,7 @@ population mean height of females of 165cm.")
 
 In the file **`bp_times.csv`**, we have the durations of a biological process for two samples of wild-type and knock-out cells (times in seconds). We are interested in seeing whether there is a difference in the durations for the two types of cells – we shall use an **independent t-test** to compare the two cell-types.
 
-These data can be analysed online at [http://bioinf-rstud001:3838/TwoSampleTest/](http://bioinf-rstud001:3838/TwoSampleTest/)
+These data can be analysed online at [http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/](http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/)
 
 a) What are your null and alternative hypotheses?
 
@@ -199,7 +199,7 @@ In blood plasma cancer, there is an increase in blood vessel formation in the bo
 
 We are interested in seeing whether there is a decrease in the bone marrow micro vessel density after treatment with a stem cell transplant. We will use a paired two-sample t-test to compare the before and after bone marrow micro vessel densities. 
 
-The data are contained in the file **`bloodplasmacancer2.csv`**. These data can be analysed online at [http://bioinf-rstud001:3838/TwoSampleTest/](http://bioinf-rstud001:3838/TwoSampleTest/)
+The data are contained in the file **`bloodplasmacancer2.csv`**. These data can be analysed online at [http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/](http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/)
 
 a) What are your null and alternative hypotheses?
 
@@ -326,7 +326,7 @@ Alternative hypothesis. there is an association between sequence number and nucl
 
 ```
 
-We can analyse these data online in the [Shiny app](http://bioinf-rstud001:3838/contingency-table/), by modifying the contents of the ***Enter your data as a table*** box. Columns need to be separated by a '-' character, and rows by a '|'. You can check that you have entered the data correctly by looking at ***The data*** tab. You do not need to calculate row or column totals.
+We can analyse these data online in the [Shiny app](http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/), by modifying the contents of the ***Enter your data as a table*** box. Columns need to be separated by a '-' character, and rows by a '|'. You can check that you have entered the data correctly by looking at ***The data*** tab. You do not need to calculate row or column totals.
 
 
 Note that you do not need to enter the totals.
@@ -389,7 +389,7 @@ colnames(.Table) <- c('WT', 'KO')
 ```
 
 
-Enter the data into the [Shiny app](http://bioinf-rstud001:3838/contingency-table/) as before
+Enter the data into the [Shiny app](http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/) as before
 
 c) Select the **Fisher's exact test** option to compare the proportion of mice in each group that developed the disease. What is your p-value? How do you interpret the result?
 

@@ -2,7 +2,7 @@
 title: "Introduction to Statistical Analysis"
 author: "Mark Dunning and Sarah Vowler"
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
-output:  BiocStyle::pdf_document
+output:  pdf_document
 toc: TRUE
 ---
 
@@ -33,9 +33,9 @@ The goals of statistical methods could be summarised as follows
 
 The aim of this course is to get you to ***think about your data*** and select ***which test is appropriate*** for your analysis. We do not aim to teach you new computational skills. Therefore the tasks in this manual, and exercises in the accompanying practical, can be accomponlished using a series of online 'apps' that we have developed.
 
-+ [http://bioinf-rstud001:3838/OneSampleTest/](http://bioinf-rstud001:3838/OneSampleTest/)
-+ [http://bioinf-rstud001:3838/TwoSampleTest/](http://bioinf-rstud001:3838/TwoSampleTest/)
-+ [http://bioinf-rstud001:3838/contingency-table/](http://bioinf-rstud001:3838/contingency-table/)
++ [http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/](http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/)
++ [http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/](http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/)
++ [http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/](http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/)
 
 The apps were developed using [Shiny](http://shiny.rstudio.com/gallery/), which is an add-on 'package' for the R statistical language that allows analyses to be performed in R without requiring any specialist knowledge. For those that want to progress and learn R, the R code used behind-the-scenes of these apps can be downloaded, modified, or passed-on to collaborators. The Shiny apps are not intended to be a replacement for a statistical software package and only have limited functionality.
 
@@ -254,11 +254,11 @@ A one-sample t-test is the most basic t-test available and should be used if you
 
 The Shiny app to perform tests of this kind can be found at:- 
 
-[http://bioinf-rstud001:3838/OneSampleTest/](http://bioinf-rstud001:3838/OneSampleTest/)
+[http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/](http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/)
 
 ### Example
 
-A microarray supplier claims that their microarray failure rate is 2.1\%. A lab would like to know whether this reflects the failure rates that they've observed over the last 12-months, so they have collected failure rate data on a monthly basis. The data are given in Table $\ref{microarrayTable}$. The first time we load the [one-sample test Shiny app](http://bioinf-rstud001:3838/OneSampleTest/), these data will be loaded automatically.
+A microarray supplier claims that their microarray failure rate is 2.1\%. A lab would like to know whether this reflects the failure rates that they've observed over the last 12-months, so they have collected failure rate data on a monthly basis. The data are given in Table $\ref{microarrayTable}$. The first time we load the [one-sample test Shiny app](http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/), these data will be loaded automatically.
 
 Our \textbf{null hypothesis} is that the mean monthly failure rate of the microarrays is \textbf{equal} to 2.1\%. i.e.
 
@@ -362,7 +362,7 @@ $$P(T \le 3.07 | T \ge 3.07) = 0.01 $$
 
 As the p-value of 0.01 is less than 0.05 (5%), there is **evidence to reject the null hypothesis** and conclude that there is evidence to suggest that the failure rate of the microarrays from this supplier is not 2.1. 
 
-Clicking the ***Test Result*** tab in [Shiny](http://bioinf-rstud001:3838/OneSampleTest/), will reveal the results of the one-sample test, as performed in R. Make sure that you have set the value in the ***True mean*** box to be the correct value. You should see the same test statistic and p-value being reported.
+Clicking the ***Test Result*** tab in [Shiny](http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/), will reveal the results of the one-sample test, as performed in R. Make sure that you have set the value in the ***True mean*** box to be the correct value. You should see the same test statistic and p-value being reported.
 
 ```{r echo=FALSE}
 df<-data.frame(Month=month.name,Failure=c(2.9,2.99,2.48,1.48,2.71,4.17,3.74,3.04,1.23,2.72,3.23,3.4))
@@ -379,7 +379,7 @@ An independent two-sample t-test is used when the two samples are *independent* 
 
 The Shiny app to perform tests of this kind can be found at:- 
 
-[http://bioinf-rstud001:3838/TwoSampleTest/](http://bioinf-rstud001:3838/TwoSampleTest/)
+[http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/](http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/)
 
 
 ### Independent two-sample t-test
@@ -392,7 +392,7 @@ print(xtable(head(df),label = "MiceWeights",caption="Weights of 2 breeds (A and 
 ```
 
 
-**Example**: A researcher is interested in the effect of breed on weight in 4 week old male mice.  40 male mice were used, 20 of breed A and 20 of breed B. The first rows of these data are shown in Table $\ref{MiceWeights}$. The first time we load the [two-sample test Shiny app](http://bioinf-rstud001:3838/TwoSampleTest/), these data will be loaded automatically.
+**Example**: A researcher is interested in the effect of breed on weight in 4 week old male mice.  40 male mice were used, 20 of breed A and 20 of breed B. The first rows of these data are shown in Table $\ref{MiceWeights}$. The first time we load the [two-sample test Shiny app](http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/), these data will be loaded automatically.
 
 
 So, the researcher wants to test the **null hypothesis** that the mean weight of breed A is ***equal*** to the mean weight of breed A in 4 week-old male mice.
@@ -920,7 +920,7 @@ These tests do not give a measure of effect size; they only give a p-value sugge
 
 The Shiny app to perform tests of this kind can be found at:- 
 
-[http://bioinf-rstud001:3838/contingency-table/](http://bioinf-rstud001:3838/contingency-table/)
+[http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/](http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/)
 
 ## Chi-squared tests
 
@@ -937,7 +937,7 @@ print(xtable(ctable,label = "chiSqObserved",caption="Observed frequencies for ch
 ```
 
 
-The data in Table $\ref{chiSqObserved}$ can be used to calculate the chi-squared statistic.  These data are automatically loaded when the [contingency-table Shiny app](http://bioinf-rstud001:3838/contingency-table/) is loaded for the first time.
+The data in Table $\ref{chiSqObserved}$ can be used to calculate the chi-squared statistic.  These data are automatically loaded when the [contingency-table Shiny app](http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/) is loaded for the first time.
 
 From Table $\ref{chiSqObserved}$ the expected frequencies can be calculated and are shown in Table \ref{chiSqExpected}. The expected frequency for the entry in row $i$ and column $j$ is given by:
 
@@ -971,7 +971,7 @@ Under the null hypothesis, the probability of observing a chi-squared statistic 
 $$P(\chi^2_1 \ge 0.63) = 0.43 > 0.05$$
 
 
-This is not significant at the 5\% level ($p>0.05$). Hence, there is no evidence of an association between treatment group and tumour shrinkage. These values are automatically-calculated for a contingency table by selecting ***Test Result*** in the [contingency-table Shiny app](http://bioinf-rstud001:3838/contingency-table/).
+This is not significant at the 5\% level ($p>0.05$). Hence, there is no evidence of an association between treatment group and tumour shrinkage. These values are automatically-calculated for a contingency table by selecting ***Test Result*** in the [contingency-table Shiny app](http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/).
 
 ```{r echo=FALSE}
 .Table <- matrix(c(44,40,24,16), 2, 2, byrow=TRUE)
@@ -1034,9 +1034,9 @@ In this case, there is ***no evidence of an association*** between treatment gro
 
 The three apps; 
 
-+ [http://bioinf-rstud001:3838/OneSampleTest/](http://bioinf-rstud001:3838/OneSampleTest/)
-+ [http://bioinf-rstud001:3838/TwoSampleTest/](http://bioinf-rstud001:3838/TwoSampleTest/)
-+ [http://bioinf-rstud001:3838/contingency-table/](http://bioinf-rstud001:3838/contingency-table/)
++ [http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/](http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/)
++ [http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/](http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/)
++ [http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/](http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/)
 
 have been designed to answer to most-common statistical tests and produce diagnostic plots and summaries of data. The statistical test to be performed can be tailored (e.g. parameteric vs non-parametric) using the options under ***Analysis Parameters***.
 
