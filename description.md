@@ -22,5 +22,5 @@ This course provides a refresher on the foundations of statistical analysis. The
 
 # Related courses
 
-- [An Introduction for R: Software for Statistical Analysis](http://training.csx.cam.ac.uk/bioinformatics/event/1572331
+- [An Introduction for R: Software for Statistical Analysis](http://training.csx.cam.ac.uk/bioinformatics/event/1572331)
 - [An Introduction to Solving Biological Problems Using R](http://training.csx.cam.ac.uk/bioinformatics/event/1614525)
