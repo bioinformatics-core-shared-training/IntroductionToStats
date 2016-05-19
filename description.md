@@ -1,5 +1,5 @@
 # Description: 
-This course provides a refresher on the foundations of statistical analysis. Practicals are conducted using the R commander package, which provides an accessible interface to the R statistical language. 
+This course provides a refresher on the foundations of statistical analysis. The emphasis is on interpreting the results of  a statistical test, and being able to determine the correct test to apply. Practicals are conducted using a series of online apps 
 
 # Aims:During this course you will learn about:
 
@@ -20,3 +20,7 @@ This course provides a refresher on the foundations of statistical analysis. Pra
 - Understand the limitations of the tests taught within the course
 - Know when more complex statistical methods are required 
 
+# Related courses
+
+- [An Introduction for R: Software for Statistical Analysis](http://training.csx.cam.ac.uk/bioinformatics/event/1572331
+- [An Introduction to Solving Biological Problems Using R](http://training.csx.cam.ac.uk/bioinformatics/event/1614525)
