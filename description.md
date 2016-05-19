@@ -1,3 +1,5 @@
+# Introduction to Statistical Analysis
+
 # Description: 
 This course provides a refresher on the foundations of statistical analysis. The emphasis is on interpreting the results of  a statistical test, and being able to determine the correct test to apply. Practicals are conducted using a series of online apps, and we will not teach a particular statistical analysis package, such as R. For courses that teach R, please see the links below. 
 
