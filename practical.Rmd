@@ -426,16 +426,17 @@ library(Biobase)
 ```
 
 
-## Dataset 1 `data1.csv`
+## Dataset 1: Asthma `data1.csv`
 
-Survival times of patients with Ovarian or Breast Cancer. 
+Consider a Phase II clinical trial designed to investigate the effectiveness of a new drug to reduce symptoms of asthma in children. A total of n=10 participants are randomized to receive either the new drug or a placebo. Participants are asked to record the number of episodes of shortness of breath over a 1 week period following receipt of the assigned treatmen
 
-*Is there a difference in survival time between the two diseases?*
+*Is there a difference in the number of episodes of shortness of breath over a 1 week period in participants receiving the new drug as compared to those receiving the placebos?*
 
 ```{r eval=FALSE,echo=FALSE}
+##http://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/BS704_Nonparametric/BS704_Nonparametric_print.html
 
-data(cancer)
-data <- data.frame(Disease = c(rep("Ovarian",length(cancer$ovary)),rep("Breast",length(cancer$breast))),Time = c(cancer$ovary,cancer$breast))
+data <- data.frame(Placebo = c(7,5,6,4,12), Drug = c(3,6,4,2,1))
+
 write.csv(data, file="mystery-data/data1.csv",quote=FALSE,row.names=FALSE)
 ```
 
@@ -537,21 +538,21 @@ wilcox.test(value~variable,data=data,alternative=alternative,paired=paired,var.e
 ```
 
 
-## Dataset 3: Gene expression `data3.csv`
+## Dataset 3: Effect of bran on diet: `data3.csv`
 
-The expression level of a gene was measured in a breast cancer cohort of ER negative and positive patients. 
+The addition of bran to the diet has been reported to benefit patients with diverticulosis. Several different bran preparations are available, and a clinician wants to test the efficacy of two of them on patients, since favourable claims have been made for each. Among the consequences of administering bran that requires testing is the transit time through the alimentary canal. By random allocation the clinician selects two groups of patients aged 40-64 with diverticulosis of comparable severity. Sample 1 contains 15 patients who are given treatment A, and sample 2 contains 12 patients who are given treatment B.
 
-*Is the gene differentially-expressed between ER positive and negative patients?*
+*Does transit time differ in the two groups of patients taking these two preparations?*
+
 
 ```{r echo=FALSE,eval=FALSE}
-data(nki)
+##http://www.bmj.com/about-bmj/resources-readers/publications/statistics-square-one/7-t-tests
 
-ind <- grep("ESR1",fData(nki)[,"HUGO.gene.symbol"])
-
-data <- data.frame(ERStatus = ifelse(pData(nki)[,"er"]==1, "Positive","Negative"),Expression = exprs(nki)[ind,])
+data <- data.frame(Group = c(rep("A", 15),rep("B", 12)), Time = c(44,51,52,55,60,62,66,68,69,71,71,76,82,91,108, 
+                                                                  52,64,68,74,79,83,84,88,95,97,101,116))
 
 write.csv(data, file="mystery-data/data3.csv",quote=FALSE,row.names=FALSE)
-t.test(Expression~ERStatus,data,var.equal=FALSE)
+t.test(Time~Group,data,var.equal=TRUE)
 ```
 
 
@@ -620,7 +621,9 @@ t.test(value~variable,data=data,alternative=alternative,paired=paired,var.equal=
 
 ## Dataset5: CD4 `data5.csv`
 
-CD4 cells are carried in the blood as part of the human immune system. One of the effects of the HIV virus is that these cells die. The count of CD4 cells is used in determining the onset of full-blown AIDS in a patient. In this study of the effectiveness of a new anti-viral drug on HIV, 20 HIV-positive patients had their CD4 counts recorded and then were put on a course of treatment with this drug. After using the drug for one year, their CD4 counts were again recorded. The aim of the experiment was to show that patients taking the drug had increased CD4 counts which is not generally seen in HIV-positive patients.
+CD4 cells are carried in the blood as part of the human immune system. One of the effects of the HIV virus is that these cells die. The count of CD4 cells is used in determining the onset of full-blown AIDS in a patient. In this study of the effectiveness of a new anti-viral drug on HIV, 20 HIV-positive patients had their CD4 counts recorded and then were put on a course of treatment with this drug. After using the drug for one year, their CD4 counts were again recorded. 
+
+*Do patients taking the drug have increased CD4 counts?*
 
 ```{r eval=FALSE,echo=FALSE}
 data <- read.csv("http://vincentarelbundock.github.io/Rdatasets/csv/boot/cd4.csv")[,-1]
@@ -662,17 +665,26 @@ t.test(value~variable,data=data,alternative=alternative,paired=paired,var.equal=
 ```
 
 
-## Dataset6: Birth Weight `data6.csv`
+## Dataset6: Drink Driving `data6.csv`
 
-Risk Factors Associated with Low Infant Birth Weight
+Drunk driving is one of the main causes of car accidents. Interviews with drunk drivers who were involved in accidents and survived revealed that one of the main problems is that drivers do not realize that they are impaired, thinking “I only had 1-2 drinks … I am OK to drive.”
+
+A sample of 100 drivers was chosen, and their reaction times in an obstacle course were measured before and after drinking two beers. The purpose of this study was to check whether drivers are impaired after drinking two beers
+
+*Does drinking beer alter the reaction time of the driver?*
 
 ```{r echo=FALSE,eval=FALSE}
-data <- read.csv("http://vincentarelbundock.github.io/Rdatasets/csv/MASS/birthwt.csv")
-data <- dplyr::select(data, smoke, bwt) %>% arrange(smoke) %>% mutate(smoke=ifelse(smoke==0,"N","Y")) 
 
-write.csv(data,file="mystery-data/data6.csv",quote=FALSE,row.names=FALSE)
+## http://bolt.mph.ufl.edu/6050-6052/unit-4b/module-13/paired-t-test/
+# Study of 20 people initially. Let's fake the data to add a few more observations....
 
-wilcox.test(bwt~smoke,data,paired=FALSE)
+data <- read.csv("http://media.news.health.ufl.edu/misc/bolt/Intro/files/unit4/Mod13Data/beers.csv")
+
+data2 <- data.frame(Before = rnorm(100, mean=mean(data[,1]),sd = sd(data[,1])),After = rnorm(100, mean=mean(data[,2]),sd=sd(data[,2])))
+
+write.csv(data2,file="mystery-data/data6.csv",quote=FALSE,row.names=FALSE)
+
+
 
 ```
 
@@ -689,7 +701,7 @@ library(ggplot2)
 p <- ggplot(data, aes(x = variable,y=value,fill=variable)) + geom_boxplot() + coord_flip()
 p
 lapply(split(data$value,data$variable),summary)
-p <- ggplot(data, aes(x=value)) + geom_histogram(aes(y=..density..),colour='black',fill='white') + facet_wrap(~variable) + stat_function(fun=dnorm,color='red',arg=list(mean=mean(data$value), sd=sd(data$value)))
+p <- ggplot(data, aes(x=value)) + geom_histogram(aes(y=..density..),colour='black',fill='white') + facet_wrap(~variable) + stat_function(fun=dnorm,color='red',args=list(mean=mean(data$value), sd=sd(data$value)))
 var.test(value~variable,data=data)
 p
 alternative <- 'two.sided'
@@ -702,6 +714,8 @@ t.test(value~variable,data=data,alternative=alternative,paired=paired,var.equal=
 ## Dataset7: Weight gain in Rats `data7.csv`
 
 The data arise from an experiment to study the gain in weight of rats fed on four different diets, distinguished by amount of protein (low and high) and by source of protein (beef and cereal).
+
+*Does the high protein diet increase the weight of the rats?*
 
 ```{r eval=FALSE,echo=FALSE}
 data <- read.csv("http://vincentarelbundock.github.io/Rdatasets/csv/HSAUR/weightgain.csv")[,c(3,4)] %>% arrange(type)
