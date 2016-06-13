@@ -426,17 +426,20 @@ library(Biobase)
 ```
 
 
-## Dataset 1: Asthma `data1.csv`
 
-Consider a Phase II clinical trial designed to investigate the effectiveness of a new drug to reduce symptoms of asthma in children. A total of n=10 participants are randomized to receive either the new drug or a placebo. Participants are asked to record the number of episodes of shortness of breath over a 1 week period following receipt of the assigned treatmen
 
-*Is there a difference in the number of episodes of shortness of breath over a 1 week period in participants receiving the new drug as compared to those receiving the placebos?*
+## Dataset 1: Barley yields `data1.csv`
+
+In this data set named immer, the barley yield in years 1931 and 1932 of the same field are recorded. 
+
+* Is there evidence for a difference in yield between 1931 and 1932?*
 
 ```{r eval=FALSE,echo=FALSE}
-##http://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/BS704_Nonparametric/BS704_Nonparametric_print.html
-
-data <- data.frame(Placebo = c(7,5,6,4,12), Drug = c(3,6,4,2,1))
-
+#http://www.r-tutor.com/elementary-statistics/non-parametric-methods/wilcoxon-signed-rank-test
+library(MASS)
+data(immer)
+data <- immer[,c("Y1","Y2")]
+wilcox.test(immer$Y1, immer$Y2, paired=TRUE) 
 write.csv(data, file="mystery-data/data1.csv",quote=FALSE,row.names=FALSE)
 ```
 
