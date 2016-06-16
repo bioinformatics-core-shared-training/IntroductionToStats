@@ -430,9 +430,9 @@ library(Biobase)
 
 ## Dataset 1: Barley yields `data1.csv`
 
-In this data set named immer, the barley yield in years 1931 and 1932 of the same field are recorded. 
+In this data set named, the barley yield in years 1931 and 1932 of the same field are recorded. 
 
-* Is there evidence for a difference in yield between 1931 and 1932?*
+*Is there evidence for a difference in yield between 1931 and 1932?*
 
 ```{r eval=FALSE,echo=FALSE}
 #http://www.r-tutor.com/elementary-statistics/non-parametric-methods/wilcoxon-signed-rank-test
