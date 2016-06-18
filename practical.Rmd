@@ -22,7 +22,7 @@ To answer the questions in this practical we will be using apps that we have dev
 The datasets you will need for this practical should be [***downloaded and unzipped now***](https://rawgit.com/bioinformatics-core-shared-training/IntroductionToStats/master/CourseData.zip)
 
 
-# T-tests practical
+# T-tests practical: Parametric Tests
 
 ## The effect of disease on height
 A scientist knows that the mean height of females in England is 165cm and wants to know whether her patients with disease X have heights that differ significantly from the population mean - we will use a one-sample t-test to test this. The data are contained in the file **`diseaseX.csv`** and can be analysed online at:-
@@ -276,6 +276,9 @@ Therefore, we might conclude that there is an association of a decrease in bone 
 density after treatment with bone marrow transplant. It is important to note the small sample size here. 
 Studying just 7 patients means we will only be able to detect large differences.")
 ```
+
+# T-tests practical: Non-Parametric Tests
+
 
 ## Birth-weight of twins
 
