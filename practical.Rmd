@@ -39,8 +39,9 @@ cat("Alternative hypothesis: The mean height of female patients with disease X !
 ```
 
 
-To import the file `diseaseX.csv` into ***Shiny*** you will need to select the `Choose File` option and navigate to where the course data are located on your laptop. You can use the ***The data*** tab to check that the data has be imported correctly.
+To import the file `diseaseX.csv` into ***Shiny*** you will need to select the `Choose File` option from the `Data Input` tab and navigate to where the course data are located on your laptop. The right-hand panel of the `Data Input` tab should update to show the Heights of various individuals in the study.
 
+Also, on the `Data Input` tab you will need to change the value of ***True mean***.
 
 ```{r}
 myfile <- "Practical/diseaseX.csv"
@@ -53,9 +54,9 @@ data <- read.csv(myfile, header=header, sep=sep, quote=quote,skip=skip)
 
 
 
-b) A histogram of the `Height` variable will be automatically generate for you. To view it, click on the ***Data Distribution***
+b) A histogram and boxplot of the `Height` variable will be automatically generated for you. To view it, click on the ***Data Distribution***. You can toggle whether to overlay a density plot on top of the boxplot, or choose different bin sizes for the histogram.
 
-Do the data look normally distributed? Based on the histogram, is the one-sample t –test appropriate?
+Do the data look normally distributed? Based on the plots, is the one-sample t –test appropriate?
 
 ```{r}
 datacol <-  2 
@@ -71,9 +72,7 @@ cat("In this case the data look normally distributed. Therefore, the one-sample 
 
 
 
-c) We are interested in knowing whether the mean height in our sample of patients with disease X is different from that of the general population. Perform a **one-sample t-test**
-
-Remember to change the value of ***True mean***.
+c) We are interested in knowing whether the mean height in our sample of patients with disease X is different from that of the general population. Perform a **one-sample t-test** by clicking the ***Statistical Analysis*** tab.
 
 What is the mean height in your sample? What is your value of t? What is the p-value? How do you interpret the p-value?
 
@@ -118,7 +117,7 @@ biological process for the two cell types.")
 
 Import the data using ***Choose File*** as before. Make sure that the ***1st column is a factor?*** checkbox is ticked.
 
-b) Histograms to compare the two groups will be created for you automatically. Do the data look normally distributed for each cell-type? Is the independent t-test appropriate.
+b) Histograms and boxplots to compare the two groups will be created for you automatically. Do the data look normally distributed for each cell-type? Is the independent t-test appropriate?
 
 
 ```{r}
@@ -139,25 +138,7 @@ easily draw a bell shape over each of the two histograms. The independent t-test
 ```
 
 
-c) Use the *Numerical statistics* analysis to compute descriptive statistics for each group. 
-
-```{r}
-lapply(split(data$value,data$variable),RcmdrMisc::numSummary)
-with(data, RcmdrMisc::plotMeans(value,variable,error.bars="conf.int",level=0.95))
-```
-
-
-Given the distribution of your data, which statistics might you report to summarise your data? Look at and compare the 95\% confidence intervals of the mean durations of the two cell-types. Do they overlap?
-
-```{r}
-cat("The normality assumption seems reasonable so the mean and standard deviation 
-(or standard error or 95% CI) provide a good summary of the data. 
-If the data were skewed, the median and interquartile range would be more meaningful.  
-The confidence intervals do not overlap.")
-```
-
-
-d) In order to apply the correct statistical test, we need to test to see if the variances of the two groups are comparable. This is tested for us automatically in the Shiny app. Click the ***Histogram*** tab to see the result.
+c) In order to apply the correct statistical test, we need to test to see if the variances of the two groups are comparable. This is tested for us automatically in the Shiny app. Click the ***Statistical Analysis*** tab to see the result of the F-test.
 
 What do you conclude from the p-value of this test. How does it influence what test to use?
 
@@ -168,9 +149,9 @@ cat("The test yields a p-value of 0.03568, which is sufficient evidence
 ```
 
 
-e) Use the appropriate test to compare the durations of the two groups.
+d) Use the appropriate test to compare the durations of the two groups.
 
-Is a Welch's correction needed? What is your value of t? What is the p-value? How do you interpret the p-value? Is this in agreement with the 95\% confidence intervals?
+Is a Welch's correction needed? What is your value of t? What is the p-value? How do you interpret the p-value? 
 
 ```{r}
 alternative <- 'two.sided'
@@ -212,10 +193,10 @@ is less than the bone marrow micro vessel density before treatment.")
 
 ```
 
-Import the data, making sure that ***`1st column is a factor`*** is *not* ticked. Now choose whether you will be performing a paired test or not. 
+Import the data, making sure that ***`1st column is a factor`*** is *not* ticked. Now choose whether you will be performing a paired test or not by ticking the **Paired Samples?** box under ***Are your samples paired?***. 
 
 
-b) Plot a histogram of the differences. Do the data look normally distributed? Is the paired t –test appropriate?
+b) View the histogram and boxplot of the paired differences on the ***Differences*** tab. Do the data look normally distributed? Is the paired t –test appropriate?
 
 ```{r results='hide'}
 myfile <- "Practical/bloodplasmacancer2.csv"
