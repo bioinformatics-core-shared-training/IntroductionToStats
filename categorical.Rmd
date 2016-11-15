@@ -1,0 +1,249 @@
+---
+title: "Tests for Categorical Variables"
+author: "Mark Dunning. Original materials by Materials by Deepak Parashar, Sarah Dawson and Sarah Vowler"
+date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
+output: 
+  slidy_presentation:
+    footer: 'This work is licensed under the Creative Commons Attribution-ShareAlike
+      2.0. COURSE HOME: tiny.cc/crukStats'
+  ioslides_presentation: default
+  beamer_presentation: default
+css: mystyle.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = NA,echo=FALSE,message=FALSE,warning = FALSE)
+```
+
+# Tests for categorical variables
+
+## Associations between categorical variables
+
+- All about frequencies!
+- Row x Column table (2 x 2 simplest)
+- Categorical data
+- Look for association (relationship) between row variable and column variable
+
+```{r}
+df <- data.frame(Tumour.Did.Not.Shrink = c(44,24), Tumour.Did.Shrink = c(40,16))
+rownames(df) <- c("Treatment","Placebo")
+library(knitr)
+kable(df)
+```
+
+## Chi-square test
+
+- E.g. Research question: A trial to assess the effectiveness of a new treatment versus a placebo in reducing tumour size in patients with ovarian cancer.
+
+```{r}
+kable(df)
+```
+
+- Is there an association between treatment group and tumour shrinkage
+- Null hypothesis, $H_0$: No association
+- Alternative hypothesis, $H_1$: Some association
+
+
+## Chi-square test: calculating expected frequencies
+
+```{r}
+df2 <- cbind(df, rowSums(df))
+df2 <- rbind(df2, colSums(df))
+colnames(df2)[3] <- rownames(df2)[3] <- "Total"
+kable(df2)
+```
+
+$$E = \frac{row total \times col total}{overall total} $$
+
+- e.g. for row 1, column 1
+$$\frac{84}{124} \times \frac{68}{124} \times 124 = \frac{84\times68}{124} = 46.1$$
+
+    
+## Chi-square test: calculating the chi-square statistic
+
+***Observed frequencies:***
+
+```{r}
+csq <- chisq.test(df,correct = FALSE)
+kable(df)
+```
+
+***Expected frequencies:***
+
+```{r}
+kable(round(csq$expected,1))
+```
+
+$$\chi^2_1 = \frac{(44-46.06)^2}{46.06} + \frac{(40-37.94)^2}{37.94} + \frac{(24-21.94)^2}{21.94} + \frac{(16-18.06)^2}{18.06} = 0.63$$
+
+## Chi-square test
+
+```{r}
+library(ggplot2)
+degf <- csq$parameter
+
+xmax <- max(4,csq$statistic)
+xs <- seq(0, xmax, length.out = 10000)
+df <- data.frame(X = xs, Y = dchisq(xs,degf))
+
+title <- substitute(paste(chi^2, " with ", degf, " degrees of freedom"),list(degf=degf))
+
+p <- ggplot(df, aes(x=X,y=Y)) + geom_line() + geom_vline(xintercept=csq$statistic,col="red") + xlim(0,xmax+1) + ggtitle(title)
+p
+pval <- round(csq$p.value,2)
+
+```
+
+Test statistic: ${\chi_1}^2$ = `r pval`
+df = `degf`
+P-value = `r pval`
+
+***Do not reject $H_0$ (No evidence of an association between treatment group and tumour shrinkage)***
+
+## Limitations of the chi-square test
+
+- In general, a Chi-square test is appropriate when:
+    + at least 80% of the cells have an expected frequency of 5 or greater
+    + none of the cells have an expected frequency less than 1 
+- If these conditions aren’t met, ***Fisher’s exact test*** should be used.
+
+## Same question, smaller sample size
+
+- e.g. Research question: Is there an association between treatment group and tumour shrinkage?
+
+
+```{r}
+df <- data.frame(Tumour.Did.Not.Shrink = c(8,9), Tumour.Did.Shrink = c(3,4))
+rownames(df) <- c("Treatment","Placebo")
+df2 <- cbind(df, rowSums(df))
+df2 <- rbind(df2, colSums(df))
+colnames(df2)[3] <- rownames(df2)[3] <- "Total"
+kable(df2)
+```
+
+- Null hypothesis: $H_0$: No association
+- Alternative hypothesis: $H_1$: Some association
+
+## Fishers' exact test; results
+
+Observed frequencies:- 
+
+```{r}
+exp <- round(chisq.test(df)$expected,1)
+
+```
+
+Expected frequencies:-
+
+```{r}
+kable(exp)
+pv <- fisher.test(df)$p.value
+```
+
+- Test statistic: N/A
+- P-value `r pv`
+- Interpretation: ***Do not reject** $H_0$ (No evidence of an association between treatment group and tumour shrinkage)
+
+## Chi-square test for trend
+
+- e.g. Research question: Is there a linear association between tumour grade and the incidence of tumour shrinkage
+
+```{r}
+df <- data.frame(Tumour.Did.Not.Shrink = c(18,15,11), Tumour.Did.Shrink = c(5,14,21))
+rownames(df) <- c("Grade 1","Grade 2", "Grade 3")
+df2 <- cbind(df, rowSums(df))
+df2 <- rbind(df2, colSums(df))
+colnames(df2)[3] <- rownames(df2)[4] <- "Total"
+kable(df2)
+```
+
+- Null hypothesis: $H_0$: No linear association
+- Alternative hypothesis: $H_1$: Some linear association
+
+## Expected frequencies
+
+```{r}
+kable(df2)
+```
+
+Expected
+
+```{r}
+exp <- round(chisq.test(df)$expected,1)
+exp
+```
+
+## Chi-square test for trend
+
+```{r}
+
+```
+
+## Chi-square test for trend; results
+
+Test statistic: 10.18
+DF = 1
+P-value = 0.001
+***Reject*** $H_0$ (evidence of a linear association between tumour grade and tumour shrinkage)
+
+
+## Summary - Categorical variables
+
+- Chi-square test
+    + Use when we have two categorical variables, each with two or more levels, and our expected frequencies are not too small. 
+
+- Fishers exact test
+    + Use when we have two categorical variables, each with two levels, and our expected frequencies are small. 
+ 
+- Chi-square test for trend
+    + Use when we have two categorical variables, where one or both are naturally ordered and the ordered variable has at least three levels, and our expected frequencies are not too small. 
+
+- (McNemar’s test)
+    + Use when we have two categorical paired variables.
+
+## Summary - Categorical variables
+
+- Turn scientific question to null and alternative hypothesis
+
+- Calculate expected frequencies
+
+- Think about test assumptions
+
+- Carry out chi-square or Fishers test if appropriate
+
+## Contingency table practical
+
+- Complete contingency table practical
+
+# Wrap-up
+
+## Small group Exercise
+
+- In groups of 3 /4 you are going to explore several example datasets
+- Each dataset has a brief explanation
+    + You have to decide what test is appropriate?
+    + Parametric / Non-parametric?
+    + Paired? Independent?
+    + Two-sided?
+- Record your observations here:-
+https://public.etherpad-mozilla.org/p/2016-11-28-intro-to-stats
+
+
+
+## References
+
+- Essential Medical Statistics, Betty Kirkwood and Jonathan Sterne, Wiley-Blackwell, 2nd Edition 2003.
+- Practical Statistics for Medical Research, Douglas G. Altman, Chapman & Hall / CRC, 1999.    
+- Ten Simple Rules for Effective Statistical Practice, Robert E. Kass, Brian S. Caffo, Marie Davidian, Xio-Li Meng, Bin Yu, Nancy Reid http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004961                
+
+## Finally
+
+- Course Materials:-
+
+    + http://tiny.cc/crukStats
+
+- Course Feedback:-
+
+    + http://tinyurl.com/stats-oct17
+
+
