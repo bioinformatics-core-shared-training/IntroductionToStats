@@ -19,7 +19,7 @@
   <p class="author">
 Mark Dunning. Original materials by Materials by Deepak Parashar, Sarah Dawson and Sarah Vowler
   </p>
-  <p class="date">Last modified: 15 Nov 2016</p>
+  <p class="date">Last modified: 18 Nov 2016</p>
 </div>
 <div id="tests-for-categorical-variables" class="titleslide slide section level1"><h1>Tests for categorical variables</h1></div><div id="associations-between-categorical-variables" class="slide section level2">
 <h1>Associations between categorical variables</h1>
@@ -27,140 +27,72 @@ Mark Dunning. Original materials by Materials by Deepak Parashar, Sarah Dawson a
 <li>All about frequencies!</li>
 <li>Row x Column table (2 x 2 simplest)</li>
 <li>Categorical data</li>
-<li><p>Look for association (relationship) between row variable and column variable</p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Tum</th>
-<th>our.Did.Not.Shrink Tum</th>
-<th align="left">our.Did.Shrink</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">Treatment</td>
-<td>44</td>
-<td align="left">40</td>
-</tr>
-<tr class="even">
-<td align="right">Placebo</td>
-<td>24</td>
-<td align="left">16</td>
-</tr>
-</tbody>
-</table></li>
+<li>Look for association (relationship) between row variable and column variable</li>
 </ul>
+<pre><code>
++-----------+-----------------------+-------------------+
+|           | Tumour.Did.Not.Shrink | Tumour.Did.Shrink |
++===========+=======================+===================+
+| Treatment | 44.00                 | 40.00             |
++-----------+-----------------------+-------------------+
+| Placebo   | 24.00                 | 16.00             |
++-----------+-----------------------+-------------------+</code></pre>
 </div><div id="chi-square-test" class="slide section level2">
 <h1>Chi-square test</h1>
 <ul>
-<li><p>E.g. Research question: A trial to assess the effectiveness of a new treatment versus a placebo in reducing tumour size in patients with ovarian cancer.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Tum</th>
-<th>our.Did.Not.Shrink Tum</th>
-<th align="left">our.Did.Shrink</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">Treatment</td>
-<td>44</td>
-<td align="left">40</td>
-</tr>
-<tr class="even">
-<td align="right">Placebo</td>
-<td>24</td>
-<td align="left">16</td>
-</tr>
-</tbody>
-</table></li>
+<li>E.g. Research question: A trial to assess the effectiveness of a new treatment versus a placebo in reducing tumour size in patients with ovarian cancer.</li>
+</ul>
+<pre><code>
++-----------+-----------------------+-------------------+
+|           | Tumour.Did.Not.Shrink | Tumour.Did.Shrink |
++===========+=======================+===================+
+| Treatment | 44.00                 | 40.00             |
++-----------+-----------------------+-------------------+
+| Placebo   | 24.00                 | 16.00             |
++-----------+-----------------------+-------------------+</code></pre>
+<ul>
 <li>Is there an association between treatment group and tumour shrinkage</li>
 <li>Null hypothesis, <span class="math inline">\(H_0\)</span>: No association</li>
-<li><p>Alternative hypothesis, <span class="math inline">\(H_1\)</span>: Some association</p></li>
+<li>Alternative hypothesis, <span class="math inline">\(H_1\)</span>: Some association</li>
+<li>We can explore these data at:-
+<ul>
+<li><a href="http://bioinformatics.cruk.cam.ac.uk/apps/stats//contingency-table/" class="uri">http://bioinformatics.cruk.cam.ac.uk/apps/stats//contingency-table/</a></li>
+</ul></li>
 </ul>
 </div><div id="chi-square-test-calculating-expected-frequencies" class="slide section level2">
 <h1>Chi-square test: calculating expected frequencies</h1>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th align="right">Tumour.Did.Not.Shrink</th>
-<th align="right">Tumour.Did.Shrink</th>
-<th align="right">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Treatment</td>
-<td align="right">44</td>
-<td align="right">40</td>
-<td align="right">84</td>
-</tr>
-<tr class="even">
-<td>Placebo</td>
-<td align="right">24</td>
-<td align="right">16</td>
-<td align="right">40</td>
-</tr>
-<tr class="odd">
-<td>Total</td>
-<td align="right">68</td>
-<td align="right">56</td>
-<td align="right">68</td>
-</tr>
-</tbody>
-</table>
-<p><span class="math display">\[E = \frac{row total \times col total}{overall total} \]</span></p>
+<pre><code>
++-----------+-----------------------+-------------------+-------+
+|           | Tumour.Did.Not.Shrink | Tumour.Did.Shrink | Total |
++===========+=======================+===================+=======+
+| Treatment | 44.00                 | 40.00             | 84.00 |
++-----------+-----------------------+-------------------+-------+
+| Placebo   | 24.00                 | 16.00             | 40.00 |
++-----------+-----------------------+-------------------+-------+
+| Total     | 68.00                 | 56.00             | 68.00 |
++-----------+-----------------------+-------------------+-------+</code></pre>
+<p><span class="math display">\[E = \frac{row.total \times col.total}{overall.total} \]</span></p>
 <ul>
 <li>e.g. for row 1, column 1 <span class="math display">\[\frac{84}{124} \times \frac{68}{124} \times 124 = \frac{84\times68}{124} = 46.1\]</span></li>
 </ul>
 </div><div id="chi-square-test-calculating-the-chi-square-statistic" class="slide section level2">
 <h1>Chi-square test: calculating the chi-square statistic</h1>
 <p><strong><em>Observed frequencies:</em></strong></p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th align="right">Tumour.Did.Not.Shrink</th>
-<th align="right">Tumour.Did.Shrink</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Treatment</td>
-<td align="right">44</td>
-<td align="right">40</td>
-</tr>
-<tr class="even">
-<td>Placebo</td>
-<td align="right">24</td>
-<td align="right">16</td>
-</tr>
-</tbody>
-</table>
+<pre><code>
++-----------+-----------------------+-------------------+
+|           | Tumour.Did.Not.Shrink | Tumour.Did.Shrink |
++===========+=======================+===================+
+| Treatment | 44.00                 | 40.00             |
++-----------+-----------------------+-------------------+
+| Placebo   | 24.00                 | 16.00             |
++-----------+-----------------------+-------------------+</code></pre>
 <p><strong><em>Expected frequencies:</em></strong></p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th align="right">Tumour.Did.Not.Shrink</th>
-<th align="right">Tumour.Did.Shrink</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Treatment</td>
-<td align="right">46.1</td>
-<td align="right">37.9</td>
-</tr>
-<tr class="even">
-<td>Placebo</td>
-<td align="right">21.9</td>
-<td align="right">18.1</td>
-</tr>
-</tbody>
-</table>
+<pre><code>
++-------+-------+
+| 46.06 | 37.94 |
++-------+-------+
+| 21.94 | 18.06 |
++-------+-------+</code></pre>
 <p><span class="math display">\[\chi^2_1 = \frac{(44-46.06)^2}{46.06} + \frac{(40-37.94)^2}{37.94} + \frac{(24-21.94)^2}{21.94} + \frac{(16-18.06)^2}{18.06} = 0.63\]</span></p>
 </div><div id="chi-square-test-1" class="slide section level2">
 <h1>Chi-square test</h1>
@@ -175,166 +107,95 @@ Mark Dunning. Original materials by Materials by Deepak Parashar, Sarah Dawson a
 <li>at least 80% of the cells have an expected frequency of 5 or greater</li>
 <li>none of the cells have an expected frequency less than 1</li>
 </ul></li>
-<li>If these conditions aren’t met, <strong><em>Fisher’s exact test</em></strong> should be used.</li>
+<li>If these conditions aren’t met, <strong><em>Fisher’s exact test</em></strong> should be used.
+<ul>
+<li>no statistic is computed; an exact probability is calculated</li>
+</ul></li>
 </ul>
 </div><div id="same-question-smaller-sample-size" class="slide section level2">
 <h1>Same question, smaller sample size</h1>
 <ul>
-<li><p>e.g. Research question: Is there an association between treatment group and tumour shrinkage?</p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Tum</th>
-<th>our.Did.Not.Shrink Tum</th>
-<th>our.Did.Shrink Tot</th>
-<th align="left">al</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">Treatment</td>
-<td>8</td>
-<td>3</td>
-<td align="left">11</td>
-</tr>
-<tr class="even">
-<td align="right">Placebo</td>
-<td>9</td>
-<td>4</td>
-<td align="left">13</td>
-</tr>
-<tr class="odd">
-<td align="right">Total</td>
-<td>17</td>
-<td>7</td>
-<td align="left">17</td>
-</tr>
-</tbody>
-</table></li>
+<li>e.g. Research question: Is there an association between treatment group and tumour shrinkage?</li>
+</ul>
+<pre><code>
++-----------+-----------------------+-------------------+-------+
+|           | Tumour.Did.Not.Shrink | Tumour.Did.Shrink | Total |
++===========+=======================+===================+=======+
+| Treatment | 8.00                  | 3.00              | 11.00 |
++-----------+-----------------------+-------------------+-------+
+| Placebo   | 9.00                  | 4.00              | 13.00 |
++-----------+-----------------------+-------------------+-------+
+| Total     | 17.00                 | 7.00              | 17.00 |
++-----------+-----------------------+-------------------+-------+</code></pre>
+<ul>
 <li>Null hypothesis: <span class="math inline">\(H_0\)</span>: No association</li>
-<li><p>Alternative hypothesis: <span class="math inline">\(H_1\)</span>: Some association</p></li>
+<li>Alternative hypothesis: <span class="math inline">\(H_1\)</span>: Some association</li>
 </ul>
 </div><div id="fishers-exact-test-results" class="slide section level2">
 <h1>Fishers’ exact test; results</h1>
 <p>Observed frequencies:-</p>
+<pre><code>
++-----------+-----------------------+-------------------+-------+
+|           | Tumour.Did.Not.Shrink | Tumour.Did.Shrink | Total |
++===========+=======================+===================+=======+
+| Treatment | 8.00                  | 3.00              | 11.00 |
++-----------+-----------------------+-------------------+-------+
+| Placebo   | 9.00                  | 4.00              | 13.00 |
++-----------+-----------------------+-------------------+-------+
+| Total     | 17.00                 | 7.00              | 17.00 |
++-----------+-----------------------+-------------------+-------+</code></pre>
 <p>Expected frequencies:-</p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th align="right">Tumour.Did.Not.Shrink</th>
-<th align="right">Tumour.Did.Shrink</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Treatment</td>
-<td align="right">7.8</td>
-<td align="right">3.2</td>
-</tr>
-<tr class="even">
-<td>Placebo</td>
-<td align="right">9.2</td>
-<td align="right">3.8</td>
-</tr>
-</tbody>
-</table>
+<pre><code>
++------+------+
+| 7.80 | 3.20 |
++------+------+
+| 9.20 | 3.80 |
++------+------+</code></pre>
 <ul>
 <li>Test statistic: N/A</li>
 <li>P-value 1</li>
-<li>Interpretation: *<strong>Do not reject</strong> <span class="math inline">\(H_0\)</span> (No evidence of an association between treatment group and tumour shrinkage)</li>
+<li>Interpretation: <strong><em>Do not reject</em></strong> <span class="math inline">\(H_0\)</span> (No evidence of an association between treatment group and tumour shrinkage)</li>
 </ul>
 </div><div id="chi-square-test-for-trend" class="slide section level2">
 <h1>Chi-square test for trend</h1>
 <ul>
-<li><p>e.g. Research question: Is there a linear association between tumour grade and the incidence of tumour shrinkage</p>
-<table>
-<thead>
-<tr class="header">
-<th align="right">Tum</th>
-<th>our.Did.Not.Shrink Tum</th>
-<th>our.Did.Shrink Tot</th>
-<th align="left">al</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">Grade 1</td>
-<td>18</td>
-<td>5</td>
-<td align="left">23</td>
-</tr>
-<tr class="even">
-<td align="right">Grade 2</td>
-<td>15</td>
-<td>14</td>
-<td align="left">29</td>
-</tr>
-<tr class="odd">
-<td align="right">Grade 3</td>
-<td>11</td>
-<td>21</td>
-<td align="left">32</td>
-</tr>
-<tr class="even">
-<td align="right">Total</td>
-<td>44</td>
-<td>40</td>
-<td align="left">44</td>
-</tr>
-</tbody>
-</table></li>
+<li>e.g. Research question: Is there a linear association between tumour grade and the incidence of tumour shrinkage</li>
+</ul>
+<pre><code>
++---------+-----------------------+-------------------+-------+
+|         | Tumour.Did.Not.Shrink | Tumour.Did.Shrink | Total |
++=========+=======================+===================+=======+
+| Grade 1 | 18.00                 | 5.00              | 23.00 |
++---------+-----------------------+-------------------+-------+
+| Grade 2 | 15.00                 | 14.00             | 29.00 |
++---------+-----------------------+-------------------+-------+
+| Grade 3 | 11.00                 | 21.00             | 32.00 |
++---------+-----------------------+-------------------+-------+
+| Total   | 44.00                 | 40.00             | 44.00 |
++---------+-----------------------+-------------------+-------+</code></pre>
+<ul>
 <li>Null hypothesis: <span class="math inline">\(H_0\)</span>: No linear association</li>
-<li><p>Alternative hypothesis: <span class="math inline">\(H_1\)</span>: Some linear association</p></li>
+<li>Alternative hypothesis: <span class="math inline">\(H_1\)</span>: Some linear association</li>
 </ul>
 </div><div id="expected-frequencies" class="slide section level2">
 <h1>Expected frequencies</h1>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th align="right">Tumour.Did.Not.Shrink</th>
-<th align="right">Tumour.Did.Shrink</th>
-<th align="right">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Grade 1</td>
-<td align="right">18</td>
-<td align="right">5</td>
-<td align="right">23</td>
-</tr>
-<tr class="even">
-<td>Grade 2</td>
-<td align="right">15</td>
-<td align="right">14</td>
-<td align="right">29</td>
-</tr>
-<tr class="odd">
-<td>Grade 3</td>
-<td align="right">11</td>
-<td align="right">21</td>
-<td align="right">32</td>
-</tr>
-<tr class="even">
-<td>Total</td>
-<td align="right">44</td>
-<td align="right">40</td>
-<td align="right">44</td>
-</tr>
-</tbody>
-</table>
+<pre><code>
++---------+-----------------------+-------------------+-------+
+|         | Tumour.Did.Not.Shrink | Tumour.Did.Shrink | Total |
++=========+=======================+===================+=======+
+| Grade 1 | 18.00                 | 5.00              | 23.00 |
++---------+-----------------------+-------------------+-------+
+| Grade 2 | 15.00                 | 14.00             | 29.00 |
++---------+-----------------------+-------------------+-------+
+| Grade 3 | 11.00                 | 21.00             | 32.00 |
++---------+-----------------------+-------------------+-------+
+| Total   | 44.00                 | 40.00             | 44.00 |
++---------+-----------------------+-------------------+-------+</code></pre>
 <p>Expected</p>
 <pre><code>        Tumour.Did.Not.Shrink Tumour.Did.Shrink
 Grade 1                  12.0              11.0
 Grade 2                  15.2              13.8
 Grade 3                  16.8              15.2</code></pre>
-</div><div id="chi-square-test-for-trend-1" class="slide section level2">
-<h1>Chi-square test for trend</h1>
-</div><div id="chi-square-test-for-trend-results" class="slide section level2">
-<h1>Chi-square test for trend; results</h1>
-<p>Test statistic: 10.18 DF = 1 P-value = 0.001 <strong><em>Reject</em></strong> <span class="math inline">\(H_0\)</span> (evidence of a linear association between tumour grade and tumour shrinkage)</p>
 </div><div id="summary---categorical-variables" class="slide section level2">
 <h1>Summary - Categorical variables</h1>
 <ul>
@@ -346,30 +207,8 @@ Grade 3                  16.8              15.2</code></pre>
 <ul>
 <li>Use when we have two categorical variables, each with two levels, and our expected frequencies are small.</li>
 </ul></li>
-<li>Chi-square test for trend
-<ul>
-<li>Use when we have two categorical variables, where one or both are naturally ordered and the ordered variable has at least three levels, and our expected frequencies are not too small.</li>
-</ul></li>
-<li>(McNemar’s test)
-<ul>
-<li>Use when we have two categorical paired variables.</li>
-</ul></li>
 </ul>
-</div><div id="summary---categorical-variables-1" class="slide section level2">
-<h1>Summary - Categorical variables</h1>
-<ul>
-<li><p>Turn scientific question to null and alternative hypothesis</p></li>
-<li><p>Calculate expected frequencies</p></li>
-<li><p>Think about test assumptions</p></li>
-<li><p>Carry out chi-square or Fishers test if appropriate</p></li>
-</ul>
-</div><div id="contingency-table-practical" class="slide section level2">
-<h1>Contingency table practical</h1>
-<ul>
-<li>Complete contingency table practical</li>
-</ul>
-</div>
-<div id="wrap-up" class="titleslide slide section level1"><h1>Wrap-up</h1></div><div id="small-group-exercise" class="slide section level2">
+</div><div id="small-group-exercise" class="slide section level2">
 <h1>Small group Exercise</h1>
 <ul>
 <li>In groups of 3 /4 you are going to explore several example datasets</li>
@@ -380,19 +219,7 @@ Grade 3                  16.8              15.2</code></pre>
 <li>Paired? Independent?</li>
 <li>Two-sided?</li>
 </ul></li>
-<li>Record your observations here:- <a href="https://public.etherpad-mozilla.org/p/2016-10-17-intro-to-stats" class="uri">https://public.etherpad-mozilla.org/p/2016-10-17-intro-to-stats</a></li>
-</ul>
-</div><div id="summary" class="slide section level2">
-<h1>Summary</h1>
-<ul>
-<li>For independent observations</li>
-<li>For normally distributed continuous outcomes - T-tests</li>
-<li>For categorical outcomes - Chi-squared tests</li>
-<li>Confidence interval tell us more of story than p-value</li>
-<li>Limitations
-<ul>
-<li>Confounding – can adjust for important factors by stratification or regression</li>
-</ul></li>
+<li>Record your observations here:- <a href="https://public.etherpad-mozilla.org/p/2016-11-28-intro-to-stats" class="uri">https://public.etherpad-mozilla.org/p/2016-11-28-intro-to-stats</a></li>
 </ul>
 </div><div id="references" class="slide section level2">
 <h1>References</h1>
@@ -411,7 +238,7 @@ Grade 3                  16.8              15.2</code></pre>
 </ul></li>
 <li><p>Course Feedback:-</p>
 <ul>
-<li><a href="http://tinyurl.com/stats-oct17" class="uri">http://tinyurl.com/stats-oct17</a></li>
+<li><a href="http://tinyurl.com/stats-nov18" class="uri">http://tinyurl.com/stats-nov18</a></li>
 </ul></li>
 </ul>
 </div>

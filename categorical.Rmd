@@ -25,10 +25,11 @@ knitr::opts_chunk$set(comment = NA,echo=FALSE,message=FALSE,warning = FALSE)
 - Look for association (relationship) between row variable and column variable
 
 ```{r}
+library(ascii)
+library(knitr)
 df <- data.frame(Tumour.Did.Not.Shrink = c(44,24), Tumour.Did.Shrink = c(40,16))
 rownames(df) <- c("Treatment","Placebo")
-library(knitr)
-kable(df)
+print(ascii(df), type="rest")
 ```
 
 ## Chi-square test
@@ -36,13 +37,14 @@ kable(df)
 - E.g. Research question: A trial to assess the effectiveness of a new treatment versus a placebo in reducing tumour size in patients with ovarian cancer.
 
 ```{r}
-kable(df)
+print(ascii(df),type="rest")
 ```
 
 - Is there an association between treatment group and tumour shrinkage
 - Null hypothesis, $H_0$: No association
 - Alternative hypothesis, $H_1$: Some association
-
+- We can explore these data at:-
+    + http://bioinformatics.cruk.cam.ac.uk/apps/stats//contingency-table/
 
 ## Chi-square test: calculating expected frequencies
 
@@ -50,10 +52,10 @@ kable(df)
 df2 <- cbind(df, rowSums(df))
 df2 <- rbind(df2, colSums(df))
 colnames(df2)[3] <- rownames(df2)[3] <- "Total"
-kable(df2)
+print(ascii(df2),type="rest")
 ```
 
-$$E = \frac{row total \times col total}{overall total} $$
+$$E = \frac{row.total \times col.total}{overall.total} $$
 
 - e.g. for row 1, column 1
 $$\frac{84}{124} \times \frac{68}{124} \times 124 = \frac{84\times68}{124} = 46.1$$
@@ -65,13 +67,13 @@ $$\frac{84}{124} \times \frac{68}{124} \times 124 = \frac{84\times68}{124} = 46.
 
 ```{r}
 csq <- chisq.test(df,correct = FALSE)
-kable(df)
+print(ascii(df),type="rest")
 ```
 
 ***Expected frequencies:***
 
 ```{r}
-kable(round(csq$expected,1))
+print(ascii(round(csq$expected,2)),type="rest")
 ```
 
 $$\chi^2_1 = \frac{(44-46.06)^2}{46.06} + \frac{(40-37.94)^2}{37.94} + \frac{(24-21.94)^2}{21.94} + \frac{(16-18.06)^2}{18.06} = 0.63$$
@@ -106,6 +108,7 @@ P-value = `r pval`
     + at least 80% of the cells have an expected frequency of 5 or greater
     + none of the cells have an expected frequency less than 1 
 - If these conditions aren’t met, ***Fisher’s exact test*** should be used.
+    + no statistic is computed; an exact probability is calculated
 
 ## Same question, smaller sample size
 
@@ -118,7 +121,7 @@ rownames(df) <- c("Treatment","Placebo")
 df2 <- cbind(df, rowSums(df))
 df2 <- rbind(df2, colSums(df))
 colnames(df2)[3] <- rownames(df2)[3] <- "Total"
-kable(df2)
+print(ascii(df2),type="rest")
 ```
 
 - Null hypothesis: $H_0$: No association
@@ -130,19 +133,19 @@ Observed frequencies:-
 
 ```{r}
 exp <- round(chisq.test(df)$expected,1)
-
+print(ascii(df2),type="rest")
 ```
 
 Expected frequencies:-
 
 ```{r}
-kable(exp)
+print(ascii(exp),type="rest")
 pv <- fisher.test(df)$p.value
 ```
 
 - Test statistic: N/A
 - P-value `r pv`
-- Interpretation: ***Do not reject** $H_0$ (No evidence of an association between treatment group and tumour shrinkage)
+- Interpretation: ***Do not reject*** $H_0$ (No evidence of an association between treatment group and tumour shrinkage)
 
 ## Chi-square test for trend
 
@@ -154,7 +157,7 @@ rownames(df) <- c("Grade 1","Grade 2", "Grade 3")
 df2 <- cbind(df, rowSums(df))
 df2 <- rbind(df2, colSums(df))
 colnames(df2)[3] <- rownames(df2)[4] <- "Total"
-kable(df2)
+print(ascii(df2),type="rest")
 ```
 
 - Null hypothesis: $H_0$: No linear association
@@ -163,7 +166,7 @@ kable(df2)
 ## Expected frequencies
 
 ```{r}
-kable(df2)
+print(ascii(df2),type="rest")
 ```
 
 Expected
@@ -172,19 +175,6 @@ Expected
 exp <- round(chisq.test(df)$expected,1)
 exp
 ```
-
-## Chi-square test for trend
-
-```{r}
-
-```
-
-## Chi-square test for trend; results
-
-Test statistic: 10.18
-DF = 1
-P-value = 0.001
-***Reject*** $H_0$ (evidence of a linear association between tumour grade and tumour shrinkage)
 
 
 ## Summary - Categorical variables
@@ -195,27 +185,7 @@ P-value = 0.001
 - Fishers exact test
     + Use when we have two categorical variables, each with two levels, and our expected frequencies are small. 
  
-- Chi-square test for trend
-    + Use when we have two categorical variables, where one or both are naturally ordered and the ordered variable has at least three levels, and our expected frequencies are not too small. 
 
-- (McNemar’s test)
-    + Use when we have two categorical paired variables.
-
-## Summary - Categorical variables
-
-- Turn scientific question to null and alternative hypothesis
-
-- Calculate expected frequencies
-
-- Think about test assumptions
-
-- Carry out chi-square or Fishers test if appropriate
-
-## Contingency table practical
-
-- Complete contingency table practical
-
-# Wrap-up
 
 ## Small group Exercise
 
@@ -244,6 +214,6 @@ https://public.etherpad-mozilla.org/p/2016-11-28-intro-to-stats
 
 - Course Feedback:-
 
-    + http://tinyurl.com/stats-oct17
+    + http://tinyurl.com/stats-nov18
 
 

@@ -59,7 +59,7 @@ ggplot(data.frame(x=c(-4,4)),aes(x,color="red")) + stat_function(fun=dt, args=li
 - **Genomics Core want to know if this holds true in their own lab?**
 - This test can be performed online using our "shiny" app:-
     + http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/
-    + you'll see these microarray data on first loading the site
+    + you'll see these data upon loading the site
 
 ## One-sample t-test: does mean = X?
 
@@ -76,20 +76,16 @@ ggplot(data.frame(x=c(-4,4)),aes(x,color="red")) + stat_function(fun=dt, args=li
 - See the ***Data Input*** tab on the shiny app
 
 ```{r results='as.is'}
-library(knitr)
+library(ascii)
 
 failure <- data.frame(Month = month.name, "Monthly failure rate" = c(2.9,2.99,2.48,1.48,2.71,4.17,3.74,3.04,1.23,2.72,3.23,3.4))
 
-kable(failure)
+print(ascii(failure),type="rest")
 me <- round(mean(failure$Monthly.failure.rate),3)
 sd <- round(sd(failure$Monthly.failure.rate),3)
 ```
 
-mean = $(2.9 + \dots + 3.40) / 12$ = `r me`
 
-Standard deviation = `r sd`
-
-Hypothesised Mean = 2.1
 
 ## One-sample t-test; key assumptions
 
@@ -114,6 +110,13 @@ grid.arrange(p1,p2)
 ```
 
 ## One-sample t-test; results
+mean = $(2.9 + \dots + 3.40) / 12$ = `r me`
+
+Standard deviation = `r sd`
+
+Hypothesised Mean = 2.1
+
+n = `r nrow(failure)`
 
 ```{r}
 test <- t.test(failure$Monthly.failure.rate,mu=2.1)
@@ -126,11 +129,11 @@ rect2 <- data.frame(xmin = critvals[2],xmax = 4, ymin=-Inf,ymax=Inf)
 n <- nrow(failure)      
 ```
 
-Test statistic: $$t_{n-1} = t_{11} = \frac{\bar{x} - \mu_0} {s.d. / \sqrt{n}} = \frac{2.84 - 2.10}{s.e.(\bar{x})} = $$
+Test statistic: $$t_{n-1} = t_{11} = \frac{\bar{x} - \mu_0} {s.d. / \sqrt{n}} = \frac{2.84 - 2.10}{s.e.(\bar{x})}$$
 
 ## One-sample t-test; results
 
-Test statistic: 3.065
+Test statistic:= `r stat`
 
 - We need to compare to the t distribution with `r n-1` degrees of freedom
 - Having decided a p-value cut-off of 0.05, we can know which values on the x-axis will give an area of 0.05
