@@ -97,7 +97,7 @@ pval <- round(csq$p.value,2)
 ```
 
 Test statistic: ${\chi_1}^2$ = `r pval`
-df = `degf`
+df = `r degf`
 P-value = `r pval`
 
 ***Do not reject $H_0$ (No evidence of an association between treatment group and tumour shrinkage)***
@@ -176,6 +176,42 @@ exp <- round(chisq.test(df)$expected,1)
 exp
 ```
 
+## CHi-square test for trend
+
+```{r}
+df <- data.frame(Tumour.Did.Not.Shrink = c(18,15,11), Tumour.Did.Shrink = c(5,14,21))
+rownames(df) <- c("Grade 1","Grade 2", "Grade 3")
+obs.prop <- df$Tumour.Did.Shrink/ rowSums(df)
+plot(c(2,3,4),obs.prop,pch="x",col="blue",xlim=c(1,5),ylim=c(0,1),xlab="Tumour Grade",ylab="Proportion with tumour shrinkage ")
+lm.h0 <- lm(obs.prop ~ c(2,3,4))
+abline(lm.h0,col="blue")
+abline(h=0.5,col="red")
+points(c(2,3,4),rep(0.5,3),pch="x",col="red")
+legend("topright", col=c("blue","red"),legend=c("H0","H1"),lty=c(1,1))
+```
+
+
+## Chi-square test for trend - Results
+
+Test statistic: $$\chi_1^2 = 10.18$$
+df = 1
+P-value = 0.001
+
+Conclusion:- Reject $H`_0$ (evidence of a linear association between tumour grade and tumour shrinkage) 
+
+```{r fig.height=6,fig.width=6}
+degf <- 1
+
+xmax <- max(4,csq$statistic)
+xs <- seq(0, xmax, length.out = 10000)
+df <- data.frame(X = xs, Y = dchisq(xs,degf))
+
+title <- substitute(paste(chi^2, " with ", degf, " degrees of freedom"),list(degf=degf))
+
+p <- ggplot(df, aes(x=X,y=Y)) + geom_line() + ggtitle(title)
+p
+```
+
 
 ## Summary - Categorical variables
 
@@ -185,6 +221,8 @@ exp
 - Fishers exact test
     + Use when we have two categorical variables, each with two levels, and our expected frequencies are small. 
  
+- ***Exercise***
+    + Complete "Tests for categorical variables" section of practical
 
 
 ## Small group Exercise
