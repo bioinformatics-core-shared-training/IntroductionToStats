@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Statistical Analysis"
-author: "Mark Dunning, Rosemary Tate and Sarah Vowler"
+author: "Mark Dunning and Sarah Vowler"
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:  pdf_document
 toc: FALSE
@@ -299,16 +299,47 @@ density after treatment with bone marrow transplant. It is important to note the
 Studying just 7 patients means we will only be able to detect large differences.")
 ```
 
+
+## 4. Gene Expression in Breast Cancer patients
+
+A gene expression study was performed on patients categorised into positive and negative Estrogen Receptor (ER) groups. It is well-known that ER positive patients have more treatment options available and thus have more better prognosis.
+
+The gene NIBP was measured as part of this study and the results are available in the file `NIBP.expression.csv`. We are interested to see if the expression level of the gene is different between ER positive and negative patients.
+
+
+------
+
+**Question:** What are your null and alternative hypotheses?
+
+------
+
+Now conduct an independent two-sample t-test to see if there is a difference in expression between the two groups.
+
+------
+
+**Question:** What is the p-value from the test? Do we achieve statistical significance at the 0.05 level?
+
+------
+
+Look closely at data distribution, calculated means for each group and the estimated confidence interval
+
+------
+
+**Question:** Is the finding likely to hold Biological significance? Would you be willing to put further resources into validating the finding?
+
+------
+
+
 # Non-Parametric Tests
 
 
-## Vitamin D levels
+## 5. Vitamin D levels
 
 The file **`vitd.csv`** contains data on vitamin D levels for subjects with ("Y"), and without ("N") fibrosis. To import these data, you will need to select the ***1st column in a factor*** option. 
 
 ------
 
-**Question:** Construct the null and alternative hypothesises
+**Question:** State the null and alternative hypothesises
 
 ------
 
@@ -328,13 +359,13 @@ By un-ticking the ***Use Parametric Test?*** option in the ***Statistical Analys
 ------
 
 
-## Birth-weight of twins
+## 6. Birth-weight of twins
 
 Dr D. R. Peterson of the Department of Epidemiology, University of Washington, collected the data found in file **`twins.csv`**.  It consists of the birth-weights of each of 20 dizygous twins.  One twin suffered Sudden Infant Death Syndrom (SIDS), and the other twin did not. The hypothesis to be tested is that the SIDS child of each pair had a lower birth-weight.  
 
 ------
 
-**Question:** Construct the null and alternative hypothesises
+**Question:** State the null and alternative hypothesises
 
 ------
 
@@ -357,6 +388,8 @@ Recall from the lectures that for paired data we have to consider whether the di
 ```{r}
 cat("Both tests show that there is insufficient evidence to reject the null hypothesis.  The Wilcoxon Signed Ranks test with a p-value of 0.258 and the sign test with a p-value of 0.5. Which test depends on whether this graph is symmetric about the black line or not.  If you think that it is then the assumption of the symmetry of difference scores about the true median difference for the Wilcoxon Signed ranks test holds and this test can be used. If not then the sign test should be used." )
 ```
+
+
 
 # Tests for categorical variables
 
