@@ -179,6 +179,8 @@ Conclusion: ***Reject*** $H_0$
 - Paired
     + e.g. a measurement of disease at two different parts of the body in the same patient / animal
     + e.g. measurements before and after treatment for the same individual
+    + e.g. twins; one twin had a treatment and the other did not
+    + e.g. individuals matched for age, sex, tumour grade etc
     
 ## Independent two-sample t-test: Does the mean of group A = mean of group B?
 
