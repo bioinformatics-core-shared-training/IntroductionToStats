@@ -2,7 +2,7 @@ title: Introduction to Statistical Analysis
 description: 
 google_analytics: UA-63148050-5 
 show_downloads: true
-theme: jekyll-theme-merlot
+theme: jekyll-theme-minimal
 
 gems:
   - jekyll-mentions
