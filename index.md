@@ -8,11 +8,10 @@ Note that this is not a course for learning about the R statistical language its
 
 ### Authors
 
-- Mark Dunning
 - Dominique-Laurent Couturier
-- Robert Nicholls
+- Mark Dunning
 
-(Acknowledgements: Sarah Vowler, Deepak Parashar, Sarah Dawson, Elizabeth Merrell)
+(Acknowledgements: Robert Nicholls, Matt Eldridge, Sarah Vowler, Deepak Parashar, Sarah Dawson, Elizabeth Merrell)
 
 ### Aims
 
@@ -50,12 +49,11 @@ You will need an internet connection in order to run the practicals and examples
 - [Online quiz](https://docs.google.com/forms/d/e/1FAIpQLScblQ_-ISfSCGp_EIVPPI_mnrJHttaKxln8vVoyjJFvS8BL1w/viewform)
 - A [practical](practical.pdf)
     + [Interactive document to record your answers for the group exercise](https://public.etherpad-mozilla.org/p/2017-04-24-intro-to-stats)
-- A [Course Manual](manual.pdf)
 - [Example data for the course](CourseData.zip)
-- [Statistical test 'cheat sheet'](cheatsheet.pdf)
 
 ### Further Reading
 
+- A [Course Manual](manual.pdf)
 - Using R for Introductory stats [free eBook pdf](http://cran.r-project.org/doc/contrib/Verzani-SimpleR.pdf)
 - Learning Statistics with R [free textbook pdf](http://health.adelaide.edu.au/psychology/ccs/teaching/lsr/)
 
