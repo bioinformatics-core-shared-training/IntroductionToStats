@@ -2,8 +2,10 @@
 title: "Introduction to Statistical Analysis"
 author: "Mark Dunning and Sarah Vowler"
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
-output:  pdf_document
-toc: FALSE
+output:
+  pdf_document: default
+  html_document: default
+toc: no
 ---
 
 ```{r eval=TRUE, echo=F, results="asis"}
@@ -652,7 +654,7 @@ t.test(Time~Group,data,var.equal=TRUE)
 ```
 
 
-## Dataset4: Effect of Autism drug  `data4.csv`
+## Dataset 4: Effect of Autism drug  `data4.csv`
 
 Consider a clinical investigation to assess the effectiveness of a new drug designed to reduce repetitive behaviors in children affected with autism. If the drug is effective, children will exhibit fewer repetitive behaviors on treatment as compared to when they are untreated. A total of 8 children with autism enroll in the study. Each child is observed by the study psychologist for a period of 3 hours both before treatment and then again after taking the new drug for 1 week. The time that each child is engaged in repetitive behavior during each 3 hour observation period is measured. Repetitive behavior is scored on a scale of 0 to 100 and scores represent the percent of the observation time in which the child is engaged in repetitive behavior. For example, a score of 0 indicates that during the entire observation period the child did not engage in repetitive behavior while a score of 100 indicates that the child was constantly engaged in repetitive behavior. 
 
@@ -678,7 +680,7 @@ write.csv(data, file="mystery-data/data4.csv",quote=FALSE,row.names=FALSE)
 ```
 
 
-## Dataset5: CD4 `data5.csv`
+## Dataset 5: CD4 `data5.csv`
 
 CD4 cells are carried in the blood as part of the human immune system. One of the effects of the HIV virus is that these cells die. The count of CD4 cells is used in determining the onset of full-blown AIDS in a patient. In this study of the effectiveness of a new anti-viral drug on HIV, 20 HIV-positive patients had their CD4 counts recorded and then were put on a course of treatment with this drug. After using the drug for one year, their CD4 counts were again recorded. 
 
@@ -700,7 +702,7 @@ t.test(data[,1],data[,2],paired=TRUE)
 ```
 
 
-## Dataset6: Drink Driving `data6.csv`
+## Dataset 6: Drink Driving `data6.csv`
 
 Drunk driving is one of the main causes of car accidents. Interviews with drunk drivers who were involved in accidents and survived revealed that one of the main problems is that drivers do not realize that they are impaired, thinking “I only had 1-2 drinks … I am OK to drive.”
 
@@ -731,7 +733,7 @@ write.csv(data2,file="mystery-data/data6.csv",quote=FALSE,row.names=FALSE)
 
 ```
 
-## Dataset7: Pollution in Trees `data7.csv`
+## Dataset 7: Pollution in Trees `data7.csv`
 
 Laureysens et al. (2004) measured metal content in the wood of 13 poplar clones growing in a polluted area, once in August and once in November. Concentrations of aluminum (in micrograms of Al per gram of wood) are shown below.
 
@@ -757,7 +759,7 @@ boxplot(data)
 ```
 
 
-## Dataset8: Salaries for Professors  `data8.csv`
+## Dataset 8: Salaries for Professors  `data8.csv`
 
 The 2008-09 nine-month academic salary for Assistant Professors, Associate Professors and Professors in a college in the U.S. The data were collected as part of the on-going effort of the college's administration to monitor salary differences between male and female faculty members. (salary given as nine-month salary, in dollars.)
 
