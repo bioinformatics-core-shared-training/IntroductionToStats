@@ -3,8 +3,8 @@ title: "Introduction to Statistical Analysis"
 author: "Mark Dunning and Sarah Vowler"
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 toc: no
 ---
 
@@ -26,7 +26,7 @@ The datasets you will need for this practical should be downloaded and unzipped 
 
 # Parametric Tests
 
-## 1. The effect of disease on height
+### 1. The effect of disease on height
 A scientist knows that the mean height of females in England is **165cm** and wants to know whether her patients with a certain disease "X" have heights that differ significantly from the population mean - we will use a one-sample t-test to test this. The data are contained in the file **`diseaseX.csv`** and can be analysed online at:-
 
 [http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/](http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/)
@@ -110,7 +110,7 @@ population mean height of females of 165cm.")
 ```
 
 
-## 2. Biological processes duration
+### 2. Biological processes duration
 
 In the file **`bp_times.csv`**, we have the durations of a biological process for two samples of wild-type and knock-out cells (times in seconds). We are interested in seeing whether there is a difference in the durations for the two types of cells – we shall use an **independent t-test** to compare the two cell-types.
 
@@ -195,7 +195,7 @@ evidence to reject the null hypothesis.")
 
 
 
-## 3. Blood vessel formation
+### 3. Blood vessel formation
 
 In blood plasma cancer, there is an increase in blood vessel formation in the bone marrow. A stem cell transplant can be used as a treatment for blood plasma cancer. The bone marrow micro vessel density was measured before and after treatment for 7 patients with blood plasma cancer.
 
@@ -302,7 +302,7 @@ Studying just 7 patients means we will only be able to detect large differences.
 ```
 
 
-## 4. Gene Expression in Breast Cancer patients
+### 4. Gene Expression in Breast Cancer patients
 
 A gene expression study was performed on patients categorised into positive and negative Estrogen Receptor (ER) groups. It is well-known that ER positive patients have more treatment options available and thus have more better prognosis.
 
@@ -335,7 +335,7 @@ Look closely at data distribution, calculated means for each group and the estim
 # Non-Parametric Tests
 
 
-## 5. Vitamin D levels
+### 5. Vitamin D levels
 
 The file **`vitd.csv`** contains data on vitamin D levels for subjects with ("Y"), and without ("N") fibrosis. To import these data, you will need to select the ***1st column in a factor*** option. 
 
@@ -361,7 +361,7 @@ By un-ticking the ***Use Parametric Test?*** option in the ***Statistical Analys
 ------
 
 
-## 6. Birth-weight of twins
+### 6. Birth-weight of twins
 
 Dr D. R. Peterson of the Department of Epidemiology, University of Washington, collected the data found in file **`twins.csv`**.  It consists of the birth-weights of each of 20 dizygous twins.  One twin suffered Sudden Infant Death Syndrom (SIDS), and the other twin did not. The hypothesis to be tested is that the SIDS child of each pair had a lower birth-weight.  
 
@@ -395,7 +395,7 @@ cat("Both tests show that there is insufficient evidence to reject the null hypo
 
 # Tests for categorical variables
 
-## Nucleotide frequency 
+### 7. Nucleotide frequency 
 
  In **Table 1**, we have the frequencies of the four nucleotides in two sequences. We are interested in comparing the nucleotide proportions of the two sequences.
 
@@ -425,10 +425,8 @@ Alternative hypothesis. there is an association between sequence number and nucl
 
 ```
 
-We can analyse these data online in the [Shiny app](http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/), by modifying the contents of the ***Enter your data as a table*** box. Columns need to be separated by a '-' character, and rows by a '|'. You can check that you have entered the data correctly by looking at ***The data*** tab. You do not need to calculate row or column totals.
+We can analyse these data online in the [Shiny app](http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/), by modifying the contents of the ***Enter your data as a table*** box. Columns need to be separated by a '-' character, and rows by a '|'. You can check that you have entered the data correctly by looking at ***The data*** tab. You do not need to calculate row or column totals or to enter them.
 
-
-Note that you do not need to enter the totals.
 ------
 
 **Question:** What is your value of your Chi-squared statistic and its corresponding p-value? How do you interpret the result?
@@ -454,7 +452,7 @@ Therefore, there is no evidence of an association between sequence number and nu
 ```
 
 
-## Disease association
+### 8. Disease association
 **Table 2** gives the frequencies of wild-type and knock-out mice developing a disease thought to be associated to the absence of the knock-out gene. 
 
 ```{r results='asis' ,eval=TRUE}
@@ -544,7 +542,7 @@ library(Biobase)
 
 
 
-## Dataset 1: Plant Growth `data1.csv`
+### Dataset 1: Plant Growth `data1.csv`
 
 Darwin (1876) studied the growth of *pairs* of zea may (aka corn) seedlings, one produced by cross-fertilization and the other produced by self-fertilization, but otherwise grown under identical conditions. His goal was to demonstrate the greater vigour of the cross-fertilized plants. The data recorded are the final height (inches, to the nearest 1/8th) of the plants in each pair.
 
@@ -575,7 +573,7 @@ write.csv(td, file="mystery-data/data1.csv",quote=FALSE,row.names=FALSE)
 ```
 
 
-## Dataset 2: Florence Nightingale `data2.csv`
+### Dataset 2: Florence Nightingale `data2.csv`
 
 In the history of data visualization, Florence Nightingale is best remembered for her role as a social activist and her view that statistical data, presented in charts and diagrams, could be used as powerful arguments for medical reform.
 
@@ -627,7 +625,7 @@ Night.flt <- Night %>% filter(Cause=="Disease") %>% select(Regime,Deaths)
 ```
 
 
-## Dataset 3: Effect of bran on diet: `data3.csv`
+### Dataset 3: Effect of bran on diet: `data3.csv`
 
 The addition of bran to the diet has been reported to benefit patients with diverticulosis. Several different bran preparations are available, and a clinician wants to test the efficacy of two of them on patients, since favourable claims have been made for each. Among the consequences of administering bran that requires testing is the transit time through the alimentary canal. By random allocation the clinician selects two groups of patients aged 40-64 with diverticulosis of comparable severity. Sample 1 contains 15 patients who are given treatment A, and sample 2 contains 12 patients who are given treatment B.
 
@@ -654,7 +652,7 @@ t.test(Time~Group,data,var.equal=TRUE)
 ```
 
 
-## Dataset 4: Effect of Autism drug  `data4.csv`
+### Dataset 4: Effect of Autism drug  `data4.csv`
 
 Consider a clinical investigation to assess the effectiveness of a new drug designed to reduce repetitive behaviors in children affected with autism. If the drug is effective, children will exhibit fewer repetitive behaviors on treatment as compared to when they are untreated. A total of 8 children with autism enroll in the study. Each child is observed by the study psychologist for a period of 3 hours both before treatment and then again after taking the new drug for 1 week. The time that each child is engaged in repetitive behavior during each 3 hour observation period is measured. Repetitive behavior is scored on a scale of 0 to 100 and scores represent the percent of the observation time in which the child is engaged in repetitive behavior. For example, a score of 0 indicates that during the entire observation period the child did not engage in repetitive behavior while a score of 100 indicates that the child was constantly engaged in repetitive behavior. 
 
@@ -680,7 +678,7 @@ write.csv(data, file="mystery-data/data4.csv",quote=FALSE,row.names=FALSE)
 ```
 
 
-## Dataset 5: CD4 `data5.csv`
+### Dataset 5: CD4 `data5.csv`
 
 CD4 cells are carried in the blood as part of the human immune system. One of the effects of the HIV virus is that these cells die. The count of CD4 cells is used in determining the onset of full-blown AIDS in a patient. In this study of the effectiveness of a new anti-viral drug on HIV, 20 HIV-positive patients had their CD4 counts recorded and then were put on a course of treatment with this drug. After using the drug for one year, their CD4 counts were again recorded. 
 
@@ -702,7 +700,7 @@ t.test(data[,1],data[,2],paired=TRUE)
 ```
 
 
-## Dataset 6: Drink Driving `data6.csv`
+### Dataset 6: Drink Driving `data6.csv`
 
 Drunk driving is one of the main causes of car accidents. Interviews with drunk drivers who were involved in accidents and survived revealed that one of the main problems is that drivers do not realize that they are impaired, thinking “I only had 1-2 drinks … I am OK to drive.”
 
@@ -733,7 +731,7 @@ write.csv(data2,file="mystery-data/data6.csv",quote=FALSE,row.names=FALSE)
 
 ```
 
-## Dataset 7: Pollution in Trees `data7.csv`
+### Dataset 7: Pollution in Trees `data7.csv`
 
 Laureysens et al. (2004) measured metal content in the wood of 13 poplar clones growing in a polluted area, once in August and once in November. Concentrations of aluminum (in micrograms of Al per gram of wood) are shown below.
 
@@ -759,7 +757,7 @@ boxplot(data)
 ```
 
 
-## Dataset 8: Salaries for Professors  `data8.csv`
+### Dataset 8: Salaries for Professors  `data8.csv`
 
 The 2008-09 nine-month academic salary for Assistant Professors, Associate Professors and Professors in a college in the U.S. The data were collected as part of the on-going effort of the college's administration to monitor salary differences between male and female faculty members. (salary given as nine-month salary, in dollars.)
 
