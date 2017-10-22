@@ -48,8 +48,8 @@ You will need an internet connection in order to run the practicals and examples
 
 - [Lecture (pdf)](IntroToStat-DLC-20170424.pdf)
 - [Online quiz](https://docs.google.com/forms/d/e/1FAIpQLScblQ_-ISfSCGp_EIVPPI_mnrJHttaKxln8vVoyjJFvS8BL1w/viewform)
-- A [practical](practical.html)
-    + [Interactive document to record your answers for the group exercise](https://public.etherpad-mozilla.org/p/2017-10-23-intro-to-stats)
+- [practical](practical.html)
+- [Interactive document to record your answers for the group exercise](https://public.etherpad-mozilla.org/p/2017-10-23-intro-to-stats)
 - [Example data for the course](CourseData.zip)
 
 ### Further Reading
