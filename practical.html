@@ -118,7 +118,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Introduction to Statistical Analysis</h1>
 <h4 class="author"><em>Mark Dunning and Sarah Vowler</em></h4>
-<h4 class="date"><em>Last modified: 21 Oct 2017</em></h4>
+<h4 class="date"><em>Last modified: 22 Oct 2017</em></h4>
 
 </div>
 
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <div id="the-effect-of-disease-on-height" class="section level3">
 <h3>1. The effect of disease on height</h3>
 <p>A scientist knows that the mean height of females in England is <strong>165cm</strong> and wants to know whether her patients with a certain disease “X” have heights that differ significantly from the population mean - we will use a one-sample t-test to test this. The data are contained in the file <strong><code>diseaseX.csv</code></strong> and can be analysed online at:-</p>
-<p><a href="http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/" class="uri">http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/</a></p>
+<p><a href="http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest" class="uri">http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest</a></p>
 <p>To import the file <code>diseaseX.csv</code>; you will need to select the <code>Choose File</code> option from the <code>Data Input</code> tab and navigate to where the course data are located on your laptop. The right-hand panel of the <code>Data Input</code> tab should update to show the Heights of various individuals in the study.</p>
 <p>Also, on the <code>Data Input</code> tab you will need to change the value of <strong>Hypothesized mean</strong> to the correct value.</p>
 <hr />
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <div id="biological-processes-duration" class="section level3">
 <h3>2. Biological processes duration</h3>
 <p>In the file <strong><code>bp_times.csv</code></strong>, we have the durations of a biological process for two samples of wild-type and knock-out cells (times in seconds). We are interested in seeing whether there is a difference in the durations for the two types of cells – we shall use an <strong>independent t-test</strong> to compare the two cell-types.</p>
-<p>These data can be analysed online at <a href="http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/" class="uri">http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/</a></p>
+<p>These data can be analysed online at <a href="http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest" class="uri">http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest</a></p>
 <p>Import the data using <strong><em>Choose File</em></strong> as before. Make sure that the <strong><em>1st column is a factor?</em></strong> checkbox is ticked.</p>
 <hr />
 <p><strong>Question:</strong> What are your null and alternative hypotheses?</p>
@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <h3>3. Blood vessel formation</h3>
 <p>In blood plasma cancer, there is an increase in blood vessel formation in the bone marrow. A stem cell transplant can be used as a treatment for blood plasma cancer. The bone marrow micro vessel density was measured before and after treatment for 7 patients with blood plasma cancer.</p>
 <p>We are interested in seeing whether there is a decrease in the bone marrow micro vessel density after treatment with a stem cell transplant. We will use a paired two-sample t-test to compare the before and after bone marrow micro vessel densities.</p>
-<p>These data can be analysed online at <a href="http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/" class="uri">http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/</a></p>
+<p>These data can be analysed online at <a href="http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest" class="uri">http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest</a></p>
 <p>The data are contained in the file <strong><code>bloodplasmacancer2.csv</code></strong>. Import the data, making sure that <strong><em><code>1st column is a factor</code></em></strong> is <em>not</em> ticked. Now choose whether you will be performing a paired test or not by ticking the <strong>Paired Samples?</strong> box under <strong><em>Are your samples paired?</em></strong>.</p>
 <hr />
 <p><strong>Question:</strong> What are your null and alternative hypotheses?</p>
@@ -258,20 +258,80 @@ document.addEventListener("DOMContentLoaded", function() {
 <h1>Tests for categorical variables</h1>
 <div id="nucleotide-frequency" class="section level3">
 <h3>7. Nucleotide frequency</h3>
-<p>In <strong>Table 1</strong>, we have the frequencies of the four nucleotides in two sequences. We are interested in comparing the nucleotide proportions of the two sequences.</p>
-
+<p>In the following table we have the frequencies of the four nucleotides in two sequences. We are interested in comparing the nucleotide proportions of the two sequences.</p>
+<div style="width:50%; margin:auto">
+<table>
+<thead>
+<tr class="header">
+<th> </th>
+<th align="center">A</th>
+<th align="center">C</th>
+<th align="center">G</th>
+<th align="center">T</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sequence 1</td>
+<td align="center">273</td>
+<td align="center">233</td>
+<td align="center">236</td>
+<td align="center">258</td>
+</tr>
+<tr class="even">
+<td>Sequence 2</td>
+<td align="center">281</td>
+<td align="center">246</td>
+<td align="center">244</td>
+<td align="center">229</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr />
 <p><strong>Question:</strong> What are your null and alternative hypotheses?</p>
 <hr />
-<p>We can analyse these data online in the <a href="http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/">Shiny app</a>, by modifying the contents of the <strong><em>Enter your data as a table</em></strong> box. Columns need to be separated by a ‘-’ character, and rows by a ‘|’. You can check that you have entered the data correctly by looking at <strong><em>The data</em></strong> tab. You do not need to calculate row or column totals or to enter them.</p>
+<p>We can analyse these data online in the Shiny app by entering the counts into the table on the left hand side. Note that the table needs to be resized to increase the number of columns.</p>
+<p><a href="http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table" class="uri">http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table</a></p>
 <hr />
 <p><strong>Question:</strong> What is your value of your Chi-squared statistic and its corresponding p-value? How do you interpret the result?</p>
 <hr />
 </div>
 <div id="disease-association" class="section level3">
 <h3>8. Disease association</h3>
-<p><strong>Table 2</strong> gives the frequencies of wild-type and knock-out mice developing a disease thought to be associated to the absence of the knock-out gene.</p>
-
+<p>The following table gives the frequencies of wild-type and knock-out mice developing a disease thought to be associated to the absence of the knock-out gene.</p>
+<div style="width:50%; margin:auto">
+<table>
+<thead>
+<tr class="header">
+<th> </th>
+<th align="right">WT</th>
+<th align="right">KO</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Disease</td>
+<td align="right">1</td>
+<td align="right">7</td>
+<td align="right">8</td>
+</tr>
+<tr class="even">
+<td>No disease</td>
+<td align="right">9</td>
+<td align="right">3</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td align="right">10</td>
+<td align="right">10</td>
+<td align="right">20</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr />
 <p><strong>Question:</strong> What are your null and alternative hypotheses?</p>
 <hr />
@@ -286,8 +346,8 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <div id="small-group-exercise-choosing-a-test" class="section level1">
 <h1>Small-Group Exercise: Choosing a test</h1>
-<p>In this section, we invite you to form small groups to select a dataset and discuss what methods / tests you would use to analyse those data.</p>
-<p>You can use this interactive document to record your observations</p>
+<p>In this section, we invite you to form small groups to select a dataset and discuss what methods/tests you would use to analyse those data.</p>
+<p>You can use this interactive document to record your observations:</p>
 <p><a href="https://public.etherpad-mozilla.org/p/2017-10-23-intro-to-stats" class="uri">https://public.etherpad-mozilla.org/p/2017-10-23-intro-to-stats</a></p>
 <div id="dataset-1-plant-growth-data1.csv" class="section level3">
 <h3>Dataset 1: Plant Growth <code>data1.csv</code></h3>

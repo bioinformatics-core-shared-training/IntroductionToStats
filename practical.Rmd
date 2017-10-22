@@ -3,7 +3,6 @@ title: "Introduction to Statistical Analysis"
 author: "Mark Dunning and Sarah Vowler"
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:
-  pdf_document: default
   html_document: default
 toc: no
 ---
@@ -29,7 +28,7 @@ The datasets you will need for this practical should be downloaded and unzipped 
 ### 1. The effect of disease on height
 A scientist knows that the mean height of females in England is **165cm** and wants to know whether her patients with a certain disease "X" have heights that differ significantly from the population mean - we will use a one-sample t-test to test this. The data are contained in the file **`diseaseX.csv`** and can be analysed online at:-
 
-[http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/](http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/)
+[http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest](http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest)
 
 To import the file `diseaseX.csv`; you will need to select the `Choose File` option from the `Data Input` tab and navigate to where the course data are located on your laptop. The right-hand panel of the `Data Input` tab should update to show the Heights of various individuals in the study.
 
@@ -114,7 +113,7 @@ population mean height of females of 165cm.")
 
 In the file **`bp_times.csv`**, we have the durations of a biological process for two samples of wild-type and knock-out cells (times in seconds). We are interested in seeing whether there is a difference in the durations for the two types of cells – we shall use an **independent t-test** to compare the two cell-types.
 
-These data can be analysed online at [http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/](http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/)
+These data can be analysed online at [http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest](http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest)
 
 Import the data using ***Choose File*** as before. Make sure that the ***1st column is a factor?*** checkbox is ticked.
 
@@ -201,7 +200,7 @@ In blood plasma cancer, there is an increase in blood vessel formation in the bo
 
 We are interested in seeing whether there is a decrease in the bone marrow micro vessel density after treatment with a stem cell transplant. We will use a paired two-sample t-test to compare the before and after bone marrow micro vessel densities. 
 
-These data can be analysed online at [http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/](http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/)
+These data can be analysed online at [http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest](http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest)
 
 The data are contained in the file **`bloodplasmacancer2.csv`**. Import the data, making sure that ***`1st column is a factor`*** is *not* ticked. Now choose whether you will be performing a paired test or not by ticking the **Paired Samples?** box under ***Are your samples paired?***. 
 
@@ -397,20 +396,14 @@ cat("Both tests show that there is insufficient evidence to reject the null hypo
 
 ### 7. Nucleotide frequency 
 
- In **Table 1**, we have the frequencies of the four nucleotides in two sequences. We are interested in comparing the nucleotide proportions of the two sequences.
+In the following table we have the frequencies of the four nucleotides in two sequences. We are interested in comparing the nucleotide proportions of the two sequences.
 
-
-```{r results='asis' ,eval=TRUE}
-library(xtable)
-df <-  matrix(c(273,233,236,258,281,246,244,229), 2, 4, byrow=TRUE)
-colnames(df) <- c("A","C","G","T")
-df <- data.frame(df)
-df$Total <- rowSums(df)
-
-df <- rbind(df, colSums(df))
-rownames(df) <- c("Sequence 1", "Sequence 2","Total")
-print(xtable(df,label="Table 1",caption="Nucleotide frequencies for two sequences"),comment=FALSE)
-```
+<div style='width:50%; margin:auto'>
+&nbsp;     |  A  |  C  |  G  |  T
+-----------|:---:|:---:|:---:|:---:
+Sequence 1 | 273 | 233 | 236 | 258
+Sequence 2 | 281 | 246 | 244 | 229
+</div>
 
 ------
 
@@ -425,7 +418,9 @@ Alternative hypothesis. there is an association between sequence number and nucl
 
 ```
 
-We can analyse these data online in the [Shiny app](http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/), by modifying the contents of the ***Enter your data as a table*** box. Columns need to be separated by a '-' character, and rows by a '|'. You can check that you have entered the data correctly by looking at ***The data*** tab. You do not need to calculate row or column totals or to enter them.
+We can analyse these data online in the Shiny app by entering the counts into the table on the left hand side. Note that the table needs to be resized to increase the number of columns.
+
+[http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table](http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table)
 
 ------
 
@@ -453,20 +448,16 @@ Therefore, there is no evidence of an association between sequence number and nu
 
 
 ### 8. Disease association
-**Table 2** gives the frequencies of wild-type and knock-out mice developing a disease thought to be associated to the absence of the knock-out gene. 
 
-```{r results='asis' ,eval=TRUE}
-library(xtable)
-df <-  matrix(c(1,7,9,3), 2, 2, byrow=TRUE)
-colnames(df) <- c("WT","KO")
-df <- data.frame(df)
-df$Total <- rowSums(df)
+The following table gives the frequencies of wild-type and knock-out mice developing a disease thought to be associated to the absence of the knock-out gene. 
 
-df <- rbind(df, colSums(df))
-rownames(df) <- c("Disease", "No Disease","Total")
-print(xtable(df,label="Table 2",caption="Frequencies of wild-type and knock-out mice developing disease"),comment=FALSE)
-```
-
+<div style='width:50%; margin:auto'>
+&nbsp;     | WT | KO | Total
+-----------|---:|---:|------:
+Disease    |  1 |  7 |   8
+No disease |  9 |  3 |  12
+Total      | 10 | 10 |  20
+</div>
 
 ------
 
@@ -495,7 +486,6 @@ colnames(.Table) <- c('WT', 'KO')
 .Test$expected
 ```
 
-
 Enter the data into the [Shiny app](http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/) as before. Select the **Fisher's exact test** option to compare the proportion of mice in each group that developed the disease.
 
 ------
@@ -523,9 +513,9 @@ There is evidence of an association between mouse type and disease X.")
 
 # Small-Group Exercise: Choosing a test 
 
-In this section, we invite you to form small groups to select a dataset and discuss what methods / tests you would use to analyse those data.
+In this section, we invite you to form small groups to select a dataset and discuss what methods/tests you would use to analyse those data.
 
-You can use this interactive document to record your observations
+You can use this interactive document to record your observations:
 
 [https://public.etherpad-mozilla.org/p/2017-10-23-intro-to-stats](https://public.etherpad-mozilla.org/p/2017-10-23-intro-to-stats)
 
