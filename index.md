@@ -58,3 +58,8 @@ You will need an internet connection in order to run the practicals and examples
 - Using R for Introductory stats [free eBook pdf](http://cran.r-project.org/doc/contrib/Verzani-SimpleR.pdf)
 - Learning Statistics with R [free textbook pdf](http://health.adelaide.edu.au/psychology/ccs/teaching/lsr/)
 
+### Feedback
+
+- [Feedback form](http://tinyurl.com/stats-feedback-oct2017) for course run on 23 October 2017
+
+$$ $$
