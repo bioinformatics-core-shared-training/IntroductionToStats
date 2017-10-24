@@ -37,9 +37,10 @@ After this course you should be able to:-
 
 ### Course Materials
 
-- [Lecture (pdf)](IntroToStat-DLC-20171024.pdf)
+- [Lecture (pdf)](IntroToStat-DLC-20171022.pdf)
+- [Annotated lecture notes (pdf)](IntroToStat-DLC-20171024.pdf)
 - [Online quiz](https://docs.google.com/forms/d/e/1FAIpQLScblQ_-ISfSCGp_EIVPPI_mnrJHttaKxln8vVoyjJFvS8BL1w/viewform)
-- [practical](practical.html)
+- [Practical](practical.html)
 - [Interactive document to record your answers for the group exercise](https://public.etherpad-mozilla.org/p/2017-10-23-intro-to-stats)
 - [Example data for the course](CourseData.zip)
 
@@ -48,9 +49,9 @@ After this course you should be able to:-
 You will need an internet connection in order to run the practicals and examples
 
 - [Central limit theorem app](http://bioinformatics.cruk.cam.ac.uk/apps/stats/central-limit-theorem)
-- [One sample test app](http://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest)
-- [Two sample test app](http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest)
-- [Contingency table app](http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table)
+- [One sample test app](http://bioinformatics.cruk.cam.ac.uk/apps/stats/OneSampleTest)
+- [Two sample test app](http://bioinformatics.cruk.cam.ac.uk/apps/stats/TwoSampleTest)
+- [Contingency table app](http://bioinformatics.cruk.cam.ac.uk/apps/stats/contingency-table)
 
 ### Further Reading
 
