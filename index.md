@@ -15,15 +15,17 @@ Note that this is not a course for learning about the R statistical language its
 
 ### Aims
 
-During this course you will learn about
+During this course you will learn about:
 
 - Different types of data, distributions and structure within data
 - Summary statistics for continuous and discrete data
 - Formulating a null hypothesis
 - Assumptions of one-sample and two-sample t-tests
 - Interpreting the result of a statistical test
-- Statistical tests of categorical variables
-- Non-parmetric versions of one- and two-sample tests
+- Statistical tests of categorical variables (Chi-squared and Fisher's exact tests)
+- Non-parametric versions of one- and two-sample tests (Wilcoxon tests)
+
+We will not cover ANOVA or linear regression here but these are the topics of a [more advanced course](https://bioinformatics-core-shared-training.github.io/linear-models-r)
 
 ### Learning Objectives
 
