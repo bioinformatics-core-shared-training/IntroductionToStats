@@ -9,9 +9,9 @@ Note that this is not a course for learning about the R statistical language its
 ### Authors
 
 - Dominique-Laurent Couturier
-- Mark Dunning
+- Matt Eldridge
 
-(Acknowledgements: Robert Nicholls, Matt Eldridge, Sarah Vowler, Deepak Parashar, Sarah Dawson, Elizabeth Merrell)
+(Acknowledgements: Mark Dunning, Robert Nicholls, Sarah Vowler, Deepak Parashar, Sarah Dawson, Elizabeth Merrell)
 
 ### Aims
 
@@ -39,7 +39,7 @@ After this course you should be able to:-
 
 ### Course Materials
 
-- [Lecture (pdf)](IntroToStat-DLC-20171022.pdf)
+- [Lecture (pdf)](IntroToStat-DLC-20180212.pdf)
 - [Online quiz](https://docs.google.com/forms/d/e/1FAIpQLScblQ_-ISfSCGp_EIVPPI_mnrJHttaKxln8vVoyjJFvS8BL1w/viewform)
 - [Practical](practical.html)
 - [Interactive document to record your answers for the group exercise](https://public.etherpad-mozilla.org/p/2017-10-23-intro-to-stats)

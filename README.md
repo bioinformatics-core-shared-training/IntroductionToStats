@@ -7,7 +7,7 @@ This course provides a refresher on the foundations of statistical analysis. Pra
 Note that this is not a course for learning about the R statistical language itself. If you wish to learn more about R, please see other courses at the University of Cambridge ( An Introduction to Solving Biological Problems with R ).
 
 Authors: Dominique-Laurent Couturier & Mark Dunning        
-Acknowledgements: Robert Nicholls, Matt Eldridge, Sarah Vowler, Deepak Parashar, Sarah Dawson, Elizabeth Merrell)
+Acknowledgements: Robert Nicholls, Matt Eldridge, Sarah Vowler, Deepak Parashar, Sarah Dawson, Elizabeth Merrell
 
 Aims
 ====
