@@ -540,7 +540,7 @@ In this section, we invite you to form small groups to select a dataset and disc
 
 You can use this interactive document to record your observations:
 
-[https://public.etherpad-mozilla.org/p/2017-10-23-intro-to-stats](https://public.etherpad-mozilla.org/p/2017-10-23-intro-to-stats)
+[https://public.etherpad-mozilla.org/p/2018-02-12-intro-to-stats](https://public.etherpad-mozilla.org/p/2018-02-12-intro-to-stats)
 
 ```{r}
 library(UsingR)
