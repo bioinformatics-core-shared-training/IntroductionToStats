@@ -42,7 +42,7 @@ After this course you should be able to:-
 - [Lecture (pdf)](IntroToStat-DLC-20180212.pdf)
 - [Online quiz](https://docs.google.com/forms/d/e/1FAIpQLScblQ_-ISfSCGp_EIVPPI_mnrJHttaKxln8vVoyjJFvS8BL1w/viewform)
 - [Practical](practical.html)
-- [Interactive document to record your answers for the group exercise](https://public.etherpad-mozilla.org/p/2017-10-23-intro-to-stats)
+- [Interactive document to record your answers for the group exercise](https://public.etherpad-mozilla.org/p/2018-02-12-intro-to-stats)
 - [Example data for the course](CourseData.zip)
 
 ### Software Requirements
