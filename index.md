@@ -62,6 +62,6 @@ You will need an internet connection in order to run the practicals and examples
 
 ### Feedback
 
-- [Feedback form](http://tinyurl.com/stats-feedback-oct2017) for course run on 23 October 2017
+- [Feedback form](https://www.surveymonkey.co.uk/r/ZWPZ97W) for course run on 12 February 2018
 
 $$ $$
