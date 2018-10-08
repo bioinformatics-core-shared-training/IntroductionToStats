@@ -41,7 +41,8 @@ After this course you should be able to:-
 
 - [Lecture (pdf)](IntroToStat-DLC-20180212.pdf)
 - [Lecture (annotated slides, pdf)](IntroToStatSlides-AnnotatedSlides-DLC20150213.pdf)
-- [Online quiz](https://docs.google.com/forms/d/e/1FAIpQLScblQ_-ISfSCGp_EIVPPI_mnrJHttaKxln8vVoyjJFvS8BL1w/viewform)
+[//]: # (- [Online quiz](https://docs.google.com/forms/d/e/1FAIpQLScblQ_-ISfSCGp_EIVPPI_mnrJHttaKxln8vVoyjJFvS8BL1w/viewform))
+- [Online quiz](https://goo.gl/forms/QABUxPKA988HUVeO2)
 - [Practical](practical.html)
 - [Interactive document to record your answers for the group exercise](https://public.etherpad-mozilla.org/p/2018-11-05-intro-to-stats)
 - [Example data for the course](CourseData.zip)
