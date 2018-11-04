@@ -1,0 +1,48 @@
+
+
+body {
+    font-family: Calibri, helvetica, sans-serif;
+    font-size: 150%;
+    max-width: 2000px;
+}
+
+
+body .main-container {
+max-width: 900px;
+}
+
+h1 {
+    color: rgb(55, 56, 149);
+    font-size: 200%;
+    font-weight: bold;
+}
+
+
+h2 {
+    color: rgb(6, 188, 241);
+    font-size: 150%;
+    font-weight: bold;
+}
+
+h3 {
+    color: rgb(235, 7, 142);
+    font-size: 125%;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 100%;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.title {
+    margin-right: 200px;
+    font-size: 100%;
+}
+
+
+
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+    background-color: rgb(55, 56, 149);
+}
