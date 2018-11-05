@@ -168,7 +168,7 @@ is less than the bone marrow micro vessel density before treatment.")
 
 View the histogram and boxplot of the paired differences on the ***Differences*** tab. 
 
-<span style="color:rgb(235, 7, 142)">**Question:**</span> Do the differences look normally distributed? Is the paired t–test appropriate?
+<span style="color:rgb(235, 7, 142)">**Question:**</span> Do the differences look normally distributed? Is the parametric t–test appropriate?
 
 ------
 
@@ -191,13 +191,13 @@ the sample size is small and so only large differences may be detected).")
 
 Now select the correct options in the ***Statistical Analysis*** tab in order to perform the analysis. Ensure you select the one- or two-tailed test as appropriate. 
 
-<span style="color:rgb(235, 7, 142)">**Question:**</span> What is the mean difference? What is your value of t? What is the p-value? How do you interpret the p-value? Why does ticking / unticking the equal variances have no effect?
+<span style="color:rgb(235, 7, 142)">**Question:**</span> What is the mean difference? What is your value of t? What is the p-value? How do you interpret the p-value?
 
 
 ```{r}
 alternative <- 'greater'
 paired <- TRUE
-var.equal <-FALSE
+var.equal <- FALSE
 t.test(value~variable,data=data,alternative=alternative,paired=paired,var.equal=var.equal)
 
 ```
