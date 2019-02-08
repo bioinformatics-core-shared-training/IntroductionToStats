@@ -486,9 +486,7 @@ There is evidence of an association between mouse type and disease X.")
 
 In this section, we invite you to form small groups to select a dataset and discuss what methods/tests you would use to analyse those data.
 
-You can use this interactive document to record your observations:
-
-[https://public.etherpad-mozilla.org/p/2018-11-05-intro-to-stats](https://public.etherpad-mozilla.org/p/2018-11-05-intro-to-stats)
+You should use this [interactive document](https://public.etherpad-mozilla.org/p/2019-02-12-intro-to-stats) to record your observations.
 
 ```{r}
 library(UsingR)
