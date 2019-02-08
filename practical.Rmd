@@ -1,20 +1,23 @@
 ---
 title: "Introduction to Statistical Analysis"
-author: "D.-L. Couturier and M. Eldridge (with contributions of M. Dunning  and S. Vowler)"
-date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
+author: "D.-L. Couturier and M. Eldridge (with contributions of M. Dunning and S. Vowler)"
+
 output:
   html_document:
-    theme: lumen 
-    highlight: tango
-    code_folding: show    
-    toc: true           
-    toc_depth: 3       
-    toc_float: true     
-    fig_width: 9
-    fig_height: 6
-    css: stylesheets/styles.css    
+    code_folding: show
+    css: stylesheets/styles.css
     df_print: paged
-    number_sections: true
+    fig_height: 6
+    fig_width: 9
+    highlight: tango
+    number_sections: yes
+    theme: lumen
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
 ---
 
 <!--- rmarkdown::render("~/courses/cruk/IntroductionToStatisticalAnalysis/git_IntroToStat/practical.Rmd") --->
