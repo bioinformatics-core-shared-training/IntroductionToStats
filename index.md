@@ -67,6 +67,5 @@ You will need an internet connection in order to run the practicals and examples
 
 ### Feedback
 
-- [Feedback form](https://www.surveymonkey.co.uk/r/StatAnalysis) for course run on 5 November 2018
+- [Feedback form](https://www.surveymonkey.co.uk/r/StatAnalyFeb19) for course run on 12th February 2019
 
-$$ $$
