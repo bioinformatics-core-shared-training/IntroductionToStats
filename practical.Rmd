@@ -3,9 +3,6 @@ title: "Introduction to Statistical Analysis"
 author: "D.-L. Couturier and M. Eldridge (with contributions of M. Dunning and S. Vowler)"
 
 output:
-  pdf_document:
-    toc: yes
-    toc_depth: '3'
   html_document:
     code_folding: show
     css: stylesheets/styles.css
@@ -18,6 +15,9 @@ output:
     toc: yes
     toc_depth: 3
     toc_float: yes
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
 ---
 
 <!--- rmarkdown::render("~/courses/cruk/IntroductionToStatisticalAnalysis/git_IntroductionToStats/practical.Rmd") --->
