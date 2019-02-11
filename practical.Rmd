@@ -487,10 +487,11 @@ There is evidence of an association between mouse type and disease X.")
 
 # Small-Group Exercise: Choosing a test 
 
-In this section, we invite you to form small groups. Each group will be assigned two exercises. After a defined preparation time, a person of each group will 
+In this section, we invite you to form small groups. Each group will be assigned one of the exercises. 
 
-* present the problem, analysis (descriptive analysis and tests) and conclusions related to the first dataset assigned to the group,
-* compare and contrast the analyis of the second dataset with the one presented by another group (after a look at their answer on the notepad, see below). 
+At the end of the time assigned for the exercise we will go through each of the problems in turn and invite a representative of each group to present the problem to the rest of the class along with the analysis (descriptive analysis, statistical tests) the group felt was most appropriate and any conclusions made.
+
+If time allows, it would be beneficial for groups to familiarize themselves with some of the other exercises so that they can contribute to the presentations made by other groups.
 
 You should use this [interactive document](https://public.etherpad-mozilla.org/p/2019-02-12-intro-to-stats) to record your observations.
 
