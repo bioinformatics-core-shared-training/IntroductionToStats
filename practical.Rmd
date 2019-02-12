@@ -3,9 +3,6 @@ title: "Introduction to Statistical Analysis"
 author: "D.-L. Couturier and M. Eldridge (with contributions of M. Dunning and S. Vowler)"
 
 output:
-  pdf_document:
-    toc: yes
-    toc_depth: '3'
   html_document:
     code_folding: show
     css: stylesheets/styles.css
@@ -18,6 +15,9 @@ output:
     toc: yes
     toc_depth: 3
     toc_float: yes
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
 ---
 
 <!--- rmarkdown::render("~/courses/cruk/IntroductionToStatisticalAnalysis/git_IntroductionToStats/practical.Rmd") --->
@@ -425,6 +425,7 @@ cat("Both tests show that there is insufficient evidence to reject the null hypo
 
 &nbsp;
 
+<!---
 ## Disease association
 
 The following table gives the frequencies of wild-type and knock-out mice developing a disease thought to be associated to the absence of the knock-out gene. 
@@ -463,6 +464,7 @@ colnames(.Table) <- c('WT', 'KO')
 Enter the data into the [Shiny app](http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/). Select the **Fisher's exact test** option to compare the proportion of mice in each group that developed the disease.
 
 <span style="color:rgb(235, 7, 142)">**Question:**</span>  What is your p-value? How do you interpret the result?
+---> 
 
 ------
 ```{r}
