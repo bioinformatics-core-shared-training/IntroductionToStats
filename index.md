@@ -46,7 +46,7 @@ https://docs.google.com/forms/d/e/1FAIpQLScblQ_-ISfSCGp_EIVPPI_mnrJHttaKxln8vVoy
 -->
 - [Online quiz](https://goo.gl/forms/QABUxPKA988HUVeO2)
 - [Practical](practical.html)
-- [Interactive document to record your answers for the group exercise](https://public.etherpad-mozilla.org/p/2019-02-12-intro-to-stats)
+- [Interactive document to record your answers for the group exercise](https://etherpad.wikimedia.org/p/Intro_stat_261119)
 - [Example data for the course](CourseData.zip)
 
 ### Software Requirements
