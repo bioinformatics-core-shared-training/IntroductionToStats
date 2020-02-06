@@ -66,7 +66,7 @@ You will need an internet connection in order to run the practicals and examples
 
 ### Feedback
 
-- [Feedback form](https://www.surveymonkey.co.uk/r/STanalys19) for course run on 26th November 2019
+- [Feedback form](https://www.surveymonkey.co.uk/r/STATFEB) for course run on 11th February 2020
 
 ### Funding
 This course has received funding from the [CRUK Cambridge Centre](https://crukcambridgecentre.org.uk). If you are researching Cancer in Cambridge please consider becoming a member.
