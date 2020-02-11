@@ -40,7 +40,7 @@ After this course you should be able to:-
 
 ### Course Materials
 
-- [Lecture (pdf)](IntroToStat-DLC-20200211.pdf)
+- [Lecture (pdf)](IntroToStatSlides-DLC20200211.pdf)
 <!---
 Old link
 https://docs.google.com/forms/d/e/1FAIpQLScblQ_-ISfSCGp_EIVPPI_mnrJHttaKxln8vVoyjJFvS8BL1w/viewform)
