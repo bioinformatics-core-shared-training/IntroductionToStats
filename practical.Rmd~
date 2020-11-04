@@ -20,14 +20,14 @@ output:
     toc_depth: '3'
 ---
 
-<!--- rmarkdown::render("~/courses/cruk/IntroductionToStatisticalAnalysis/git_IntroToStat/practical.Rmd") --->
-<!--- setwd("~/courses/cruk/IntroductionToStatisticalAnalysis/git_IntroToStat/") --->
+<!--- rmarkdown::render("~/courses/cruk/IntroductionToStatisticalAnalysis/git_IntroductionToStats/practical.Rmd") --->
+<!--- setwd("~/courses/cruk/IntroductionToStatisticalAnalysis/git_IntroductionToStats/") --->
 <img src="stylesheets/logo.png" style="position:absolute;top:0px;right:0px;" width="300" />
 
 
 ---
 
-```{r eval=TRUE, echo=F, results="asis"}
+```{r eval=TRUE, echo=FALSE, warning=FALSE, results="asis"}
 #BiocStyle::markdown()
 library("knitr")
 opts_chunk$set(tidy=FALSE,dev="png",fig.show="as.is",
@@ -52,7 +52,7 @@ The tab **Estimated coverage of Student's CI** in the shiny app **central-limit-
 
 1. Assuming that the simulated data are normally distributed, what is the probability of the **true** mean belonging to a confidence interval?
 2. Let X denote a random variable that equals 1 if the **true mean belongs to the confidence interval** and 0 otherwise. What is the distribution of X?     
-3. What is the probability that 0 confidence intervals out of 50 contain the **true mean** if data are normally distributed?
+<!--- 3. What is the probability that 0 confidence intervals out of 50 contain the **true mean** if data are normally distributed? (too complex) --->
 
 <span style="color:rgb(235, 7, 142)">**Question (ii):**</span>
 
@@ -247,7 +247,7 @@ cat("From this histogram it is difficult to tell whether the differences between
 # Two-Sample Tests
 
 Use our Shiny app [http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest](http://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest)
-to perform tests of equality of means/medians. [http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table](http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table) to perform tests of equality of proportions.
+to perform tests of equality of means/medians. <!--- [http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table](http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table) to perform tests of equality of proportions.--->
 
 &nbsp;
 
@@ -425,6 +425,7 @@ cat("Both tests show that there is insufficient evidence to reject the null hypo
 
 &nbsp;
 
+<!---
 ## Disease association
 
 The following table gives the frequencies of wild-type and knock-out mice developing a disease thought to be associated to the absence of the knock-out gene. 
@@ -463,6 +464,7 @@ colnames(.Table) <- c('WT', 'KO')
 Enter the data into the [Shiny app](http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/). Select the **Fisher's exact test** option to compare the proportion of mice in each group that developed the disease.
 
 <span style="color:rgb(235, 7, 142)">**Question:**</span>  What is your p-value? How do you interpret the result?
+---> 
 
 ------
 ```{r}
@@ -487,7 +489,11 @@ There is evidence of an association between mouse type and disease X.")
 
 # Small-Group Exercise: Choosing a test 
 
-In this section, we invite you to form small groups to select a dataset and discuss what methods/tests you would use to analyse those data.
+In this section, we invite you to form small groups. Each group will be assigned one of the exercises. 
+
+At the end of the time assigned for the exercise we will go through each of the problems in turn and invite a representative of each group to present the problem to the rest of the class along with the analysis (descriptive analysis, statistical tests) the group felt was most appropriate and any conclusions made.
+
+If time allows, it would be beneficial for groups to familiarize themselves with some of the other exercises so that they can contribute to the presentations made by other groups.
 
 You should use this [interactive document](https://public.etherpad-mozilla.org/p/2019-02-12-intro-to-stats) to record your observations.
 
@@ -503,7 +509,7 @@ library(Biobase)
 
 &nbsp;
 
-## Group 1: Plant Growth `data1.csv`
+## Group Exercise 1: Plant Growth `data1.csv`
 
 Darwin (1876) studied the growth of *pairs* of zea may (aka corn) seedlings, one produced by cross-fertilization and the other produced by self-fertilization, but otherwise grown under identical conditions. His goal was to demonstrate the greater vigour of the cross-fertilized plants. The data recorded are the final height (inches, to the nearest 1/8th) of the plants in each pair.
 
@@ -536,7 +542,7 @@ write.csv(td, file="mystery-data/data1.csv",quote=FALSE,row.names=FALSE)
 
 &nbsp;
 
-## Group 2: Florence Nightingale `data2.csv`
+## Group Exercise 2: Florence Nightingale `data2.csv`
 
 In the history of data visualization, Florence Nightingale is best remembered for her role as a social activist and her view that statistical data, presented in charts and diagrams, could be used as powerful arguments for medical reform.
 
@@ -590,7 +596,7 @@ Night.flt <- Night %>% filter(Cause=="Disease") %>% select(Regime,Deaths)
 
 &nbsp;
 
-## Group 3: Effect of bran on diet: `data3.csv`
+## Group Exercise 3: Effect of bran on diet: `data3.csv`
 
 The addition of bran to the diet has been reported to benefit patients with diverticulosis. Several different bran preparations are available, and a clinician wants to test the efficacy of two of them on patients, since favourable claims have been made for each. Among the consequences of administering bran that requires testing is the transit time through the alimentary canal. By random allocation the clinician selects two groups of patients aged 40-64 with diverticulosis of comparable severity. Sample 1 contains 15 patients who are given treatment A, and sample 2 contains 12 patients who are given treatment B.
 
@@ -618,7 +624,7 @@ t.test(Time~Group,data,var.equal=TRUE)
 
 &nbsp;
 
-## Group 4: Effect of Autism drug  `data4.csv`
+## Group Exercise 4: Effect of Autism drug  `data4.csv`
 
 Consider a clinical investigation to assess the effectiveness of a new drug designed to reduce repetitive behaviors in children affected with autism. If the drug is effective, children will exhibit fewer repetitive behaviors on treatment as compared to when they are untreated. A total of 8 children with autism enroll in the study. Each child is observed by the study psychologist for a period of 3 hours both before treatment and then again after taking the new drug for 1 week. The time that each child is engaged in repetitive behavior during each 3 hour observation period is measured. Repetitive behavior is scored on a scale of 0 to 100 and scores represent the percent of the observation time in which the child is engaged in repetitive behavior. For example, a score of 0 indicates that during the entire observation period the child did not engage in repetitive behavior while a score of 100 indicates that the child was constantly engaged in repetitive behavior. 
 
@@ -637,16 +643,9 @@ write.csv(data, file="mystery-data/data4.csv",quote=FALSE,row.names=FALSE)
 
 ```
 
-```{r}
-###http://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/BS704_Nonparametric/BS704_Nonparametric5.html
-## Non-parametric
-## Non-matched
-## Sign-test
-```
-
 &nbsp;
 
-## Group 5: CD4 `data5.csv`
+## Group Exercise 5: CD4 `data5.csv`
 
 CD4 cells are carried in the blood as part of the human immune system. One of the effects of the HIV virus is that these cells die. The count of CD4 cells is used in determining the onset of full-blown AIDS in a patient. In this study of the effectiveness of a new anti-viral drug on HIV, 20 HIV-positive patients had their CD4 counts recorded and then were put on a course of treatment with this drug. After using the drug for one year, their CD4 counts were again recorded. 
 
@@ -670,7 +669,7 @@ t.test(data[,1],data[,2],paired=TRUE)
 
 &nbsp;
 
-## Group 6: Drink Driving `data6.csv`
+## Group Exercise 6: Drink Driving `data6.csv`
 
 Drunk driving is one of the main causes of car accidents. Interviews with drunk drivers who were involved in accidents and survived revealed that one of the main problems is that drivers do not realize that they are impaired, thinking “I only had 1-2 drinks … I am OK to drive.”
 
@@ -705,7 +704,7 @@ write.csv(data2,file="mystery-data/data6.csv",quote=FALSE,row.names=FALSE)
 
 &nbsp;
 
-## Group 7: Pollution in Trees `data7.csv`
+## Group Exercise 7: Pollution in Trees `data7.csv`
 
 Laureysens et al. (2004) measured metal content in the wood of 13 poplar clones growing in a polluted area, once in August and once in November. Concentrations of aluminum (in micrograms of Al per gram of wood) are shown below.
 
@@ -733,7 +732,7 @@ boxplot(data)
 
 &nbsp;
 
-## Group 8: Salaries for Professors  `data8.csv`
+## Group Exercise 8: Salaries for Professors  `data8.csv`
 
 The 2008-09 nine-month academic salary for Assistant Professors, Associate Professors and Professors in a college in the U.S. The data were collected as part of the on-going effort of the college's administration to monitor salary differences between male and female faculty members. (salary given as nine-month salary, in dollars.)
 

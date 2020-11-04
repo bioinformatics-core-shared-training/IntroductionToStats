@@ -1,3 +1,6 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
 \documentclass[]{article}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
@@ -6,30 +9,32 @@
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
 \else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
+  \usepackage{unicode-math}
   \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
 \IfFileExists{microtype.sty}{%
-\usepackage{microtype}
+\usepackage[]{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage[margin=1in]{geometry}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
 \usepackage{hyperref}
-\hypersetup{unicode=true,
+\hypersetup{
             pdftitle={Introduction to Statistical Analysis},
-            pdfauthor={D.-L. Couturier and M. Eldridge (with contributions of M. Dunning and S. Vowler)},
+            pdfauthor={D.-L. Couturier and M. Fernandes (with contributions of M. Eldridge, M. Dunning and S. Vowler)},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
-\usepackage{longtable,booktabs}
+\usepackage[margin=1in]{geometry}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -39,12 +44,6 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -59,32 +58,16 @@
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
 
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
 
-%%% Change title format to be more compact
-\usepackage{titling}
 
-% Create subtitle command for use in maketitle
-\newcommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
-\setlength{\droptitle}{-2em}
-
-  \title{Introduction to Statistical Analysis}
-    \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-    \author{D.-L. Couturier and M. Eldridge (with contributions of M. Dunning and S.
-Vowler)}
-    \preauthor{\centering\large\emph}
-  \postauthor{\par}
-    \date{}
-    \predate{}\postdate{}
-  
+\title{Introduction to Statistical Analysis}
+\author{D.-L. Couturier and M. Fernandes (with contributions of M. Eldridge, M.
+Dunning and S. Vowler)}
+\date{}
 
 \begin{document}
 \maketitle
@@ -469,40 +452,6 @@ data? Which test is the most appropriate?
 
 ~
 
-\hypertarget{disease-association}{%
-\subsection{Disease association}\label{disease-association}}
-
-The following table gives the frequencies of wild-type and knock-out
-mice developing a disease thought to be associated to the absence of the
-knock-out gene.
-
-\begin{longtable}[]{@{}lrrr@{}}
-\toprule
-~ & WT & KO & Total\tabularnewline
-\midrule
-\endhead
-Disease & 1 & 7 & 8\tabularnewline
-No disease & 9 & 3 & 12\tabularnewline
-Total & 10 & 10 & 20\tabularnewline
-\bottomrule
-\end{longtable}
-
-{\textbf{Question:}} What are your null and alternative hypotheses?
-
-\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
-
-{\textbf{Question:}} What are your expected frequencies?
-
-\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
-
-Enter the data into the
-\href{http://bioinformatics.cruk.cam.ac.uk/stats/contingency-table/}{Shiny
-app}. Select the \textbf{Fisher's exact test} option to compare the
-proportion of mice in each group that developed the disease.
-
-{\textbf{Question:}} What is your p-value? How do you interpret the
-result?
-
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
 ~
@@ -678,6 +627,5 @@ faculty members. (salary given as nine-month salary, in dollars.)
 
 {\emph{Is there evidence that Female professors are paid differently to
 their Male counterparts?}}
-
 
 \end{document}
