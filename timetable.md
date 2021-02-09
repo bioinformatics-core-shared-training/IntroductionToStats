@@ -10,6 +10,7 @@
 | 13.00 | Lecture (45 min) | DLC |.
 | _ | Exercise with Shiny apps & discussion (30 min) | MAF |.
 | | Lecture (45 min) | DLC |.
-| 15.15 | Coffee & tea break | _ |.
-| 15.30 | Exercise with Shiny apps & discussion (30 min) | |.
-| 16.00 | Group based activity (60 min) | DLC & MAF |.
+| 15.00 | Coffee & tea break | _ |.
+| 15.15 | Exercise with Shiny apps & discussion (30 min) | |.
+| 15.45 | Group based activity (60 min) | DLC & MAF |.
+] 16.45 | Wrap up & Questions ] _ |
