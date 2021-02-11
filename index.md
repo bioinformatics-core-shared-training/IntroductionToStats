@@ -40,10 +40,6 @@ After this course you should be able to:-
 ### Course Materials
 
 - [Lecture (pdf)](IntroToStatSlides-DLC20210212.pdf)
-<!---
-Old link
-https://docs.google.com/forms/d/e/1FAIpQLScblQ_-ISfSCGp_EIVPPI_mnrJHttaKxln8vVoyjJFvS8BL1w/viewform)
--->
 - [Online google document](https://docs.google.com/document/d/1HCkzP_LpoBgLuKQHqX5HSnOvz45aD-VjCs4n_NEJZEk/) 
 - [Online quiz](https://docs.google.com/forms/d/1C3RHisRHoWXcnFqX9JhRAk3gy_aJ6FrhouJ6ljsJ-Fc)
 - [Practical](practical.html)
@@ -65,7 +61,7 @@ You will need an internet connection in order to run the practicals and examples
 
 ### Feedback
 
-- [Feedback form](https://www.surveymonkey.co.uk/r/D8FCC9R) for course run on 11th February 2020
+- [Feedback form](https://www.surveymonkey.co.uk/r/D8FCC9R) for course run on 12th February 2021
 
 ### Funding
 This course has received funding from the [CRUK Cambridge Centre](https://crukcambridgecentre.org.uk). If you are researching Cancer in Cambridge please consider becoming a member.
