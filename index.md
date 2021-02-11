@@ -10,9 +10,8 @@ Note that this is not a course for learning about the R statistical language its
 
 - Dominique-Laurent Couturier
 - Mark Fernandes
-- Matthew Eldridge
 
-(Acknowledgements: Mark Dunning, Robert Nicholls, Sarah Vowler, Deepak Parashar, Sarah Dawson, Elizabeth Merrell)
+(Acknowledgements: Matthew Eldridge, Mark Dunning, Robert Nicholls, Sarah Vowler, Deepak Parashar, Sarah Dawson, Elizabeth Merrell)
 
 ### Aims
 
@@ -40,24 +39,23 @@ After this course you should be able to:-
 
 ### Course Materials
 
-- [Lecture (pdf)](IntroToStatSlides-DLC20201105.pdf)
+- [Lecture (pdf)](IntroToStatSlides-DLC20210212.pdf)
 <!---
 Old link
 https://docs.google.com/forms/d/e/1FAIpQLScblQ_-ISfSCGp_EIVPPI_mnrJHttaKxln8vVoyjJFvS8BL1w/viewform)
 -->
-- [Online quiz](https://goo.gl/forms/QABUxPKA988HUVeO2)
+- [Online google document](https://docs.google.com/document/d/1HCkzP_LpoBgLuKQHqX5HSnOvz45aD-VjCs4n_NEJZEk/) 
+- [Online quiz](https://docs.google.com/forms/d/1C3RHisRHoWXcnFqX9JhRAk3gy_aJ6FrhouJ6ljsJ-Fc)
 - [Practical](practical.html)
-- [Interactive document to record your answers for the group exercise](https://etherpad.wikimedia.org/p/Intro_stat_261119)
 - [Example data for the course](CourseData.zip)
 
 ### Software Requirements
 
 You will need an internet connection in order to run the practicals and examples
 
-- [Central limit theorem app](http://bioinformatics.cruk.cam.ac.uk/apps/stats/central-limit-theorem)
-- [One sample test app](http://bioinformatics.cruk.cam.ac.uk/apps/stats/OneSampleTest)
-- [Two sample test app](http://bioinformatics.cruk.cam.ac.uk/apps/stats/TwoSampleTest)
-- [Contingency table app](http://bioinformatics.cruk.cam.ac.uk/apps/stats/contingency-table)
+- [Central limit theorem app](https://bioinformatics.cruk.cam.ac.uk/apps/stats/central-limit-theorem/)
+- [One sample test app](https://bioinformatics.cruk.cam.ac.uk/stats/OneSampleTest/)
+- [Two sample test app](https://bioinformatics.cruk.cam.ac.uk/stats/TwoSampleTest/)
 
 ### Further Reading
 
@@ -67,7 +65,7 @@ You will need an internet connection in order to run the practicals and examples
 
 ### Feedback
 
-- [Feedback form](https://www.surveymonkey.co.uk/r/STATFEB) for course run on 11th February 2020
+- [Feedback form](https://www.surveymonkey.co.uk/r/D8FCC9R) for course run on 11th February 2020
 
 ### Funding
 This course has received funding from the [CRUK Cambridge Centre](https://crukcambridgecentre.org.uk). If you are researching Cancer in Cambridge please consider becoming a member.
