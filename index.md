@@ -40,7 +40,7 @@ After this course you should be able to:-
 ### Course Materials
 
 - [Lecture (pdf)](IntroToStatSlides-DLC20210212.pdf)
-- [Online google document](https://docs.google.com/document/d/1HCkzP_LpoBgLuKQHqX5HSnOvz45aD-VjCs4n_NEJZEk/) 
+- [Online google document](https://docs.google.com/document/d/1HEmrqiDNpuqi7d1pmzxVRJ3TqNg23FRYvQMZJb1KVdo/edit#heading=h.tj6yzxlcvirh) 
 - [Online quiz](https://docs.google.com/forms/d/1C3RHisRHoWXcnFqX9JhRAk3gy_aJ6FrhouJ6ljsJ-Fc)
 - [Practical](practical.html)
 - [Example data for the course](CourseData.zip)
