@@ -6,12 +6,12 @@ Note that this is not a course for learning about the R statistical language its
 
 - [An Introduction to Solving Biological Problems with R](http://cambiotraining.github.io/r-intro/)
 
-### Authors
+### Trainers
 
 - Dominique-Laurent Couturier
-- Mark Fernandes
+- Matthew Eldridge
 
-(Acknowledgements: Matthew Eldridge, Mark Dunning, Robert Nicholls, Sarah Vowler, Deepak Parashar, Sarah Dawson, Elizabeth Merrell)
+(Acknowledgements: Mark Fernandes, Paul Judge, Mark Dunning, Robert Nicholls, Sarah Vowler, Deepak Parashar, Sarah Dawson, Elizabeth Merrell)
 
 ### Aims
 
@@ -39,8 +39,8 @@ After this course you should be able to:-
 
 ### Course Materials
 
-- [Lecture (pdf)](IntroToStatSlides-DLC20211109.pdf)
-- [Online google document](https://docs.google.com/document/d/1HEmrqiDNpuqi7d1pmzxVRJ3TqNg23FRYvQMZJb1KVdo/edit#heading=h.tj6yzxlcvirh) 
+- [Lecture (pdf)](IntroToStatSlides-DLC20220223.pdf)
+- [Online google document](https://docs.google.com/document/d/1UoBUYiTzhXC2-16R95SnsJA6IMUDAyg7f_jvoGm4tN0/edit?usp=sharing) 
 - [Online quiz](https://docs.google.com/forms/d/1C3RHisRHoWXcnFqX9JhRAk3gy_aJ6FrhouJ6ljsJ-Fc)
 - [Practical](practical.html)
 - [Example data for the course](CourseData.zip)
