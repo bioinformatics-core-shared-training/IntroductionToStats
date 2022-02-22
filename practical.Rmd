@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Statistical Analysis"
-author: "D.-L. Couturier and M. Eldridge (with contributions of M. Dunning and S. Vowler)"
+author: "D.-L. Couturier, M. Eldridge and M. Fernandes (with contributions of M. Dunning and S. Vowler)"
 
 output:
   html_document:
@@ -20,7 +20,7 @@ output:
     toc_depth: '3'
 ---
 
-<!--- rmarkdown::render("/Volumes/Files/courses/cruk/IntroductionToStatisticalAnalysis/git_IntroductionToStats/practical.Rmd") --->
+<!--- rmarkdown::render("~/coursess/cruk/IntroductionToStatisticalAnalysis/git_IntroductionToStats/practical.Rmd") --->
 <!--- setwd("~/courses/cruk/IntroductionToStatisticalAnalysis/git_IntroductionToStats/") --->
 <img src="stylesheets/logo.png" style="position:absolute;top:0px;right:0px;" width="300" />
 
