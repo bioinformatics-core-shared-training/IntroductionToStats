@@ -10,8 +10,9 @@ Note that this is not a course for learning about the R statistical language its
 
 - Dominique-Laurent Couturier
 - Matthew Eldridge
+- Mark Fernandes
 
-(Acknowledgements: Mark Fernandes, Paul Judge, Mark Dunning, Robert Nicholls, Sarah Vowler, Deepak Parashar, Sarah Dawson, Elizabeth Merrell)
+(Acknowledgements: Paul Judge, Mark Dunning, Robert Nicholls, Sarah Vowler, Deepak Parashar, Sarah Dawson, Elizabeth Merrell)
 
 ### Aims
 
