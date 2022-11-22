@@ -2,12 +2,12 @@
 
 This course provides a refresher on the foundations of statistical analysis.
 
-The practical sessions use web applications developed specifically for the
-course using the [R](https://cran.r-project.org) statistical programming
+The practical sessions use web applications that were developed specifically for
+this course with the [R](https://cran.r-project.org) statistical programming
 language and the [Shiny](http://shiny.rstudio.com/gallery) framework. Although
-the trainers use and favour R as their statistical computing environment of
-choice, the focus of the course is on understanding statistical concepts rather
-than learning a particular statistical package.
+the trainers use R as their statistical computing environment of choice, the
+focus of the course is on understanding basic statistical concepts rather than
+learning a particular statistical package.
 
 Note that this is not a course for learning about the R statistical language.
 If you wish to learn more about R, please take a look at some of the
