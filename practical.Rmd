@@ -49,7 +49,7 @@ for the exercises in this practical.
 ## Data sets
 
 The data sets we will be using are pre-loaded within the Shiny apps but are also available for download using this
-**[link](https://rawgit.com/bioinformatics-core-shared-training/IntroductionToStats/master/CourseData.zip)**
+**[link](https://rawgit.com/bioinformatics-core-shared-training/IntroductionToStats/master/datasets.zip)**
 in case you wish to do the exercises using your favourite statistics package.
 
 ------
