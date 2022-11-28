@@ -46,7 +46,7 @@ After this course you should be able to:-
 
 ### Course Materials
 
-- [Lecture (pdf)](IntroToStatSlides-20221129.pdf)
+- [Lecture (pdf)](IntroToStatsSlides-20221129.pdf)
 - [Online quiz](https://docs.google.com/forms/d/1C3RHisRHoWXcnFqX9JhRAk3gy_aJ6FrhouJ6ljsJ-Fc)
 - [Practical](practical.html)
 
