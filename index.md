@@ -58,6 +58,24 @@ using the following web applications:
 - [Central limit theorem](https://bioinformatics.cruk.cam.ac.uk/apps/stats/central-limit-theorem)
 - [Statistical tests](https://bioinformatics.cruk.cam.ac.uk/stats/shinystats)
 
+### Timetable
+
+| Time  | Activity
+|:------|:--------
+|  9.30 | Lecture
+| 10.15 | Quiz
+| 10.30 | Coffee/tea break
+| 10.45 | Lecture
+| 11.45 | Exercises (central limit theorem) & discussion
+| 12.00 | Lunch break
+| 13.00 | Lecture
+| 13.45 | Exercise (one-sample tests) and discussion
+| 14.15 | Lecture
+| 15.00 | Coffee/tea break
+| 15.15 | Exercise (two-sample tests) and discussion
+| 15.45 | Group based exercise and discussion
+| 16.45 | Wrap up & questions
+
 ### Acknowledgements
 
 The following individuals are former trainers of this course and have
