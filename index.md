@@ -18,7 +18,6 @@ University of Cambridge.
 
 - Dominique-Laurent Couturier
 - Matthew Eldridge
-- Mark Fernandes
 
 ### Aims
 
@@ -82,6 +81,7 @@ The following individuals are former trainers of this course and have
 contributed to the materials.
 
 - Paul Judge
+- Mark Fernandes
 - Mark Dunning
 - Sarah Vowler
 - Deepak Parashar
