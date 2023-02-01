@@ -12,6 +12,8 @@ output:
     toc_depth: 3
 ---
 
+<!--- rmarkdown::render("/Volumes/Files/courses/cruk/IntroductionToStatisticalAnalysis/git_IntroductionToStats/practical.Rmd") --->
+
 <img src = "crukci_logo.png" style = "display: block; position: absolute; top: 0; right: 0; padding: 10px;" width = 300/>
 
 ```{r setup, include = FALSE}
@@ -58,14 +60,15 @@ in case you wish to do the exercises using your favourite statistics package.
 
 <span style="color:rgb(235, 7, 142)">**Part (i):**</span>
 
-The tab **Estimated coverage of Student's CI** in the **[central-limit-theorem](https://bioinformatics.cruk.cam.ac.uk/stats/central-limit-theorem)**
-app displays the confidence intervals of 100 simulated datasets.
+Using the 2 first tabs of the **[central limit theorem](https://bioinformatics.cruk.cam.ac.uk/stats/central-limit-theorem)**
+app, answer the following questions:
 
-1. Assuming that the simulated data are normally distributed, what is the
-probability of the **true** mean belonging to a confidence interval?
+1. Empirically check that the mean of normally distributed variables is itself normally distributed for all sample sizes. To do so, simulate **1000 samples** of **size n = 1000** of **Gaussian** IQ random variates 
+(with mean 100 and standard deviation 15) and compare the estimated mean's density (second tab) 
+to the one obatined when considering **1000 samples** of **size n = 5**.
 
-2. Let X denote a random variable that equals 1 if the **true mean belongs to
-the confidence interval** and 0 otherwise. What is the distribution of X?
+2. Now consider Beta distributed random variates. First, simulate **1000 samples** of **size n = 20** of **Beta**  random variates with mean 0.5 and shape parameter 0.1 and compare the estimated mean's density (second tab) 
+to the one obatined when considering with mean 0.1 and shape parameter 0.5. Why is it so different?
 
 <!--
 3. What is the probability that 0 confidence intervals out of 50 contain the
