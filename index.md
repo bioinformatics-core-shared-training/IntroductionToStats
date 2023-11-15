@@ -16,8 +16,8 @@ University of Cambridge.
 
 ### Trainers
 
-- Dominique-Laurent Couturier
-- Matthew Eldridge
+- Luca Porcu
+- Chandra Chilamakuri
 
 ### Aims
 
@@ -45,7 +45,7 @@ After this course you should be able to:-
 
 ### Course Materials
 
-- [Lecture (pdf)](IntroToStatsSlides-20230131.pdf)
+- [Lecture (pdf)](Intro_to_Stat_Ana_slides_151123.pdf)
 - [Online quiz](https://docs.google.com/forms/d/1C3RHisRHoWXcnFqX9JhRAk3gy_aJ6FrhouJ6ljsJ-Fc)
 - [Practical](practical.html)
 
@@ -79,7 +79,8 @@ using the following web applications:
 
 The following individuals are former trainers of this course and have
 contributed to the materials.
-
+- Dominique-Laurent Couturier
+- Matthew Eldridge
 - Paul Judge
 - Mark Fernandes
 - Mark Dunning
