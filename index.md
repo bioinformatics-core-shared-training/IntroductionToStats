@@ -45,7 +45,7 @@ After this course you should be able to:-
 
 ### Course Materials
 
-- [Lecture (pdf)](Intro_to_Stat_Ana_slides_151123.pdf)
+- [Lecture (pdf)](Introduction to Statistical Analysis 15nov2024.pdf)
 - [Online quiz](https://docs.google.com/forms/d/1C3RHisRHoWXcnFqX9JhRAk3gy_aJ6FrhouJ6ljsJ-Fc)
 - [Practical](practical.html)
 
