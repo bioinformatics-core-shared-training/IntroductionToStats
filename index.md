@@ -25,6 +25,7 @@ During this course you will learn about:
 
 - Different types of data, distributions and structure within data
 - Summary statistics for continuous and discrete data
+- Interval estimation of a population mean
 - Formulating a null hypothesis
 - Assumptions of one-sample and two-sample t-tests
 - Interpreting the result of a statistical test
@@ -73,11 +74,11 @@ using the following web applications:
 | 13.30 | Lecture on hypothesis testing
 | 13.45 | Exercises & discussion
 | 14.15 | Lecture on one-sample tests
-| 14.40 | Exercise (one-sample tests) and discussion
+| 14.40 | Exercises (one-sample tests) and discussion
 | 15.10 | Coffee/tea break
 | 15.20 | Lecture on two-sample tests
-| 15.45 | Exercise (two-sample tests) and discussion
-| 16.15 | Group based exercise and discussion
+| 15.45 | Exercises (two-sample tests) and discussion
+| 16.15 | Group based exercises and discussion
 | 17:00 | Wrap up & questions
 
 ### Acknowledgements
