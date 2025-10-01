@@ -1,0 +1,219 @@
+---
+title: "Basic concepts of Statistical science" 
+author: "L. Porcu / C. Chilamakuri"
+date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
+output:
+  html_document:
+    highlight: tango
+    code_folding: show    
+    toc: true           
+    toc_depth: 2       
+    toc_float: true     
+    fig_width: 8
+    fig_height: 6
+---
+
+# Exercises
+
+## Exercise 1
+
+Suppose a ball, W, is rolled across a horizontal line of unit length [0-1]. Zero point is the starting position. We know that this ball moves at a constant speed and it is subjected to a constant frictional force. The horizontal co-ordinate of the final resting place is taken to be $\theta$. <br />
+<br />
+Please, answer the following questions: <br />
+
+  1. Is $\theta$ a statistical model's parameter? <br />
+  2. Please, identify a reasonable statistical model generating $\theta$. <br />
+  3. Please, identify the parameters of this statistical model. <br />
+<br />
+
+A second ball is rolled in the same manner across the horizontal line repeateadly, _N_ times. Each time it comes to rest to the left of W is counted a success. The total number of successes is _n_. <br />
+<br />
+Please, answer the following questions: <br />
+
+  1. Is _n_ a statistical model's parameter? <br />
+  2. Is _N_ a statistical model's parameter? <br />
+  3. Please, identify a reasonable statistical model generating _n_. <br />
+  4. If we know _n_, our previous statistical model generating $\theta$ has the same credibility. Is it true? <br />
+
+## Exercise 2
+
+An experiment was performed to study the relationship between _X_ and _Y_ biomarkers. <br />
+The relationship is visualised in the following scatter plot: <br />
+
+
+```{r message = FALSE, warning = FALSE, echo = FALSE}
+library("ggplot2")
+### Parameters
+itc = 50.0# Intercept
+slope = -1.5 # Slope
+std <- 1.5 # Standard deviation of random error
+### Trials' simulation
+set.seed(1234)
+nTrials = 1 # Number of simulations
+sample = 10 # By time point and experimental group
+timePoints = c(0.5,1,2,4,6,12,24) 
+trial = matrix(nrow=nTrials*sample*length(timePoints), ncol=4)
+
+nrw = 0
+for (nSim in 1:nTrials) {
+IDmouse = 0
+for (t in timePoints) {
+                       for (j in 1:sample) {trial[nrw+1,1] = nSim
+                                            trial[nrw+1,2] = t
+                                            trial[nrw+1,3] = paste0("ID",IDmouse+1)
+                                            trial[nrw+1,4] = itc + slope*t + rnorm(n=1, mean = 0, sd = std)
+                                            nrw = nrw+1
+                                            IDmouse = IDmouse+1}}}
+trial = data.frame(trial)
+names(trial) <- c("Trial","time","IDmouse","logCc")
+trial$Trial = factor(paste0("Trial",trial$Trial), ordered = FALSE)
+trial$time = as.numeric(trial$time)
+trial$IDmouse = factor(trial$IDmouse, ordered = FALSE)
+trial$logCc = as.numeric(trial$logCc)
+rm(nrw,nSim,t,j,IDmouse)
+
+plot = ggplot(data=trial, mapping = aes(x = time,  y=logCc, colour = "black")) +
+              geom_point(colour="black", size = 2, show.legend = TRUE, alpha=0.4) +
+              scale_x_continuous(limits = c(0, 24.5), breaks = c(0.5,1,2,4,6,12,24), labels = c("0.5","1","2","4","6","12","24")) +
+              scale_y_continuous(limits = c(0, 60), breaks = c(0,20,40,60), labels = c("0","20","40","60")) + 
+              labs(x = "X biomarker (mm)", y = "Y biomarker (mg)") +
+              theme(panel.background = element_rect(fill = "white", colour = "white"),
+              axis.line = element_line(linewidth = 1, linetype = "solid", colour = "black"),
+              axis.title.x = element_text(size = 20, face = "bold"),
+              axis.title.y = element_text(size = 20, face = "bold"),
+              axis.text.x = element_text(size = 12, colour = "black", angle = 45, hjust = 1, vjust = 1),
+              axis.text.y = element_text(size = 12, colour = "black"),
+              axis.ticks.x = element_line(linewidth = 1, linetype = "solid", colour = "black"),
+              axis.ticks.y = element_line(linewidth = 1, linetype = "solid", colour = "black"),
+              axis.minor.ticks.length = rel(1),
+              panel.grid.major = element_blank(),
+              panel.grid.minor = element_blank(),
+              legend.position = "none")
+plot
+```
+
+<br />
+
+  1. Could you identify a reference statistical model generating these experimental data? Please, use an equation to identify this model. <br />
+  2. Please, identify systematic and random components of the model. Which are the model's parameters? <br />
+  3. Could you identify reasonable alternative statistical models generating these experimental data? <br />
+  4. Suppose that also the following data has been observed: <br />
+    - _X_ biomarker = 24 <br />
+    - _Y_ biomarker = 60 <br />
+    4a. Is our reference model consistent with this data? How do you call this data? <br />
+    4b. What are the adverse effects of this point on the reference model? <br />
+    4c. How to avoid the adverse effects of this point? <br />
+      - Suggestions:
+        a) outlier's rejection 
+        b) outlier's incorporation in a new model 
+        c) outlier's accomodation (i.e. reduced weight assigned to this pathological point). 
+
+
+
+## Exercise 3
+
+Under null hypothesis (H<sub>0</sub>), a test statistic is distributed in the following manner:
+
+```{r message = FALSE, warning = FALSE, echo = FALSE}
+library("ggplot2")
+dSet = matrix(nrow=100,ncol=2)
+for (i in 0:100) {dSet[i,1] = i
+                  dSet[i,2] = 0
+                  if (i >= 30 & i <= 40) {dSet[i,2] = 10*i - 300}
+                  if (i >  40 & i <= 50) {dSet[i,2] = -10*i + 500}
+                  }
+dSet <- data.frame(dSet)
+names(dSet) <- c("X","Y")
+plot = ggplot(data=dSet, mapping = aes(x = X,  y=Y, colour = "black")) +
+       geom_line(colour="black", size = 1.5, show.legend = TRUE) +
+       scale_x_continuous(limits = c(-0.5, 100.5), breaks = c(0,30,40,50,78,100), labels = c("0","30","40","50","78","100")) +
+       scale_y_continuous(limits = c(0, 100)) + 
+       labs(x = "test statistic", y = "Probability") +
+       theme(panel.background = element_rect(fill = "white", colour = "white"),
+             axis.line = element_line(linewidth = 1, linetype = "solid", colour = "black"),
+             axis.title.x = element_text(size = 22, face = "bold"),
+             axis.title.y = element_text(size = 22, face = "bold"),
+             axis.text.x = element_text(size = 20, colour = "black", angle = 45, hjust = 1, vjust = 1),
+             axis.text.y = element_blank(),
+             axis.ticks.x = element_line(linewidth = 1, linetype = "solid", colour = "black"),
+             axis.ticks.y = element_line(linewidth = 1, linetype = "solid", colour = "black"),
+             axis.minor.ticks.length = rel(1),
+             panel.grid.major = element_blank(),
+             panel.grid.minor = element_blank(),
+             legend.position = "none")
+plot
+```
+
+
+The experiment was performed.  Test statistic assumed value 78. <br />
+
+<br />
+
+Please, answer the following questions: <br />
+
+1. Based on the test result, do you reject H<sub>0</sub>? <br />
+
+2. Which is the probability of a false positive result (type I error)? <br />
+
+3. If under the alternative hypothesis H<sub>1</sub> the probability to observe a test statistic value below 50 is null, which is the probability of a type II error (i.e. null hypothesis H<sub>0</sub> is incorrectly not rejected, even though it is false)?
+
+
+## Exercise 4
+
+A coin is tossed 50 times. A binomial distribution is used as reference statistical model to analyse experimental data. 
+
+1) Please, answer the following questions: <br />
+  1a. Identify the parameters of reference statistical model. <br />
+  1b. Identify a reasonable test statistic. <br />
+
+
+
+Under null hypothesis p = 0.5, the distribution of heads is the following: 
+
+```{r message = FALSE, warning = FALSE, echo = FALSE}
+library("ggplot2")
+dSet = matrix(nrow=51,ncol=2)
+for (i in 1:51) {dSet[i,1] = i-1
+                 dSet[i,2] = dbinom(i-1, size=50, prob=.5)}
+dSet <- data.frame(dSet)
+names(dSet) <- c("X","Y")
+plot = ggplot(data=dSet, mapping = aes(x = X,  y=Y, colour = "black")) +
+              geom_point(colour="black", size = 1.5, show.legend = TRUE) +
+              scale_x_continuous(limits = c(-0.5, 50.5), breaks = c(0,10,20,25,30,40,50), labels = c("0","10","20","25","30","40","50")) + 
+              scale_y_continuous(limits = c(0, 0.15), breaks = c(0,0.05,0.10,0.15), labels = c("0","0.05","0.10","0.15")) + 
+              labs(x = "Number of heads", y = "Probability") +
+              theme(panel.background = element_rect(fill = "white", colour = "white"),
+              axis.line = element_line(linewidth = 1, linetype = "solid", colour = "black"),
+              axis.title.x = element_text(size = 22, face = "bold"),
+              axis.title.y = element_text(size = 22, face = "bold"),
+              axis.text.x = element_text(size = 20, colour = "black", angle = 45, hjust = 1, vjust = 1),
+              axis.text.y =  element_text(size = 20, colour = "black", angle = 0, hjust = 1, vjust = 0.5),
+              axis.ticks.x = element_line(linewidth = 1, linetype = "solid", colour = "black"),
+              axis.ticks.y = element_line(linewidth = 1, linetype = "solid", colour = "black"),
+              axis.minor.ticks.length = rel(1),
+              panel.grid.major = element_blank(),
+              panel.grid.minor = element_blank(),
+              legend.position = "none")
+plot
+```
+
+
+This experiment aims to demonstrate that the probability to obtain heads is higher than 0.5. <br />
+<br />
+
+Please, answer the following questions: <br />
+
+2) Identify null and alternative hypotheses <br />
+
+3) Is the test one-tailed or two-tailed? <br />
+
+4) Identify qualitatively the region of significance (i.e. the set of values for a test statistic that would lead a researcher to reject the null hypothesis) at 5% <br />
+
+5. Please, qualitatively describe distributions of test statistic under the following simple alternative hypotheses:<br />
+  - H<sub>1</sub>: p = 0.70
+  - H<sub>1</sub>: p = 0.80
+  - H<sub>1</sub>: p = 1.00
+
+    5a. Is statistical power constant across these alternative hypotheses? <br />
+    5b. For which alternative simple hypothesis probability of type II error (i.e. null hypothesis H<sub>0</sub> is incorrectly not rejected) is smaller? 
+  <br />

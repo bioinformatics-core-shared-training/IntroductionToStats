@@ -46,6 +46,7 @@ After this course you should be able to:-
 ### Course Materials
 
 - [Lecture (pdf)](Introduction to Statistical Analysis 15nov2024.pdf)
+- [Exercises](Exercises.html)
 - [Online quiz](https://docs.google.com/forms/d/1C3RHisRHoWXcnFqX9JhRAk3gy_aJ6FrhouJ6ljsJ-Fc)
 - [Practical](practical.html)
 
@@ -61,19 +62,23 @@ using the following web applications:
 
 | Time  | Activity
 |:------|:--------
-|  9.30 | Lecture
-| 10.15 | Quiz
-| 10.30 | Coffee/tea break
-| 10.45 | Lecture
+|  9.30 | Lecture on basic concepts of statistics
+|  9.45 | Exercises & discussion
+| 10.15 | Lecture on descriptive statistics
+| 10:35 | Online quiz & discussion 
+| 11:00 | Coffee/tea break
+| 11:10 | Lecture on inferential statistics and central limit theorem
 | 11.45 | Exercises (central limit theorem) & discussion
-| 12.00 | Lunch break
-| 13.00 | Lecture
-| 13.45 | Exercise (one-sample tests) and discussion
-| 14.15 | Lecture
-| 15.00 | Coffee/tea break
-| 15.15 | Exercise (two-sample tests) and discussion
-| 15.45 | Group based exercise and discussion
-| 16.45 | Wrap up & questions
+| 12.30 | Lunch break
+| 13.30 | Lecture on hypothesis testing
+| 13.45 | Exercises & discussion
+| 14.15 | Lecture on one-sample tests
+| 14.40 | Exercise (one-sample tests) and discussion
+| 15.10 | Coffee/tea break
+| 15.20 | Lecture on two-sample tests
+| 15.45 | Exercise (two-sample tests) and discussion
+| 16.15 | Group based exercise and discussion
+| 17:00 | Wrap up & questions
 
 ### Acknowledgements
 
@@ -88,6 +93,8 @@ contributed to the materials.
 - Deepak Parashar
 - Sarah Dawson
 - Elizabeth Merrell
+- Chandra Chilamakuri
+- Luca Porcu
 
 This course received funding from the
 [CRUK Cambridge Centre](https://crukcambridgecentre.org.uk).
