@@ -100,3 +100,8 @@ contributed to the materials.
 This course received funding from the
 [CRUK Cambridge Centre](https://crukcambridgecentre.org.uk).
 If you are researching cancer in Cambridge please consider becoming a member.
+
+### Feedback
+
+- Please provide feedback on the course by filling in
+  [this form](https://forms.office.com/e/tn3DCienes)
