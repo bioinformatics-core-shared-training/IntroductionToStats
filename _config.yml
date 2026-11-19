@@ -6,3 +6,6 @@ theme: jekyll-theme-minimal
 
 gems:
   - jekyll-mentions
+exclude:
+  - Introduction-to-Statistical-Analysis_2026.Rmd
+  - old_2025_stuff
