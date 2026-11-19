@@ -25,7 +25,6 @@ During this course you will learn about:
 
 - Different types of data, distributions and structure within data
 - Summary statistics for continuous and discrete data
-- Interval estimation of a population mean
 - Formulating a null hypothesis
 - Assumptions of one-sample and two-sample t-tests
 - Interpreting the result of a statistical test
@@ -47,7 +46,6 @@ After this course you should be able to:-
 ### Course Materials
 
 - [Lecture (pdf)](Introduction_to_Statistical_Analysis_24Oct2025.pdf)
-- [Exercises](Exercises.html)
 - [Online quiz](https://docs.google.com/forms/d/1C3RHisRHoWXcnFqX9JhRAk3gy_aJ6FrhouJ6ljsJ-Fc)
 - [Simulations & Exercises](practical.html)
 
@@ -61,25 +59,21 @@ using the following web applications:
 
 ### Timetable
 
-| Time  | Activity
-|:------|:--------
-|  9.30 | Lecture on basic concepts of statistics
-|  9.45 | Exercises & discussion
-| 10.15 | Lecture on descriptive statistics
-| 10:35 | Online quiz & discussion 
-| 11:00 | Coffee/tea break
-| 11:10 | Lecture on inferential statistics and central limit theorem
-| 11.45 | Exercises (central limit theorem) & discussion
-| 12.30 | Lunch break
-| 13.30 | Lecture on hypothesis testing
-| 13.45 | Exercises & discussion
-| 14.15 | Lecture on one-sample tests
-| 14.40 | Exercises (one-sample tests) and discussion
-| 15.10 | Coffee/tea break
-| 15.20 | Lecture on two-sample tests
-| 15.45 | Exercises (two-sample tests) and discussion
-| 16.15 | Group based exercises and discussion
-| 17:00 | Wrap up & questions
+| Time  | Activity |Trainer|
+|:------|:---------|-------|
+| 10:00 | Data types Lecture on descriptive statistics | Chandra|
+| 10:30 | Online quiz & discussion |Chandra|
+| 11:00 | Coffee/tea break||
+| 11:10 | Lecture on inferential statistics and central limit theorem|Luca|
+| 11:45 | Exercises (central limit theorem) & discussion|Luca|
+| 12:30 | Lunch break||
+| 13:30 | Hypothesis testing and one-sample tests| Chandra|
+| 14:15 | Exercises (one-sample tests) and discussion|Chandra|
+| 15:00 | Coffee/tea break||
+| 15.10 | Lecture on two-sample tests| Luca|
+| 15:40 | Exercises (two-sample tests) and discussion| Luca|
+| 16:10 | Group based exercises and discussion|Chandra and Luca|
+| 17:00 | Wrap up & questions|Chandra and Luca|
 
 ### Acknowledgements
 
