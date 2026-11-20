@@ -2301,180 +2301,80 @@ draw_roadmap(4)
 
 
 
-```{r tumour-figs, include=FALSE}
-## tumour volume example: control 18 mm vs tamoxifen 13 mm (n = 10 per group, SD = 4 mm assumed)
-dfree <- 18; tobs <- 5 / sqrt(4^2/10 + 4^2/10); tcrit <- qt(0.975, dfree)
-pval <- 2 * pt(-tobs, dfree)
+## A simple example {.t}
 
-fig("tumour-means.pdf", 4.6, 2.3, {
-  plot(NA, xlim = c(0, 26), ylim = c(0.4, 3.2), yaxt = "n", ylab = "", bty = "l",
-       xlab = "Tumour volume (mm)")
-  m <- c(13, 18); cols <- c(cruklight, crukdark)  # y = 1 tamoxifen (bottom), 2 control (top)
-  for (i in 1:2) {
-    segments(m[i] - 4, i, m[i] + 4, i, col = cols[i], lwd = 2.5)
-    points(m[i], i, pch = 16, cex = 1.7, col = cols[i])
-    text(m[i], i + 0.38, paste("mean", m[i], "mm"), cex = 0.85, font = 2, col = cols[i])
-  }
-  axis(2, at = 1:2, labels = c("Tamoxifen", "Control"), tick = FALSE, las = 1)
-  segments(13, 2.75, 18, 2.75, col = crukpink, lwd = 2)
-  segments(c(13, 18), 2.65, c(13, 18), 2.85, col = crukpink, lwd = 2)
-  text(15.5, 2.88, "difference = 5 mm", col = crukpink, cex = 0.85, font = 2, pos = 3, offset = 0.1, xpd = TRUE)
-}, mar = c(2.8, 5.2, 1.0, 0.5))
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/RNAseq_stats_p24.png}
 
-draw_t <- function(name, show = c("crit", "p")) {
-  fig(name, 4.6, 3.0, {
-    xlim <- c(-5, 5); xx <- seq(xlim[1], xlim[2], length.out = 600)
-    plot(xx, dt(xx, dfree), type = "n", xlim = xlim, ylim = c(0, 0.5), xlab = "t-statistic",
-         ylab = "Probability density")
-    polygon(c(xx, rev(xx)), c(dt(xx, dfree), rep(0, length(xx))), col = adjustcolor(cruklight, 0.25), border = NA)
-    if (show == "crit") for (sg in c(-1, 1)) {
-      r <- if (sg < 0) seq(xlim[1], -tcrit, length.out = 300) else seq(tcrit, xlim[2], length.out = 300)
-      polygon(c(r, rev(r)), c(dt(r, dfree), rep(0, 300)), col = adjustcolor(cruklight, 0.6), border = NA)
-    }
-    if (show == "p") for (sg in c(-1, 1)) {
-      r <- if (sg < 0) seq(xlim[1], -tobs, length.out = 300) else seq(tobs, xlim[2], length.out = 300)
-      polygon(c(r, rev(r)), c(dt(r, dfree), rep(0, 300)), col = crukpink, border = NA)
-    }
-    lines(xx, dt(xx, dfree), col = crukdark, lwd = 2)
-    abline(v = 0, lty = 2, col = "grey40")
-    text(0, 0.47, expression("t = 0: no difference (" * H[0] * ")"), cex = 0.8, col = "grey30")
-    if (show == "crit") {
-      segments(c(-tcrit, tcrit), 0, c(-tcrit, tcrit), 0.14, col = cruklight, lwd = 1.5, lty = 2)
-      text(c(-tcrit, tcrit), 0.16, c("-2.10", "2.10"), col = crukdark, cex = 0.8, font = 2)
-      text(c(-3.9, 3.9), 0.05, "2.5%", col = crukdark, cex = 0.8, font = 2)
-    }
-    segments(tobs, 0, tobs, 0.3, col = crukpink, lwd = 2.2)
-    text(tobs + 0.15, 0.31, "observed\nt = 2.80", col = crukpink, font = 2, cex = 0.85, adj = 0)
-    if (show == "p") text(c(-3.6, 3.6), 0.1, "p/2 = 0.006", col = crukpink, font = 2, cex = 0.8)
-  })
-}
-draw_t("tumour-t-crit.pdf", "crit")
-draw_t("tumour-t-p.pdf", "p")
-```
+## A simple example {.t}
 
-## Testing hypotheses: an example {.t}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/RNAseq_stats_p25.png}
 
-\vspace{-0.2em}
+## A simple example {.t}
 
-\bitem{Mice with tumours are split into two groups of 10: \textbf{control} and \textbf{tamoxifen}}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/RNAseq_stats_p26.png}
 
-\vspace{0.4em}
+## A simple example {.t}
 
-\makebox[\linewidth][c]{\includegraphics[width=0.78\linewidth]{intro-figures/tumour-means.pdf}}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/RNAseq_stats_p27.png}
 
-\vspace{0.2em}
+## A simple example {.t}
 
-\bitem{The mean tumour volume is \textbf{18 mm} in the control group and \textbf{13 mm} with tamoxifen: a 5 mm gap}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/RNAseq_stats_p28.png}
 
-\vspace{0.3em}
+## A simple example {.t}
 
-\bitem{But mice differ from each other, so a gap can appear by chance alone}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/RNAseq_stats_p29.png}
 
-\vspace{0.2em}
+## A simple example {.t}
 
-{\footnotesize\textit{Note:} only the means were given; $n = 10$ per group and SD $= 4$ mm are assumed for illustration.}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/RNAseq_stats_p30.png}
 
-## Testing hypotheses: an example {.t}
+## A simple example {.t}
 
-\vspace{-0.2em}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/RNAseq_stats_p31.png}
 
-\textbf{\textcolor{crukdark}{Null hypothesis} ($H_0$)}
+## A simple example {.t}
 
-\vspace{0.2em}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/RNAseq_stats_p32.png}
 
-\sitem{Tamoxifen does nothing: the true mean volume is the same in both groups}
-\sitem{$H_0$: $\mu_{\mathrm{control}} = \mu_{\mathrm{tamoxifen}}$}
+## A simple example {.t}
 
-\vspace{0.8em}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/RNAseq_stats_p33.png}
 
-\textbf{\textcolor{crukdark}{Alternative hypothesis} ($H_1$)}
+## A simple example {.t}
 
-\vspace{0.2em}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/RNAseq_stats_p34.png}
 
-\sitem{Tamoxifen changes tumour volume: the true means differ}
-\sitem{$H_1$: $\mu_{\mathrm{control}} \neq \mu_{\mathrm{tamoxifen}}$}
+## Key concepts: hypothesis testing {.t}
 
-\vspace{0.9em}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/RNAseq_stats_p35.png}
 
-\keybox{Like a court case: assume $\boldsymbol{H_0}$ is true, then ask whether the evidence is strong enough to reject it}
+## Type I and Type II errors {.t}
 
-## Testing hypotheses: an example {.t}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/RNAseq_stats_p36.png}
 
-\vspace{-0.2em}
+## Type I and Type II errors {.t}
 
-\bitem{A 5 mm gap means little until it is compared with how much gaps vary \textbf{by chance}}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/RNAseq_stats_p37.png}
 
-\vspace{0.6em}
+## Type I and Type II errors {.t}
 
-\bitem{The \textbf{$t$-statistic} is the observed gap divided by its standard error}
-
-\vspace{0.8em}
-
-\begin{center}
-$t = \dfrac{\bar{x}_{\mathrm{control}} - \bar{x}_{\mathrm{tamoxifen}}}{SE} = \dfrac{18 - 13}{1.79} = \boldsymbol{2.80}$
-\end{center}
-
-\vspace{0.2em}
-
-\begin{center}\small $SE = \sqrt{\dfrac{4^2}{10} + \dfrac{4^2}{10}} = 1.79$ mm\end{center}
-
-\vspace{0.6em}
-
-\bitem{The gap is \textbf{2.8 standard errors} away from zero}
-
-## Testing hypotheses: an example {.t}
-
-\vspace{-0.4em}
-
-\bitem{If $H_0$ is true, $t$ follows a \textbf{$t$-distribution} with $10+10-2 = 18$ degrees of freedom}
-
-\vspace{0.2em}
-
-\makebox[\linewidth][c]{\includegraphics[height=0.52\textheight]{intro-figures/tumour-t-crit.pdf}}
-
-\vspace{0.2em}
-
-\bitem{The observed $t = 2.80$ lies beyond the critical value $\pm 2.10$, which cuts off the most extreme 5\% of the curve}
-
-## Testing hypotheses: an example {.t}
-
-\vspace{-0.4em}
-
-\bitem{The \textbf{$p$-value}: probability, if $H_0$ is true, of a $t$ at least as far from zero as ours, in either direction}
-
-\vspace{0.2em}
-
-\makebox[\linewidth][c]{\includegraphics[height=0.5\textheight]{intro-figures/tumour-t-p.pdf}}
-
-\vspace{0.2em}
-
-\bitem{$p = 0.006 + 0.006 = \boldsymbol{0.012}$, which is below $\alpha = 0.05$}
-
-\vspace{0.3em}
-
-\keybox{\small Reject $H_0$: the data are hard to explain by chance alone}
-
-## Testing hypotheses: what can go wrong {.t}
-
-\vspace{-0.2em}
-
-\begin{center}
-\renewcommand{\arraystretch}{1.5}
-\begin{tabular}{|>{\columncolor{cruklight!20}}p{2.9cm}|p{3.7cm}|p{3.7cm}|}
-\hline
- & \textbf{Keep $H_0$} & \textbf{Reject $H_0$} \\ \hline
-\textbf{$H_0$ true} (drug does nothing) & Correct \newline probability $1-\alpha$ & \cellcolor{crukpink!15}\textbf{False positive} (Type I) \newline probability $\alpha$ \\ \hline
-\textbf{$H_0$ false} (drug works) & \cellcolor{crukpink!15}\textbf{False negative} (Type II) \newline probability $\beta$ & Correct \newline probability $1-\beta$ (power) \\ \hline
-\end{tabular}
-\end{center}
-
-\vspace{0.6em}
-
-\bitem{You choose $\alpha$ before looking at the data}
-
-\vspace{0.3em}
-
-\bitem{A $p$-value of 0.012 does \textbf{not} mean there is a 1.2\% chance that tamoxifen does nothing}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/RNAseq_stats_p38.png}
 
 
 ## Stage 5: One-Sample Tests
