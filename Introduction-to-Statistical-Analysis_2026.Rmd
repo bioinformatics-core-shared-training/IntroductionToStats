@@ -2286,7 +2286,7 @@ draw_roadmap(3)
 draw_roadmap(4)
 ```
 
-## Testing hypotheses {.t}
+## Testing hypotheses
 
 \vspace{3.6em}
 
@@ -2298,415 +2298,183 @@ draw_roadmap(4)
 \end{tikzpicture}
 \end{center}
 
-## What is a hypothesis? {.t}
+
+
+
+```{r tumour-figs, include=FALSE}
+## tumour volume example: control 18 mm vs tamoxifen 13 mm (n = 10 per group, SD = 4 mm assumed)
+dfree <- 18; tobs <- 5 / sqrt(4^2/10 + 4^2/10); tcrit <- qt(0.975, dfree)
+pval <- 2 * pt(-tobs, dfree)
+
+fig("tumour-means.pdf", 4.6, 2.3, {
+  plot(NA, xlim = c(0, 26), ylim = c(0.4, 3.2), yaxt = "n", ylab = "", bty = "l",
+       xlab = "Tumour volume (mm)")
+  m <- c(13, 18); cols <- c(cruklight, crukdark)  # y = 1 tamoxifen (bottom), 2 control (top)
+  for (i in 1:2) {
+    segments(m[i] - 4, i, m[i] + 4, i, col = cols[i], lwd = 2.5)
+    points(m[i], i, pch = 16, cex = 1.7, col = cols[i])
+    text(m[i], i + 0.38, paste("mean", m[i], "mm"), cex = 0.85, font = 2, col = cols[i])
+  }
+  axis(2, at = 1:2, labels = c("Tamoxifen", "Control"), tick = FALSE, las = 1)
+  segments(13, 2.75, 18, 2.75, col = crukpink, lwd = 2)
+  segments(c(13, 18), 2.65, c(13, 18), 2.85, col = crukpink, lwd = 2)
+  text(15.5, 2.88, "difference = 5 mm", col = crukpink, cex = 0.85, font = 2, pos = 3, offset = 0.1, xpd = TRUE)
+}, mar = c(2.8, 5.2, 1.0, 0.5))
+
+draw_t <- function(name, show = c("crit", "p")) {
+  fig(name, 4.6, 3.0, {
+    xlim <- c(-5, 5); xx <- seq(xlim[1], xlim[2], length.out = 600)
+    plot(xx, dt(xx, dfree), type = "n", xlim = xlim, ylim = c(0, 0.5), xlab = "t-statistic",
+         ylab = "Probability density")
+    polygon(c(xx, rev(xx)), c(dt(xx, dfree), rep(0, length(xx))), col = adjustcolor(cruklight, 0.25), border = NA)
+    if (show == "crit") for (sg in c(-1, 1)) {
+      r <- if (sg < 0) seq(xlim[1], -tcrit, length.out = 300) else seq(tcrit, xlim[2], length.out = 300)
+      polygon(c(r, rev(r)), c(dt(r, dfree), rep(0, 300)), col = adjustcolor(cruklight, 0.6), border = NA)
+    }
+    if (show == "p") for (sg in c(-1, 1)) {
+      r <- if (sg < 0) seq(xlim[1], -tobs, length.out = 300) else seq(tobs, xlim[2], length.out = 300)
+      polygon(c(r, rev(r)), c(dt(r, dfree), rep(0, 300)), col = crukpink, border = NA)
+    }
+    lines(xx, dt(xx, dfree), col = crukdark, lwd = 2)
+    abline(v = 0, lty = 2, col = "grey40")
+    text(0, 0.47, expression("t = 0: no difference (" * H[0] * ")"), cex = 0.8, col = "grey30")
+    if (show == "crit") {
+      segments(c(-tcrit, tcrit), 0, c(-tcrit, tcrit), 0.14, col = cruklight, lwd = 1.5, lty = 2)
+      text(c(-tcrit, tcrit), 0.16, c("-2.10", "2.10"), col = crukdark, cex = 0.8, font = 2)
+      text(c(-3.9, 3.9), 0.05, "2.5%", col = crukdark, cex = 0.8, font = 2)
+    }
+    segments(tobs, 0, tobs, 0.3, col = crukpink, lwd = 2.2)
+    text(tobs + 0.15, 0.31, "observed\nt = 2.80", col = crukpink, font = 2, cex = 0.85, adj = 0)
+    if (show == "p") text(c(-3.6, 3.6), 0.1, "p/2 = 0.006", col = crukpink, font = 2, cex = 0.8)
+  })
+}
+draw_t("tumour-t-crit.pdf", "crit")
+draw_t("tumour-t-p.pdf", "p")
+```
+
+## Testing hypotheses: an example {.t}
 
 \vspace{-0.2em}
 
-\bitem{A \textbf{hypothesis} is a statement about the population(s)}
+\bitem{Mice with tumours are split into two groups of 10: \textbf{control} and \textbf{tamoxifen}}
 
 \vspace{0.4em}
 
-\begingroup\footnotesize
-\begin{tabular}{@{\hspace{1.4em}}l@{\hspace{0.4em}}l@{}}
-Examples: & 1) Carboplatin induces a response in at least 70\% of NSCLC patients \\[2pt]
-          & 2) The mean blood pressure is the same in C57BL/6J and DBA/2J mice \\[2pt]
-          & 3) The two populations A and B have the same height distribution \\
-\end{tabular}\par
-\endgroup
+\makebox[\linewidth][c]{\includegraphics[width=0.78\linewidth]{intro-figures/tumour-means.pdf}}
 
-\vspace{2.6em}
+\vspace{0.2em}
 
-\bitem{The \textbf{goal} of a hypothesis test is \textbf{to decide}, \textbf{based on the data collected},\\ \hphantom{\bul\ }whether the statement is \textcolor[HTML]{00B050}{TRUE} or \textcolor[HTML]{FF0000}{FALSE}}
+\bitem{The mean tumour volume is \textbf{18 mm} in the control group and \textbf{13 mm} with tamoxifen: a 5 mm gap}
 
-## Null hypothesis ($H_0$) and false positive decisions {.t}
+\vspace{0.3em}
+
+\bitem{But mice differ from each other, so a gap can appear by chance alone}
+
+\vspace{0.2em}
+
+{\footnotesize\textit{Note:} only the means were given; $n = 10$ per group and SD $= 4$ mm are assumed for illustration.}
+
+## Testing hypotheses: an example {.t}
 
 \vspace{-0.2em}
 
-\bitem{We can never prove that a hypothesis ($H_0$) is \textcolor[HTML]{00B050}{TRUE}}
+\textbf{\textcolor{crukdark}{Null hypothesis} ($H_0$)}
 
-\bitem{We can \textbf{reject} $H_0$ (declare it \textcolor[HTML]{FF0000}{FALSE}), accepting a \textbf{controlled probability} $\alpha$ of rejecting it when it is actually \textcolor[HTML]{00B050}{TRUE}}
+\vspace{0.2em}
 
-\vspace{-0.4em}
+\sitem{Tamoxifen does nothing: the true mean volume is the same in both groups}
+\sitem{$H_0$: $\mu_{\mathrm{control}} = \mu_{\mathrm{tamoxifen}}$}
 
-\begin{center}
-\large\textbf{Hence, we want to control the probability of false positive statements\\ (i.e.~to avoid false statements about the population)}
-\end{center}
+\vspace{0.8em}
 
-\begin{tikzpicture}[remember picture, overlay]
-\node[anchor=center, inner sep=0] at ([yshift=-167.25pt]current page.north) {\fontsize{13}{16}\selectfont\renewcommand{\arraystretch}{1.2}%
-\begin{tabular}{lcc}
-\hline
-$H_0$ & Not Rejected & Rejected \\
-\hline
-\textcolor[HTML]{00B050}{TRUE}  & \color{crukdark}$1 - \alpha$ & \colorbox{crukpink}{\color{crukdark}$\alpha$} \\
-\textcolor[HTML]{FF0000}{FALSE} & & \\
-\hline
-\end{tabular}};
-\node[anchor=south west, inner sep=0, align=left, font=\normalsize] at ([xshift=10.5pt,yshift=45pt]current page.south west) {%
-\colorbox{crukpink}{\color{crukdark}$\alpha$} $= \mathrm{P}(\text{reject } H_0 \mid H_0 \text{ is \textcolor[HTML]{00B050}{TRUE}})$: \textbf{probability of a type I error} (\textbf{significance level})};
-\node[anchor=south, inner sep=0, align=center, font=\normalsize\bfseries, text=crukpink] at ([yshift=16pt]current page.south) {Because it is not possible to prove that $H_0$ is \textcolor[HTML]{00B050}{TRUE},\\ controlling $\alpha$ is the crucial task of every statistical test};
-\end{tikzpicture}
+\textbf{\textcolor{crukdark}{Alternative hypothesis} ($H_1$)}
 
-## Null hypothesis ($H_0$) and false negative decisions {.t}
+\vspace{0.2em}
+
+\sitem{Tamoxifen changes tumour volume: the true means differ}
+\sitem{$H_1$: $\mu_{\mathrm{control}} \neq \mu_{\mathrm{tamoxifen}}$}
+
+\vspace{0.9em}
+
+\keybox{Like a court case: assume $\boldsymbol{H_0}$ is true, then ask whether the evidence is strong enough to reject it}
+
+## Testing hypotheses: an example {.t}
 
 \vspace{-0.2em}
 
-\bitem{If we do \textbf{not reject} $H_0$, it may still be \textcolor[HTML]{FF0000}{FALSE}: we may miss a real effect}
+\bitem{A 5 mm gap means little until it is compared with how much gaps vary \textbf{by chance}}
 
-\bitem{The probability $\beta$ of not rejecting $H_0$ when it is actually \textcolor[HTML]{FF0000}{FALSE} is \textbf{not fixed}: it depends on the sample size, on the size of the effect and on $\alpha$}
+\vspace{0.6em}
+
+\bitem{The \textbf{$t$-statistic} is the observed gap divided by its standard error}
+
+\vspace{0.8em}
+
+\begin{center}
+$t = \dfrac{\bar{x}_{\mathrm{control}} - \bar{x}_{\mathrm{tamoxifen}}}{SE} = \dfrac{18 - 13}{1.79} = \boldsymbol{2.80}$
+\end{center}
+
+\vspace{0.2em}
+
+\begin{center}\small $SE = \sqrt{\dfrac{4^2}{10} + \dfrac{4^2}{10}} = 1.79$ mm\end{center}
+
+\vspace{0.6em}
+
+\bitem{The gap is \textbf{2.8 standard errors} away from zero}
+
+## Testing hypotheses: an example {.t}
 
 \vspace{-0.4em}
 
+\bitem{If $H_0$ is true, $t$ follows a \textbf{$t$-distribution} with $10+10-2 = 18$ degrees of freedom}
+
+\vspace{0.2em}
+
+\makebox[\linewidth][c]{\includegraphics[height=0.52\textheight]{intro-figures/tumour-t-crit.pdf}}
+
+\vspace{0.2em}
+
+\bitem{The observed $t = 2.80$ lies beyond the critical value $\pm 2.10$, which cuts off the most extreme 5\% of the curve}
+
+## Testing hypotheses: an example {.t}
+
+\vspace{-0.4em}
+
+\bitem{The \textbf{$p$-value}: probability, if $H_0$ is true, of a $t$ at least as far from zero as ours, in either direction}
+
+\vspace{0.2em}
+
+\makebox[\linewidth][c]{\includegraphics[height=0.5\textheight]{intro-figures/tumour-t-p.pdf}}
+
+\vspace{0.2em}
+
+\bitem{$p = 0.006 + 0.006 = \boldsymbol{0.012}$, which is below $\alpha = 0.05$}
+
+\vspace{0.3em}
+
+\keybox{\small Reject $H_0$: the data are hard to explain by chance alone}
+
+## Testing hypotheses: what can go wrong {.t}
+
+\vspace{-0.2em}
+
 \begin{center}
-\large\textbf{Hence, we want a high probability of detecting a real effect\\ (i.e.~a high statistical power)}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|>{\columncolor{cruklight!20}}p{2.9cm}|p{3.7cm}|p{3.7cm}|}
+\hline
+ & \textbf{Keep $H_0$} & \textbf{Reject $H_0$} \\ \hline
+\textbf{$H_0$ true} (drug does nothing) & Correct \newline probability $1-\alpha$ & \cellcolor{crukpink!15}\textbf{False positive} (Type I) \newline probability $\alpha$ \\ \hline
+\textbf{$H_0$ false} (drug works) & \cellcolor{crukpink!15}\textbf{False negative} (Type II) \newline probability $\beta$ & Correct \newline probability $1-\beta$ (power) \\ \hline
+\end{tabular}
 \end{center}
 
-\begin{tikzpicture}[remember picture, overlay]
-\node[anchor=center, inner sep=0] at ([yshift=-167.25pt]current page.north) {\fontsize{13}{16}\selectfont\renewcommand{\arraystretch}{1.2}%
-\begin{tabular}{lcc}
-\hline
-$H_0$ & Not Rejected & Rejected \\
-\hline
-\textcolor[HTML]{00B050}{TRUE}  & & \\
-\textcolor[HTML]{FF0000}{FALSE} & \colorbox{crukpink}{\color{crukdark}$\beta$} & \color{crukdark}$1 - \beta$ \\
-\hline
-\end{tabular}};
-\node[anchor=south west, inner sep=0, align=left, font=\normalsize] at ([xshift=10.5pt,yshift=20pt]current page.south west) {%
-\colorbox{crukpink}{\color{crukdark}$\beta$} $= \mathrm{P}(\text{fail to reject } H_0 \mid H_0 \text{ is \textcolor[HTML]{FF0000}{FALSE}})$: \textbf{probability of a type II error}\\[2pt]
-$\textcolor{crukdark}{1 - \beta} = \mathrm{P}(\text{reject } H_0 \mid H_0 \text{ is \textcolor[HTML]{FF0000}{FALSE}})$: \textbf{statistical power}};
-\end{tikzpicture}
-
-## Uncertainty in significance testing {.t}
-
-\vspace{\dimexpr0.4em-5.7pt\relax}
-
-\bitem{A hypothesis test is a decision: \textbf{Is this result significant or not?}}
-
-\vspace{0.3em}
-
-\bitem{This decision can be wrong in two ways:}
-
 \vspace{0.6em}
 
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (11.0,-5.0);
-\end{tikzpicture}
-
-## Uncertainty in significance testing {.t}
-
-\vspace{\dimexpr0.4em-5.7pt\relax}
-
-\bitem{A hypothesis test is a decision: \textbf{Is this result significant or not?}}
+\bitem{You choose $\alpha$ before looking at the data}
 
 \vspace{0.3em}
 
-\bitem{This decision can be wrong in two ways:}
-
-\vspace{0.6em}
-
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (11.0,-5.0);
-\node[anchor=north west, inner sep=0, text width=5.1cm, align=left, font=\small] at (0.4,0) {\textbf{False positive (type I) error}\par\vspace{3pt}\bitem{Reject the null hypothesis even though it is \textcolor[HTML]{00B050}{TRUE}}\par\vspace{2pt}\bitem{i.e.\ you see something that isn't there}\par};
-\end{tikzpicture}
-
-## Uncertainty in significance testing {.t}
-
-\vspace{\dimexpr0.4em-5.7pt\relax}
-
-\bitem{A hypothesis test is a decision: \textbf{Is this result significant or not?}}
-
-\vspace{0.3em}
-
-\bitem{This decision can be wrong in two ways:}
-
-\vspace{0.6em}
-
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (11.0,-5.0);
-\node[anchor=north west, inner sep=0, text width=5.1cm, align=left, font=\small] at (0.4,0) {\textbf{False positive (type I) error}\par\vspace{3pt}\bitem{Reject the null hypothesis even though it is \textcolor[HTML]{00B050}{TRUE}}\par\vspace{2pt}\bitem{i.e.\ you see something that isn't there}\par};
-\node[anchor=north west, inner sep=0, text width=5.1cm, align=left, font=\small] at (5.75,0) {\textbf{False negative (type II) error}\par\vspace{3pt}\bitem{Fail to reject the null hypothesis even though it is \textcolor[HTML]{FF0000}{FALSE}}\par\vspace{2pt}\bitem{i.e.\ you miss something}\par};
-\end{tikzpicture}
-
-## Uncertainty in significance testing {.t}
-
-\vspace{\dimexpr0.4em-5.7pt\relax}
-
-\bitem{A hypothesis test is a decision: \textbf{Is this result significant or not?}}
-
-\vspace{0.3em}
-
-\bitem{This decision can be wrong in two ways:}
-
-\vspace{0.6em}
-
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (11.0,-5.0);
-\node[anchor=north west, inner sep=0, text width=5.1cm, align=left, font=\small] at (0.4,0) {\textbf{False positive (type I) error}};
-\node[anchor=north west, inner sep=0, text width=5.1cm, align=left, font=\small] at (5.75,0) {\textbf{False negative (type II) error}};
-\node[anchor=north west, inner sep=0] at (0.4,-0.6) {\includegraphics[width=10.3cm]{intro-figures/type-errors.png}};
-\end{tikzpicture}
-
-```{r t-statistic, include=FALSE}
-crukdark <- "#00007E"; cruklight <- "#009CEE"; crukpink <- "#FF0087"
-## t distribution of the test statistic for a sample of n = 10 (df = 9); observed t = 2.3, two-sided p = 0.047
-tdist <- function(file, pvalue) {
-  pdf(file, width = 3.6, height = 2.7)
-  par(mar = c(3.1, 4.4, 1.5, 0.5), mgp = c(1.9, 0.5, 0), tcl = -0.3, las = 1, bty = "l",
-      cex.axis = 0.95, cex.lab = 1.05, cex.main = 1.1, font.main = 1)
-  x <- seq(-5, 5, length.out = 400); y <- dt(x, 9)
-  plot(NULL, xlim = c(-5, 5), ylim = c(0, 0.45), xlab = "t", ylab = "", main = "t\u00adstatistic distribution", yaxt = "n")
-  axis(2, at = seq(0, 0.4, 0.1)); title(ylab = "Probability density", line = 3.2)
-  polygon(c(x, rev(x)), c(y, rep(0, length(x))), col = adjustcolor(cruklight, 0.25), border = NA)
-  if (pvalue) {
-    tobs <- 2.3
-    for (sgn in c(-1, 1)) {
-      xt <- if (sgn > 0) seq(tobs, 5, length.out = 100) else seq(-5, -tobs, length.out = 100)
-      polygon(c(xt, rev(xt)), c(dt(xt, 9), rep(0, 100)), col = crukpink, border = NA)
-    }
-    lines(x, y, col = cruklight, lwd = 2.5)
-    segments(tobs, 0, tobs, 0.28, lwd = 1.6, col = crukdark)
-    text(tobs, 0.28, "observed t", pos = 3, offset = 0.3, cex = 0.8, col = crukdark)
-    arrows(-3.9, 0.11, -2.9, 0.012, length = 0.06, angle = 25, lwd = 1.3, col = crukpink)
-    arrows(4.3, 0.11, 2.9, 0.012, length = 0.06, angle = 25, lwd = 1.3, col = crukpink)
-    text(-3.9, 0.11, "p/2", pos = 3, cex = 0.85, col = crukpink, font = 2)
-    text(4.3, 0.11, "p/2", pos = 3, cex = 0.85, col = crukpink, font = 2)
-    text(-3.2, 0.37, sprintf("two\u00adsided\np\u00advalue = %.3f", 2 * pt(-tobs, 9)), cex = 0.85, col = crukpink, font = 2)
-  } else lines(x, y, col = cruklight, lwd = 2.5)
-  dev.off()
-}
-tdist("intro-figures/t-distribution.pdf", FALSE)
-tdist("intro-figures/t-distribution-p.pdf", TRUE)
-```
-
-## Classical hypothesis testing {.t}
-
-\vspace{0.3em}
-
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (11.4,-7.0);
-\node[inner sep=0, anchor=north west] at (0.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/height-plain.pdf}};
-\node[inner sep=0, anchor=north west] at (0.6,-3.75) {\includegraphics[width=4.3cm]{intro-figures/height-sample-sq.pdf}};
-\end{tikzpicture}
-
-## Classical hypothesis testing {.t}
-
-\vspace{0.3em}
-
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (11.4,-7.0);
-\node[inner sep=0, anchor=north west] at (0.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/height-plain.pdf}};
-\node[inner sep=0, anchor=north west] at (0.6,-3.75) {\includegraphics[width=4.3cm]{intro-figures/height-sample-sq.pdf}};
-\node[cloud, cloud puffs=11, cloud puff arc=110, aspect=1.5, draw=gray!70, line width=0.8pt, fill=gray!12, fill opacity=0.8, text opacity=1, minimum width=5.6cm, minimum height=4.3cm, align=center, font=\bfseries] at (2.75,-1.75) {Null hypothesis ($H_0$)};
-\end{tikzpicture}
-
-## Classical hypothesis testing {.t}
-
-\vspace{0.3em}
-
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (11.4,-7.0);
-\node[inner sep=0, anchor=north west] at (0.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/height-plain.pdf}};
-\node[inner sep=0, anchor=north west] at (0.6,-3.75) {\includegraphics[width=4.3cm]{intro-figures/height-sample-sq.pdf}};
-\node[cloud, cloud puffs=11, cloud puff arc=110, aspect=1.5, draw=gray!70, line width=0.8pt, fill=gray!12, fill opacity=0.8, text opacity=1, minimum width=5.6cm, minimum height=4.3cm, align=center, font=\bfseries] at (2.75,-1.75) {Null hypothesis ($H_0$)};
-\node[anchor=north west, inner sep=0, text width=5.7cm, align=left, font=\normalsize, execute at begin node={\hyphenpenalty=10000\raggedright}] at (5.8,-3.7) {\textbf{1. Choose a test and calculate the test statistic}\par\vspace{4pt}\bitem{A formula that uses the data to produce a single number}\par\vspace{2pt}\bitem{This number is the \textbf{test statistic}}\par\vspace{2pt}\bitem{e.g.\ $t$-statistic, $F$-statistic}};
-\end{tikzpicture}
-
-## Classical hypothesis testing {.t}
-
-\vspace{0.3em}
-
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (11.4,-7.0);
-\node[inner sep=0, anchor=north west] at (0.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/height-plain.pdf}};
-\node[inner sep=0, anchor=north west] at (0.6,-3.75) {\includegraphics[width=4.3cm]{intro-figures/height-sample-sq.pdf}};
-\node[cloud, cloud puffs=11, cloud puff arc=110, aspect=1.5, draw=gray!70, line width=0.8pt, fill=gray!12, fill opacity=0.8, text opacity=1, minimum width=5.6cm, minimum height=4.3cm, align=center, font=\bfseries] at (2.75,-1.75) {Null hypothesis ($H_0$)};
-\node[inner sep=0, anchor=north west] at (6.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/t-distribution.pdf}};
-\node[anchor=north west, inner sep=0, text width=5.7cm, align=left, font=\normalsize, execute at begin node={\hyphenpenalty=10000\raggedright}] at (5.8,-3.7) {\textbf{2. Assess how extreme the test statistic is under $H_0$}\par\vspace{4pt}\bitem{Using the distribution of the test statistic \mbox{under $H_0$}}\par\vspace{2pt}\bitem{Calculate the p-value}};
-\end{tikzpicture}
-
-## Classical hypothesis testing {.t}
-
-\vspace{0.3em}
-
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (11.4,-7.0);
-\node[inner sep=0, anchor=north west] at (0.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/height-plain.pdf}};
-\node[inner sep=0, anchor=north west] at (0.6,-3.75) {\includegraphics[width=4.3cm]{intro-figures/height-sample-sq.pdf}};
-\node[cloud, cloud puffs=11, cloud puff arc=110, aspect=1.5, draw=gray!70, line width=0.8pt, fill=gray!12, fill opacity=0.8, text opacity=1, minimum width=5.6cm, minimum height=4.3cm, align=center, font=\bfseries] at (2.75,-1.75) {Null hypothesis ($H_0$)};
-\node[inner sep=0, anchor=north west] at (6.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/t-distribution-p.pdf}};
-\node[anchor=north west, inner sep=0, text width=5.7cm, align=left, font=\normalsize, execute at begin node={\hyphenpenalty=10000\raggedright}] at (5.8,-3.7) {\textbf{2. Assess how extreme the test statistic is under $H_0$}\par\vspace{4pt}\bitem{Using the distribution of the test statistic \mbox{under $H_0$}}\par\vspace{2pt}\bitem{Calculate the p-value}};
-\end{tikzpicture}
-
-## Classical hypothesis testing {.t}
-
-\vspace{0.3em}
-
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (11.4,-7.0);
-\node[inner sep=0, anchor=north west] at (0.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/height-plain.pdf}};
-\node[inner sep=0, anchor=north west] at (0.6,-3.75) {\includegraphics[width=4.3cm]{intro-figures/height-sample-sq.pdf}};
-\node[cloud, cloud puffs=11, cloud puff arc=110, aspect=1.5, draw=gray!70, line width=0.8pt, fill=gray!12, fill opacity=0.8, text opacity=1, minimum width=5.6cm, minimum height=4.3cm, align=center, font=\bfseries] at (2.75,-1.75) {Null hypothesis ($H_0$)};
-\node[inner sep=0, anchor=north west] at (6.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/t-distribution-p.pdf}};
-\node[anchor=north west, inner sep=0, text width=5.7cm, align=left, font=\normalsize, execute at begin node={\hyphenpenalty=10000\raggedright}] at (5.8,-3.7) {\textbf{3. Reject or retain the null hypothesis}\par\vspace{4pt}\bitem{By comparing the p-value with the significance level $\alpha$}};
-\end{tikzpicture}
-
-## Classical hypothesis testing {.t}
-
-\vspace{0.3em}
-
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (11.4,-7.0);
-\node[inner sep=0, anchor=north west] at (0.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/height-plain.pdf}};
-\node[inner sep=0, anchor=north west] at (0.6,-3.75) {\includegraphics[width=4.3cm]{intro-figures/height-sample-sq.pdf}};
-\node[cloud, cloud puffs=11, cloud puff arc=110, aspect=1.5, draw=gray!70, line width=0.8pt, fill=gray!12, fill opacity=0.8, text opacity=1, minimum width=5.6cm, minimum height=4.3cm, align=center, font=\bfseries] at (2.75,-1.75) {Null hypothesis ($H_0$)};
-\node[inner sep=0, anchor=north west] at (6.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/t-distribution-p.pdf}};
-\node[anchor=north west, inner sep=0, text width=5.7cm, align=left, font=\normalsize, execute at begin node={\hyphenpenalty=10000\raggedright}] at (5.8,-3.7) {\hangindent=1.1em\hangafter=1 1. Choose a test and calculate the test statistic\par\vspace{5pt}\hangindent=1.1em\hangafter=1 2. Assess how extreme the test statistic is under $H_0$\par\vspace{5pt}\hangindent=1.1em\hangafter=1 3. Reject or retain the null hypothesis};
-\end{tikzpicture}
-
-```{r bp-example, include=FALSE}
-crukdark <- "#00007E"; cruklight <- "#009CEE"; crukpink <- "#FF0087"
-bp <- c(132, 128, 139, 125, 141, 134)
-ts <- (mean(bp) - 110) / (sd(bp) / sqrt(length(bp)))     # 9.19, df = 5
-pv <- 2 * pt(-abs(ts), length(bp) - 1)                    # 0.0003
-bfig <- function(file, expr) {
-  pdf(file, width = 3.6, height = 2.7)
-  par(mar = c(3.1, 4.4, 1.5, 0.5), mgp = c(1.9, 0.5, 0), tcl = -0.3, las = 1, bty = "l",
-      cex.axis = 0.95, cex.lab = 1.05, cex.main = 1.1, font.main = 1)
-  force(expr); dev.off()
-}
-bfig("intro-figures/bp-population.pdf", {
-  x <- seq(80, 150, length.out = 400); y <- dnorm(x, 110, 10)
-  plot(NULL, xlim = c(80, 150), ylim = c(0, 0.045), xlab = "Systolic blood pressure (mmHg)", ylab = "",
-       main = "UK adults", yaxt = "n")
-  axis(2, at = seq(0, 0.04, 0.01)); title(ylab = "Probability density", line = 3.2)
-  polygon(c(x, rev(x)), c(y, rep(0, length(x))), col = adjustcolor(cruklight, 0.25), border = NA)
-  lines(x, y, col = cruklight, lwd = 2.5)
-})
-bfig("intro-figures/bp-sample.pdf", {
-  plot(NULL, xlim = c(80, 150), ylim = c(0, 1), xlab = "Systolic blood pressure (mmHg)", ylab = "",
-       main = "Sample (n = 6)", yaxt = "n")
-  points(bp, rep(0.5, length(bp)), pch = 21, bg = cruklight, col = crukdark, cex = 1.5)
-})
-tplot <- function(pvalue) {
-  x <- seq(-11, 11, length.out = 600); y <- dt(x, 5)
-  plot(NULL, xlim = c(-11, 11), ylim = c(0, 0.42), xlab = "t", ylab = "", main = "t distribution, df = 5", yaxt = "n")
-  axis(2, at = seq(0, 0.4, 0.1)); title(ylab = "Probability density", line = 3.2)
-  polygon(c(x, rev(x)), c(y, rep(0, length(x))), col = adjustcolor(cruklight, 0.25), border = NA)
-  lines(x, y, col = cruklight, lwd = 2.5)
-  if (pvalue) {
-    for (sgn in c(-1, 1)) {
-      xt <- if (sgn > 0) seq(ts, 11, length.out = 100) else seq(-11, -ts, length.out = 100)
-      polygon(c(xt, rev(xt)), c(dt(xt, 5), rep(0, 100)), col = crukpink, border = NA)
-      segments(sgn * ts, 0, sgn * ts, 0.07, lwd = 1.6, col = crukdark)
-      arrows(sgn * 9.9, 0.15, sgn * 9.9, 0.012, length = 0.06, angle = 25, lwd = 1.3, col = crukpink)
-      text(sgn * 9.9, 0.15, "p/2", pos = 3, cex = 0.85, col = crukpink, font = 2)
-    }
-    text(ts, 0.045, sprintf("%.2f", ts), pos = 2, cex = 0.8, col = crukdark)
-    text(-ts, 0.045, sprintf("-%.2f", ts), pos = 4, cex = 0.8, col = crukdark)
-    text(6.2, 0.36, sprintf("two\u00adsided\np\u00advalue = %.4f", pv), cex = 0.85, col = crukpink, font = 2)
-  }
-}
-bfig("intro-figures/t-example.pdf", tplot(FALSE))
-bfig("intro-figures/t-example-p.pdf", tplot(TRUE))
-```
-
-## Classical hypothesis testing: an example {.t}
-
-\vspace{0.3em}
-
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (11.4,-7.0);
-\node[inner sep=0, anchor=north west] at (0.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/bp-population.pdf}};
-\node[inner sep=0, anchor=north west] at (0.6,-3.75) {\includegraphics[width=4.3cm]{intro-figures/bp-sample.pdf}};
-\end{tikzpicture}
-
-## Classical hypothesis testing: an example {.t}
-
-\vspace{0.3em}
-
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (11.4,-7.0);
-\node[inner sep=0, anchor=north west] at (0.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/bp-population.pdf}};
-\node[inner sep=0, anchor=north west] at (0.6,-3.75) {\includegraphics[width=4.3cm]{intro-figures/bp-sample.pdf}};
-\node[cloud, cloud puffs=11, cloud puff arc=110, aspect=1.5, draw=gray!70, line width=0.8pt, fill=gray!12, fill opacity=0.8, text opacity=1, minimum width=5.6cm, minimum height=4.3cm, align=center, font=\bfseries] at (2.75,-1.75) {$H_0$: $\mu = 110$ mmHg};
-\end{tikzpicture}
-
-## Classical hypothesis testing: an example {.t}
-
-\vspace{0.3em}
-
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (11.4,-7.0);
-\node[inner sep=0, anchor=north west] at (0.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/bp-population.pdf}};
-\node[inner sep=0, anchor=north west] at (0.6,-3.75) {\includegraphics[width=4.3cm]{intro-figures/bp-sample.pdf}};
-\node[cloud, cloud puffs=11, cloud puff arc=110, aspect=1.5, draw=gray!70, line width=0.8pt, fill=gray!12, fill opacity=0.8, text opacity=1, minimum width=5.6cm, minimum height=4.3cm, align=center, font=\bfseries] at (2.75,-1.75) {$H_0$: $\mu = 110$ mmHg};
-\node[anchor=north west, inner sep=0, text width=6.1cm, align=left, font=\normalsize, execute at begin node={\hyphenpenalty=10000\raggedright}] at (5.6,-3.45) {\textbf{1. Choose a test and calculate the test statistic}\par\vspace{4pt}\bitem{One-sample Student's $t$-test}\par\vspace{2pt}\bitem{Test statistic:}\par\vspace{3pt}{\centering $t_s = \dfrac{\bar{x}-\mu_0}{s/\sqrt{n}} = \dfrac{133.17-110}{6.18/\sqrt{6}} = 9.19$\par}\vspace{3pt}\par\vspace{2pt}{\leftskip=1.05em where $s$ is the sample standard deviation and df $= n - 1 = 5$\par}};
-\end{tikzpicture}
-
-## Classical hypothesis testing: an example {.t}
-
-\vspace{0.3em}
-
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (11.4,-7.0);
-\node[inner sep=0, anchor=north west] at (0.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/bp-population.pdf}};
-\node[inner sep=0, anchor=north west] at (0.6,-3.75) {\includegraphics[width=4.3cm]{intro-figures/bp-sample.pdf}};
-\node[cloud, cloud puffs=11, cloud puff arc=110, aspect=1.5, draw=gray!70, line width=0.8pt, fill=gray!12, fill opacity=0.8, text opacity=1, minimum width=5.6cm, minimum height=4.3cm, align=center, font=\bfseries] at (2.75,-1.75) {$H_0$: $\mu = 110$ mmHg};
-\node[inner sep=0, anchor=north west] at (6.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/t-example.pdf}};
-\node[anchor=north west, inner sep=0, text width=6.1cm, align=left, font=\normalsize, execute at begin node={\hyphenpenalty=10000\raggedright}] at (5.6,-3.45) {\textbf{2. Assess how extreme the test statistic is under $H_0$}\par\vspace{4pt}\bitem{Using the $t$-distribution with 5 df \mbox{under $H_0$}}\par\vspace{2pt}\bitem{Calculate the p-value}};
-\end{tikzpicture}
-
-## Classical hypothesis testing: an example {.t}
-
-\vspace{0.3em}
-
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (11.4,-7.0);
-\node[inner sep=0, anchor=north west] at (0.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/bp-population.pdf}};
-\node[inner sep=0, anchor=north west] at (0.6,-3.75) {\includegraphics[width=4.3cm]{intro-figures/bp-sample.pdf}};
-\node[cloud, cloud puffs=11, cloud puff arc=110, aspect=1.5, draw=gray!70, line width=0.8pt, fill=gray!12, fill opacity=0.8, text opacity=1, minimum width=5.6cm, minimum height=4.3cm, align=center, font=\bfseries] at (2.75,-1.75) {$H_0$: $\mu = 110$ mmHg};
-\node[inner sep=0, anchor=north west] at (6.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/t-example-p.pdf}};
-\node[anchor=north west, inner sep=0, text width=6.1cm, align=left, font=\normalsize, execute at begin node={\hyphenpenalty=10000\raggedright}] at (5.6,-3.45) {\textbf{2. Assess how extreme the test statistic is under $H_0$}\par\vspace{4pt}\bitem{Using the $t$-distribution with 5 df \mbox{under $H_0$}}\par\vspace{2pt}\bitem{Calculate the p-value}};
-\end{tikzpicture}
-
-## Classical hypothesis testing: an example {.t}
-
-\vspace{0.3em}
-
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (11.4,-7.0);
-\node[inner sep=0, anchor=north west] at (0.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/bp-population.pdf}};
-\node[inner sep=0, anchor=north west] at (0.6,-3.75) {\includegraphics[width=4.3cm]{intro-figures/bp-sample.pdf}};
-\node[cloud, cloud puffs=11, cloud puff arc=110, aspect=1.5, draw=gray!70, line width=0.8pt, fill=gray!12, fill opacity=0.8, text opacity=1, minimum width=5.6cm, minimum height=4.3cm, align=center, font=\bfseries] at (2.75,-1.75) {$H_0$: $\mu = 110$ mmHg};
-\node[inner sep=0, anchor=north west] at (6.6,-0.15) {\includegraphics[width=4.3cm]{intro-figures/t-example-p.pdf}};
-\node[anchor=north west, inner sep=0, text width=6.1cm, align=left, font=\normalsize, execute at begin node={\hyphenpenalty=10000\raggedright}] at (5.6,-3.45) {\textbf{3. Reject or retain the null hypothesis}\par\vspace{4pt}\bitem{$p = 0.0003 < \alpha = 0.05$: \textbf{reject} $H_0$}\par\vspace{2pt}\bitem{The data provide strong evidence that the mean systolic blood pressure of UK adults is \textcolor[HTML]{FF0000}{NOT} 110 mmHg}};
-\end{tikzpicture}
-
-## Statistical hypothesis testing steps
-
-\centering
-\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/Hypothesis_steps.png}
-
-
-
-## Interpreting results and p-values {.t}
-
-\vspace{\dimexpr0.6em-9.3pt\relax}
-
-\textbf{p-value} = probability of observing data at least as extreme as ours, if the null hypothesis is \textcolor[HTML]{00B050}{TRUE}
-
-\vspace{0.6em}
-
-\bitem{A property of the dataset}
-
-\bitem{Not equal to the probability of the null hypothesis being \textcolor[HTML]{00B050}{TRUE}}
-
-\bitem{Cannot provide ``proof''}
-
-\vspace{1.2em}
-
-This means that all statistical tests are probabilistic and can be wrong!
-
+\bitem{A $p$-value of 0.012 does \textbf{not} mean there is a 1.2\% chance that tamoxifen does nothing}
 
 ## Stage 4: summary {.t}
 
