@@ -61,13 +61,13 @@ using the following web applications:
 
 | Time  | Activity |Trainer|
 |:------|:---------|-------|
-| 10:00 | Data types Lecture on descriptive statistics | Chandra|
+| 10:00 | Lecture on data types and descriptive statistics | Chandra|
 | 10:30 | Online quiz & discussion |Chandra|
 | 11:00 | Coffee/tea break||
-| 11:10 | Lecture on inferential statistics and central limit theorem|Luca|
+| 11:10 | Lecture on Inferential statistics and central limit theorem|Luca|
 | 11:45 | Exercises (central limit theorem) & discussion|Luca|
 | 12:30 | Lunch break||
-| 13:30 | Hypothesis testing and one-sample tests| Chandra|
+| 13:30 | Lecture on Hypothesis testing and one-sample tests| Chandra|
 | 14:15 | Exercises (one-sample tests) and discussion|Chandra|
 | 15:00 | Coffee/tea break||
 | 15.10 | Lecture on two-sample tests| Luca|

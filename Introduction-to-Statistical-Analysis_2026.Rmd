@@ -552,7 +552,7 @@ draw_roadmap(1)
 
 \textbf{Online quiz}
 
-\small\url{http://bioinformatics-core-shared-training.github.io/IntroductionToStats}\normalsize
+\small\url{https://tinyurl.com/CI-Stats-Quiz}\normalsize
 
 ## Stage 2: Inferential Statistics
 
