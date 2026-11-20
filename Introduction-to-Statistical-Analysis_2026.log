@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.8.15)  20 NOV 2026 22:27
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.8.15)  20 NOV 2026 22:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2234,25 +2234,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 1679--1679
 
 [74
 
-] [75
-
 ]
 File: Introduction-to-Statistical-Analysis_2026_files/figure-beamer/roadmap-sta
 ge5-1.pdf Graphic file (type pdf)
 <use Introduction-to-Statistical-Analysis_2026_files/figure-beamer/roadmap-stag
 e5-1.pdf>
-[76
+[75
 
 ]
 LaTeX Font Info:    Font shape `TU/Arial(1)/m/n' will be
-(Font)              scaled to size 7.70595pt on input line 1725.
+(Font)              scaled to size 7.70595pt on input line 1706.
 LaTeX Font Info:    Font shape `TU/Arial(1)/m/n' will be
-(Font)              scaled to size 5.1373pt on input line 1725.
+(Font)              scaled to size 5.1373pt on input line 1706.
 LaTeX Font Info:    Font shape `TU/Arial(1)/m/n' will be
-(Font)              scaled to size 14.79541pt on input line 1725.
+(Font)              scaled to size 14.79541pt on input line 1706.
 LaTeX Font Info:    Font shape `TU/Arial(1)/m/n' will be
-(Font)              scaled to size 10.2746pt on input line 1725.
-[77
+(Font)              scaled to size 10.2746pt on input line 1706.
+[76
+
+] [77
 
 ] [78
 
@@ -2260,36 +2260,36 @@ LaTeX Font Info:    Font shape `TU/Arial(1)/m/n' will be
 
 ] [80
 
-] [81
-
 ]
 File: intro-figures/tdist.pdf Graphic file (type pdf)
 <use intro-figures/tdist.pdf>
-[82
+[81
+
+] [82
 
 ] [83
 
-] [84
-
 ]
 LaTeX Font Info:    Font shape `TU/Arial(0)/m/n' will be
-(Font)              scaled to size 6.56288pt on input line 1946.
+(Font)              scaled to size 6.56288pt on input line 1927.
 LaTeX Font Info:    Font shape `TU/Arial(0)/m/n' will be
-(Font)              scaled to size 4.68779pt on input line 1946.
-[85
+(Font)              scaled to size 4.68779pt on input line 1927.
+[84
+
+] [85
 
 ] [86
 
 ] [87
-
-] [88
 
 ]
 File: Introduction-to-Statistical-Analysis_2026_files/figure-beamer/roadmap-sta
 ge6-1.pdf Graphic file (type pdf)
 <use Introduction-to-Statistical-Analysis_2026_files/figure-beamer/roadmap-stag
 e6-1.pdf>
-[89
+[88
+
+] [89
 
 ] [90
 
@@ -2299,12 +2299,12 @@ e6-1.pdf>
 
 ] [93
 
-] [94
-
 ]
 File: intro-figures/tdist.pdf Graphic file (type pdf)
 <use intro-figures/tdist.pdf>
-[95
+[94
+
+] [95
 
 ] [96
 
@@ -2314,12 +2314,12 @@ File: intro-figures/tdist.pdf Graphic file (type pdf)
 
 ] [99
 
-] [100
-
 ]
 File: intro-figures/tdist.pdf Graphic file (type pdf)
 <use intro-figures/tdist.pdf>
-[101
+[100
+
+] [101
 
 ] [102
 
@@ -2329,12 +2329,12 @@ File: intro-figures/tdist.pdf Graphic file (type pdf)
 
 ] [105
 
-] [106
-
 ]
 File: intro-figures/ranksumfam.pdf Graphic file (type pdf)
 <use intro-figures/ranksumfam.pdf>
-[107
+[106
+
+] [107
 
 ] [108
 
@@ -2346,22 +2346,20 @@ File: intro-figures/ranksumfam.pdf Graphic file (type pdf)
 
 ] [112
 
-] [113
-
 ]
-Overfull \hbox (3.56357pt too wide) in paragraph at lines 2755--2755
+Overfull \hbox (3.56357pt too wide) in paragraph at lines 2736--2736
  [] 
  []
 
 LaTeX Font Info:    Font shape `TU/Arial(0)/m/it' will be
-(Font)              scaled to size 6.84973pt on input line 2755.
+(Font)              scaled to size 6.84973pt on input line 2736.
 LaTeX Font Info:    Font shape `TU/Arial(0)/m/n' will be
-(Font)              scaled to size 13.8707pt on input line 2755.
-[114
+(Font)              scaled to size 13.8707pt on input line 2736.
+[113
+
+] [114
 
 ] [115
-
-] [116
 
 ]
 \tf@nav=\write5
@@ -2379,12 +2377,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 36525 strings out of 476683
- 776906 string characters out of 5804047
+ 36522 strings out of 476683
+ 776871 string characters out of 5804047
  1869018 words of memory out of 5000000
- 55978 multiletter control sequences out of 15000+600000
+ 55975 multiletter control sequences out of 15000+600000
  527239 words of font info for 201 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  128i,15n,122p,1038b,2935s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Introduction-to-Statistical-Analysis_2026.pdf (116 pages).
+Output written on Introduction-to-Statistical-Analysis_2026.pdf (115 pages).

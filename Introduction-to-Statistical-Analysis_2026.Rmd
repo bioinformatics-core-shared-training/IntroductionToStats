@@ -2476,24 +2476,6 @@ $t = \dfrac{\bar{x}_{\mathrm{control}} - \bar{x}_{\mathrm{tamoxifen}}}{SE} = \df
 
 \bitem{A $p$-value of 0.012 does \textbf{not} mean there is a 1.2\% chance that tamoxifen does nothing}
 
-## Stage 4: summary {.t}
-
-\vspace{\dimexpr0.6em-7.5pt\relax}
-
-\bitem{We make inferences about a population (distribution) from a sample (dataset)}
-
-\vspace{0.9em}
-
-\bitem{We test hypotheses by calculating test statistics and p-values}
-
-\vspace{0.9em}
-
-\bitem{The p-value is the probability of data at least as extreme as ours, if the null hypothesis is \textcolor[HTML]{00B050}{TRUE}}
-
-\vspace{0.9em}
-
-\bitem{\textbf{All statistical tests have assumptions that you have to check\\ \hphantom{\bul\ }before you can trust the results}}
-
 
 ## Stage 5: One-Sample Tests
 
@@ -3529,7 +3511,7 @@ Wilcoxon rank-sum test & Two-sample Student's $t$-test \\
 
 \vspace{\dimexpr-0.1em-2.8pt\relax}
 
-Parts of these slides are adapted from the \textbf{Core statistics} course of the \textbf{Cambridge Centre for Research Informatics Training}, University of Cambridge
+Parts of these slides are adapted from the \textbf{Core statistics} course of the \textbf{Cambridge Centre for Research Informatics Training}, University of Cambridge and Dominique-Laurent Couturier presentation.
 
 \vspace{3em}
 
