@@ -486,369 +486,65 @@ draw_roadmap <- local({
 draw_roadmap()
 ```
 
-## Stage 1: Descriptive Statistics
+## Stage 1:  Data types, Descriptive statistics and graphical displays
 
 ```{r roadmap-stage1, fig.width=6.6, fig.height=3.15, fig.align="center"}
 draw_roadmap(1)
 ```
 
-## Statistics starts with data\textsuperscript{(1)} {.t}
-
-\vspace{-0.2em}
-
-\bitem{We take a sample of people, mice, cells, or molecules and retrieve some data}
-
-\vspace{-0.6em}
-
-\begin{center}
-\begin{tikzpicture}[arr/.style={-{Latex[length=6pt,width=5pt]}, very thick, crukdark}]
-\node[anchor=north west, inner sep=0] (pop) at (0,0) {\includegraphics[width=5.0cm]{Population.jpeg}};
-\node[anchor=north west, inner sep=1pt, font=\Large] (m) at (6.55,-0.72) {$\begin{matrix} x_{11} & x_{12} & \cdots & x_{1n} \\ x_{21} & x_{22} & \cdots & x_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ x_{m1} & x_{m2} & \cdots & x_{mn} \end{matrix}$};
-\node[anchor=east, font=\Large, inner sep=0] (X) at ([xshift=-12pt]m.west) {$\mathbf{X} =$};
-% smooth round brackets, one continuous arc on each side
-\draw[line width=0.9pt] ([xshift=-1pt]m.north west) .. controls ($(m.north west)+(-6.5pt,-14pt)$) and ($(m.south west)+(-6.5pt,14pt)$) .. ([xshift=-1pt]m.south west);
-\draw[line width=0.9pt] ([xshift=1pt]m.north east) .. controls ($(m.north east)+(6.5pt,-14pt)$) and ($(m.south east)+(6.5pt,14pt)$) .. ([xshift=1pt]m.south east);
-\draw[arr] ([xshift=0.75cm]X.west |- pop.north) -- ([xshift=6pt]m.east |- pop.north) node[midway, above, font=\footnotesize, text=black] {Observation unit (row $i$)};
-\draw[arr] ([xshift=0.45cm]m.north east) -- ([xshift=0.45cm]m.south east) node[midway, above, rotate=-90, font=\footnotesize, text=black] {Feature (column $j$)};
-\node[below=0.12cm of m, font=\normalsize] {$m, n \geq 1$};
-\end{tikzpicture}
-\end{center}
-
-\vspace{-0.8em}
-
-\begingroup\footnotesize\setlength{\parskip}{1pt}
-where:\par
-\bitem{row $i = 1, \ldots, m$ is the \textbf{observation unit} (e.g.\ Ivan Aleksandrovich Goncharov, Mickey Mouse)}
-\bitem{column $j = 1, \ldots, n$ is the \textbf{feature} (e.g.\ performance status, weight)}
-\bitem{$x_{ij}$ is the value of feature $j$ retrieved for the $i$-th unit}
-\endgroup
-
-\reference{(1) Breiman, L. \textit{Statistical modeling: the two cultures}. Statist.\ Sci.\ \textbf{16}(3), 199--231 (2001)}
-
-## Data types {.t}
-
-\vspace{-0.9em}
-
-\begin{tikzpicture}[remember picture, overlay]
-\node[single arrow, single arrow head extend=4pt, minimum height=6.6cm, minimum width=0.75cm, fill=cruklight!25, draw=cruklight, rotate=-90, font=\footnotesize\bfseries, text=crukdark] at ([xshift=20pt,yshift=-142pt]current page.north west) {Complexity};
-\end{tikzpicture}
-
-\hspace*{1.2cm}\begin{minipage}{0.86\textwidth}
-\small\renewcommand{\arraystretch}{1.0}
-\begin{tabular}{@{}p{6.0cm}l@{}}
-\textbf{\large\textcolor{crukdark}{Qualitative}} & \\[2pt]
-\textcolor{crukdark}{$\boldsymbol{\Rightarrow}$} Binary/dichotomous & \raisebox{-0.45\height}{\includegraphics[height=1.2cm]{intro-figures/image19.png}} \\
-\textcolor{crukdark}{$\boldsymbol{\Rightarrow}$} Nominal & \raisebox{-0.45\height}{\includegraphics[height=1.2cm]{intro-figures/pie-icon.pdf}} \\
-\textcolor{crukdark}{$\boldsymbol{\Rightarrow}$} Ordinal & \raisebox{-0.45\height}{\includegraphics[height=0.95cm]{intro-figures/image18.png}} \\[16pt]
-\textbf{\large\textcolor{crukdark}{Quantitative}} & \\[2pt]
-\textcolor{crukdark}{$\boldsymbol{\Rightarrow}$} Interval scale (arbitrary zero point) & \raisebox{-0.45\height}{\includegraphics[height=1.2cm]{intro-figures/image20.png}} \\
-\textcolor{crukdark}{$\boldsymbol{\Rightarrow}$} Ratio scale (meaningful zero point) & \raisebox{-0.45\height}{\includegraphics[height=1.2cm]{intro-figures/image21.png}} \\
-\end{tabular}
-\end{minipage}
-
-## Data types {.t}
-
-\vspace{-0.9em}
-
-\begin{tikzpicture}[remember picture, overlay]
-\node[single arrow, single arrow head extend=4pt, minimum height=6.6cm, minimum width=0.75cm, fill=cruklight!25, draw=cruklight, rotate=-90, font=\footnotesize\bfseries, text=crukdark] at ([xshift=20pt,yshift=-142pt]current page.north west) {Complexity};
-\end{tikzpicture}
-
-\hspace*{1.2cm}\begin{minipage}{0.86\textwidth}
-\small\renewcommand{\arraystretch}{1.0}
-\begin{tabular}{@{}p{6.0cm}l@{}}
-\textbf{\large\textcolor{crukdark}{Qualitative}} & \\[2pt]
-\textcolor{crukdark}{$\boldsymbol{\Rightarrow}$} Binary/dichotomous & \raisebox{-0.45\height}{\includegraphics[height=1.2cm]{intro-figures/image19.png}} \\
-\textcolor{crukdark}{$\boldsymbol{\Rightarrow}$} Nominal & \raisebox{-0.45\height}{\includegraphics[height=1.2cm]{intro-figures/pie-icon.pdf}} \\
-\textcolor{crukdark}{$\boldsymbol{\Rightarrow}$} Ordinal & \raisebox{-0.45\height}{\includegraphics[height=0.95cm]{intro-figures/image18.png}} \\[16pt]
-\textbf{\large\textcolor{crukdark}{Quantitative}} & \\[2pt]
-\textcolor{crukdark}{$\boldsymbol{\Rightarrow}$} Discrete & \raisebox{-0.45\height}{\rule{0pt}{1.2cm}}\raisebox{-0.3\height}{\fcolorbox{crukdark}{white}{\footnotesize Number of metastases}} \\
-\textcolor{crukdark}{$\boldsymbol{\Rightarrow}$} Continuous & \raisebox{-0.45\height}{\includegraphics[height=1.2cm]{intro-figures/image21.png}} \\
-\end{tabular}
-\end{minipage}
-
-## Descriptive Statistics {.t}
-
-\vspace{-0.2em}
-
-\noindent\colorbox{crukpink}{\Large\color{white}What can you do with data \textbf{alone}?}\par
-\vspace{0.1em}
-\noindent{\large\textbf{\textcolor{crukpink}{Descriptive statistics answers the previous question.}}\par}
-
-\vspace{0.35em}
-
-\bitem{Here, the data are analysed on their own terms, essentially \textbf{without extraneous assumptions}.}
-
-\vspace{0.35em}
-
-\bitem{The principal aim is the \textbf{organisation and summarisation} of the data in ways that bring out their main properties and clarify their underlying structure.}
-
-\vspace{0.35em}
-
-\vspace{-0.4em}
-\begin{center}
-\begin{tikzpicture}[lab/.style={draw=black, fill=white, font=\small, inner sep=3pt}]
-\node[inner sep=0] (tab) at (0,0) {\includegraphics[height=2.1cm]{intro-figures/image12.png}};
-\node[inner sep=0, anchor=south west] (bar) at ([xshift=0.15cm,yshift=0.2cm]tab.south east) {\includegraphics[height=2.45cm]{intro-figures/image15.png}};
-\node[lab, rotate=15, anchor=east] (med) at ([xshift=-0.35cm,yshift=-0.3cm]tab.west) {Median};
-\draw[black] (med.north east) -- ([yshift=0.35cm]tab.west);
-\node[lab, anchor=north west] at ([xshift=0.1cm,yshift=0.05cm]tab.south east) {Range};
-\end{tikzpicture}
-\end{center}
-
-\reference{Lehmann, E.\,L. \& Casella, G. \textit{Theory of Point Estimation}, 2nd edition. New York: Springer (1998)}
-
-## Descriptive Statistics, univariate analysis {.t}
-
-\vspace{-0.3em}
-
-\sbox{\pinkbx}{\pinkb{\textbf{Nominal data}, measures of central tendency}}\hfill\usebox{\pinkbx}
-
-\vspace{0.3em}
-
-\begin{columns}[T,onlytextwidth]
-\begin{column}{0.40\textwidth}
-\footnotesize\renewcommand{\arraystretch}{1.22}\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}lrr@{}}
-\hline
-\rowcolor{cruklight!20}\textbf{Histotype} & \textbf{N} & \textbf{\%} \\ \hline
-Serous & 48 & 41.7 \\
-Undifferentiated & 22 & 19.1 \\
-Endometrioid & 21 & 18.3 \\
-Mucinous & 16 & 13.9 \\
-Clear cell & 8 & 7.0 \\ \hline
-\end{tabular}
-\end{column}
-\begin{column}{0.58\textwidth}
-\makebox[\linewidth][r]{\begin{minipage}[t][2.25cm][t]{\wd\pinkbx}
-\small
-\bitem{Serous is the \textbf{mode}}
-\vspace{0.5em}
-{\raggedright\noindent\setbox0\hbox{\textit{\textcolor{crukdark}{Def.}} }\hangindent=\wd0\hangafter=1 \textit{\textcolor{crukdark}{Def.}} The mode is the category that appears most often in a set of data values\par}
-\end{minipage}}\par
-\makebox[\linewidth][c]{\includegraphics[height=0.38\textheight]{intro-figures/pie-histotype.pdf}}
-\end{column}
-\end{columns}
-
-## Descriptive Statistics, univariate analysis {.t}
-
-\vspace{-0.3em}
-
-\sbox{\pinkbx}{\pinkb{\textbf{Ordinal data}, measures of central tendency}}\hfill\usebox{\pinkbx}
-
-\vspace{0.3em}
-
-\begin{columns}[T,onlytextwidth]
-\begin{column}{0.40\textwidth}
-\footnotesize\renewcommand{\arraystretch}{1.22}\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}lrr@{}}
-\hline
-\rowcolor{cruklight!20}\textbf{Grading} & \textbf{N} & \textbf{\%} \\ \hline
-G1 & 48 & 45.7 \\
-G2 & 18 & 17.1 \\
-G3 & 23 & 21.9 \\
-G4 & 16 & 15.2 \\ \hline
-\end{tabular}
-\end{column}
-\begin{column}{0.58\textwidth}
-\makebox[\linewidth][r]{\begin{minipage}[t][2.25cm][t]{\wd\pinkbx}
-\small
-\bitem{G1 is the \textbf{mode}}
-\vspace{0.2em}
-\bitem{G2 is the \textbf{median}}
-\vspace{0.5em}
-{\raggedright\noindent\setbox0\hbox{\textit{\textcolor{crukdark}{Def.}} }\hangindent=\wd0\hangafter=1 \textit{\textcolor{crukdark}{Def.}} The median is the category separating the higher half from the lower half of a data sample\par}
-\end{minipage}}\par
-\makebox[\linewidth][c]{\includegraphics[height=0.38\textheight]{intro-figures/bar-grading.pdf}}
-\end{column}
-\end{columns}
-
-## Descriptive Statistics, univariate analysis {.t}
-
-\vspace{-0.3em}
-
-\sbox{\pinkbx}{\pinkb{\textbf{Discrete data}, measures of central tendency}}\hfill\usebox{\pinkbx}
-
-\vspace{0.3em}
-
-\begin{columns}[T,onlytextwidth]
-\begin{column}{0.40\textwidth}
-\footnotesize\renewcommand{\arraystretch}{1.22}\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}lrr@{}}
-\hline
-\rowcolor{cruklight!20}\textbf{No.\ of metastases} & \textbf{N} & \textbf{\%} \\ \hline
-0 & 20 & 16.3 \\
-1 & 45 & 36.6 \\
-2 & 30 & 24.4 \\
-3 & 12 & 9.8 \\
-4 & 10 & 8.1 \\
-5 & 5 & 4.1 \\
-6 & 1 & 0.8 \\ \hline
-\end{tabular}
-\end{column}
-\begin{column}{0.58\textwidth}
-\makebox[\linewidth][r]{\begin{minipage}[t][2.25cm][t]{\wd\pinkbx}
-\small
-\bitem{1 is the \textbf{modal} number of metastases}
-\vspace{0.2em}
-\bitem{1 is the \textbf{median} number of metastases}
-\vspace{0.2em}
-\bitem{1.7 is the \textbf{mean} number of metastases}
-\end{minipage}}\par
-\makebox[\linewidth][c]{\includegraphics[height=0.38\textheight]{intro-figures/bar-metastases.pdf}}
-\end{column}
-\end{columns}
-
-## Descriptive Statistics, univariate analysis {.t}
-
-\vspace{-0.3em}
-
-\sbox{\pinkbx}{\pinkb{\textbf{Continuous data}, measures of central tendency}}\hfill\usebox{\pinkbx}
-
-\vspace{0.3em}
-
-\begin{columns}[T,onlytextwidth]
-\begin{column}{0.40\textwidth}
-\footnotesize\renewcommand{\arraystretch}{1.22}\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}lrr@{}}
-\hline
-\rowcolor{cruklight!20}\textbf{Weight (kg)} & \textbf{N (\%)} & \textbf{N/10 kg} \\ \hline
-0\,--\,50 & 10 (5.7) & 2 \\
-50\,--\,60 & 10 (5.7) & 10 \\
-60\,--\,70 & 23 (13.1) & 23 \\
-70\,--\,80 & 45 (25.7) & 45 \\
-80\,--\,90 & 40 (22.9) & 40 \\
-90\,--\,130 & 47 (26.9) & 11.8 \\ \hline
-\end{tabular}
-\end{column}
-\begin{column}{0.58\textwidth}
-\makebox[\linewidth][r]{\begin{minipage}[t][2.25cm][t]{\wd\pinkbx}
-\small
-\bitem{70\,--\,80 is the \textbf{modal} interval}
-\vspace{0.2em}
-\bitem{70\,--\,80 is the \textbf{median} interval}
-\vspace{0.2em}
-\bitem{81.4 kg is the \textbf{mean} weight of the patients}
-\end{minipage}}\par
-\makebox[\linewidth][c]{\includegraphics[height=0.38\textheight]{intro-figures/hist-weight.pdf}}
-\end{column}
-\end{columns}
-
-## Descriptive Statistics, univariate analysis {.t}
-
-\vspace{-0.3em}
-
-\hfill\pinkb{\textbf{Quantitative data}, measures of central tendency}
-
-\vspace{0.2em}
-
-\hlb{Properties of the mean}
-
-\vspace{0.6em}
-
-\bitem{\makebox[4.1cm][l]{\textbf{Balancing of errors:}}$\sum_i (a_i - \mu) = 0$}
-
-\vspace{0.5em}
-
-\bitem{\makebox[4.1cm][l]{\textbf{Minimum distance:}}$\sum_i (a_i - \mu)^2 < \sum_i (a_i - x)^2, \quad x \neq \mu$}
-
-\vspace{0.5em}
-
-\bitem{\makebox[4.1cm][l]{\textbf{Linearity:}}$\begin{aligned}[t] &\mu(a\cdot x_1,\ldots,a\cdot x_n) = a\cdot\mu(x_1,\ldots,x_n)\\ &\mu(x_1+b,\ldots,x_n+b) = \mu(x_1,\ldots,x_n)+b \end{aligned}$}
-
-\vspace{0.5em}
-
-\bitem{\textbf{Associative property:} \hfill $\mu(x_1,\ldots,x_m;\, y_1,\ldots,y_n) = \dfrac{m\cdot\mu(x_1,\ldots,x_m)+n\cdot\mu(y_1,\ldots,y_n)}{m+n}$}
-
-## Descriptive Statistics, univariate analysis {.t}
-
-\vspace{-0.3em}
-
-\hlb{Measures of heterogeneity} \hfill \pinkb{\textbf{Qualitative data}, measures of dispersion}
-
-\vspace{0.15em}
-
-\begingroup\small
-\bitem{$\displaystyle H = -\sum_{j=1}^{S} p_j \ln p_j$, \quad \textbf{Shannon diversity index} ($S$ categories, proportions $p_j$)}
-\endgroup
-
-\vspace{0.35em}
-
-\hlb{Measures of variability} \hfill \pinkb{\textbf{Quantitative data}, measures of dispersion}
-
-\vspace{0.15em}
-
-\begingroup\small
-\bitem{$\displaystyle \frac{1}{n}\sum_i \lvert a_i - M\rvert$, \quad \textbf{mean absolute deviation} ($M$: a measure of central tendency)}
-
-\vspace{0.15em}
-
-\bitem{$\displaystyle \sqrt{\frac{1}{n}\sum_i (a_i - M)^2}$, \quad if $M = \mu$, it is called the \textbf{standard deviation} ($\sigma$)}
-
-\vspace{0.15em}
-
-\bitem{\textbf{Interquartile range} (IQR) $=$ Q3 $-$ Q1, the range of the middle 50\% of the data}
-
-\vspace{0.1em}
-
-\vspace{-0.8em}\begin{center}\includegraphics[width=0.66\linewidth]{intro-figures/iqr.pdf}\end{center}
-\endgroup
-
-## Descriptive Statistics, bivariate analysis
-
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
-\includegraphics[width=\linewidth]{intro-figures/image26.png}
-\end{column}
-\begin{column}{0.48\textwidth}
-\footnotesize\renewcommand{\arraystretch}{1.12}\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}lrr@{}}
-\hline
-\rowcolor{cruklight!20}\textbf{ID mouse} & \textbf{Day 21 (mm$^3$)} & \textbf{Day 23 (mm$^3$)} \\ \hline
-M101 & 260 & 270 \\
-M102 & 234 & 240 \\
-M103 & 400 & 470 \\
-M104 & 345 & 350 \\
-M105 & 450 & 460 \\
-M106 & 200 & 250 \\
-M107 & 500 & 510 \\ \hline
-\end{tabular}
-\end{column}
-\end{columns}
-
-## Descriptive Statistics, bivariate analysis
-
-\begin{columns}[c]
-\begin{column}{0.55\textwidth}
-\includegraphics[width=\linewidth]{intro-figures/image26.png}
-\end{column}
-\begin{column}{0.43\textwidth}
-\includegraphics[width=\linewidth]{intro-figures/scatter-tumour.pdf}
-\end{column}
-\end{columns}
-
-\vspace{0.8em}
-
-\begin{center}
-\large\textbf{Take home message: paired data are not independent.\\ Two measurements on the same mouse are correlated ($\boldsymbol{r = 0.97}$).}
-\end{center}
-
-\reference{$r$: Pearson correlation coefficient}
-
-## Why is descriptive statistics important? {.t}
-
-\vspace{-0.4em}
-
-\noindent\begin{tabular}{@{}>{\small\raggedright\arraybackslash}m{0.46\textwidth}@{\hspace{0.02\textwidth}}>{\centering\arraybackslash}m{0.52\textwidth}@{}}
-\bitem{\textbf{Baseline data} (e.g.\ strain, sex, age, weight, housing)} &
-\includegraphics[width=\linewidth,height=0.25\textheight,keepaspectratio]{intro-figures/image16.png} \\[0.2em]
-\bitem{\textbf{Experimental design} \mbox{(e.g.\ sample size)}} &
-\includegraphics[width=\linewidth,height=0.21\textheight,keepaspectratio]{intro-figures/image17.png} \\[0.2em]
-\bitem{\textbf{Outcomes} (e.g.\ length of follow-up, number of events, reasons for censored data)} &
-\includegraphics[width=\linewidth,height=0.25\textheight,keepaspectratio]{intro-figures/image14.png} \\
-\end{tabular}
-
-\reference{Kilkenny, C. \textit{et al.} \textit{Survey of the quality of experimental design, statistical analysis and reporting of research using animals}. PLoS ONE \textbf{4}(11), e7824 (2009)}
+
+## What this course isn’t
+
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/This_course_is_not.png}
+
+## Grand Picture of Statistics
+
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/PictureofStatistics.png}
+
+## Data types
+
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/Data_Types_1.png}
+
+## Data types
+
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/Data_Types_2.png}
+
+## Data types
+
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/Data_Types_3.png}
+
+
+## Summary statistics per data type
+
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/Data_Type_Summary_Statistics.png}
+
+
+## Summary statistics and plots for qualitative data
+
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/Qualitative_data_plot.png}
+
+## Summary statistics and plots for quantitative data
+
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/Quant_summary_and_plot_1.png}
+
+## Summary statistics and plots for quantitative data
+
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/Quant_summary_and_plot_2.png}
+
+## Summary statistics and plots for quantitative data
+
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/Quant_summary_and_plot_3.png}
+
 
 ## Practical session
 
@@ -1797,91 +1493,7 @@ dfig("intro-figures/pois-plain.pdf", px, py, c(0, 0.23), "Number of events", "Po
 dfig("intro-figures/pois-lambda.pdf", px, py, c(0, 0.23), "Number of events", "Poisson distribution", p_l)
 ```
 
-## Binomial distribution {.t}
 
-\vspace{\dimexpr-0.2em-2.5pt\relax}
-
-\small The \textbf{binomial distribution} with parameters $n$ and $p$ is the discrete probability distribution of the number of successes in a sequence of $n$ independent trials. Each trial (Bernoulli trial) has a binary outcome: success with probability $p$ and failure with probability $1-p$.\normalsize
-
-\vspace{1.4em}
-
-\begin{center}
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (10.9,-4.0);
-\node[inner sep=0, anchor=north west] at (0,0) {\includegraphics[width=4.9cm]{intro-figures/binom-plain.pdf}};
-\node[anchor=north west, text width=5.85cm, align=left, font=\Large, execute at begin node={\hyphenpenalty=10000\raggedright}] at (5.1,-0.2) {What are the \textbf{parameters}?};
-\end{tikzpicture}
-\end{center}
-
-## Binomial distribution {.t}
-
-\vspace{\dimexpr-0.2em-2.5pt\relax}
-
-\small The \textbf{binomial distribution} with parameters $n$ and $p$ is the discrete probability distribution of the number of successes in a sequence of $n$ independent trials. Each trial (Bernoulli trial) has a binary outcome: success with probability $p$ and failure with probability $1-p$.\normalsize
-
-\vspace{1.4em}
-
-\begin{center}
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (10.9,-4.0);
-\node[inner sep=0, anchor=north west] at (0,0) {\includegraphics[width=4.9cm]{intro-figures/binom-n.pdf}};
-\node[anchor=north west, text width=5.85cm, align=left, font=\Large, execute at begin node={\hyphenpenalty=10000\raggedright}] at (5.1,-0.2) {What are the \textbf{parameters}?\\[3pt] \hspace*{0.6em}$\bullet$ $n$: {\normalsize number of trials}};
-\end{tikzpicture}
-\end{center}
-
-## Binomial distribution {.t}
-
-\vspace{\dimexpr-0.2em-2.5pt\relax}
-
-\small The \textbf{binomial distribution} with parameters $n$ and $p$ is the discrete probability distribution of the number of successes in a sequence of $n$ independent trials. Each trial (Bernoulli trial) has a binary outcome: success with probability $p$ and failure with probability $1-p$.\normalsize
-
-\vspace{1.4em}
-
-\begin{center}
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (10.9,-4.0);
-\node[inner sep=0, anchor=north west] at (0,0) {\includegraphics[width=4.9cm]{intro-figures/binom-np.pdf}};
-\node[anchor=north west, text width=5.85cm, align=left, font=\Large, execute at begin node={\hyphenpenalty=10000\raggedright}] at (5.1,-0.2) {What are the \textbf{parameters}?\\[3pt] \hspace*{0.6em}$\bullet$ $n$: {\normalsize number of trials}\\[3pt] \hspace*{0.6em}$\bullet$ $p$: {\normalsize probability of success}};
-\end{tikzpicture}
-\end{center}
-
-## Poisson distribution {.t}
-
-\vspace{\dimexpr-0.2em-0.8pt\relax}
-
-\small The \textbf{Poisson distribution} with parameter $\lambda$ is the discrete probability distribution of the number of events that occur independently and at a constant average rate in a fixed time interval or in a given area.\normalsize
-
-\vspace{1.4em}
-
-\begin{center}
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (10.9,-4.0);
-\node[inner sep=0, anchor=north west] at (0,0) {\includegraphics[width=4.9cm]{intro-figures/pois-plain.pdf}};
-\node[anchor=north west, text width=5.85cm, align=left, font=\Large, execute at begin node={\hyphenpenalty=10000\raggedright}] at (5.1,-0.2) {What are the \textbf{parameters}?};
-\end{tikzpicture}
-\end{center}
-
-## Poisson distribution {.t}
-
-\vspace{\dimexpr-0.2em-0.8pt\relax}
-
-\small The \textbf{Poisson distribution} with parameter $\lambda$ is the discrete probability distribution of the number of events that occur independently and at a constant average rate in a fixed time interval or in a given area.\normalsize
-
-\vspace{1.4em}
-
-\begin{center}
-\begin{tikzpicture}
-\useasboundingbox (0,0.1) rectangle (10.9,-4.0);
-\node[inner sep=0, anchor=north west] at (0,0) {\includegraphics[width=4.9cm]{intro-figures/pois-lambda.pdf}};
-\node[anchor=north west, text width=5.85cm, align=left, font=\Large, execute at begin node={\hyphenpenalty=10000\raggedright}] at (5.1,-0.2) {What are the \textbf{parameters}?\\[3pt] \hspace*{0.6em}$\bullet$ $\lambda$: {\normalsize mean number of events}};
-\end{tikzpicture}
-\end{center}
-
-## Other distributions
-
-\begin{center}
-\includegraphics[width=\linewidth]{intro-figures/other-dists.pdf}
-\end{center}
 
 ## Estimating parameters: point estimates {.t}
 
@@ -2026,13 +1638,6 @@ one("intro-figures/pnr-robust.pdf", {
 })
 ```
 
-## Practical session
-
-\vspace{1em}
-
-\textbf{Exercises}
-
-\small\url{http://bioinformatics-core-shared-training.github.io/IntroductionToStats}\normalsize
 
 ## Stage 3: Normal Distribution
 
@@ -2208,17 +1813,6 @@ draw_roadmap(3)
 
 \keybox{Normality is an \textbf{assumption}, not a fact: it must be \textbf{checked with the data}}
 
-## Central limit theorem (CLT)
-
-\begin{center}
-\begin{tikzpicture}[box/.style={draw=crukdark, text width=8.6cm, align=center, inner sep=6pt, font=\small}]
-\node[box] (a) at (0,0) {Let $X_1, \ldots, X_n$ be independent and identically distributed random variables with mean $\boldsymbol{\mu}$ and finite standard deviation $\boldsymbol{\sigma}$};
-\node[box, below=0.6cm of a] (b) {The sample mean $\bar{X}$ is a statistic obtained by calculating the arithmetic average of the values of $X_1, \ldots, X_n$ in a sample};
-\node[box, fill=cruklight!25, below=0.6cm of b, font=\small\bfseries] (c) {CLT: $\boldsymbol{\bar{X}}$ is approximately distributed as $\boldsymbol{N(\mu, \sigma^2/n)}$ as the sample size $\boldsymbol{n}$ gets larger};
-\draw[-{Latex[length=6pt]}, thick, crukdark] (a) -- (b);
-\draw[-{Latex[length=6pt]}, thick, crukdark] (b) -- (c);
-\end{tikzpicture}
-\end{center}
 
 ## Central limit theorem (CLT)
 
@@ -3229,13 +2823,6 @@ What happens if your data do not meet all the assumptions of a test?
 
 \bitem{\textbf{All statistical tests have assumptions that you have to check\\ \hphantom{\bul\ }before you can trust the results}}
 
-## Practical session
-
-\vspace{1em}
-
-\textbf{Exercises}
-
-\small\url{http://bioinformatics-core-shared-training.github.io/IntroductionToStats}\normalsize
 
 ## Stage 5: One-Sample Tests
 
@@ -3392,162 +2979,8 @@ $t$-distribution with $n-1$ degrees of freedom
 \includegraphics[height=0.62\textheight]{intro-figures/tdist.pdf}
 \end{center}
 
-## Sign test {.t}
 
-\vspace{0.1em}
 
-\begin{tikzpicture}[
-  arr/.style={-{Stealth[length=3mm]}, line width=1.3pt, draw=crukpink},
-  lbl/.style={font=\footnotesize\bfseries, text=crukdark},
-  txt/.style={font=\small, text width=7.4cm, align=left, anchor=north west, inner sep=0pt,
-              execute at begin node={\hyphenpenalty=10000\raggedright}}]
-\useasboundingbox (0,0.1) rectangle (11.4,-7.15);
-\begin{scope}[shift={(0.3,-1.45)}]
-\fill[cruklight!25] plot[domain=0:2.9, samples=80] (\x,{1.25*((\x*3.1)^2*exp(-\x*3.1))/0.5413}) -- (2.9,0) -- (0,0) -- cycle;
-\draw[cruklight, line width=1.2pt] plot[domain=0:2.9, samples=80] (\x,{1.25*((\x*3.1)^2*exp(-\x*3.1))/0.5413});
-\draw[->, gray] (-0.1,0) -- (3.1,0);
-\draw[dashed, crukdark] (0.863,0) -- (0.863,1.25) node[above, inner sep=1pt, font=\footnotesize] {$\theta$};
-\end{scope}
-\node[lbl, anchor=north] at (1.75,-1.5) {Statistical model};
-\node[txt] at (3.9,0.134) {\textbf{Assumptions:}\\[2pt] 1.\ the data are continuous\\ 2.\ the data are a random sample from the population\\ 3.\ independent observations $x_i$, $i = 1, \ldots, n$};
-\end{tikzpicture}
-
-## Sign test {.t}
-
-\vspace{0.1em}
-
-\begin{tikzpicture}[
-  arr/.style={-{Stealth[length=3mm]}, line width=1.3pt, draw=crukpink},
-  lbl/.style={font=\footnotesize\bfseries, text=crukdark},
-  txt/.style={font=\small, text width=7.4cm, align=left, anchor=north west, inner sep=0pt,
-              execute at begin node={\hyphenpenalty=10000\raggedright}}]
-\useasboundingbox (0,0.1) rectangle (11.4,-7.15);
-\begin{scope}[shift={(0.3,-1.45)}]
-\fill[cruklight!25] plot[domain=0:2.9, samples=80] (\x,{1.25*((\x*3.1)^2*exp(-\x*3.1))/0.5413}) -- (2.9,0) -- (0,0) -- cycle;
-\draw[cruklight, line width=1.2pt] plot[domain=0:2.9, samples=80] (\x,{1.25*((\x*3.1)^2*exp(-\x*3.1))/0.5413});
-\draw[->, gray] (-0.1,0) -- (3.1,0);
-\draw[dashed, crukpink, line width=0.9pt] (0.863,0) -- (0.863,1.25) node[above, inner sep=1pt, font=\footnotesize\bfseries, text=crukpink] {$\theta = \theta_0$};
-\end{scope}
-\node[lbl, anchor=north] at (1.75,-1.5) {Statistical model};
-\node[txt] at (3.9,0.134) {\textbf{Assumptions:}\\[2pt] 1.\ the data are continuous\\ 2.\ the data are a random sample from the population\\ 3.\ independent observations $x_i$, $i = 1, \ldots, n$};
-\node[txt] at (3.9,-2.45) {\textbf{Hypotheses:}\\[2pt] $H_0$: $\theta = \theta_0$ \qquad $H_1$: $\theta \neq \theta_0$ \qquad {\footnotesize($\theta$ = median)}};
-\end{tikzpicture}
-
-## Sign test {.t}
-
-\vspace{0.1em}
-
-\begin{tikzpicture}[
-  arr/.style={-{Stealth[length=3mm]}, line width=1.3pt, draw=crukpink},
-  lbl/.style={font=\footnotesize\bfseries, text=crukdark},
-  txt/.style={font=\small, text width=7.4cm, align=left, anchor=north west, inner sep=0pt,
-              execute at begin node={\hyphenpenalty=10000\raggedright}}]
-\useasboundingbox (0,0.1) rectangle (11.4,-7.15);
-\begin{scope}[shift={(0.3,-1.45)}]
-\fill[cruklight!25] plot[domain=0:2.9, samples=80] (\x,{1.25*((\x*3.1)^2*exp(-\x*3.1))/0.5413}) -- (2.9,0) -- (0,0) -- cycle;
-\draw[cruklight, line width=1.2pt] plot[domain=0:2.9, samples=80] (\x,{1.25*((\x*3.1)^2*exp(-\x*3.1))/0.5413});
-\draw[->, gray] (-0.1,0) -- (3.1,0);
-\draw[dashed, crukpink, line width=0.9pt] (0.863,0) -- (0.863,1.25) node[above, inner sep=1pt, font=\footnotesize\bfseries, text=crukpink] {$\theta = \theta_0$};
-\end{scope}
-\node[lbl, anchor=north] at (1.75,-1.5) {Statistical model};
-\node[txt] at (3.9,0.134) {\textbf{Assumptions:}\\[2pt] 1.\ the data are continuous\\ 2.\ the data are a random sample from the population\\ 3.\ independent observations $x_i$, $i = 1, \ldots, n$};
-\node[txt] at (3.9,-2.45) {\textbf{Hypotheses:}\\[2pt] $H_0$: $\theta = \theta_0$ \qquad $H_1$: $\theta \neq \theta_0$ \qquad {\footnotesize($\theta$ = median)}};
-\draw[arr] (1.75,-2.0) -- (1.75,-4.05);
-\node[lbl, anchor=west, align=left, inner sep=1pt] at (1.9,-3.0) {Data are\\ generated};
-\draw[gray, line width=0.6pt] (0.4,-4.3) -- (3.1,-4.3);
-\foreach \xx in {0.75,1.15,1.45,1.6,1.9,2.25,2.7} \fill[cruklight, draw=crukdark, line width=0.4pt] (\xx,-4.3) circle (0.07);
-\node[anchor=north, font=\small] at (1.75,-4.4) {$x_1, x_2, \ldots, x_n$};
-\end{tikzpicture}
-
-## Sign test {.t}
-
-\vspace{0.1em}
-
-\begin{tikzpicture}[
-  arr/.style={-{Stealth[length=3mm]}, line width=1.3pt, draw=crukpink},
-  lbl/.style={font=\footnotesize\bfseries, text=crukdark},
-  txt/.style={font=\small, text width=7.4cm, align=left, anchor=north west, inner sep=0pt,
-              execute at begin node={\hyphenpenalty=10000\raggedright}}]
-\useasboundingbox (0,0.1) rectangle (11.4,-7.15);
-\begin{scope}[shift={(0.3,-1.45)}]
-\fill[cruklight!25] plot[domain=0:2.9, samples=80] (\x,{1.25*((\x*3.1)^2*exp(-\x*3.1))/0.5413}) -- (2.9,0) -- (0,0) -- cycle;
-\draw[cruklight, line width=1.2pt] plot[domain=0:2.9, samples=80] (\x,{1.25*((\x*3.1)^2*exp(-\x*3.1))/0.5413});
-\draw[->, gray] (-0.1,0) -- (3.1,0);
-\draw[dashed, crukpink, line width=0.9pt] (0.863,0) -- (0.863,1.25) node[above, inner sep=1pt, font=\footnotesize\bfseries, text=crukpink] {$\theta = \theta_0$};
-\end{scope}
-\node[lbl, anchor=north] at (1.75,-1.5) {Statistical model};
-\node[txt] at (3.9,0.134) {\textbf{Assumptions:}\\[2pt] 1.\ the data are continuous\\ 2.\ the data are a random sample from the population\\ 3.\ independent observations $x_i$, $i = 1, \ldots, n$};
-\node[txt] at (3.9,-2.45) {\textbf{Hypotheses:}\\[2pt] $H_0$: $\theta = \theta_0$ \qquad $H_1$: $\theta \neq \theta_0$ \qquad {\footnotesize($\theta$ = median)}};
-\draw[arr] (1.75,-2.0) -- (1.75,-4.05);
-\node[lbl, anchor=west, align=left, inner sep=1pt] at (1.9,-3.0) {Data are\\ generated};
-\draw[gray, line width=0.6pt] (0.4,-4.3) -- (3.1,-4.3);
-\foreach \xx in {0.75,1.15,1.45,1.6,1.9,2.25,2.7} \fill[cruklight, draw=crukdark, line width=0.4pt] (\xx,-4.3) circle (0.07);
-\node[anchor=north, font=\small] at (1.75,-4.4) {$x_1, x_2, \ldots, x_n$};
-\draw[arr] (3.2,-4.3) -- (3.8,-4.3);
-\node[txt] at (3.9,-3.45) {\textbf{Test statistic:}\\[3pt] $S(x_1,\ldots,x_n)$ = number of values above $\theta_0$\\[2pt] {\footnotesize \textit{Note:} values equal to $\theta_0$ are discarded}};
-\end{tikzpicture}
-
-## Sign test {.t}
-
-\vspace{0.1em}
-
-\begin{tikzpicture}[
-  arr/.style={-{Stealth[length=3mm]}, line width=1.3pt, draw=crukpink},
-  lbl/.style={font=\footnotesize\bfseries, text=crukdark},
-  txt/.style={font=\small, text width=7.4cm, align=left, anchor=north west, inner sep=0pt,
-              execute at begin node={\hyphenpenalty=10000\raggedright}}]
-\useasboundingbox (0,0.1) rectangle (11.4,-7.15);
-\begin{scope}[shift={(0.3,-1.45)}]
-\fill[cruklight!25] plot[domain=0:2.9, samples=80] (\x,{1.25*((\x*3.1)^2*exp(-\x*3.1))/0.5413}) -- (2.9,0) -- (0,0) -- cycle;
-\draw[cruklight, line width=1.2pt] plot[domain=0:2.9, samples=80] (\x,{1.25*((\x*3.1)^2*exp(-\x*3.1))/0.5413});
-\draw[->, gray] (-0.1,0) -- (3.1,0);
-\draw[dashed, crukpink, line width=0.9pt] (0.863,0) -- (0.863,1.25) node[above, inner sep=1pt, font=\footnotesize\bfseries, text=crukpink] {$\theta = \theta_0$};
-\end{scope}
-\node[lbl, anchor=north] at (1.75,-1.5) {Statistical model};
-\node[txt] at (3.9,0.134) {\textbf{Assumptions:}\\[2pt] 1.\ the data are continuous\\ 2.\ the data are a random sample from the population\\ 3.\ independent observations $x_i$, $i = 1, \ldots, n$};
-\node[txt] at (3.9,-2.45) {\textbf{Hypotheses:}\\[2pt] $H_0$: $\theta = \theta_0$ \qquad $H_1$: $\theta \neq \theta_0$ \qquad {\footnotesize($\theta$ = median)}};
-\draw[arr] (1.75,-2.0) -- (1.75,-4.05);
-\node[lbl, anchor=west, align=left, inner sep=1pt] at (1.9,-3.0) {Data are\\ generated};
-\draw[gray, line width=0.6pt] (0.4,-4.3) -- (3.1,-4.3);
-\foreach \xx in {0.75,1.15,1.45,1.6,1.9,2.25,2.7} \fill[cruklight, draw=crukdark, line width=0.4pt] (\xx,-4.3) circle (0.07);
-\node[anchor=north, font=\small] at (1.75,-4.4) {$x_1, x_2, \ldots, x_n$};
-\draw[arr] (3.2,-4.3) -- (3.8,-4.3);
-\node[txt] at (3.9,-3.45) {\textbf{Test statistic:}\\[3pt] $S(x_1,\ldots,x_n)$ = number of values above $\theta_0$\\[2pt] {\footnotesize \textit{Note:} values equal to $\theta_0$ are discarded}};
-\draw[arr] (1.75,-4.85) -- (1.75,-5.3);
-\begin{scope}[shift={(0.3,-6.55)}]
-\fill[cruklight!70] (0.120,0) rectangle (0.320,0.004);
-\fill[cruklight!70] (0.380,0) rectangle (0.580,0.042);
-\fill[cruklight!70] (0.640,0) rectangle (0.840,0.188);
-\fill[cruklight!70] (0.900,0) rectangle (1.100,0.500);
-\fill[cruklight!70] (1.160,0) rectangle (1.360,0.875);
-\fill[cruklight!70] (1.420,0) rectangle (1.620,1.050);
-\fill[cruklight!70] (1.680,0) rectangle (1.880,0.875);
-\fill[cruklight!70] (1.940,0) rectangle (2.140,0.500);
-\fill[cruklight!70] (2.200,0) rectangle (2.400,0.188);
-\fill[cruklight!70] (2.460,0) rectangle (2.660,0.042);
-\fill[cruklight!70] (2.720,0) rectangle (2.920,0.004);
-\draw[->, gray] (-0.1,0) -- (3.1,0) node[right, inner sep=1pt, font=\footnotesize, text=black] {$S$};
-\end{scope}
-\node[lbl, anchor=north] at (1.75,-6.6) {Test statistic distribution};
-\node[txt] at (3.9,-5.6) {\textbf{Distribution of the test statistic under $\boldsymbol{H_0}$:}\\[2pt] binomial distribution, $S \sim \text{Bin}(n, 0.5)$};
-\end{tikzpicture}
-
-## Sign test {.t}
-
-\vspace{\dimexpr-0.2em-1.9pt\relax}
-
-\textbf{Distribution of the test statistic under $\boldsymbol{H_0}$:}\par
-binomial distribution, $S \sim \text{Bin}(n, 0.5)$
-
-\vspace{0.2em}
-
-\begin{center}
-\includegraphics[height=0.46\textheight]{intro-figures/binomfam.pdf}
-\end{center}
-
-\vspace{-0.3em}
-
-\small If some values are equal to $\theta_0$, discard them and apply the sign test only to the values above or below $\theta_0$.
 
 ## Wilcoxon signed-rank test {.t}
 
