@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.8.15)  20 NOV 2026 23:54
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.8.15)  21 NOV 2026 21:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1655,39 +1655,44 @@ File: intro-figures/Quant_summary_and_plot_3.png Graphic file (type bmp)
 [13
 
 ]
+File: intro-figures/Indip_vs_Paired_data.png Graphic file (type bmp)
+<intro-figures/Indip_vs_Paired_data.png>
+[14
+
+]
 LaTeX Font Info:    Font shape `TU/Arial(0)/b/n' will be
-(Font)              scaled to size 9.37556pt on input line 283.
+(Font)              scaled to size 9.37556pt on input line 290.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.30151pt on input line 283.
+(Font)              scaled to size 10.30151pt on input line 290.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.21106pt on input line 283.
+(Font)              scaled to size 7.21106pt on input line 290.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.15076pt on input line 283.
+(Font)              scaled to size 5.15076pt on input line 290.
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
-83.
+90.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.30243pt on input line 283.
+(Font)              scaled to size 10.30243pt on input line 290.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.2117pt on input line 283.
+(Font)              scaled to size 7.2117pt on input line 290.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.15121pt on input line 283.
+(Font)              scaled to size 5.15121pt on input line 290.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.30045pt on input line 283.
+(Font)              scaled to size 10.30045pt on input line 290.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.21031pt on input line 283.
+(Font)              scaled to size 7.21031pt on input line 290.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.15022pt on input line 283.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 283
+(Font)              scaled to size 5.15022pt on input line 290.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 290
 .
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 283
+LaTeX Font Info:    Trying to load font information for U+msb on input line 290
 .
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1695,114 +1700,109 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `TU/Arial(3)/m/n' will be
-(Font)              scaled to size 8.56216pt on input line 283.
+(Font)              scaled to size 8.56216pt on input line 290.
 LaTeX Font Info:    Font shape `TU/Arial(3)/m/n' will be
-(Font)              scaled to size 5.99352pt on input line 283.
+(Font)              scaled to size 5.99352pt on input line 290.
 LaTeX Font Info:    Font shape `TU/Arial(3)/m/n' will be
-(Font)              scaled to size 4.28108pt on input line 283.
+(Font)              scaled to size 4.28108pt on input line 290.
 LaTeX Font Info:    Font shape `TU/ArialItalic(0)/m/n' will be
-(Font)              scaled to size 8.56216pt on input line 283.
+(Font)              scaled to size 8.56216pt on input line 290.
 LaTeX Font Info:    Font shape `TU/ArialItalic(0)/m/n' will be
-(Font)              scaled to size 5.99352pt on input line 283.
+(Font)              scaled to size 5.99352pt on input line 290.
 LaTeX Font Info:    Font shape `TU/ArialItalic(0)/m/n' will be
-(Font)              scaled to size 4.28108pt on input line 283.
+(Font)              scaled to size 4.28108pt on input line 290.
 LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/m/n' will be
-(Font)              scaled to size 8.56216pt on input line 283.
+(Font)              scaled to size 8.56216pt on input line 290.
 LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/m/n' will be
-(Font)              scaled to size 5.99352pt on input line 283.
+(Font)              scaled to size 5.99352pt on input line 290.
 LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/m/n' will be
-(Font)              scaled to size 4.28108pt on input line 283.
-[14
+(Font)              scaled to size 4.28108pt on input line 290.
+[15
 
 ]
 File: Introduction-to-Statistical-Analysis_2026_files/figure-beamer/roadmap-sta
 ge2-1.pdf Graphic file (type pdf)
 <use Introduction-to-Statistical-Analysis_2026_files/figure-beamer/roadmap-stag
 e2-1.pdf>
-[15
+[16
 
 ]
 LaTeX Font Info:    Font shape `TU/Arial(0)/m/n' will be
-(Font)              scaled to size 10.2746pt on input line 337.
+(Font)              scaled to size 10.2746pt on input line 344.
 LaTeX Font Info:    Font shape `TU/Arial(0)/b/n' will be
-(Font)              scaled to size 10.2746pt on input line 337.
+(Font)              scaled to size 10.2746pt on input line 344.
 \bulw=\skip87
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.8961pt on input line 337.
+(Font)              scaled to size 7.8961pt on input line 344.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.64008pt on input line 337.
+(Font)              scaled to size 5.64008pt on input line 344.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 11.28114pt on input line 337.
+(Font)              scaled to size 11.28114pt on input line 344.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.8968pt on input line 337.
+(Font)              scaled to size 7.8968pt on input line 344.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.64058pt on input line 337.
+(Font)              scaled to size 5.64058pt on input line 344.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.27898pt on input line 337.
+(Font)              scaled to size 11.27898pt on input line 344.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.89528pt on input line 337.
+(Font)              scaled to size 7.89528pt on input line 344.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.6395pt on input line 337.
+(Font)              scaled to size 5.6395pt on input line 344.
 LaTeX Font Info:    Font shape `TU/Arial(3)/m/n' will be
-(Font)              scaled to size 6.56288pt on input line 337.
+(Font)              scaled to size 6.56288pt on input line 344.
 LaTeX Font Info:    Font shape `TU/Arial(3)/m/n' will be
-(Font)              scaled to size 4.68779pt on input line 337.
+(Font)              scaled to size 4.68779pt on input line 344.
 LaTeX Font Info:    Font shape `TU/ArialItalic(0)/m/n' will be
-(Font)              scaled to size 6.56288pt on input line 337.
+(Font)              scaled to size 6.56288pt on input line 344.
 LaTeX Font Info:    Font shape `TU/ArialItalic(0)/m/n' will be
-(Font)              scaled to size 4.68779pt on input line 337.
+(Font)              scaled to size 4.68779pt on input line 344.
 LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/m/n' will be
-(Font)              scaled to size 6.56288pt on input line 337.
+(Font)              scaled to size 6.56288pt on input line 344.
 LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/m/n' will be
-(Font)              scaled to size 4.68779pt on input line 337.
+(Font)              scaled to size 4.68779pt on input line 344.
 File: Sample.jpg Graphic file (type bmp)
 <Sample.jpg>
 File: intro-figures/pop-crowd.jpg Graphic file (type bmp)
 <intro-figures/pop-crowd.jpg>
 LaTeX Font Info:    Font shape `TU/Arial(0)/m/n' will be
-(Font)              scaled to size 12.3295pt on input line 337.
+(Font)              scaled to size 12.3295pt on input line 344.
 LaTeX Font Info:    Font shape `TU/Arial(0)/b/n' will be
-(Font)              scaled to size 12.3295pt on input line 337.
+(Font)              scaled to size 12.3295pt on input line 344.
 LaTeX Font Info:    Font shape `TU/Arial(0)/m/n' will be
-(Font)              scaled to size 6.84973pt on input line 337.
+(Font)              scaled to size 6.84973pt on input line 344.
 LaTeX Font Info:    Font shape `TU/Arial(0)/b/n' will be
-(Font)              scaled to size 6.84973pt on input line 337.
-[16
-
-]
-File: intro-figures/pop-crowd.jpg Graphic file (type bmp)
-<intro-figures/pop-crowd.jpg>
-LaTeX Font Info:    Font shape `TU/Arial(0)/m/n' will be
-(Font)              scaled to size 7.70595pt on input line 380.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 9.27136pt on input line 380.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.18091pt on input line 380.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 9.27219pt on input line 380.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.18146pt on input line 380.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.2704pt on input line 380.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.18027pt on input line 380.
-LaTeX Font Info:    Font shape `TU/Arial(3)/m/n' will be
-(Font)              scaled to size 7.70595pt on input line 380.
-LaTeX Font Info:    Font shape `TU/Arial(3)/m/n' will be
-(Font)              scaled to size 5.1373pt on input line 380.
-LaTeX Font Info:    Font shape `TU/ArialItalic(0)/m/n' will be
-(Font)              scaled to size 7.70595pt on input line 380.
-LaTeX Font Info:    Font shape `TU/ArialItalic(0)/m/n' will be
-(Font)              scaled to size 5.1373pt on input line 380.
-LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/m/n' will be
-(Font)              scaled to size 7.70595pt on input line 380.
-LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/m/n' will be
-(Font)              scaled to size 5.1373pt on input line 380.
+(Font)              scaled to size 6.84973pt on input line 344.
 [17
 
 ]
 File: intro-figures/pop-crowd.jpg Graphic file (type bmp)
 <intro-figures/pop-crowd.jpg>
+LaTeX Font Info:    Font shape `TU/Arial(0)/m/n' will be
+(Font)              scaled to size 7.70595pt on input line 387.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 9.27136pt on input line 387.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 6.18091pt on input line 387.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 9.27219pt on input line 387.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 6.18146pt on input line 387.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 9.2704pt on input line 387.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.18027pt on input line 387.
+LaTeX Font Info:    Font shape `TU/Arial(3)/m/n' will be
+(Font)              scaled to size 7.70595pt on input line 387.
+LaTeX Font Info:    Font shape `TU/Arial(3)/m/n' will be
+(Font)              scaled to size 5.1373pt on input line 387.
+LaTeX Font Info:    Font shape `TU/ArialItalic(0)/m/n' will be
+(Font)              scaled to size 7.70595pt on input line 387.
+LaTeX Font Info:    Font shape `TU/ArialItalic(0)/m/n' will be
+(Font)              scaled to size 5.1373pt on input line 387.
+LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/m/n' will be
+(Font)              scaled to size 7.70595pt on input line 387.
+LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/m/n' will be
+(Font)              scaled to size 5.1373pt on input line 387.
 [18
 
 ]
@@ -1818,8 +1818,6 @@ File: intro-figures/pop-crowd.jpg Graphic file (type bmp)
 ]
 File: intro-figures/pop-crowd.jpg Graphic file (type bmp)
 <intro-figures/pop-crowd.jpg>
-File: intro-figures/sample-family.jpg Graphic file (type bmp)
-<intro-figures/sample-family.jpg>
 [21
 
 ]
@@ -1839,13 +1837,13 @@ File: intro-figures/sample-family.jpg Graphic file (type bmp)
 ]
 File: intro-figures/pop-crowd.jpg Graphic file (type bmp)
 <intro-figures/pop-crowd.jpg>
+File: intro-figures/sample-family.jpg Graphic file (type bmp)
+<intro-figures/sample-family.jpg>
 [24
 
 ]
 File: intro-figures/pop-crowd.jpg Graphic file (type bmp)
 <intro-figures/pop-crowd.jpg>
-File: intro-figures/height-distribution.pdf Graphic file (type pdf)
-<use intro-figures/height-distribution.pdf>
 [25
 
 ]
@@ -1860,8 +1858,6 @@ File: intro-figures/pop-crowd.jpg Graphic file (type bmp)
 <intro-figures/pop-crowd.jpg>
 File: intro-figures/height-distribution.pdf Graphic file (type pdf)
 <use intro-figures/height-distribution.pdf>
-File: intro-figures/sample-family.jpg Graphic file (type bmp)
-<intro-figures/sample-family.jpg>
 [27
 
 ]
@@ -1871,8 +1867,6 @@ File: intro-figures/height-distribution.pdf Graphic file (type pdf)
 <use intro-figures/height-distribution.pdf>
 File: intro-figures/sample-family.jpg Graphic file (type bmp)
 <intro-figures/sample-family.jpg>
-File: intro-figures/height-sample.pdf Graphic file (type pdf)
-<use intro-figures/height-sample.pdf>
 [28
 
 ]
@@ -1897,12 +1891,18 @@ File: intro-figures/height-sample.pdf Graphic file (type pdf)
 <use intro-figures/height-sample.pdf>
 [30
 
-] [31
-
 ]
-File: intro-figures/height-plain.pdf Graphic file (type pdf)
-<use intro-figures/height-plain.pdf>
-[32
+File: intro-figures/pop-crowd.jpg Graphic file (type bmp)
+<intro-figures/pop-crowd.jpg>
+File: intro-figures/height-distribution.pdf Graphic file (type pdf)
+<use intro-figures/height-distribution.pdf>
+File: intro-figures/sample-family.jpg Graphic file (type bmp)
+<intro-figures/sample-family.jpg>
+File: intro-figures/height-sample.pdf Graphic file (type pdf)
+<use intro-figures/height-sample.pdf>
+[31
+
+] [32
 
 ]
 File: intro-figures/height-plain.pdf Graphic file (type pdf)
@@ -1925,34 +1925,30 @@ File: intro-figures/height-plain.pdf Graphic file (type pdf)
 [36
 
 ]
+File: intro-figures/height-plain.pdf Graphic file (type pdf)
+<use intro-figures/height-plain.pdf>
+[37
+
+]
 File: intro-figures/height-mean.pdf Graphic file (type pdf)
 <use intro-figures/height-mean.pdf>
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.83417pt on input line 766.
+(Font)              scaled to size 14.83417pt on input line 773.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.83548pt on input line 766.
+(Font)              scaled to size 14.83548pt on input line 773.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.83263pt on input line 766.
+(Font)              scaled to size 14.83263pt on input line 773.
 LaTeX Font Info:    Font shape `TU/Arial(3)/m/n' will be
-(Font)              scaled to size 12.3295pt on input line 766.
+(Font)              scaled to size 12.3295pt on input line 773.
 LaTeX Font Info:    Font shape `TU/ArialItalic(0)/m/n' will be
-(Font)              scaled to size 12.3295pt on input line 766.
+(Font)              scaled to size 12.3295pt on input line 773.
 LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/m/n' will be
-(Font)              scaled to size 12.3295pt on input line 766.
-[37
+(Font)              scaled to size 12.3295pt on input line 773.
+[38
 
 ]
 File: intro-figures/height-spread.pdf Graphic file (type pdf)
 <use intro-figures/height-spread.pdf>
-[38
-
-]
-File: intro-figures/height-sample-sq.pdf Graphic file (type pdf)
-<use intro-figures/height-sample-sq.pdf>
-File: intro-figures/height-plain.pdf Graphic file (type pdf)
-<use intro-figures/height-plain.pdf>
-LaTeX Font Info:    Font shape `TU/Arial(0)/b/n' will be
-(Font)              scaled to size 7.70595pt on input line 802.
 [39
 
 ]
@@ -1960,6 +1956,8 @@ File: intro-figures/height-sample-sq.pdf Graphic file (type pdf)
 <use intro-figures/height-sample-sq.pdf>
 File: intro-figures/height-plain.pdf Graphic file (type pdf)
 <use intro-figures/height-plain.pdf>
+LaTeX Font Info:    Font shape `TU/Arial(0)/b/n' will be
+(Font)              scaled to size 7.70595pt on input line 809.
 [40
 
 ]
@@ -1977,134 +1975,139 @@ File: intro-figures/height-plain.pdf Graphic file (type pdf)
 [42
 
 ]
+File: intro-figures/height-sample-sq.pdf Graphic file (type pdf)
+<use intro-figures/height-sample-sq.pdf>
+File: intro-figures/height-plain.pdf Graphic file (type pdf)
+<use intro-figures/height-plain.pdf>
+[43
+
+]
 File: Introduction-to-Statistical-Analysis_2026_files/figure-beamer/roadmap-sta
 ge3-1.pdf Graphic file (type pdf)
 <use Introduction-to-Statistical-Analysis_2026_files/figure-beamer/roadmap-stag
 e3-1.pdf>
-[43
+[44
 
-] [44
+] [45
 
 ]
 LaTeX Font Info:    Font shape `TU/Arial(0)/m/it' will be
-(Font)              scaled to size 8.56216pt on input line 937.
-[45
-
-] [46
+(Font)              scaled to size 8.56216pt on input line 944.
+[46
 
 ] [47
+
+] [48
 
 ]
 File: intro-figures/clt-sim.pdf Graphic file (type pdf)
 <use intro-figures/clt-sim.pdf>
-[48
+[49
 
 ]
 File: intro-figures/ci-sim.pdf Graphic file (type pdf)
 <use intro-figures/ci-sim.pdf>
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.24121pt on input line 1077.
+(Font)              scaled to size 8.24121pt on input line 1084.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.24194pt on input line 1077.
+(Font)              scaled to size 8.24194pt on input line 1084.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.24036pt on input line 1077.
+(Font)              scaled to size 8.24036pt on input line 1084.
 LaTeX Font Info:    Font shape `TU/Arial(3)/m/n' will be
-(Font)              scaled to size 6.84973pt on input line 1077.
+(Font)              scaled to size 6.84973pt on input line 1084.
 LaTeX Font Info:    Font shape `TU/ArialItalic(0)/m/n' will be
-(Font)              scaled to size 6.84973pt on input line 1077.
+(Font)              scaled to size 6.84973pt on input line 1084.
 LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/m/n' will be
-(Font)              scaled to size 6.84973pt on input line 1077.
-[49
+(Font)              scaled to size 6.84973pt on input line 1084.
+[50
 
 ]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 17.80101pt on input line 1099.
+(Font)              scaled to size 17.80101pt on input line 1106.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.36182pt on input line 1099.
+(Font)              scaled to size 12.36182pt on input line 1106.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 17.80258pt on input line 1099.
+(Font)              scaled to size 17.80258pt on input line 1106.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.36292pt on input line 1099.
+(Font)              scaled to size 12.36292pt on input line 1106.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 17.79916pt on input line 1099.
+(Font)              scaled to size 17.79916pt on input line 1106.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 12.36053pt on input line 1099.
+(Font)              scaled to size 12.36053pt on input line 1106.
 LaTeX Font Info:    Font shape `TU/Arial(3)/m/n' will be
-(Font)              scaled to size 14.79541pt on input line 1099.
+(Font)              scaled to size 14.79541pt on input line 1106.
 LaTeX Font Info:    Font shape `TU/Arial(3)/m/n' will be
-(Font)              scaled to size 10.2746pt on input line 1099.
+(Font)              scaled to size 10.2746pt on input line 1106.
 LaTeX Font Info:    Font shape `TU/ArialItalic(0)/m/n' will be
-(Font)              scaled to size 14.79541pt on input line 1099.
+(Font)              scaled to size 14.79541pt on input line 1106.
 LaTeX Font Info:    Font shape `TU/ArialItalic(0)/m/n' will be
-(Font)              scaled to size 10.2746pt on input line 1099.
+(Font)              scaled to size 10.2746pt on input line 1106.
 LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/m/n' will be
-(Font)              scaled to size 14.79541pt on input line 1099.
+(Font)              scaled to size 14.79541pt on input line 1106.
 LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/m/n' will be
-(Font)              scaled to size 10.2746pt on input line 1099.
-[50
-
-] [51
+(Font)              scaled to size 10.2746pt on input line 1106.
+[51
 
 ] [52
 
 ] [53
 
+] [54
+
 ]
 
 LaTeX Font Warning: Font shape `TU/latinmodern-math.otf(1)/b/n' undefined
 (Font)              using `TU/latinmodern-math.otf(1)/m/n' instead on input lin
-e 1220.
+e 1227.
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 7.21106pt on input line 1220.
+(Font)              scaled to size 7.21106pt on input line 1227.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 5.15076pt on input line 1220.
+(Font)              scaled to size 5.15076pt on input line 1227.
 
 LaTeX Font Warning: Font shape `TU/latinmodern-math.otf(2)/b/n' undefined
 (Font)              using `TU/latinmodern-math.otf(2)/m/n' instead on input lin
-e 1220.
+e 1227.
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 7.2117pt on input line 1220.
+(Font)              scaled to size 7.2117pt on input line 1227.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 5.15121pt on input line 1220.
+(Font)              scaled to size 5.15121pt on input line 1227.
 
 LaTeX Font Warning: Font shape `TU/latinmodern-math.otf(3)/b/n' undefined
 (Font)              using `TU/latinmodern-math.otf(3)/m/n' instead on input lin
-e 1220.
+e 1227.
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 7.21031pt on input line 1220.
+(Font)              scaled to size 7.21031pt on input line 1227.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 5.15022pt on input line 1220.
+(Font)              scaled to size 5.15022pt on input line 1227.
 LaTeX Font Info:    Font shape `TU/Arial(3)/b/n' will be
-(Font)              scaled to size 8.56216pt on input line 1220.
+(Font)              scaled to size 8.56216pt on input line 1227.
 LaTeX Font Info:    Font shape `TU/Arial(3)/b/n' will be
-(Font)              scaled to size 5.99352pt on input line 1220.
+(Font)              scaled to size 5.99352pt on input line 1227.
 LaTeX Font Info:    Font shape `TU/Arial(3)/b/n' will be
-(Font)              scaled to size 4.28108pt on input line 1220.
+(Font)              scaled to size 4.28108pt on input line 1227.
 LaTeX Font Info:    Font shape `TU/ArialItalic(0)/b/n' will be
-(Font)              scaled to size 8.56216pt on input line 1220.
+(Font)              scaled to size 8.56216pt on input line 1227.
 LaTeX Font Info:    Font shape `TU/ArialItalic(0)/b/n' will be
-(Font)              scaled to size 5.99352pt on input line 1220.
+(Font)              scaled to size 5.99352pt on input line 1227.
 LaTeX Font Info:    Font shape `TU/ArialItalic(0)/b/n' will be
-(Font)              scaled to size 4.28108pt on input line 1220.
+(Font)              scaled to size 4.28108pt on input line 1227.
 
 LaTeX Font Warning: Font shape `TU/ArialBoldItalic(0)/b/n' undefined
 (Font)              using `TU/ArialBoldItalic(0)/m/n' instead on input line 122
-0.
+7.
 
 LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/b/n' will be
-(Font)              scaled to size 5.99352pt on input line 1220.
+(Font)              scaled to size 5.99352pt on input line 1227.
 LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/b/n' will be
-(Font)              scaled to size 4.28108pt on input line 1220.
+(Font)              scaled to size 4.28108pt on input line 1227.
 LaTeX Font Info:    Font shape `TU/Arial(0)/m/n' will be
-(Font)              scaled to size 5.99352pt on input line 1220.
+(Font)              scaled to size 5.99352pt on input line 1227.
 LaTeX Font Info:    Font shape `TU/Arial(0)/m/n' will be
-(Font)              scaled to size 4.28108pt on input line 1220.
-[54
-
-] [55
+(Font)              scaled to size 4.28108pt on input line 1227.
+[55
 
 ] [56
 
@@ -2112,23 +2115,23 @@ LaTeX Font Info:    Font shape `TU/Arial(0)/m/n' will be
 
 ] [58
 
+] [59
+
 ]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 10.30151pt on input line 1363.
+(Font)              scaled to size 10.30151pt on input line 1370.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 10.30243pt on input line 1363.
+(Font)              scaled to size 10.30243pt on input line 1370.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 10.30045pt on input line 1363.
+(Font)              scaled to size 10.30045pt on input line 1370.
 LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/b/n' will be
-(Font)              scaled to size 8.56216pt on input line 1363.
-[59
+(Font)              scaled to size 8.56216pt on input line 1370.
+[60
 
 ]
 File: intro-figures/tdist.pdf Graphic file (type pdf)
 <use intro-figures/tdist.pdf>
-[60
-
-] [61
+[61
 
 ] [62
 
@@ -2140,101 +2143,101 @@ File: intro-figures/tdist.pdf Graphic file (type pdf)
 
 ] [66
 
+] [67
+
 ]
 File: Introduction-to-Statistical-Analysis_2026_files/figure-beamer/roadmap-sta
 ge4-1.pdf Graphic file (type pdf)
 <use Introduction-to-Statistical-Analysis_2026_files/figure-beamer/roadmap-stag
 e4-1.pdf>
-[67
+[68
 
 ]
 File: intro-figures/height-plain.pdf Graphic file (type pdf)
 <use intro-figures/height-plain.pdf>
-[68
+[69
 
 ]
 File: intro-figures/RNAseq_stats_p24.png Graphic file (type bmp)
 <intro-figures/RNAseq_stats_p24.png>
-[69
+[70
 
 ]
 File: intro-figures/RNAseq_stats_p25.png Graphic file (type bmp)
 <intro-figures/RNAseq_stats_p25.png>
-[70
+[71
 
 ]
 File: intro-figures/RNAseq_stats_p26.png Graphic file (type bmp)
 <intro-figures/RNAseq_stats_p26.png>
-[71
+[72
 
 ]
 File: intro-figures/RNAseq_stats_p27.png Graphic file (type bmp)
 <intro-figures/RNAseq_stats_p27.png>
-[72
+[73
 
 ]
 File: intro-figures/RNAseq_stats_p28.png Graphic file (type bmp)
 <intro-figures/RNAseq_stats_p28.png>
-[73
+[74
 
 ]
 File: intro-figures/RNAseq_stats_p29.png Graphic file (type bmp)
 <intro-figures/RNAseq_stats_p29.png>
-[74
+[75
 
 ]
 File: intro-figures/RNAseq_stats_p30.png Graphic file (type bmp)
 <intro-figures/RNAseq_stats_p30.png>
-[75
+[76
 
 ]
 File: intro-figures/RNAseq_stats_p31.png Graphic file (type bmp)
 <intro-figures/RNAseq_stats_p31.png>
-[76
+[77
 
 ]
 File: intro-figures/RNAseq_stats_p32.png Graphic file (type bmp)
 <intro-figures/RNAseq_stats_p32.png>
-[77
+[78
 
 ]
 File: intro-figures/RNAseq_stats_p33.png Graphic file (type bmp)
 <intro-figures/RNAseq_stats_p33.png>
-[78
+[79
 
 ]
 File: intro-figures/RNAseq_stats_p34.png Graphic file (type bmp)
 <intro-figures/RNAseq_stats_p34.png>
-[79
+[80
 
 ]
 File: intro-figures/RNAseq_stats_p35.png Graphic file (type bmp)
 <intro-figures/RNAseq_stats_p35.png>
-[80
+[81
 
 ]
 File: intro-figures/RNAseq_stats_p36.png Graphic file (type bmp)
 <intro-figures/RNAseq_stats_p36.png>
-[81
+[82
 
 ]
 File: intro-figures/RNAseq_stats_p37.png Graphic file (type bmp)
 <intro-figures/RNAseq_stats_p37.png>
-[82
+[83
 
 ]
 File: intro-figures/RNAseq_stats_p38.png Graphic file (type bmp)
 <intro-figures/RNAseq_stats_p38.png>
-[83
+[84
 
 ]
 File: Introduction-to-Statistical-Analysis_2026_files/figure-beamer/roadmap-sta
 ge5-1.pdf Graphic file (type pdf)
 <use Introduction-to-Statistical-Analysis_2026_files/figure-beamer/roadmap-stag
 e5-1.pdf>
-[84
-
-] [85
+[85
 
 ] [86
 
@@ -2244,72 +2247,72 @@ e5-1.pdf>
 
 ] [89
 
+] [90
+
 ]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 11.28015pt on input line 1816.
+(Font)              scaled to size 11.28015pt on input line 1823.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 7.8961pt on input line 1816.
+(Font)              scaled to size 7.8961pt on input line 1823.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 5.64008pt on input line 1816.
+(Font)              scaled to size 5.64008pt on input line 1823.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 11.28114pt on input line 1816.
+(Font)              scaled to size 11.28114pt on input line 1823.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 7.8968pt on input line 1816.
+(Font)              scaled to size 7.8968pt on input line 1823.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 5.64058pt on input line 1816.
+(Font)              scaled to size 5.64058pt on input line 1823.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 11.27898pt on input line 1816.
+(Font)              scaled to size 11.27898pt on input line 1823.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 7.89528pt on input line 1816.
+(Font)              scaled to size 7.89528pt on input line 1823.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 5.6395pt on input line 1816.
+(Font)              scaled to size 5.6395pt on input line 1823.
 LaTeX Font Info:    Font shape `TU/Arial(3)/b/n' will be
-(Font)              scaled to size 9.37556pt on input line 1816.
+(Font)              scaled to size 9.37556pt on input line 1823.
 LaTeX Font Info:    Font shape `TU/Arial(3)/b/n' will be
-(Font)              scaled to size 6.56288pt on input line 1816.
+(Font)              scaled to size 6.56288pt on input line 1823.
 LaTeX Font Info:    Font shape `TU/Arial(3)/b/n' will be
-(Font)              scaled to size 4.68779pt on input line 1816.
+(Font)              scaled to size 4.68779pt on input line 1823.
 LaTeX Font Info:    Font shape `TU/ArialItalic(0)/b/n' will be
-(Font)              scaled to size 9.37556pt on input line 1816.
+(Font)              scaled to size 9.37556pt on input line 1823.
 LaTeX Font Info:    Font shape `TU/ArialItalic(0)/b/n' will be
-(Font)              scaled to size 6.56288pt on input line 1816.
+(Font)              scaled to size 6.56288pt on input line 1823.
 LaTeX Font Info:    Font shape `TU/ArialItalic(0)/b/n' will be
-(Font)              scaled to size 4.68779pt on input line 1816.
+(Font)              scaled to size 4.68779pt on input line 1823.
 LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/b/n' will be
-(Font)              scaled to size 9.37556pt on input line 1816.
+(Font)              scaled to size 9.37556pt on input line 1823.
 LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/b/n' will be
-(Font)              scaled to size 6.56288pt on input line 1816.
+(Font)              scaled to size 6.56288pt on input line 1823.
 LaTeX Font Info:    Font shape `TU/ArialBoldItalic(0)/b/n' will be
-(Font)              scaled to size 4.68779pt on input line 1816.
+(Font)              scaled to size 4.68779pt on input line 1823.
 File: intro-figures/tdist.pdf Graphic file (type pdf)
 <use intro-figures/tdist.pdf>
-[90
-
-] [91
+[91
 
 ] [92
 
+] [93
+
 ]
 LaTeX Font Info:    Font shape `TU/Arial(0)/m/n' will be
-(Font)              scaled to size 6.56288pt on input line 1901.
+(Font)              scaled to size 6.56288pt on input line 1908.
 LaTeX Font Info:    Font shape `TU/Arial(0)/m/n' will be
-(Font)              scaled to size 4.68779pt on input line 1901.
-[93
-
-] [94
+(Font)              scaled to size 4.68779pt on input line 1908.
+[94
 
 ] [95
 
 ] [96
+
+] [97
 
 ]
 File: Introduction-to-Statistical-Analysis_2026_files/figure-beamer/roadmap-sta
 ge6-1.pdf Graphic file (type pdf)
 <use Introduction-to-Statistical-Analysis_2026_files/figure-beamer/roadmap-stag
 e6-1.pdf>
-[97
-
-] [98
+[98
 
 ] [99
 
@@ -2319,12 +2322,12 @@ e6-1.pdf>
 
 ] [102
 
+] [103
+
 ]
 File: intro-figures/tdist.pdf Graphic file (type pdf)
 <use intro-figures/tdist.pdf>
-[103
-
-] [104
+[104
 
 ] [105
 
@@ -2334,30 +2337,30 @@ File: intro-figures/tdist.pdf Graphic file (type pdf)
 
 ] [108
 
+] [109
+
 ]
 File: intro-figures/tdist.pdf Graphic file (type pdf)
 <use intro-figures/tdist.pdf>
-[109
-
-] [110
+[110
 
 ] [111
 
 ] [112
 
+] [113
+
 ]
 LaTeX Font Info:    Font shape `TU/Arial(0)/m/it' will be
-(Font)              scaled to size 7.70595pt on input line 2403.
-[113
+(Font)              scaled to size 7.70595pt on input line 2410.
+[114
 
-] [114
+] [115
 
 ]
 File: intro-figures/ranksumfam.pdf Graphic file (type pdf)
 <use intro-figures/ranksumfam.pdf>
-[115
-
-] [116
+[116
 
 ] [117
 
@@ -2367,35 +2370,37 @@ File: intro-figures/ranksumfam.pdf Graphic file (type pdf)
 
 ] [120
 
-]
-LaTeX Font Info:    Font shape `TU/Arial(1)/m/n' will be
-(Font)              scaled to size 9.37556pt on input line 2682.
-LaTeX Font Info:    Font shape `TU/Arial(1)/m/n' will be
-(Font)              scaled to size 6.56288pt on input line 2682.
-LaTeX Font Info:    Font shape `TU/Arial(1)/m/n' will be
-(Font)              scaled to size 4.68779pt on input line 2682.
-LaTeX Font Info:    Font shape `TU/Arial(1)/m/n' will be
-(Font)              scaled to size 8.56216pt on input line 2682.
-LaTeX Font Info:    Font shape `TU/Arial(1)/m/n' will be
-(Font)              scaled to size 5.99352pt on input line 2682.
-LaTeX Font Info:    Font shape `TU/Arial(1)/m/n' will be
-(Font)              scaled to size 4.28108pt on input line 2682.
-[121
+] [121
 
 ]
-Overfull \hbox (3.56357pt too wide) in paragraph at lines 2710--2710
+LaTeX Font Info:    Font shape `TU/Arial(1)/m/n' will be
+(Font)              scaled to size 9.37556pt on input line 2689.
+LaTeX Font Info:    Font shape `TU/Arial(1)/m/n' will be
+(Font)              scaled to size 6.56288pt on input line 2689.
+LaTeX Font Info:    Font shape `TU/Arial(1)/m/n' will be
+(Font)              scaled to size 4.68779pt on input line 2689.
+LaTeX Font Info:    Font shape `TU/Arial(1)/m/n' will be
+(Font)              scaled to size 8.56216pt on input line 2689.
+LaTeX Font Info:    Font shape `TU/Arial(1)/m/n' will be
+(Font)              scaled to size 5.99352pt on input line 2689.
+LaTeX Font Info:    Font shape `TU/Arial(1)/m/n' will be
+(Font)              scaled to size 4.28108pt on input line 2689.
+[122
+
+]
+Overfull \hbox (3.56357pt too wide) in paragraph at lines 2717--2717
  [] 
  []
 
 LaTeX Font Info:    Font shape `TU/Arial(0)/m/it' will be
-(Font)              scaled to size 6.84973pt on input line 2710.
+(Font)              scaled to size 6.84973pt on input line 2717.
 LaTeX Font Info:    Font shape `TU/Arial(0)/m/n' will be
-(Font)              scaled to size 13.8707pt on input line 2710.
-[122
-
-] [123
+(Font)              scaled to size 13.8707pt on input line 2717.
+[123
 
 ] [124
+
+] [125
 
 ]
 \tf@nav=\write5
@@ -2413,12 +2418,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 36636 strings out of 476683
- 780541 string characters out of 5804047
+ 36647 strings out of 476683
+ 780935 string characters out of 5804047
  1869018 words of memory out of 5000000
- 56077 multiletter control sequences out of 15000+600000
+ 56087 multiletter control sequences out of 15000+600000
  527239 words of font info for 201 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  128i,15n,122p,1038b,2935s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Introduction-to-Statistical-Analysis_2026.pdf (124 pages).
+Output written on Introduction-to-Statistical-Analysis_2026.pdf (125 pages).

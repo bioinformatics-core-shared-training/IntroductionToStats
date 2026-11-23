@@ -545,6 +545,10 @@ draw_roadmap(1)
 \centering
 \includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/Quant_summary_and_plot_3.png}
 
+## Two-sample case: independent versus paired samples
+
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{intro-figures/Indip_vs_Paired_data.png}
 
 ## Practical session
 
@@ -552,7 +556,7 @@ draw_roadmap(1)
 
 \textbf{Online quiz}
 
-\small\url{https://tinyurl.com/CI-Stats-Quiz}\normalsize
+\small\url{https://tinyurl.com/CI-IntroQuiz}\normalsize
 
 ## Stage 2: Inferential Statistics
 
